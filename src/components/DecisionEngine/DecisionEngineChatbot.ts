@@ -586,8 +586,17 @@ export class DecisionEngineChatbot {
       const rawTarget = event.target as Element | null;
       if (!rawTarget || !(rawTarget instanceof Element)) return;
 
-      // Never move Compass if the user is hovering Compass itself!
-      if (rawTarget.closest('.hc-decision-engine-root')) {
+      const clientX = event.clientX;
+      const clientY = event.clientY;
+      const winW = window.innerWidth;
+      const winH = window.innerHeight;
+
+      // Safe zones: Never move Compass if the user is hovering or approaching Compass to catch it!
+      const isHoveringCompass = !!rawTarget.closest('.hc-decision-engine-root');
+      const isNearLeftDockedCompass = this.isDockedLeft && clientX < 420 && clientY > winH - 190;
+      const isNearRightDefaultCompass = !this.isDockedLeft && clientX > winW - 130 && clientY > winH - 130;
+
+      if (isHoveringCompass || isNearLeftDockedCompass || isNearRightDefaultCompass) {
         if (this.dockResetTimer) {
           clearTimeout(this.dockResetTimer);
           this.dockResetTimer = null;
@@ -595,46 +604,39 @@ export class DecisionEngineChatbot {
         return;
       }
 
-      const clientX = event.clientX;
-      const clientY = event.clientY;
-      const winW = window.innerWidth;
-      const winH = window.innerHeight;
-
-      // 1. Check if hovering things at the right bottom
-      // A: Explicit right-bottom charts/cards
+      // Check if user is hovering actual interactive content in the bottom-right area
       const isRightBottomElement = !!rawTarget.closest(
         '.pressure-chart-wrapper, .pressure-chart-svg, [class*="pressure"], .overview-lower-3col-grid > :last-child, .overview-lower-4col-grid > :last-child, .hc-bor-card, #hc-bor-bars-wrap, .sus-signals-card, .sus-radar-card'
       );
 
-      // B: Any card or container located in the bottom-right zone
       let isCardInBottomRight = false;
-      const card = rawTarget.closest('.bottom-insight-card, .overview-kpi-card, .hc-benchmark-card, .card, [class*="card"]');
-      if (card) {
-        const rect = card.getBoundingClientRect();
-        if (rect.right > winW - 460 && rect.bottom > winH - 360 && rect.top > winH * 0.45) {
-          isCardInBottomRight = true;
+      if (!isRightBottomElement) {
+        const card = rawTarget.closest('.bottom-insight-card, .overview-kpi-card, .hc-benchmark-card, .card, [class*="card"]');
+        if (card) {
+          const rect = card.getBoundingClientRect();
+          if (rect.right > winW - 460 && rect.left > winW * 0.45 && rect.bottom > winH - 340 && rect.top > winH * 0.45) {
+            // Must not be in the bottom-right corner where Compass FAB lives
+            if (clientX < winW - 100 || clientY < winH - 100) {
+              isCardInBottomRight = true;
+            }
+          }
         }
       }
 
-      // C: Geometric bottom-right hotspot
-      const isCoordinatesInBottomRight = clientX > winW - 430 && clientY > winH - 350;
-
-      if (isRightBottomElement || isCardInBottomRight || isCoordinatesInBottomRight) {
+      if (isRightBottomElement || isCardInBottomRight) {
         if (this.dockResetTimer) {
           clearTimeout(this.dockResetTimer);
           this.dockResetTimer = null;
         }
         this.setDockLeft(true);
       } else if (this.isDockedLeft) {
-        // Hysteresis check when moving away from bottom-right (must be clearly away)
-        const isClearlyAway = (clientX < winW - 480 || clientY < winH - 390) && !isRightBottomElement && !isCardInBottomRight;
-        if (isClearlyAway) {
-          if (!this.dockResetTimer) {
-            this.dockResetTimer = setTimeout(() => {
-              this.setDockLeft(false);
-              this.dockResetTimer = null;
-            }, 200);
-          }
+        // Only return to bottom-right when the user has clearly moved away from the bottom-right content
+        // and is not interacting with Compass on the left
+        if (!this.dockResetTimer) {
+          this.dockResetTimer = setTimeout(() => {
+            this.setDockLeft(false);
+            this.dockResetTimer = null;
+          }, 220);
         }
       }
     });
