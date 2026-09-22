@@ -25,6 +25,8 @@ export class DecisionEngineChatbot {
   private sendButton!: HTMLButtonElement;
   private insightBubbleElement!: HTMLElement;
   private fabWrapElement!: HTMLElement;
+  private expandButton!: HTMLButtonElement;
+  private isFullscreen: boolean = false;
   private isDockedLeft: boolean = false;
   private dockResetTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -107,15 +109,23 @@ export class DecisionEngineChatbot {
           <h4 class="hc-chat-header-title">Compass</h4>
           <span class="hc-chat-header-sub">
             <span style="width: 6px; height: 6px; border-radius: 50%; background: #34d399; display: inline-block;"></span>
-            Tourisma Spatial Copilot
+            Tourisma Spatial Decision Engine
           </span>
         </div>
       </div>
       <div class="hc-chat-header-actions">
-        <button type="button" class="hc-chat-icon-btn" id="hc-chat-clear" title="Clear Conversation">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="3 6 5 6 21 6"></polyline>
-            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+        <button type="button" class="hc-chat-icon-btn" id="hc-chat-expand" title="Expand to Whole Screen" aria-label="Expand to Whole Screen">
+          <svg class="hc-icon-maximize" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <polyline points="9 21 3 21 3 15"></polyline>
+            <line x1="21" y1="3" x2="14" y2="10"></line>
+            <line x1="3" y1="21" x2="10" y2="14"></line>
+          </svg>
+          <svg class="hc-icon-minimize" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 14 10 14 10 20"></polyline>
+            <polyline points="20 10 14 10 14 4"></polyline>
+            <line x1="14" y1="10" x2="21" y2="3"></line>
+            <line x1="3" y1="21" x2="10" y2="14"></line>
           </svg>
         </button>
         <button type="button" class="hc-chat-icon-btn" id="hc-chat-close" title="Minimize Window">
@@ -127,8 +137,19 @@ export class DecisionEngineChatbot {
       </div>
     `;
 
+    this.expandButton = header.querySelector('#hc-chat-expand') as HTMLButtonElement;
+    this.expandButton?.addEventListener('click', () => this.toggleFullscreen());
     header.querySelector('#hc-chat-close')?.addEventListener('click', () => this.toggleChat(false));
-    header.querySelector('#hc-chat-clear')?.addEventListener('click', () => this.clearChat());
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (this.isFullscreen) {
+          this.toggleFullscreen(false);
+        } else if (this.isOpen) {
+          this.toggleChat(false);
+        }
+      }
+    });
 
     // Messages Container
     this.messagesContainer = document.createElement('div');
@@ -181,9 +202,108 @@ export class DecisionEngineChatbot {
     footer.appendChild(inputRow);
     footer.appendChild(disclaimer);
 
+    // Studio Layout: Left Sidebar + Main Chat Content Area
+    const mainWrap = document.createElement('div');
+    mainWrap.className = 'hc-drawer-main-wrap';
+
+    const studioSidebar = document.createElement('aside');
+    studioSidebar.className = 'hc-studio-sidebar';
+    studioSidebar.innerHTML = `
+
+      <div class="hc-studio-sidebar-section">
+        <div class="hc-studio-section-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          Destination Explorer
+        </div>
+        <p class="hc-studio-section-desc">Select a region to run instant spatial diagnostics:</p>
+        <div class="hc-studio-dest-list">
+          <button type="button" class="hc-studio-dest-item" data-query="Diagnose Penang tourism capacity, heritage core pressures, and infrastructure limits.">
+            <span class="hc-dest-name">Penang</span>
+            <span class="hc-dest-tag tag-amber">Heritage Pressure</span>
+          </button>
+          <button type="button" class="hc-studio-dest-item" data-query="Diagnose Sabah eco-tourism dynamics, forest reserve proximity, and hospital access.">
+            <span class="hc-dest-name">Sabah</span>
+            <span class="hc-dest-tag tag-emerald">Eco & Nature</span>
+          </button>
+          <button type="button" class="hc-studio-dest-item" data-query="Diagnose Melaka tourism carrying limits, heritage corridor bottlenecks, and medical tourism.">
+            <span class="hc-dest-name">Melaka</span>
+            <span class="hc-dest-tag tag-blue">Medical & Culture</span>
+          </button>
+          <button type="button" class="hc-studio-dest-item" data-query="Diagnose Selangor tourism volume, airport gateway pressure, and urban connectivity.">
+            <span class="hc-dest-name">Selangor</span>
+            <span class="hc-dest-tag tag-purple">Urban Gateway</span>
+          </button>
+          <button type="button" class="hc-studio-dest-item" data-query="Diagnose Kedah and Langkawi island tourism carrying capacity and ecological sensitivity.">
+            <span class="hc-dest-name">Langkawi</span>
+            <span class="hc-dest-tag tag-cyan">Island Limits</span>
+          </button>
+          <button type="button" class="hc-studio-dest-item" data-query="Diagnose Pahang highlands carrying capacity, Cameron & Genting pressure, and road vulnerability.">
+            <span class="hc-dest-name">Pahang</span>
+            <span class="hc-dest-tag tag-rose">Highlands</span>
+          </button>
+          <button type="button" class="hc-studio-dest-item" data-query="Diagnose Johor cross-border Singapore tourism flow, Desaru resort capacity, and transit bottlenecks.">
+            <span class="hc-dest-name">Johor</span>
+            <span class="hc-dest-tag tag-indigo">Cross-Border</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="hc-studio-sidebar-section">
+        <div class="hc-studio-section-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          National Baseline
+        </div>
+        <div class="hc-studio-kpi-grid">
+          <div class="hc-studio-kpi-card">
+            <span class="hc-studio-kpi-lbl">Domestic Visitors</span>
+            <span class="hc-studio-kpi-val">290.1M</span>
+            <span class="hc-studio-kpi-sub">+11.5% YoY</span>
+          </div>
+          <div class="hc-studio-kpi-card">
+            <span class="hc-studio-kpi-lbl">Receipts</span>
+            <span class="hc-studio-kpi-val">RM121.3B</span>
+            <span class="hc-studio-kpi-sub">+13.6% YoY</span>
+          </div>
+          <div class="hc-studio-kpi-card">
+            <span class="hc-studio-kpi-lbl">Bed Occupancy</span>
+            <span class="hc-studio-kpi-val">71.8%</span>
+            <span class="hc-studio-kpi-sub">National Baseline</span>
+          </div>
+          <div class="hc-studio-kpi-card">
+            <span class="hc-studio-kpi-lbl">Road Access</span>
+            <span class="hc-studio-kpi-val">52.1%</span>
+            <span class="hc-studio-kpi-sub">Asset Proximity</span>
+          </div>
+        </div>
+      </div>
+    `;
+
+    studioSidebar.querySelectorAll('.hc-studio-dest-item').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const target = (e.currentTarget as HTMLElement).getAttribute('data-query');
+        if (target) {
+          this.sendMessage(target);
+        }
+      });
+    });
+
+    const chatContentArea = document.createElement('div');
+    chatContentArea.className = 'hc-chat-content-area';
+    chatContentArea.appendChild(this.messagesContainer);
+    chatContentArea.appendChild(footer);
+
+    mainWrap.appendChild(studioSidebar);
+    mainWrap.appendChild(chatContentArea);
+
     this.drawerElement.appendChild(header);
-    this.drawerElement.appendChild(this.messagesContainer);
-    this.drawerElement.appendChild(footer);
+    this.drawerElement.appendChild(mainWrap);
 
     this.element.appendChild(fabWrap);
     this.element.appendChild(this.drawerElement);
@@ -197,10 +317,27 @@ export class DecisionEngineChatbot {
       setTimeout(() => this.inputElement.focus(), 150);
     } else {
       this.drawerElement.classList.add('closed');
+      if (this.isFullscreen) {
+        this.toggleFullscreen(false);
+      }
     }
   }
 
-  private clearChat(): void {
+  public toggleFullscreen(forceState?: boolean): void {
+    this.isFullscreen = forceState !== undefined ? forceState : !this.isFullscreen;
+    if (this.isFullscreen) {
+      this.drawerElement.classList.add('fullscreen');
+      this.expandButton?.setAttribute('title', 'Exit Fullscreen');
+      this.expandButton?.setAttribute('aria-label', 'Exit Fullscreen');
+    } else {
+      this.drawerElement.classList.remove('fullscreen');
+      this.expandButton?.setAttribute('title', 'Expand to Whole Screen');
+      this.expandButton?.setAttribute('aria-label', 'Expand to Whole Screen');
+    }
+    setTimeout(() => this.inputElement.focus(), 100);
+  }
+
+  public clearChat(): void {
     this.messages = [];
     this.messagesContainer.innerHTML = '';
     this.renderWelcome();
