@@ -14,6 +14,146 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Move Compass FAB to bottom-left (beside the 252px sidebar) */
+.hc-chat-fab-wrap.dock-left {
+  transform: translateX(calc(-100vw + var(--app-sidebar-width, 252px) + 110px));
+}
+
+@media (max-width: 768px) {
+  .hc-chat-fab-wrap.dock-left {
+    transform: translateX(calc(-100vw + 110px));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Hover Insight Bubble (Attached directly on top of Compass Robot)
+   -------------------------------------------------------------------------- */
+.hc-compass-insight-bubble {
+  position: absolute;
+  bottom: 74px;
+  right: 0;
+  width: 324px;
+  max-width: calc(100vw - 48px);
+  background: #ffffff;
+  border: 1px solid rgba(203, 213, 225, 0.9);
+  border-radius: 14px;
+  padding: 13px 15px;
+  box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.16), 0 4px 14px rgba(15, 23, 42, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(0) translateY(8px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.25s;
+  z-index: 10001;
+  text-align: left;
+}
+
+.hc-compass-insight-bubble.visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateX(0) translateY(0) scale(1) !important;
+  pointer-events: auto !important;
+}
+
+/* Tail pointing down toward Compass robot head */
+.hc-compass-insight-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  right: 24px;
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  border-right: 1px solid rgba(203, 213, 225, 0.9);
+  border-bottom: 1px solid rgba(203, 213, 225, 0.9);
+  transform: rotate(45deg);
+  border-bottom-right-radius: 2px;
+  transition: right 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* When docked on the left, smoothly slide speech bubble rightward and move tail */
+.hc-chat-fab-wrap.dock-left .hc-compass-insight-bubble {
+  transform: translateX(calc(100% - 62px)) translateY(8px) scale(0.96);
+}
+
+.hc-chat-fab-wrap.dock-left .hc-compass-insight-bubble.visible {
+  transform: translateX(calc(100% - 62px)) translateY(0) scale(1) !important;
+}
+
+.hc-chat-fab-wrap.dock-left .hc-compass-insight-bubble::after {
+  right: calc(100% - 37px);
+}
+
+.hc-insight-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.hc-insight-header-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.hc-insight-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ea580c;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.hc-insight-brand {
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  color: #0f172a;
+  font-size: 11px;
+}
+
+.hc-insight-sep {
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.hc-insight-tag {
+  color: #64748b;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.hc-insight-close-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px 5px;
+  border-radius: 4px;
+  line-height: 1;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.hc-insight-close-btn:hover {
+  color: #0f172a;
+  background: #f1f5f9;
+}
+
+.hc-insight-body {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #1e293b;
+  letter-spacing: -0.1px;
 }
 
 .hc-chat-fab {
@@ -69,7 +209,7 @@
   flex-direction: column;
   z-index: 10000;
   overflow: hidden;
-  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.3s ease, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
   transform-origin: bottom right;
 }
 
@@ -77,6 +217,28 @@
   opacity: 0;
   transform: scale(0.92) translateY(16px);
   pointer-events: none;
+}
+
+/* Chat drawer repositioning when docked left */
+.hc-chat-drawer.dock-left {
+  transform-origin: bottom left;
+  transform: translateX(calc(-100vw + var(--app-sidebar-width, 252px) + 488px)) scale(1) translateY(0);
+}
+
+.hc-chat-drawer.dock-left.closed {
+  opacity: 0;
+  transform: translateX(calc(-100vw + var(--app-sidebar-width, 252px) + 488px)) scale(0.92) translateY(16px);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .hc-chat-drawer.dock-left {
+    transform: translateX(calc(-100vw + 488px)) scale(1) translateY(0);
+  }
+
+  .hc-chat-drawer.dock-left.closed {
+    transform: translateX(calc(-100vw + 488px)) scale(0.92) translateY(16px);
+  }
 }
 
 /* Header */
@@ -221,9 +383,12 @@
 }
 
 @keyframes floatAvatar {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-4px);
   }
@@ -531,10 +696,14 @@
 }
 
 @keyframes thinkPulse {
-  0%, 80%, 100% {
+
+  0%,
+  80%,
+  100% {
     transform: scale(0.6);
     opacity: 0.4;
   }
+
   40% {
     transform: scale(1.1);
     opacity: 1;
