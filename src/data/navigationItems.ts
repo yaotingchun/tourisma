@@ -1,6 +1,7 @@
 import {
   House,
   ChartNoAxesCombined,
+  Gauge,
   Landmark,
   Bed,
   Route,
@@ -45,6 +46,11 @@ export const NAVIGATION_ITEMS: NavItemConfig[] = [
     id: 'sustainability',
     label: 'Sustainability',
     icon: Leaf,
+  },
+  {
+    id: 'tourism-pressure',
+    label: 'Tourism Pressure',
+    icon: Gauge,
   },
   {
     id: 'destinations',

@@ -1,4 +1,5 @@
 import { DESTINATION_PROFILES_DATA, type QuadrantProfileSummary } from '../../../data/overviewData';
+import { createInfoIcon } from '../../Common/InfoTooltip';
 
 export class DestinationProfilesCard {
   public readonly element: HTMLElement;
@@ -33,13 +34,29 @@ export class DestinationProfilesCard {
     `).join('');
 
     this.element.innerHTML = `
-      <div class="bottom-card-header">
-        <h3 class="bottom-card-title">DESTINATION READINESS PROFILES</h3>
-        <span class="bottom-card-subtitle">Cluster distribution of states (16 states)</span>
+      <div class="bottom-card-header flex-between" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;">
+        <div>
+          <h3 class="bottom-card-title">DESTINATION READINESS PROFILES</h3>
+          <span class="bottom-card-subtitle">Cluster distribution of states (16 states)</span>
+        </div>
+        <div class="profiles-info-slot"></div>
       </div>
       <div class="bottom-card-list">
         ${listHtml}
       </div>
     `;
+
+    const infoSlot = this.element.querySelector('.profiles-info-slot');
+    if (infoSlot) {
+      const infoIcon = createInfoIcon({
+        sourceOrg: 'Tourisma National Spatial Diagnostics & State Master Index',
+        datasetName: 'State Readiness & Demand Portfolio Quadrants',
+        referenceYear: '2025 / 2026',
+        measure: 'Grouping of all 16 states into 4 strategic readiness quadrants based on demand volume vs. supply capacity.',
+        formula: 'Four-quadrant matrix based on national median visitor volume and readiness scores',
+        limitations: 'Macro state categorization intended for national prioritization; municipal variations exist.',
+      });
+      infoSlot.replaceWith(infoIcon);
+    }
   }
 }

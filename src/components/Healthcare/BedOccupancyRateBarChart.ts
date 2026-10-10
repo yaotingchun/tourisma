@@ -3,6 +3,7 @@ import {
   NATIONAL_HEALTHCARE_SUMMARY,
   type StateHealthcareData,
 } from '../../data/healthcareData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export class BedOccupancyRateBarChart {
   public readonly element: HTMLElement;
@@ -40,6 +41,19 @@ export class BedOccupancyRateBarChart {
         </div>
       </div>
     `;
+
+    const borH3 = header.querySelector('h3')!;
+    const borInfoIcon = createInfoIcon({
+      sourceOrg: 'Ministry of Health Malaysia (MOH) Hospital Activity Statistics',
+      datasetName: 'State Hospital Bed Occupancy Rate (BOR) Bar Chart',
+      referenceYear: '2025',
+      measure: 'Horizontal bar chart showing each state\'s hospital bed occupancy rate versus the national average benchmark.',
+      formula: 'BOR = (Total Patient Bed Days in Period / Total Available Bed Days in Period) × 100',
+      limitations: 'State-level BOR masks variation between individual hospitals; private hospital BOR tracked separately.',
+    });
+    borInfoIcon.style.marginLeft = '6px';
+    borInfoIcon.style.verticalAlign = 'middle';
+    borH3.appendChild(borInfoIcon);
     this.element.appendChild(header);
 
     // Bars container

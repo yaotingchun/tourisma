@@ -1,4 +1,5 @@
 import { ACCOMMODATION_DATA } from '../../data/accommodationData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export class AccommodationRoomsBarChart {
   public readonly element: HTMLElement;
@@ -38,12 +39,29 @@ export class AccommodationRoomsBarChart {
     const header = document.createElement('div');
     header.className = 'kpi-card-header';
     header.style.marginBottom = '14px';
-    header.innerHTML = `
-      <div>
+
+    const titleGroup = document.createElement('div');
+    titleGroup.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
         <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin: 0;">Accommodation Rooms by State</h3>
-        <span style="font-size: 12px; color: var(--text-secondary);">Basic supply comparison of available room inventory</span>
       </div>
+      <span style="font-size: 12px; color: var(--text-secondary);">Basic supply comparison of available room inventory</span>
     `;
+
+    const h3 = titleGroup.querySelector('h3')!;
+    const infoIcon = createInfoIcon({
+      sourceOrg: 'Tourism Malaysia & NAPIC',
+      datasetName: 'State-Level Hotel Room Inventory',
+      referenceYear: '2025',
+      measure: 'Total registered accommodation rooms per state across all star ratings and budget categories.',
+      formula: 'State Rooms = Sum of all licensed rooms within state boundaries',
+      limitations: 'Excludes unlicensed short-term rentals (Airbnb/homestay).',
+    });
+    infoIcon.style.marginLeft = '6px';
+    infoIcon.style.verticalAlign = 'middle';
+    h3.appendChild(infoIcon);
+
+    header.appendChild(titleGroup);
 
     // Sort data descending by rooms
     const sortedData = [...ACCOMMODATION_DATA].sort((a, b) => b.rooms - a.rooms);

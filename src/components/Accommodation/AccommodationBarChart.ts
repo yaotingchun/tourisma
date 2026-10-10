@@ -1,4 +1,5 @@
 import { ACCOMMODATION_DATA } from '../../data/accommodationData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export class AccommodationBarChart {
   public readonly element: HTMLElement;
@@ -38,12 +39,29 @@ export class AccommodationBarChart {
     const header = document.createElement('div');
     header.className = 'kpi-card-header';
     header.style.marginBottom = '14px';
-    header.innerHTML = `
-      <div>
+
+    const titleGroup = document.createElement('div');
+    titleGroup.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
         <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin: 0;">Average Occupancy Rate by State</h3>
-        <span style="font-size: 12px; color: var(--text-secondary);">Capacity utilisation by state</span>
       </div>
+      <span style="font-size: 12px; color: var(--text-secondary);">Capacity utilisation by state</span>
     `;
+
+    const h3 = titleGroup.querySelector('h3')!;
+    const infoIcon = createInfoIcon({
+      sourceOrg: 'Tourism Malaysia Hotel Occupancy Survey',
+      datasetName: 'State Average Occupancy Rate (AOR)',
+      referenceYear: '2025',
+      measure: 'Average percentage of available rooms occupied per state, weighted by room inventory size.',
+      formula: 'State AOR = (State Occupied Room Nights / State Available Room Nights) × 100',
+      limitations: 'State averages mask variation between individual properties; luxury vs budget segments differ.',
+    });
+    infoIcon.style.marginLeft = '6px';
+    infoIcon.style.verticalAlign = 'middle';
+    h3.appendChild(infoIcon);
+
+    header.appendChild(titleGroup);
 
     // Sort data descending by AOR
     const sortedData = [...ACCOMMODATION_DATA].sort((a, b) => b.aor - a.aor);

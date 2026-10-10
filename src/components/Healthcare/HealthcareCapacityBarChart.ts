@@ -2,6 +2,7 @@ import {
   getAllStateHealthcare,
   type StateHealthcareData,
 } from '../../data/healthcareData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export type CapacityMetric = 'beds' | 'facilities' | 'hospitals';
 
@@ -50,6 +51,19 @@ export class HealthcareCapacityBarChart {
         </button>
       </div>
     `;
+
+    const capH3 = header.querySelector('h3')!;
+    const capInfoIcon = createInfoIcon({
+      sourceOrg: 'Ministry of Health Malaysia (MOH)',
+      datasetName: 'State Healthcare Capacity Bar Chart',
+      referenceYear: '2025',
+      measure: 'Horizontal bar chart of absolute healthcare capacity per state — switchable between hospital beds, all facilities, or hospitals only.',
+      formula: 'Values are direct counts from MOH state healthcare registers; no normalisation applied in count view.',
+      limitations: 'Absolute counts favour high-population states; use in conjunction with population-normalised metrics for fair comparison.',
+    });
+    capInfoIcon.style.marginLeft = '6px';
+    capInfoIcon.style.verticalAlign = 'middle';
+    capH3.appendChild(capInfoIcon);
 
     // Hook buttons
     const buttons = header.querySelectorAll<HTMLButtonElement>('.hc-metric-pill');

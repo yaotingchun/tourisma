@@ -2,6 +2,7 @@ import {
   STATE_ENVIRONMENT_LIST,
   type StateEnvironmentData,
 } from '../../data/environmentData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export type BarMetricMode = 'count' | 'percent';
 export type BarSortMode = 'total' | 'land' | 'marine' | 'name';
@@ -63,6 +64,19 @@ export class EnvironmentExposureBarChart {
       <h3 class="asset-card-title">ENVIRONMENTAL EXPOSURE BY STATE (LAND & MARINE)</h3>
       <p class="asset-card-subtitle">Comparative side-by-side asset exposure to terrestrial conservation reserves vs marine & reef parks</p>
     `;
+
+    const barH3 = titleGroup.querySelector('h3')!;
+    const barInfoIcon = createInfoIcon({
+      sourceOrg: 'Forestry Department Malaysia & Department of Marine Park Malaysia',
+      datasetName: 'State Land & Marine Eco-Exposure Bar Chart',
+      referenceYear: '2025',
+      measure: 'Side-by-side horizontal bar chart showing tourism asset counts or % exposed to terrestrial (green) and marine (blue) protected areas per state.',
+      formula: 'Land Exposure = Assets within 500m of terrestrial reserve | Marine Exposure = Assets within 1km of marine park boundary',
+      limitations: 'Dual-exposure assets (both land and marine) may be counted in both categories; not mutually exclusive.',
+    });
+    barInfoIcon.style.marginLeft = '6px';
+    barInfoIcon.style.verticalAlign = 'middle';
+    barH3.appendChild(barInfoIcon);
 
     // Right-side Controls
     const controlsWrap = document.createElement('div');

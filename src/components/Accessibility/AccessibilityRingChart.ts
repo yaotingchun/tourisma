@@ -7,6 +7,7 @@ import {
 } from '../../data/accessibilityData';
 import { RotateCcw } from 'lucide';
 import { createElement } from 'lucide';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export class AccessibilityRingChart {
   public readonly element: HTMLElement;
@@ -59,6 +60,19 @@ export class AccessibilityRingChart {
         <p class="access-card-subtitle">National weighted 4-tier distribution across 5,491 tourism assets</p>
       `;
     }
+
+    const ringH3 = titleGroup.querySelector('h3')!;
+    const ringInfoIcon = createInfoIcon({
+      sourceOrg: 'DOSM GeoPadang & Tourism Malaysia POI Registry',
+      datasetName: 'Tourism Asset Accessibility Tier Ring Chart',
+      referenceYear: '2025',
+      measure: 'Donut ring chart showing the 4-tier proximity distribution of tourism assets to road or transit networks, at state or national level.',
+      formula: 'Tier % = (Assets in tier / Total assets in scope) × 100; tiers: ≤500m, 500m-1km, 1-3km, >3km',
+      limitations: 'Straight-line buffer thresholds; actual walkability and road quality not factored in.',
+    });
+    ringInfoIcon.style.marginLeft = '6px';
+    ringInfoIcon.style.verticalAlign = 'middle';
+    ringH3.appendChild(ringInfoIcon);
 
     header.appendChild(titleGroup);
 

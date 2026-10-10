@@ -3,6 +3,7 @@ import {
   type StatePortfolioDiversityItem,
   type StatePortfolioDiversitySegment,
 } from '../../data/tourismAssetsData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 type SortMode =
   | 'total'
@@ -203,6 +204,16 @@ export class StatePortfolioDiversityChart {
 
     controlsWrap.appendChild(this.headerResetBtnWrap);
     controlsWrap.appendChild(this.sortControlContainer);
+
+    const infoIcon = createInfoIcon({
+      sourceOrg: 'MOTAC National Attraction Registry & State Tourism Boards',
+      datasetName: 'State Attraction Portfolio Category Distribution Stack',
+      referenceYear: '2025 / 2026',
+      measure: 'Proportional and absolute breakdown of 5,491 core attractions across 5 primary categories in all 16 states.',
+      formula: 'Stacked category segments: Attractions & Landmarks, Heritage & Culture, Nature, Museums, and Wildlife',
+      limitations: 'Attractions classified by dominant operational primary focus; interactive sorting dynamically reorganizes rank order.',
+    });
+    controlsWrap.appendChild(infoIcon);
 
     header.appendChild(titleGroup);
     header.appendChild(controlsWrap);

@@ -5,6 +5,7 @@ import {
   ASSET_CATEGORY_COLORS,
   type AssetCategoryItem,
 } from '../../data/tourismAssetsData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 type SegmentMode = 'all' | 'core' | 'supporting';
 
@@ -36,6 +37,19 @@ export class AssetCategoryBarChart {
       <h3 class="asset-card-title">Tourism Assets by Category</h3>
       <p class="asset-card-subtitle">Volume distribution across core attraction clusters and supporting services</p>
     `;
+
+    const catH3 = titleGroup.querySelector('h3')!;
+    const catInfoIcon = createInfoIcon({
+      sourceOrg: 'DOSM & Tourism Malaysia POI Registry',
+      datasetName: 'Tourism Asset Category Breakdown Bar Chart',
+      referenceYear: '2025',
+      measure: 'Horizontal bar chart showing asset counts across tourism POI categories, switchable between all, core, and supporting asset segments.',
+      formula: 'Category Count = Sum of all registered POIs in that category at national or state level',
+      limitations: 'Category boundaries follow Tourism Malaysia\'s official POI classification schema; cross-category assets counted once.',
+    });
+    catInfoIcon.style.marginLeft = '6px';
+    catInfoIcon.style.verticalAlign = 'middle';
+    catH3.appendChild(catInfoIcon);
 
     // Segmented Toggle
     const toggle = document.createElement('div');

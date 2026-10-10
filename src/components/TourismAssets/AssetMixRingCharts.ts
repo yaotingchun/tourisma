@@ -4,6 +4,7 @@ import {
   STATE_ASSET_MIX_DATA,
   type AssetRingSlice,
 } from '../../data/tourismAssetsData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export class AssetMixRingCharts {
   public readonly element: HTMLElement;
@@ -62,7 +63,10 @@ export class AssetMixRingCharts {
       `;
     }
 
-    header.appendChild(titleGroup);
+    const headerRight = document.createElement('div');
+    headerRight.style.display = 'flex';
+    headerRight.style.alignItems = 'center';
+    headerRight.style.gap = '8px';
 
     if (isStateSelected) {
       const resetBtn = document.createElement('button');
@@ -82,8 +86,21 @@ export class AssetMixRingCharts {
           this.onResetCallback();
         }
       });
-      header.appendChild(resetBtn);
+      headerRight.appendChild(resetBtn);
     }
+
+    const infoIcon = createInfoIcon({
+      sourceOrg: 'MOTAC & OpenStreetMap Spatial Asset Inventory',
+      datasetName: 'Tourism Asset Mix & Category Breakdown Matrix',
+      referenceYear: '2025 / 2026',
+      measure: 'Proportional distribution of Core Destination Attractions vs. Supporting Tourism Infrastructure.',
+      formula: 'Category Percentage = (Assets in Category / Total Group Assets) × 100',
+      limitations: 'Dynamic breakdown re-calculates when filtering by state or viewing national totals.',
+    });
+    headerRight.appendChild(infoIcon);
+
+    header.appendChild(titleGroup);
+    header.appendChild(headerRight);
 
     this.element.appendChild(header);
 

@@ -3,6 +3,7 @@ import {
   getStateHealthcare,
   type StateHealthcareData,
 } from '../../data/healthcareData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export type HealthcareMapMode = 'access' | 'bor';
 
@@ -240,6 +241,19 @@ export class HealthcareMapCard {
         ${this.currentMode === 'access' ? 'Share of core tourism assets within ≤ 5 km of primary healthcare facilities' : 'State hospital bed occupancy rate (clinical utilisation load)'}
       </p>
     `;
+
+    const hcMapH3 = titleGroup.querySelector('h3')!;
+    const hcMapInfoIcon = createInfoIcon({
+      sourceOrg: 'Ministry of Health Malaysia (MOH) & DOSM GeoPadang',
+      datasetName: 'Healthcare Access & Bed Occupancy Choropleth Map',
+      referenceYear: '2025',
+      measure: 'State choropleth showing healthcare access rate (% tourism assets within 5 km of facility) or Bed Occupancy Rate.',
+      formula: 'Access Rate = (Tourism assets ≤5km / Total assets) × 100 | BOR = (Patient Bed Days / Available Bed Days) × 100',
+      limitations: 'Access rate uses straight-line proximity; BOR is a state average masking facility-level variation.',
+    });
+    hcMapInfoIcon.style.marginLeft = '6px';
+    hcMapInfoIcon.style.verticalAlign = 'middle';
+    hcMapH3.appendChild(hcMapInfoIcon);
 
     // Segmented Mode Toggle + Compass
     const headerActions = document.createElement('div');

@@ -6,6 +6,7 @@ import {
   MapPin,
 } from 'lucide';
 import { TOURISM_ASSETS_KPIS } from '../../data/tourismAssetsData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export class AssetKpiRow {
   public readonly element: HTMLElement;
@@ -26,6 +27,14 @@ export class AssetKpiRow {
         accentColor: '#2563eb', // Royal Blue
         iconBg: '#eff6ff',
         iconColor: '#2563eb',
+        tooltip: {
+          sourceOrg: 'Ministry of Tourism, Arts and Culture (MOTAC) & State Tourism Boards',
+          datasetName: 'National Core Tourism Attraction Inventory',
+          referenceYear: '2025 / 2026',
+          measure: 'Count of gazetted and recognized primary attractions across nature, culture, theme parks, and heritage.',
+          formula: 'Sum of verified point-of-interest (POI) records classified as primary tourism destinations',
+          limitations: 'Excludes auxiliary commercial services; focused on primary destination demand anchors.',
+        },
       },
       {
         title: 'Supporting Assets',
@@ -35,6 +44,14 @@ export class AssetKpiRow {
         accentColor: '#059669', // Emerald
         iconBg: '#ecfdf5',
         iconColor: '#059669',
+        tooltip: {
+          sourceOrg: 'OpenStreetMap, DOSM Business Register & Local Authorities',
+          datasetName: 'Tourism Enabling & Secondary Infrastructure Inventory',
+          referenceYear: '2025 / 2026',
+          measure: 'Spatial points of interest that support visitor stays including registered restaurants, retail hubs, transit nodes, and clinics.',
+          formula: 'Sum of supporting hospitality, mobility, and amenity points within 5km of core attractions',
+          limitations: 'Continuously updated through geospatial verification and registry cross-matching.',
+        },
       },
       {
         title: 'Asset Categories',
@@ -44,6 +61,14 @@ export class AssetKpiRow {
         accentColor: '#7c3aed', // Purple
         iconBg: '#f5f3ff',
         iconColor: '#7c3aed',
+        tooltip: {
+          sourceOrg: 'MOTAC & Tourisma Spatial Classification Framework',
+          datasetName: 'Tourism Asset Taxonomy & Category Hierarchy',
+          referenceYear: '2025 / 2026',
+          measure: 'Taxonomic categorization of destinations into Nature, Culture, Theme Park, Heritage, and Urban Leisure.',
+          formula: 'Structured 5-tier primary grouping with 28 detailed subcategories',
+          limitations: 'Multi-theme attractions assigned according to predominant operational classification.',
+        },
       },
       {
         title: 'States Covered',
@@ -53,8 +78,18 @@ export class AssetKpiRow {
         accentColor: '#ea580c', // Orange
         iconBg: '#fff7ed',
         iconColor: '#ea580c',
+        tooltip: {
+          sourceOrg: 'Department of Statistics Malaysia (DOSM) & JUPEM',
+          datasetName: 'National Administrative Geographic Framework',
+          referenceYear: '2025 / 2026',
+          measure: 'Administrative coverage spanning all 13 states and 3 federal territories across Peninsular and Malaysian Borneo.',
+          formula: 'Complete administrative state census',
+          limitations: 'All 16 administrative units actively covered in Tourisma diagnostic models.',
+        },
       },
     ];
+
+    this.element.innerHTML = '';
 
     kpis.forEach((kpi) => {
       const card = document.createElement('div');
@@ -67,9 +102,20 @@ export class AssetKpiRow {
       const infoDiv = document.createElement('div');
       infoDiv.className = 'assets-kpi-info';
 
+      const titleRow = document.createElement('div');
+      titleRow.style.display = 'flex';
+      titleRow.style.alignItems = 'center';
+      titleRow.style.justifyContent = 'space-between';
+      titleRow.style.width = '100%';
+
       const titleEl = document.createElement('h4');
       titleEl.className = 'assets-kpi-title';
       titleEl.textContent = kpi.title;
+
+      const infoIcon = createInfoIcon(kpi.tooltip);
+
+      titleRow.appendChild(titleEl);
+      titleRow.appendChild(infoIcon);
 
       const valRow = document.createElement('div');
       valRow.className = 'assets-kpi-value-row';
@@ -84,7 +130,7 @@ export class AssetKpiRow {
       subEl.className = 'assets-kpi-subtext';
       subEl.textContent = kpi.subtext;
 
-      infoDiv.appendChild(titleEl);
+      infoDiv.appendChild(titleRow);
       infoDiv.appendChild(valRow);
       infoDiv.appendChild(subEl);
 

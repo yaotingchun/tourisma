@@ -4,6 +4,7 @@ import {
   type AccessibilityMode,
   type StateAccessibilityItem,
 } from '../../data/accessibilityData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export class AccessibilityStackedBarChart {
   public readonly element: HTMLElement;
@@ -84,6 +85,19 @@ export class AccessibilityStackedBarChart {
         ${this.currentMode === 'road' ? 'Proportion of tourism assets across 4 road proximity tiers (≤500m, 500m-1km, 1-3km, >3km)' : 'Proportion of tourism assets across 4 public transport proximity tiers (≤500m, 500m-1km, 1-3km, >3km)'}
       </p>
     `;
+
+    const barH3 = titleGroup.querySelector('h3')!;
+    const barInfoIcon = createInfoIcon({
+      sourceOrg: 'DOSM GeoPadang & Tourism Malaysia POI Registry',
+      datasetName: 'State Tourism Asset Accessibility Tier Distribution',
+      referenceYear: '2025',
+      measure: 'Stacked percentage breakdown of tourism assets across 4 proximity tiers to road or public transport per state.',
+      formula: 'Tier % = (Assets in tier / Total state assets) × 100; tiers: ≤500m, 500m-1km, 1-3km, >3km',
+      limitations: 'Tier thresholds are straight-line; actual walkability depends on terrain and infrastructure quality.',
+    });
+    barInfoIcon.style.marginLeft = '6px';
+    barInfoIcon.style.verticalAlign = 'middle';
+    barH3.appendChild(barInfoIcon);
 
     // Right header controls: 4-Tier Legend strip + Mode toggle
     const controlsWrap = document.createElement('div');

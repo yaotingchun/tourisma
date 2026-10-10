@@ -5,6 +5,7 @@ import {
   CalendarDays,
   TrendingUp,
 } from 'lucide';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export class DemandKpiRow {
   public readonly element: HTMLElement;
@@ -27,6 +28,14 @@ export class DemandKpiRow {
         accentColor: '#2563eb', // Royal Blue
         iconBg: '#eff6ff',
         iconColor: '#2563eb',
+        tooltip: {
+          sourceOrg: 'Department of Statistics Malaysia (DOSM)',
+          datasetName: 'Domestic Tourism Survey (DTS)',
+          referenceYear: '2025',
+          measure: 'Total domestic visitor trips undertaken across Malaysian states and federal territories.',
+          formula: 'Annual aggregate of domestic excursionists (same-day) and overnight tourists',
+          limitations: 'Excludes daily routine commuting for work, school, and border transit.',
+        },
       },
       {
         title: 'TOURISM EXPENDITURE',
@@ -38,6 +47,14 @@ export class DemandKpiRow {
         accentColor: '#059669', // Emerald
         iconBg: '#ecfdf5',
         iconColor: '#059669',
+        tooltip: {
+          sourceOrg: 'Department of Statistics Malaysia (DOSM)',
+          datasetName: 'Domestic Tourism Expenditure Survey',
+          referenceYear: '2025',
+          measure: 'Gross spending by domestic visitors across shopping, F&B, automotive fuel, accommodation, and activities.',
+          formula: 'Sum of all domestic visitor expenditure categories',
+          limitations: 'Direct consumption expenditure only; excludes capital investments.',
+        },
       },
       {
         title: 'AVG. LENGTH OF STAY',
@@ -49,6 +66,14 @@ export class DemandKpiRow {
         accentColor: '#7c3aed', // Purple
         iconBg: '#f5f3ff',
         iconColor: '#7c3aed',
+        tooltip: {
+          sourceOrg: 'Tourism Malaysia & DOSM DTS',
+          datasetName: 'Domestic Tourism Trip Characteristics',
+          referenceYear: '2025',
+          measure: 'Weighted average number of nights spent per domestic overnight tourist trip.',
+          formula: 'Total Overnight Nights / Total Overnight Trips',
+          limitations: 'Calculated exclusively for overnight tourists; excludes same-day excursionists (0 nights).',
+        },
       },
       {
         title: 'AVG. SPEND PER TRIP',
@@ -60,8 +85,18 @@ export class DemandKpiRow {
         accentColor: '#ea580c', // Orange
         iconBg: '#fff7ed',
         iconColor: '#ea580c',
+        tooltip: {
+          sourceOrg: 'Department of Statistics Malaysia (DOSM)',
+          datasetName: 'Domestic Tourism Expenditure Yield',
+          referenceYear: '2025',
+          measure: 'Average total expenditure incurred per visitor per domestic travel trip.',
+          formula: 'Total Domestic Expenditure / Total Domestic Visitors',
+          limitations: 'Reflects nominal mean expenditure; median spend is lower in rural destinations.',
+        },
       },
     ];
+
+    this.element.innerHTML = '';
 
     kpis.forEach((kpi) => {
       const card = document.createElement('div');
@@ -74,9 +109,20 @@ export class DemandKpiRow {
       const infoDiv = document.createElement('div');
       infoDiv.className = 'demand-kpi-info';
 
+      const titleRow = document.createElement('div');
+      titleRow.style.display = 'flex';
+      titleRow.style.alignItems = 'center';
+      titleRow.style.justifyContent = 'space-between';
+      titleRow.style.width = '100%';
+
       const titleEl = document.createElement('h4');
       titleEl.className = 'demand-kpi-label';
       titleEl.textContent = kpi.title;
+
+      const infoIcon = createInfoIcon(kpi.tooltip);
+
+      titleRow.appendChild(titleEl);
+      titleRow.appendChild(infoIcon);
 
       const valRow = document.createElement('div');
       valRow.className = 'demand-kpi-value-wrap';
@@ -100,7 +146,7 @@ export class DemandKpiRow {
       subEl.className = 'demand-kpi-subtext';
       subEl.textContent = kpi.subtext;
 
-      infoDiv.appendChild(titleEl);
+      infoDiv.appendChild(titleRow);
       infoDiv.appendChild(valRow);
       infoDiv.appendChild(subEl);
 

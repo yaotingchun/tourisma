@@ -1,5 +1,6 @@
 import { MALAYSIA_GEO_DATA } from '../../data/malaysiaGeo';
 import { ACCOMMODATION_DATA } from '../../data/accommodationData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export type MapToggleLayer = 'aor' | 'ratio';
 
@@ -118,6 +119,19 @@ export class AccommodationMap {
         </div>
       </div>
     `;
+
+    const accMapH3 = mapHeader.querySelector('h3')!;
+    const accMapInfoIcon = createInfoIcon({
+      sourceOrg: 'Tourism Malaysia & NAPIC Commercial Property Monitor',
+      datasetName: 'Accommodation Capacity & Utilisation Choropleth Map',
+      referenceYear: '2025',
+      measure: 'State choropleth showing either Average Occupancy Rate (AOR) or Visitor-to-Room Ratio per state, togglable via segmented control.',
+      formula: 'AOR Mode: AOR = (Occupied Nights / Available Nights) \u00d7 100 | Ratio Mode: Visitor-to-Room Ratio = Annual Visitors / Total Rooms',
+      limitations: 'State averages mask intra-state variation between urban centres and rural areas.',
+    });
+    accMapInfoIcon.style.marginLeft = '6px';
+    accMapInfoIcon.style.verticalAlign = 'middle';
+    accMapH3.appendChild(accMapInfoIcon);
 
     // Hook up segmented button clicks
     const aorBtn = mapHeader.querySelector<HTMLButtonElement>('[data-toggle="aor"]');

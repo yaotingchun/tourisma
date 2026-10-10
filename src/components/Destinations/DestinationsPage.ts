@@ -1,65 +1,90 @@
 import './destinations.css';
-import { ClusterScatterChart } from './ClusterScatterChart';
-import { DestinationCardGrid } from './DestinationCardGrid';
-import { StateDetailDrawer } from '../Common/StateDetailDrawer';
+import { ATTRACTIONS_DATA, type AttractionItem } from '../../data/attractionsData';
+import { AttractionSearchBar } from './AttractionSearchBar';
+import { AttractionMapCard } from './AttractionMapCard';
+import { AttractionProfileCard } from './AttractionProfileCard';
+import { LocalDiagnosticCard } from './LocalDiagnosticCard';
+import { StateContextSection } from './StateContextSection';
+import { VisitorPerceptionCard } from './VisitorPerceptionCard';
 
 export class DestinationsPage {
   public readonly element: HTMLElement;
-  private stateDrawer: StateDetailDrawer;
+  private currentAttraction: AttractionItem;
+
+  private searchBar!: AttractionSearchBar;
+  private mapCard!: AttractionMapCard;
+  private profileCard!: AttractionProfileCard;
+  private diagnosticCard!: LocalDiagnosticCard;
+  private stateContextSection!: StateContextSection;
+  private visitorPerceptionCard!: VisitorPerceptionCard;
 
   constructor() {
     this.element = document.createElement('div');
     this.element.className = 'destinations-page';
 
-    this.stateDrawer = new StateDetailDrawer();
+    // Default to Cameron Highlands Tea Plantation as requested
+    this.currentAttraction = ATTRACTIONS_DATA[0];
+
     this.render();
   }
 
+  private handleSelectAttraction(attraction: AttractionItem): void {
+    this.currentAttraction = attraction;
+    this.searchBar.setAttraction(attraction);
+    this.mapCard.setAttraction(attraction);
+    this.profileCard.setAttraction(attraction);
+    this.diagnosticCard.setAttraction(attraction);
+    this.stateContextSection.setAttraction(attraction);
+    this.visitorPerceptionCard.setAttraction(attraction);
+  }
+
   private handleSelectState(stateId: string): void {
-    this.stateDrawer.open(stateId);
+    // Find matching attraction in this state if available
+    const match = ATTRACTIONS_DATA.find((a) => a.stateId === stateId);
+    if (match) {
+      this.handleSelectAttraction(match);
+    }
   }
 
   private render(): void {
     this.element.innerHTML = '';
 
-    // 1. Top Section: Cluster Overview Quadrant Scatter
-    const topSection = document.createElement('section');
-    topSection.className = 'dest-section-block';
+    // 1. Search Bar on Top
+    this.searchBar = new AttractionSearchBar(
+      this.currentAttraction,
+      (selected) => this.handleSelectAttraction(selected)
+    );
+    this.element.appendChild(this.searchBar.element);
 
-    const topHeader = document.createElement('div');
-    topHeader.className = 'dest-section-header';
-    topHeader.innerHTML = `
-      <div class="dest-section-title-wrap">
-        <h2 class="dest-section-title">Destination Cluster Overview</h2>
-      </div>
-      <span class="dest-section-subtitle">Algorithmic classification across demand volume, lodging capacity, and growth elasticity</span>
-    `;
+    // 2. Hero Stage Grid: Map on Left, Attraction Profile on Right
+    const heroGrid = document.createElement('div');
+    heroGrid.className = 'dest-hero-grid';
 
-    const clusterChart = new ClusterScatterChart((stateId) => this.handleSelectState(stateId));
-    topSection.appendChild(topHeader);
-    topSection.appendChild(clusterChart.element);
-    this.element.appendChild(topSection);
+    this.mapCard = new AttractionMapCard(
+      this.currentAttraction,
+      (stateId) => this.handleSelectState(stateId)
+    );
 
-    // 2. Middle Section: 16 Destination Cards Grid
-    const cardsSection = document.createElement('section');
-    cardsSection.className = 'dest-section-block';
+    this.profileCard = new AttractionProfileCard(this.currentAttraction);
 
-    const cardsHeader = document.createElement('div');
-    cardsHeader.className = 'dest-section-header';
-    cardsHeader.innerHTML = `
-      <div class="dest-section-title-wrap">
-        <h2 class="dest-section-title">Destination Profiles & Performance Matrix</h2>
-      </div>
-      <span class="dest-section-subtitle">Comprehensive diagnostic profiles and deep drill-down analytics for all 16 states</span>
-    `;
+    heroGrid.appendChild(this.mapCard.element);
+    heroGrid.appendChild(this.profileCard.element);
+    this.element.appendChild(heroGrid);
 
-    const cardGrid = new DestinationCardGrid((stateId) => this.handleSelectState(stateId));
-    cardsSection.appendChild(cardsHeader);
-    cardsSection.appendChild(cardGrid.element);
-    this.element.appendChild(cardsSection);
+    // 3. Lower Dual-Layer Diagnostic Grid: Local Diagnostic Proxy + State Context
+    const lowerGrid = document.createElement('div');
+    lowerGrid.className = 'dest-lower-diagnostic-grid';
 
-    // Append State Detail Drawer
-    this.element.appendChild(this.stateDrawer.backdrop);
-    this.element.appendChild(this.stateDrawer.element);
+    this.diagnosticCard = new LocalDiagnosticCard(this.currentAttraction);
+    this.stateContextSection = new StateContextSection(this.currentAttraction);
+
+    lowerGrid.appendChild(this.diagnosticCard.element);
+    lowerGrid.appendChild(this.stateContextSection.element);
+    this.element.appendChild(lowerGrid);
+
+    // 4. Ground-Truth Empirical Layer: Visitor-Perceived Infrastructure Quality
+    this.visitorPerceptionCard = new VisitorPerceptionCard(this.currentAttraction);
+    this.element.appendChild(this.visitorPerceptionCard.element);
   }
 }
+

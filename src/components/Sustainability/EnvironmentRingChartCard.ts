@@ -3,6 +3,7 @@ import {
   STATE_ENVIRONMENT_LIST,
   getStateEnvironment,
 } from '../../data/environmentData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export class EnvironmentRingChartCard {
   public readonly element: HTMLElement;
@@ -61,6 +62,19 @@ export class EnvironmentRingChartCard {
       <h3 class="asset-card-title">ENVIRONMENTAL PROXIMITY BREAKDOWN</h3>
       <p class="asset-card-subtitle">Inside vs Near buffer vs Outside safe zone distribution</p>
     `;
+
+    const ringH3 = titleGroup.querySelector('h3')!;
+    const ringInfoIcon = createInfoIcon({
+      sourceOrg: 'DOE Malaysia, PERHILITAN & DOSM POI Registry',
+      datasetName: 'Environmental Proximity Ring Chart',
+      referenceYear: '2025',
+      measure: 'Donut chart showing the 3-zone breakdown of tourism assets: Inside protected reserves, Near buffer (≤500m), and Outside safe zone.',
+      formula: 'Zone % = (Assets in zone / Total state or national assets) × 100',
+      limitations: 'Buffer thresholds are fixed planning proxies; regulatory impact assessment zones may differ.',
+    });
+    ringInfoIcon.style.marginLeft = '6px';
+    ringInfoIcon.style.verticalAlign = 'middle';
+    ringH3.appendChild(ringInfoIcon);
 
     // Right-side Controls: State Dropdown
     const controlsWrap = document.createElement('div');

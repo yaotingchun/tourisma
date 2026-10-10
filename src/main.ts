@@ -1,4 +1,5 @@
 import './style.css';
+import './components/Destinations/destinations.css';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
@@ -10,6 +11,7 @@ import { AccessibilityPage } from './components/Accessibility/AccessibilityPage'
 import { HealthcarePage } from './components/Healthcare/HealthcarePage';
 import { SustainabilityPage } from './components/Sustainability/SustainabilityPage';
 import { DestinationsPage } from './components/Destinations/DestinationsPage';
+import { TourismPressurePage } from './components/TourismPressure/TourismPressurePage';
 import { DecisionEngineChatbot } from './components/DecisionEngine/DecisionEngineChatbot';
 
 
@@ -32,6 +34,9 @@ function initializeApp(): void {
     } else if (navId === 'tourism-demand') {
       header.setTitle('TOURISM DEMAND & ORIGINS', 'Source Market Dynamics, Seasonality Heatmaps & Predictive Forecasts');
       renderTourismDemand();
+    } else if (navId === 'tourism-pressure') {
+      header.setTitle('TOURISM PRESSURE & SCENARIO LAB', 'Current Infrastructure Pressure & What-If Stress Testing');
+      renderTourismPressure();
     } else if (navId === 'tourism-assets') {
       header.setTitle('TOURISM ASSETS', 'Core Attractions & Supporting Tourism Inventory');
       renderTourismAssets();
@@ -48,7 +53,7 @@ function initializeApp(): void {
       header.setTitle('ENVIRONMENT & ECOLOGICAL SENSITIVITY', 'Asset Proximity Diagnostic across Terrestrial & Marine Protected Reserves');
       renderSustainability();
     } else if (navId === 'destinations') {
-      header.setTitle('DESTINATION PROFILES & DRILL-DOWN', 'Strategic Clustering & Deep Performance Diagnostic');
+      header.setTitle('DESTINATION READINESS & DIAGNOSTIC', 'Individual Attraction Location Readiness & Local Infrastructure Exposure');
       renderDestinations();
     }
   });
@@ -63,12 +68,9 @@ function initializeApp(): void {
       },
     },
     actionProps: {
-      initialDateRange: '1 Jan 2026 - 31 Dec 2026',
+      initialDateRange: '1 Jan 2025 - 31 Dec 2025',
       onDateRangeClick: () => {
         console.log('Date range selector clicked');
-      },
-      onExportClick: () => {
-        console.log('Export button clicked');
       },
       onNotificationClick: () => {
         console.log('Notification bell clicked');
@@ -84,7 +86,7 @@ function initializeApp(): void {
   const footer = new Footer({
     copyrightText: 'Tourisma © 2026',
     taglineText: 'Tourism Intelligence for a Better Tomorrow',
-    dataAsOfText: 'Data as of Dec 2026',
+    dataAsOfText: 'Data as of Dec 2025',
   });
 
   // Right-hand content wrapper
@@ -153,7 +155,19 @@ function initializeApp(): void {
     mainContent.appendChild(destPage.element);
   };
 
+  let activePressurePage: TourismPressurePage | null = null;
 
+  // Render tourism pressure page
+  const renderTourismPressure = () => {
+    if (activePressurePage) {
+      activePressurePage.destroy();
+      activePressurePage = null;
+    }
+    mainContent.innerHTML = '';
+    activePressurePage = new TourismPressurePage();
+    mainContent.appendChild(activePressurePage.element);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   renderOverview();
 

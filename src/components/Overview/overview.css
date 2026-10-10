@@ -452,9 +452,19 @@
 
 .gauge-card-header {
   display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.gauge-card-title-group {
+  display: flex;
   flex-direction: column;
   gap: 1px;
-  margin-bottom: 2px;
+  flex: 1;
+  min-width: 0;
 }
 
 .gauge-card-title {

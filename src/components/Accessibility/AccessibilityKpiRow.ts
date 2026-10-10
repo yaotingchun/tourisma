@@ -6,6 +6,7 @@ import {
   MapPin,
 } from 'lucide';
 import { ACCESSIBILITY_KPIS } from '../../data/accessibilityData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export class AccessibilityKpiRow {
   public readonly element: HTMLElement;
@@ -25,9 +26,17 @@ export class AccessibilityKpiRow {
         badgeColor: 'blue',
         subtext: ACCESSIBILITY_KPIS.roadAccessSubtext,
         icon: Route,
-        accentColor: '#2563eb', // Royal Blue
+        accentColor: '#2563eb',
         iconBg: '#eff6ff',
         iconColor: '#2563eb',
+        tooltip: {
+          sourceOrg: 'DOSM GeoPadang & Malaysia Road Network GIS',
+          datasetName: 'Tourist Destination Road Accessibility Index',
+          referenceYear: '2025',
+          measure: 'Percentage of mapped tourism assets located within 1 km of a classified main road network.',
+          formula: 'Road Access Rate = (Assets within 1 km of road / Total Assets) × 100',
+          limitations: 'Captures proximity to roads, not actual road quality or travel time.',
+        },
       },
       {
         title: 'Public Transport Access',
@@ -36,9 +45,17 @@ export class AccessibilityKpiRow {
         badgeColor: 'emerald',
         subtext: ACCESSIBILITY_KPIS.ptAccessSubtext,
         icon: Bus,
-        accentColor: '#059669', // Emerald
+        accentColor: '#059669',
         iconBg: '#ecfdf5',
         iconColor: '#059669',
+        tooltip: {
+          sourceOrg: 'Prasarana Malaysia & MyRapid Open Data',
+          datasetName: 'Public Transit Proximity to Tourism Assets',
+          referenceYear: '2025',
+          measure: 'Percentage of tourism assets within 1 km of a bus stop, LRT, MRT, or commuter rail station.',
+          formula: 'PT Access Rate = (Assets within 1 km of transit / Total Assets) × 100',
+          limitations: 'Service frequency and hours not factored in; rural areas underrepresented in transit data.',
+        },
       },
       {
         title: 'Tourism Assets',
@@ -47,9 +64,17 @@ export class AccessibilityKpiRow {
         badgeColor: 'purple',
         subtext: ACCESSIBILITY_KPIS.assetsSubtext,
         icon: Landmark,
-        accentColor: '#7c3aed', // Purple
+        accentColor: '#7c3aed',
         iconBg: '#f5f3ff',
         iconColor: '#7c3aed',
+        tooltip: {
+          sourceOrg: 'DOSM & Tourism Malaysia POI Registry',
+          datasetName: 'National Tourism Asset Spatial Inventory',
+          referenceYear: '2025',
+          measure: 'Total unique tourism point-of-interest (POI) assets geo-tagged across 50 categories nationally.',
+          formula: 'Sum of all unique tourism POIs across accommodation, F&B, culture, nature, and recreation categories',
+          limitations: 'Informal or unregistered tourism spots may not be captured in the official registry.',
+        },
       },
       {
         title: 'States Covered',
@@ -58,9 +83,17 @@ export class AccessibilityKpiRow {
         badgeColor: 'orange',
         subtext: ACCESSIBILITY_KPIS.statesSubtext,
         icon: MapPin,
-        accentColor: '#ea580c', // Orange
+        accentColor: '#ea580c',
         iconBg: '#fff7ed',
         iconColor: '#ea580c',
+        tooltip: {
+          sourceOrg: 'DOSM Administrative Boundary GIS',
+          datasetName: 'State & Federal Territory Coverage',
+          referenceYear: '2025',
+          measure: 'Number of Malaysian states and federal territories with complete spatial accessibility data coverage.',
+          formula: 'Count of states and FTs with ≥1 tourism asset in the spatial inventory',
+          limitations: 'Data completeness may vary by state; some rural FTs may have limited POI coverage.',
+        },
       },
     ];
 
@@ -78,6 +111,13 @@ export class AccessibilityKpiRow {
       const titleEl = document.createElement('h4');
       titleEl.className = 'access-kpi-title';
       titleEl.textContent = kpi.title;
+
+      if (kpi.tooltip) {
+        const infoIcon = createInfoIcon(kpi.tooltip);
+        infoIcon.style.marginLeft = '6px';
+        infoIcon.style.verticalAlign = 'middle';
+        titleEl.appendChild(infoIcon);
+      }
 
       const valWrap = document.createElement('div');
       valWrap.className = 'access-kpi-value-wrap';

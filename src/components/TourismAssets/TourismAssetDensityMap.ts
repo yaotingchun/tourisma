@@ -3,6 +3,7 @@ import {
   STATE_ASSET_DENSITY_DATA,
   type StateAssetDensityItem,
 } from '../../data/tourismAssetsData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 // Centroid lookup for tooltip positioning
 const STATE_CENTROIDS: Record<string, { x: number; y: number }> = {};
@@ -63,8 +64,22 @@ export class TourismAssetDensityMap {
             <text x="12" y="3.2" font-size="5" font-weight="900" fill="#0b57d0" text-anchor="middle">N</text>
           </svg>
         </div>
+        <div class="asset-map-info-slot"></div>
       </div>
     `;
+
+    const infoSlot = mapHeader.querySelector('.asset-map-info-slot');
+    if (infoSlot) {
+      const infoIcon = createInfoIcon({
+        sourceOrg: 'MOTAC & OpenStreetMap Spatial Geographic Database',
+        datasetName: 'State Core Tourism Asset Spatial Density & Distribution',
+        referenceYear: '2025 / 2026',
+        measure: 'Choropleth density of verified core attractions per 1,000 km² land area and absolute state counts.',
+        formula: 'Asset Density = (Total Core Attractions / State Land Area in km²) × 1,000',
+        limitations: 'Land area figures from DOSM; urban city-states (e.g. KL, Penang) exhibit naturally concentrated densities.',
+      });
+      infoSlot.replaceWith(infoIcon);
+    }
 
     // Hook up toggle button clicks
     const densityBtn = mapHeader.querySelector<HTMLButtonElement>('[data-mode="density"]');

@@ -1,5 +1,6 @@
 import { MALAYSIA_GEO_DATA } from '../../../data/malaysiaGeo';
 import { STATES_OVERVIEW_DATA, type StateOverviewItem } from '../../../data/overviewData';
+import { createInfoIcon } from '../../Common/InfoTooltip';
 // Centroid lookup for tooltip positioning (in SVG viewBox 0 0 1000 440 space)
 const STATE_CENTROIDS: Record<string, { x: number; y: number }> = {};
 MALAYSIA_GEO_DATA.forEach((geo) => {
@@ -51,8 +52,22 @@ export class MalaysiaMap {
             <text x="12" y="3.2" font-size="5" font-weight="900" fill="#0b57d0" text-anchor="middle">N</text>
           </svg>
         </div>
+        <div class="map-info-icon-slot"></div>
       </div>
     `;
+
+    const infoSlot = mapHeader.querySelector('.map-info-icon-slot');
+    if (infoSlot) {
+      const infoIcon = createInfoIcon({
+        sourceOrg: 'Tourisma National Spatial Framework & Multi-Agency Audits',
+        datasetName: 'State Tourism Readiness & Spatial Demand Model',
+        referenceYear: '2025 / 2026',
+        measure: 'Multi-dimensional state tourism readiness index comprising accommodation capacity, transport links, and medical facilities.',
+        formula: 'Composite Index = 0.35 × Accommodation + 0.30 × Transit Connectivity + 0.20 × Healthcare + 0.15 × Destination Assets',
+        limitations: 'Readiness measures physical supply capacity; does not represent consumer sentiment or natural disaster hazards.',
+      });
+      infoSlot.replaceWith(infoIcon);
+    }
 
     // Hook up toggle button clicks
     const demandBtn = mapHeader.querySelector<HTMLButtonElement>('[data-mode="demand"]');

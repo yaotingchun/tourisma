@@ -1,4 +1,5 @@
 import { QUARTERLY_PRESSURE_DATA, type QuarterlyPressurePoint } from '../../../data/overviewData';
+import { createInfoIcon } from '../../Common/InfoTooltip';
 
 export class TourismPressureCard {
   public readonly element: HTMLElement;
@@ -19,13 +20,16 @@ export class TourismPressureCard {
 
   private render(): void {
     this.element.innerHTML = `
-      <div class="bottom-card-header flex-between">
+      <div class="bottom-card-header flex-between" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;">
         <div class="pressure-header-left">
           <h3 class="bottom-card-title">TOURISM PRESSURE</h3>
           <span class="bottom-card-subtitle">2025 Quarterly arrivals (M)</span>
         </div>
-        <div class="pressure-chart-legend">
-          <span class="legend-item-solid"><span class="solid-line-icon"></span> 2025 (290.1M)</span>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div class="pressure-chart-legend">
+            <span class="legend-item-solid"><span class="solid-line-icon"></span> 2025 (290.1M)</span>
+          </div>
+          <div class="overview-pressure-info-slot"></div>
         </div>
       </div>
       <div class="pressure-chart-wrapper" style="position: relative; overflow: visible;">
@@ -33,6 +37,19 @@ export class TourismPressureCard {
         <div class="pressure-chart-tooltip" style="display: none;"></div>
       </div>
     `;
+
+    const infoSlot = this.element.querySelector('.overview-pressure-info-slot');
+    if (infoSlot) {
+      const infoIcon = createInfoIcon({
+        sourceOrg: 'Tourism Malaysia & Department of Statistics Malaysia (DOSM)',
+        datasetName: 'Quarterly Tourism Seasonality & Arrival Velocity',
+        referenceYear: '2025',
+        measure: 'Quarter-by-quarter visitor arrivals demonstrating national peak and low season velocity curve.',
+        formula: 'Sum of monthly domestic and international arrivals grouped into calendar quarters Q1-Q4',
+        limitations: 'Seasonal spikes heavily correlated with school term breaks and festive holiday calendars.',
+      });
+      infoSlot.replaceWith(infoIcon);
+    }
 
     this.tooltipEl = this.element.querySelector<HTMLElement>('.pressure-chart-tooltip')!;
     this.attachHoverListeners();

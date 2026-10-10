@@ -10,6 +10,7 @@ import { NATIONAL_ENVIRONMENT_DATA } from '../../data/environmentData';
 import { EnvironmentMapCard } from './EnvironmentMapCard';
 import { EnvironmentRingChartCard } from './EnvironmentRingChartCard';
 import { EnvironmentExposureBarChart } from './EnvironmentExposureBarChart';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export class SustainabilityPage {
   public readonly element: HTMLElement;
@@ -71,9 +72,17 @@ export class SustainabilityPage {
         badgeClass: 'blue',
         subtext: 'Across all 16 states & federal territories',
         icon: ShieldCheck,
-        accentColor: '#2563eb', // Royal Blue
+        accentColor: '#2563eb',
         iconBg: '#eff6ff',
         iconColor: '#2563eb',
+        tooltip: {
+          sourceOrg: 'DOSM & Department of Environment Malaysia (DOE)',
+          datasetName: 'National Tourism Asset Environmental Screening Inventory',
+          referenceYear: '2025',
+          measure: 'Total tourism assets screened for environmental sensitivity proximity including eco-exposure risk scoring.',
+          formula: 'Count of all tourism POIs processed through the environmental proximity screening model',
+          limitations: 'Screening is proximity-based; actual environmental impact assessment requires site-specific surveys.',
+        },
       },
       {
         title: 'SENSITIVE PROXIMITY',
@@ -82,9 +91,17 @@ export class SustainabilityPage {
         badgeClass: 'warning',
         subtext: 'Inside or near protected reserves',
         icon: AlertTriangle,
-        accentColor: '#ea580c', // Orange
+        accentColor: '#ea580c',
         iconBg: '#fff7ed',
         iconColor: '#ea580c',
+        tooltip: {
+          sourceOrg: 'Department of Wildlife & National Parks (PERHILITAN) & DOE',
+          datasetName: 'Protected Area Proximity Exposure Index',
+          referenceYear: '2025',
+          measure: 'Tourism assets located within or within 500m of gazetted protected areas (forest reserves, marine parks, Ramsar sites).',
+          formula: 'Exposed Assets = Assets within 500m buffer of any protected zone boundary',
+          limitations: 'Buffer distance is a planning proxy; legal definitions of impact zones vary by protected area category.',
+        },
       },
       {
         title: 'LAND ECO-EXPOSURE',
@@ -93,9 +110,17 @@ export class SustainabilityPage {
         badgeClass: 'land',
         subtext: 'Forest reserves & national parks',
         icon: Trees,
-        accentColor: '#059669', // Emerald
+        accentColor: '#059669',
         iconBg: '#ecfdf5',
         iconColor: '#059669',
+        tooltip: {
+          sourceOrg: 'Forestry Department Peninsular Malaysia & Sabah/Sarawak Forestry',
+          datasetName: 'Terrestrial Protected Area Eco-Exposure Index',
+          referenceYear: '2025',
+          measure: 'Tourism assets within or adjacent to gazetted terrestrial forest reserves and national parks.',
+          formula: 'Land Eco-Exposure = Assets within 500m of forest reserve or national park boundary',
+          limitations: 'Covers gazetted reserves only; state land forests and wildlife corridors may not be fully captured.',
+        },
       },
       {
         title: 'MARINE & REEF EXPOSURE',
@@ -104,9 +129,17 @@ export class SustainabilityPage {
         badgeClass: 'marine',
         subtext: 'Marine parks & coral ecosystems',
         icon: Waves,
-        accentColor: '#0284c7', // Sky Blue
+        accentColor: '#0284c7',
         iconBg: '#f0f9ff',
         iconColor: '#0284c7',
+        tooltip: {
+          sourceOrg: 'Department of Marine Park Malaysia (JTLM)',
+          datasetName: 'Marine Protected Area Proximity Index',
+          referenceYear: '2025',
+          measure: 'Tourism assets within or adjacent to gazetted marine parks, coral triangle zones, and turtle sanctuary areas.',
+          formula: 'Marine Eco-Exposure = Assets within 1 km of marine park boundary or coral reef polygon',
+          limitations: 'Dynamic marine boundaries (seasonal closures) not reflected in static spatial layers.',
+        },
       },
     ];
 
@@ -124,6 +157,13 @@ export class SustainabilityPage {
       const titleEl = document.createElement('h4');
       titleEl.className = 'env-kpi-label';
       titleEl.textContent = kpi.title;
+
+      if (kpi.tooltip) {
+        const infoIcon = createInfoIcon(kpi.tooltip);
+        infoIcon.style.marginLeft = '6px';
+        infoIcon.style.verticalAlign = 'middle';
+        titleEl.appendChild(infoIcon);
+      }
 
       const valWrap = document.createElement('div');
       valWrap.className = 'env-kpi-value-wrap';

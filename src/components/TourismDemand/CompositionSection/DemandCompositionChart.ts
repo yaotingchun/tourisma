@@ -1,4 +1,5 @@
 import { COMPOSITION_TIME_SERIES } from '../../../data/tourismDemandData';
+import { createInfoIcon } from '../../Common/InfoTooltip';
 
 export type DemandMetric = 'visitors' | 'expenditure' | 'aor';
 
@@ -29,6 +30,11 @@ export class DemandCompositionChart {
     `;
 
     // Segmented Control for Metric Toggle
+    const toggleContainer = document.createElement('div');
+    toggleContainer.style.display = 'flex';
+    toggleContainer.style.alignItems = 'center';
+    toggleContainer.style.gap = '10px';
+
     const toggleGroup = document.createElement('div');
     toggleGroup.className = 'demand-metric-toggle';
     toggleGroup.style.display = 'flex';
@@ -75,8 +81,20 @@ export class DemandCompositionChart {
     toggleGroup.appendChild(createToggleBtn('expenditure', 'Expenditure / Day', false));
     toggleGroup.appendChild(createToggleBtn('aor', 'Occupancy Rate (AOR)', false));
 
+    const infoIcon = createInfoIcon({
+      sourceOrg: 'Tourism Malaysia Econometric Unit & DOSM DTS',
+      datasetName: 'Quarterly Tourism Demand & Econometric Projections (2020 – 2030)',
+      referenceYear: '2026 – 2030',
+      measure: 'Time-series regression model projecting quarterly visitor volume, daily expenditure yields, and hotel occupancy.',
+      formula: 'Ordinary Least Squares (OLS) Linear Trend with Seasonality Fourier Decomposition & 95% Confidence Interval',
+      limitations: 'Projections assume macroeconomic baseline stability; external shocks (epidemics, geopolitical unrest) are unmodeled.',
+    });
+
+    toggleContainer.appendChild(toggleGroup);
+    toggleContainer.appendChild(infoIcon);
+
     header.appendChild(titleGroup);
-    header.appendChild(toggleGroup);
+    header.appendChild(toggleContainer);
 
     this.chartStage = document.createElement('div');
     this.chartStage.className = 'composition-chart-stage';

@@ -1,4 +1,5 @@
 import { STATE_METRICS_DATA } from '../../../data/tourismDemandData';
+import { createInfoIcon } from '../../Common/InfoTooltip';
 
 export type StateMetricType = 'visitors' | 'receipts' | 'lengthOfStay';
 
@@ -27,6 +28,11 @@ export class StateMetricsChart {
     `;
 
     // Segmented Control
+    const toggleContainer = document.createElement('div');
+    toggleContainer.style.display = 'flex';
+    toggleContainer.style.alignItems = 'center';
+    toggleContainer.style.gap = '10px';
+
     const toggleGroup = document.createElement('div');
     toggleGroup.className = 'demand-metric-toggle';
     toggleGroup.style.display = 'flex';
@@ -71,8 +77,20 @@ export class StateMetricsChart {
     toggleGroup.appendChild(createToggleBtn('receipts', 'Tourism Receipts', false));
     toggleGroup.appendChild(createToggleBtn('lengthOfStay', 'Avg Length of Stay', false));
 
+    const infoIcon = createInfoIcon({
+      sourceOrg: 'Department of Statistics Malaysia (DOSM)',
+      datasetName: 'State Domestic Tourism Comparative Statistics',
+      referenceYear: '2025',
+      measure: 'Comparative distribution of visitor trips, receipts, and stay lengths across all 16 states & federal territories.',
+      formula: 'Sorted state metrics with national median benchmark reference line',
+      limitations: 'Data reflects domestic resident travel; international guest figures detailed in Overview map.',
+    });
+
+    toggleContainer.appendChild(toggleGroup);
+    toggleContainer.appendChild(infoIcon);
+
     header.appendChild(titleGroup);
-    header.appendChild(toggleGroup);
+    header.appendChild(toggleContainer);
 
     this.contentContainer = document.createElement('div');
     this.contentContainer.className = 'state-metrics-container';

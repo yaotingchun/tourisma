@@ -1,4 +1,5 @@
 import { SPATIAL_INFRASTRUCTURE_METRICS, type SpatialInfrastructureMetrics } from '../../../data/overviewData';
+import { createInfoIcon } from '../../Common/InfoTooltip';
 
 export class EconomicContributionCards {
   public readonly element: HTMLElement;
@@ -23,9 +24,12 @@ export class EconomicContributionCards {
     const infraCard = document.createElement('div');
     infraCard.className = 'economic-gauge-card';
     infraCard.innerHTML = `
-      <div class="gauge-card-header">
-        <h3 class="gauge-card-title">INFRASTRUCTURE ACCESSIBILITY</h3>
-        <span class="gauge-card-subtitle">Transit & road coverage (${this.data.totalTourismAssets.toLocaleString()} assets)</span>
+      <div class="gauge-card-header" style="display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; gap: 8px;">
+        <div class="gauge-card-title-group" style="flex: 1; min-width: 0;">
+          <h3 class="gauge-card-title">INFRASTRUCTURE ACCESSIBILITY</h3>
+          <span class="gauge-card-subtitle">Transit & road coverage (${this.data.totalTourismAssets.toLocaleString()} assets)</span>
+        </div>
+        <div class="infra-info-slot" style="flex-shrink: 0; margin-top: 1px;"></div>
       </div>
       <div class="gauge-card-body-row">
         <div class="gauge-visual-box">
@@ -54,13 +58,31 @@ export class EconomicContributionCards {
       </div>
     `;
 
+    const infraSlot = infraCard.querySelector('.infra-info-slot');
+    if (infraSlot) {
+      const infoIcon = createInfoIcon({
+        sourceOrg: 'Jabatan Kerja Raya (JKR) & Agensi Pengangkutan Awam Darat (APAD)',
+        datasetName: 'National Tourism Spatial Infrastructure Index',
+        referenceYear: '2025 / 2026',
+        measure: 'Accessibility rate of tourism destinations to arterial road networks and scheduled public transport services.',
+        formula: 'Transit Access Rate = (Assets within 3km of transit corridor / Total Assets) × 100',
+        limitations: 'Measures spatial distance to transit infrastructure; frequency and peak delays excluded.',
+      });
+      infoIcon.style.flexShrink = '0';
+      infoIcon.style.marginTop = '1px';
+      infraSlot.replaceWith(infoIcon);
+    }
+
     // 2. Environmental Sensitivity Card
     const envCard = document.createElement('div');
     envCard.className = 'economic-gauge-card';
     envCard.innerHTML = `
-      <div class="gauge-card-header">
-        <h3 class="gauge-card-title">ENVIRONMENTAL SENSITIVITY</h3>
-        <span class="gauge-card-subtitle">Asset exposure to protected conservation zones</span>
+      <div class="gauge-card-header" style="display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; gap: 8px;">
+        <div class="gauge-card-title-group" style="flex: 1; min-width: 0;">
+          <h3 class="gauge-card-title">ENVIRONMENTAL SENSITIVITY</h3>
+          <span class="gauge-card-subtitle">Asset exposure to protected conservation zones</span>
+        </div>
+        <div class="env-info-slot" style="flex-shrink: 0; margin-top: 1px;"></div>
       </div>
       <div class="gauge-card-body-row">
         <div class="gauge-visual-box">
@@ -88,6 +110,21 @@ export class EconomicContributionCards {
         </div>
       </div>
     `;
+
+    const envSlot = envCard.querySelector('.env-info-slot');
+    if (envSlot) {
+      const infoIcon = createInfoIcon({
+        sourceOrg: 'Department of Wildlife and National Parks (PERHILITAN) & Department of Fisheries',
+        datasetName: 'Gazetted Conservation Reserves & Sensitive Zone Exposure',
+        referenceYear: '2025 / 2026',
+        measure: 'Percentage of tourism inventory located in sensitive 5km buffer zones of national terrestrial and marine reserves.',
+        formula: 'Eco-Exposure (%) = (Assets in 5km buffer / Total Assets) × 100',
+        limitations: 'Spatial buffer analysis indicates exposure proximity, not actual ecological degradation.',
+      });
+      infoIcon.style.flexShrink = '0';
+      infoIcon.style.marginTop = '1px';
+      envSlot.replaceWith(infoIcon);
+    }
 
     this.element.appendChild(infraCard);
     this.element.appendChild(envCard);

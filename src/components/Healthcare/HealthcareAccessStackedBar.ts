@@ -3,6 +3,7 @@ import {
   getStateHealthcare,
   type StateHealthcareData,
 } from '../../data/healthcareData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export type AccessMode = 'primary' | 'emergency';
 
@@ -68,6 +69,19 @@ export class HealthcareAccessStackedBar {
         </button>
       </div>
     `;
+
+    const accessH3 = header.querySelector('h3')!;
+    const accessInfoIcon = createInfoIcon({
+      sourceOrg: 'DOSM GeoPadang & MOH Facility Registry',
+      datasetName: 'Tourism Asset Healthcare Access Tier Distribution',
+      referenceYear: '2025',
+      measure: '100% stacked bar showing % of tourism assets per state across 4 healthcare proximity tiers (Primary) or Emergency response reach zones.',
+      formula: 'Tier % = (Assets in proximity tier / Total state assets) × 100; Primary: ≤2km, 2-5km, 5-10km, >10km',
+      limitations: 'Straight-line proximity; actual travel time by road or terrain may be significantly longer in rural areas.',
+    });
+    accessInfoIcon.style.marginLeft = '6px';
+    accessInfoIcon.style.verticalAlign = 'middle';
+    accessH3.appendChild(accessInfoIcon);
 
     // Hook toggle buttons
     const primaryBtn = header.querySelector<HTMLButtonElement>('[data-mode="primary"]');

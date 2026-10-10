@@ -1,4 +1,40 @@
 import { NATIONAL_OVERVIEW_KPIS, type KpiCardConfig } from '../../../data/overviewData';
+import { createInfoIcon } from '../../Common/InfoTooltip';
+
+const OVERVIEW_KPI_TOOLTIPS: Record<string, any> = {
+  kpi_domestic: {
+    sourceOrg: 'Department of Statistics Malaysia (DOSM)',
+    datasetName: 'Domestic Tourism Survey (DTS)',
+    referenceYear: '2025',
+    measure: 'Total domestic visitor arrivals including excursionists and overnight tourists across Malaysia.',
+    formula: 'Sum of all intra-state and inter-state domestic trips',
+    limitations: 'Excludes daily local commuting for work or routine education.',
+  },
+  kpi_international: {
+    sourceOrg: 'Tourism Malaysia & Immigration Department of Malaysia',
+    datasetName: 'Tourist Arrivals & Inbound Border Statistics',
+    referenceYear: '2025',
+    measure: 'Foreign tourist arrivals through air, land, and sea immigration checkpoints.',
+    formula: 'Passport entries recorded at national international borders',
+    limitations: 'Transit passengers not leaving airport terminals are excluded.',
+  },
+  kpi_receipts: {
+    sourceOrg: 'Tourism Malaysia & DOSM Tourism Satellite Accounts',
+    datasetName: 'Tourism Direct Expenditure & Satellite Account (TSA)',
+    referenceYear: '2025',
+    measure: 'Gross direct tourism expenditure generated across accommodation, F&B, retail, and transport.',
+    formula: 'Domestic Visitor Expenditure + International Tourist Receipts',
+    limitations: 'Excludes indirect multiplier effects; measures direct expenditure only.',
+  },
+  kpi_gdp: {
+    sourceOrg: 'Department of Statistics Malaysia (DOSM)',
+    datasetName: 'Tourism Satellite Account (TSA) National Accounts',
+    referenceYear: '2025',
+    measure: 'Gross Value Added of Tourism Industries (GVATI) as a percentage of National GDP.',
+    formula: '(Tourism Direct Gross Value Added / National GDP) × 100',
+    limitations: 'Based on official annual TSA releases; subject to benchmark national accounts revisions.',
+  },
+};
 
 export class LeftKpiCards {
   public readonly element: HTMLElement;
@@ -26,13 +62,23 @@ export class LeftKpiCards {
         card.setAttribute('title', kpi.tooltipNote);
       }
 
+      const ttConfig = OVERVIEW_KPI_TOOLTIPS[kpi.id] || {
+        sourceOrg: 'Department of Statistics Malaysia (DOSM)',
+        datasetName: kpi.title,
+        referenceYear: '2025',
+        measure: kpi.title,
+      };
+
       card.innerHTML = `
         <div class="kpi-card-left-content">
           <div class="kpi-icon-bubble">
             ${kpi.iconSvg}
           </div>
           <div class="kpi-data-meta">
-            <span class="kpi-title-label">${kpi.title}</span>
+            <div style="display:flex; align-items:center; justify-content:space-between; width:100%;">
+              <span class="kpi-title-label">${kpi.title}</span>
+              <div class="kpi-info-slot"></div>
+            </div>
             <div class="kpi-main-val">${kpi.value}</div>
             <div class="kpi-trend-note">
               ${kpi.unitSubtitle ? `<span style="color:#64748b; margin-right:4px;">${kpi.unitSubtitle}</span>` : ''}
@@ -44,6 +90,12 @@ export class LeftKpiCards {
           ${this.renderSparklineSvg(kpi.sparkline)}
         </div>
       `;
+
+      const slot = card.querySelector('.kpi-info-slot');
+      if (slot) {
+        const infoIcon = createInfoIcon(ttConfig);
+        slot.replaceWith(infoIcon);
+      }
 
       this.element.appendChild(card);
     });

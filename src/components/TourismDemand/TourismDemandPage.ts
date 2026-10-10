@@ -2,6 +2,7 @@ import './tourismDemand.css';
 import { DemandKpiRow } from './DemandKpiRow';
 import { DemandCompositionChart } from './CompositionSection/DemandCompositionChart';
 import { StateMetricsChart } from './CompositionSection/StateMetricsChart';
+import { DemandMapSection } from './MapSection/DemandMapSection';
 
 export class TourismDemandPage {
   public readonly element: HTMLElement;
@@ -18,6 +19,9 @@ export class TourismDemandPage {
     // 2. Main Analytics Charts Section
     const section = document.createElement('section');
     section.className = 'demand-section-block';
+
+    const demandMapSection = new DemandMapSection();
+    section.appendChild(demandMapSection.element);
 
     const demandChart = new DemandCompositionChart();
     section.appendChild(demandChart.element);

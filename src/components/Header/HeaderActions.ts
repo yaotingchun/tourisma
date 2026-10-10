@@ -1,9 +1,8 @@
-import { createElement, Calendar, ChevronDown, Download, Bell } from 'lucide';
+import { createElement, Calendar, ChevronDown, Bell } from 'lucide';
 
 export interface HeaderActionsProps {
   initialDateRange?: string;
   onDateRangeClick?: () => void;
-  onExportClick?: () => void;
   onNotificationClick?: () => void;
   onAvatarClick?: () => void;
   userInitial?: string;
@@ -15,9 +14,8 @@ export class HeaderActions {
 
   constructor(props: HeaderActionsProps = {}) {
     const {
-      initialDateRange = '1 Jan 2026 - 31 Dec 2026',
+      initialDateRange = '1 Jan 2025 - 31 Dec 2025',
       onDateRangeClick,
-      onExportClick,
       onNotificationClick,
       onAvatarClick,
       userInitial = 'T',
@@ -57,30 +55,7 @@ export class HeaderActions {
       dateRangeBtn.addEventListener('click', onDateRangeClick);
     }
 
-    // 2. Export Button
-    const exportBtn = document.createElement('button');
-    exportBtn.type = 'button';
-    exportBtn.className = 'header-btn export-btn';
-    exportBtn.setAttribute('aria-label', 'Export data');
-
-    const downloadIcon = createElement(Download, {
-      class: 'header-btn-icon',
-      width: 15,
-      height: 15,
-      'stroke-width': 2,
-    });
-
-    const exportText = document.createElement('span');
-    exportText.textContent = 'Export';
-
-    exportBtn.appendChild(downloadIcon);
-    exportBtn.appendChild(exportText);
-
-    if (onExportClick) {
-      exportBtn.addEventListener('click', onExportClick);
-    }
-
-    // 3. Notification Bell Button
+    // 2. Notification Bell Button
     const notificationBtn = document.createElement('button');
     notificationBtn.type = 'button';
     notificationBtn.className = 'header-icon-btn notification-btn';
@@ -104,7 +79,7 @@ export class HeaderActions {
       notificationBtn.addEventListener('click', onNotificationClick);
     }
 
-    // 4. User Avatar Button
+    // 3. User Avatar Button
     const avatarBtn = document.createElement('button');
     avatarBtn.type = 'button';
     avatarBtn.className = 'header-avatar-btn';
@@ -122,7 +97,6 @@ export class HeaderActions {
 
     // Assemble right action group
     this.element.appendChild(dateRangeBtn);
-    this.element.appendChild(exportBtn);
     this.element.appendChild(notificationBtn);
     this.element.appendChild(avatarBtn);
   }

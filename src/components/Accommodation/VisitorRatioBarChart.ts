@@ -1,9 +1,8 @@
 import { ACCOMMODATION_DATA } from '../../data/accommodationData';
-import { createElement, Info } from 'lucide';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export class VisitorRatioBarChart {
   public readonly element: HTMLElement;
-  private tooltip!: HTMLElement;
   private selectedStateId: string | null = null;
   private onSelectStateCallback?: (stateId: string | null) => void;
 
@@ -12,7 +11,6 @@ export class VisitorRatioBarChart {
     this.element = document.createElement('div');
     this.element.className = 'accommodation-bar-card kpi-card';
 
-    this.createTooltip();
     this.render();
   }
 
@@ -35,23 +33,6 @@ export class VisitorRatioBarChart {
     });
   }
 
-  private createTooltip(): void {
-    this.tooltip = document.createElement('div');
-    this.tooltip.className = 'infra-tooltip';
-    this.tooltip.style.display = 'none';
-    this.tooltip.style.position = 'fixed';
-    this.tooltip.style.background = 'var(--bg-card)';
-    this.tooltip.style.border = '1px solid var(--border-card)';
-    this.tooltip.style.padding = '12px';
-    this.tooltip.style.borderRadius = '8px';
-    this.tooltip.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
-    this.tooltip.style.zIndex = '9999';
-    this.tooltip.style.pointerEvents = 'none';
-    this.tooltip.style.fontSize = '13px';
-    this.tooltip.style.color = 'var(--text-primary)';
-    document.body.appendChild(this.tooltip);
-  }
-
   private render(): void {
     this.element.innerHTML = '';
 
@@ -63,10 +44,22 @@ export class VisitorRatioBarChart {
     titleGroup.innerHTML = `
       <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
         <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin: 0;">Visitor-to-Room Ratio</h3>
-        <div id="ratio-info-icon" style="color: var(--text-muted); cursor: help; display: flex;"></div>
       </div>
       <span style="font-size: 12px; color: var(--text-secondary);">Relative demand pressure on room supply</span>
     `;
+
+    const h3 = titleGroup.querySelector('h3')!;
+    const infoIcon = createInfoIcon({
+      sourceOrg: 'DOSM DTS & Tourism Malaysia Hotel Inventory',
+      datasetName: 'State Visitor-to-Room Pressure Proxy',
+      referenceYear: '2025',
+      measure: 'Annual visitor arrivals per registered accommodation room per state; a proxy for accommodation demand pressure.',
+      formula: 'Visitor-to-Room Ratio = State Annual Visitors / State Total Registered Rooms',
+      limitations: 'Does not capture peak daily occupancy; states with many day-trippers will appear inflated.',
+    });
+    infoIcon.style.marginLeft = '6px';
+    infoIcon.style.verticalAlign = 'middle';
+    h3.appendChild(infoIcon);
 
     header.appendChild(titleGroup);
 
@@ -156,42 +149,5 @@ export class VisitorRatioBarChart {
 
     this.element.appendChild(header);
     this.element.appendChild(chartContainer);
-
-    // Add info icon
-    const iconContainer = this.element.querySelector('#ratio-info-icon');
-    if (iconContainer) {
-      iconContainer.appendChild(createElement(Info, { width: 14, height: 14, 'stroke-width': 2 }));
-
-      iconContainer.addEventListener('mouseenter', (e) => {
-        const mouseEvent = e as MouseEvent;
-        this.tooltip.innerHTML = `
-          <strong style="display: block; margin-bottom: 4px;">Pressure Proxy</strong>
-          <span style="color: var(--text-secondary); line-height: 1.4; display: block; max-width: 250px;">
-            Domestic visitors relative to available accommodation rooms. It is not hotel occupancy.<br><br>
-            • <strong>AOR</strong> → actual accommodation utilisation<br>
-            • <strong>Visitor/room</strong> → relative demand pressure on room supply
-          </span>
-        `;
-        this.tooltip.style.display = 'block';
-        this.updateTooltipPos(mouseEvent);
-      });
-
-      iconContainer.addEventListener('mousemove', (e) => this.updateTooltipPos(e as MouseEvent));
-
-      iconContainer.addEventListener('mouseleave', () => {
-        this.tooltip.style.display = 'none';
-      });
-    }
-  }
-
-  private updateTooltipPos(e: MouseEvent): void {
-    this.tooltip.style.left = `${e.clientX + 14}px`;
-    this.tooltip.style.top = `${e.clientY + 14}px`;
-  }
-
-  public destroy(): void {
-    if (this.tooltip) {
-      this.tooltip.remove();
-    }
   }
 }

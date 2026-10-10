@@ -4,6 +4,7 @@ import {
   type AccessibilityMode,
   type StateAccessibilityItem,
 } from '../../data/accessibilityData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export class AccessibilityMap {
   public readonly element: HTMLElement;
@@ -52,6 +53,19 @@ export class AccessibilityMap {
         ${this.currentMode === 'road' ? 'Core assets within 1 km of main road network' : 'Core assets within 1 km of public transport facilities'}
       </p>
     `;
+
+    const mapH3 = titleGroup.querySelector('h3')!;
+    const mapInfoIcon = createInfoIcon({
+      sourceOrg: 'DOSM GeoPadang, Prasarana & Tourism Malaysia POI Registry',
+      datasetName: 'Tourism Asset Road & Transit Accessibility Map',
+      referenceYear: '2025',
+      measure: 'Choropleth map showing percentage of state tourism assets within 1 km of road or public transit network.',
+      formula: 'State Access Rate = (Assets within 1 km / Total State Assets) × 100',
+      limitations: 'Proximity-based; does not factor road quality, service frequency, or seasonal closures.',
+    });
+    mapInfoIcon.style.marginLeft = '6px';
+    mapInfoIcon.style.verticalAlign = 'middle';
+    mapH3.appendChild(mapInfoIcon);
 
     // Segmented Mode Toggle [Road] [Public Transport]
     const toggleWrap = document.createElement('div');

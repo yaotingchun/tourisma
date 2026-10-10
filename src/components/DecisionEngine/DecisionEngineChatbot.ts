@@ -453,8 +453,19 @@ export class DecisionEngineChatbot {
       });
 
       if (!response.ok) {
-        const errJson = await response.json().catch(() => ({}));
-        throw new Error(errJson.error || `Server returned ${response.status}`);
+        let errDetail = `Server returned ${response.status}`;
+        const rawText = await response.text().catch(() => '');
+        try {
+          const errJson = JSON.parse(rawText);
+          if (errJson && errJson.error) {
+            errDetail = errJson.error;
+          }
+        } catch {
+          if (rawText) {
+            errDetail = rawText.slice(0, 200);
+          }
+        }
+        throw new Error(errDetail);
       }
 
       const data = await response.json();

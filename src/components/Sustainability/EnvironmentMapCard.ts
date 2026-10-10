@@ -3,6 +3,7 @@ import {
   type StateEnvironmentData,
   getStateEnvironment,
 } from '../../data/environmentData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 // Centroid lookup for tooltip positioning
 const STATE_CENTROIDS: Record<string, { x: number; y: number }> = {};
@@ -86,6 +87,19 @@ export class EnvironmentMapCard {
       <h3 class="asset-card-title map-density-title">MALAYSIA ENVIRONMENTAL SENSITIVITY</h3>
       <p class="asset-card-subtitle map-density-sub">Geospatial proximity to 485 terrestrial forest reserves and marine sanctuaries</p>
     `;
+
+    const envMapH3 = titleGroup.querySelector('h3')!;
+    const envMapInfoIcon = createInfoIcon({
+      sourceOrg: 'DOE Malaysia, PERHILITAN & Department of Marine Park Malaysia',
+      datasetName: 'Tourism Asset Environmental Sensitivity Choropleth Map',
+      referenceYear: '2025',
+      measure: 'State choropleth mapping % of tourism assets exposed to terrestrial/marine protected area buffers across 4 switchable layers.',
+      formula: 'Exposure % = (Exposed Assets / Total State Assets) × 100; layers: Overall, Inside Reserves, Land Eco-Buffer, Marine & Reef',
+      limitations: 'Static spatial layers; seasonal protected zone closures and dynamic boundary changes not reflected.',
+    });
+    envMapInfoIcon.style.marginLeft = '6px';
+    envMapInfoIcon.style.verticalAlign = 'middle';
+    envMapH3.appendChild(envMapInfoIcon);
 
     // Layer Controls & Compass
     const headerActions = document.createElement('div');

@@ -10,6 +10,7 @@ import {
   Activity, 
   Users, 
 } from 'lucide';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 export class AccommodationPage {
   public readonly element: HTMLElement;
@@ -44,6 +45,14 @@ export class AccommodationPage {
           accentColor: '#2563eb', // Royal Blue
           iconBg: '#eff6ff',
           iconColor: '#2563eb',
+          tooltip: {
+            sourceOrg: 'Tourism Malaysia & NAPIC Commercial Property Monitor',
+            datasetName: 'National Hotel & Accommodation Room Inventory',
+            referenceYear: '2025',
+            measure: 'Total registered accommodation room inventory across all licensed hotels, resorts, and registered lodgings.',
+            formula: 'Sum of all licensed rooms across Star Ratings 1-5 plus Budget & Unclassified categories',
+            limitations: 'Unlicensed short-term rentals (Airbnb, etc.) captured separately in supplementary STR data.',
+          },
         },
         {
           title: 'Accommodation Establishments',
@@ -55,6 +64,14 @@ export class AccommodationPage {
           accentColor: '#059669', // Emerald
           iconBg: '#ecfdf5',
           iconColor: '#059669',
+          tooltip: {
+            sourceOrg: 'Ministry of Tourism, Arts and Culture (MOTAC)',
+            datasetName: 'National Hotel & Accommodation Establishment Register',
+            referenceYear: '2025',
+            measure: 'Count of registered and licensed accommodation establishments actively operating in Malaysia.',
+            formula: 'Total of all star-rated hotels plus budget and unclassified registered lodgings',
+            limitations: 'Reflects MOTAC-licensed establishments; unlicensed guesthouses may not be captured.',
+          },
         },
         {
           title: 'Average Occupancy Rate',
@@ -66,6 +83,14 @@ export class AccommodationPage {
           accentColor: '#7c3aed', // Purple
           iconBg: '#f5f3ff',
           iconColor: '#7c3aed',
+          tooltip: {
+            sourceOrg: 'Tourism Malaysia Hotel Occupancy Survey',
+            datasetName: 'Average Occupancy Rate (AOR) National Statistics',
+            referenceYear: '2025',
+            measure: 'Weighted national Average Occupancy Rate across all star categories, representing room utilization efficiency.',
+            formula: 'AOR = (Total Occupied Room Nights / Total Available Room Nights) × 100',
+            limitations: 'Represents average across all hotels; luxury properties vs. budget hotels vary significantly.',
+          },
         },
         {
           title: 'Visitor-to-Room Ratio',
@@ -77,6 +102,14 @@ export class AccommodationPage {
           accentColor: '#ea580c', // Orange
           iconBg: '#fff7ed',
           iconColor: '#ea580c',
+          tooltip: {
+            sourceOrg: 'DOSM DTS & Tourism Malaysia Hotel Inventory',
+            datasetName: 'Annual Visitor-to-Room Pressure Proxy',
+            referenceYear: '2025',
+            measure: 'Annual visitor arrivals divided by total registered accommodation rooms; proxy for accommodation pressure.',
+            formula: 'Visitor-to-Room Ratio = Total Annual Visitors / Total Registered Rooms',
+            limitations: 'High ratio indicates accommodation pressure but does not directly capture daily peak congestion.',
+          },
         },
       ];
 
@@ -94,6 +127,20 @@ export class AccommodationPage {
         const titleEl = document.createElement('h4');
         titleEl.className = 'kpi-label';
         titleEl.textContent = kpi.title;
+
+        if (kpi.tooltip) {
+          const infoIcon = createInfoIcon({
+            sourceOrg: kpi.tooltip.sourceOrg,
+            datasetName: kpi.tooltip.datasetName,
+            referenceYear: kpi.tooltip.referenceYear,
+            measure: kpi.tooltip.measure,
+            formula: kpi.tooltip.formula,
+            limitations: kpi.tooltip.limitations,
+          });
+          infoIcon.style.marginLeft = '6px';
+          infoIcon.style.verticalAlign = 'middle';
+          titleEl.appendChild(infoIcon);
+        }
 
         const valRow = document.createElement('div');
         valRow.className = 'kpi-value-wrap';

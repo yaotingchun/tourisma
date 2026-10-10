@@ -4,6 +4,7 @@ import {
   STATE_ASSETS_SUPPORTING,
   type StateAssetItem,
 } from '../../data/tourismAssetsData';
+import { createInfoIcon } from '../Common/InfoTooltip';
 
 type StateViewMode = 'total' | 'core' | 'supporting';
 
@@ -77,6 +78,19 @@ export class AssetStateBarChart {
       <h3 class="asset-card-title">Tourism Assets by State</h3>
       <p class="asset-card-subtitle">State-by-state concentration ranking across all 16 states & federal territories</p>
     `;
+
+    const stateH3 = titleGroup.querySelector('h3')!;
+    const stateInfoIcon = createInfoIcon({
+      sourceOrg: 'DOSM & Tourism Malaysia POI Registry',
+      datasetName: 'State Tourism Asset Count Distribution',
+      referenceYear: '2025',
+      measure: 'Horizontal bar chart ranking states by total, core, or supporting tourism asset counts.',
+      formula: 'Total = Core Assets + Supporting Assets per state; rankings are absolute counts not normalised by area or population',
+      limitations: 'Larger states (Sarawak, Sabah) have more assets partly due to geographic size; normalised density available in the map view.',
+    });
+    stateInfoIcon.style.marginLeft = '6px';
+    stateInfoIcon.style.verticalAlign = 'middle';
+    stateH3.appendChild(stateInfoIcon);
 
     // Segmented Toggle: [ Total ] [ Core ] [ Supporting ]
     const toggle = document.createElement('div');
