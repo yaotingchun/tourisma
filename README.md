@@ -1,7 +1,7 @@
 # TOURISMA
 ### Malaysia Tourism Spatial & Strategic Intelligence Dashboard
 
-[![Vercel Deployment](https://img.shields.io/badge/Deployment-Vercel-black?style=flat&logo=vercel)](https://tourisma-six.vercel.app/)
+[![Vercel Deployment](https://img.shields.io/badge/Deployment-Vercel-black?style=flat&logo=vercel)](https://tourisma-eight.vercel.app/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0.2-blue?style=flat&logo=typescript)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-8.3.0-646CFF?style=flat&logo=vite)](https://vitejs.dev/)
 [![Gemini 2.5 Flash](https://img.shields.io/badge/Vertex_AI-Gemini_2.5_Flash-4285F4?style=flat&logo=googlecloud)](https://cloud.google.com/vertex-ai)
@@ -49,7 +49,7 @@
 ### A. Access the Live Deployed Dashboard (No Installation Required)
 
 1. Open your web browser (Chrome, Edge, Firefox, or Safari) and navigate to:
-   👉 **[https://tourisma-six.vercel.app/](https://tourisma-six.vercel.app/)**
+   👉 **[https://tourisma-eight.vercel.app/](https://tourisma-eight.vercel.app/)**
 
 2. The dashboard loads directly with no setup required. All spatial charts, datasets, and KPI modules are interactive out of the box.
 
