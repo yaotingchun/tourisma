@@ -15,6 +15,15 @@ import { createInfoIcon } from '../Common/InfoTooltip';
 export class HealthcareKPIStrip {
   public readonly element: HTMLElement;
   private selectedStateId: string | null = null;
+  private cardRefs: Array<{
+    cardEl: HTMLElement;
+    valEl: HTMLElement;
+    badgeEl: HTMLElement;
+    subtextEl: HTMLElement;
+    currentVal: number;
+    format: (v: number) => string;
+    animId?: number;
+  }> = [];
 
   constructor() {
     this.element = document.createElement('div');
@@ -28,8 +37,6 @@ export class HealthcareKPIStrip {
   }
 
   private render(): void {
-    this.element.innerHTML = '';
-
     const stateData: StateHealthcareData | undefined = this.selectedStateId
       ? getStateHealthcare(this.selectedStateId)
       : undefined;
@@ -56,7 +63,8 @@ export class HealthcareKPIStrip {
     const kpis = [
       {
         title: 'Healthcare Facilities',
-        value: facilitiesCount.toLocaleString(),
+        targetVal: facilitiesCount,
+        format: (v: number) => Math.round(v).toLocaleString(),
         badgeText: isState ? `${hospitalsCount} Hospitals • ${scopeLabel}` : `${hospitalsCount} Hospitals`,
         badgeColor: 'blue',
         subtext: `${clinicsCount.toLocaleString()} clinics & pharmacies registered`,
@@ -75,7 +83,8 @@ export class HealthcareKPIStrip {
       },
       {
         title: 'Hospital Beds',
-        value: bedsCount.toLocaleString(),
+        targetVal: bedsCount,
+        format: (v: number) => Math.round(v).toLocaleString(),
         badgeText: isState ? `${icuBeds} ICU • ${scopeLabel}` : `${icuBeds} ICU Beds`,
         badgeColor: 'purple',
         subtext: 'Operational physical beds (MOH)',
@@ -94,7 +103,8 @@ export class HealthcareKPIStrip {
       },
       {
         title: 'Healthcare Access Rate',
-        value: `${accessPct.toFixed(1)}%`,
+        targetVal: accessPct,
+        format: (v: number) => `${v.toFixed(1)}%`,
         badgeText: 'Within 5 km',
         badgeColor: 'emerald',
         subtext: `${immediatePct.toFixed(1)}% within ≤ 2 km immediate reach`,
@@ -113,7 +123,8 @@ export class HealthcareKPIStrip {
       },
       {
         title: 'Bed Occupancy Rate',
-        value: `${bor.toFixed(1)}%`,
+        targetVal: bor,
+        format: (v: number) => `${v.toFixed(1)}%`,
         badgeText: bor >= 75 ? 'High Load' : bor >= 50 ? 'Moderate' : 'Headroom',
         badgeColor: bor >= 75 ? 'orange' : bor >= 50 ? 'blue' : 'emerald',
         subtext: 'State clinical service utilisation (MOH)',
@@ -132,63 +143,123 @@ export class HealthcareKPIStrip {
       },
     ];
 
-    kpis.forEach((kpi) => {
-      const card = document.createElement('div');
-      card.className = 'hc-kpi-card';
-      card.style.setProperty('--card-accent', kpi.accentColor);
-      card.style.setProperty('--icon-bg', kpi.iconBg);
-      card.style.setProperty('--icon-color', kpi.iconColor);
+    if (this.cardRefs.length === 0) {
+      this.element.innerHTML = '';
+      kpis.forEach((kpi) => {
+        const card = document.createElement('div');
+        card.className = 'hc-kpi-card';
+        card.style.setProperty('--card-accent', kpi.accentColor);
+        card.style.setProperty('--icon-bg', kpi.iconBg);
+        card.style.setProperty('--icon-color', kpi.iconColor);
 
-      // Info left
-      const infoDiv = document.createElement('div');
-      infoDiv.className = 'hc-kpi-info';
+        // Info left
+        const infoDiv = document.createElement('div');
+        infoDiv.className = 'hc-kpi-info';
 
-      const titleEl = document.createElement('h4');
-      titleEl.className = 'hc-kpi-title';
-      titleEl.textContent = kpi.title;
+        const titleEl = document.createElement('h4');
+        titleEl.className = 'hc-kpi-title';
+        titleEl.textContent = kpi.title;
 
-      if (kpi.tooltip) {
-        const infoIcon = createInfoIcon(kpi.tooltip);
-        infoIcon.style.marginLeft = '6px';
-        infoIcon.style.verticalAlign = 'middle';
-        titleEl.appendChild(infoIcon);
+        if (kpi.tooltip) {
+          const infoIcon = createInfoIcon(kpi.tooltip);
+          infoIcon.style.marginLeft = '6px';
+          infoIcon.style.verticalAlign = 'middle';
+          titleEl.appendChild(infoIcon);
+        }
+
+        const valWrap = document.createElement('div');
+        valWrap.className = 'hc-kpi-value-wrap';
+
+        const valEl = document.createElement('span');
+        valEl.className = 'hc-kpi-value';
+        valEl.textContent = kpi.format(kpi.targetVal);
+        valWrap.appendChild(valEl);
+
+        const badgeEl = document.createElement('span');
+        badgeEl.className = `hc-kpi-badge ${kpi.badgeColor}`;
+        badgeEl.textContent = kpi.badgeText;
+        valWrap.appendChild(badgeEl);
+
+        const subEl = document.createElement('span');
+        subEl.className = 'hc-kpi-subtext';
+        subEl.textContent = kpi.subtext;
+
+        infoDiv.appendChild(titleEl);
+        infoDiv.appendChild(valWrap);
+        infoDiv.appendChild(subEl);
+
+        // Icon right
+        const iconWrap = document.createElement('div');
+        iconWrap.className = 'hc-kpi-icon-wrap';
+
+        const iconSvg = createElement(kpi.icon, {
+          width: 22,
+          height: 22,
+          'stroke-width': 2,
+        });
+        iconWrap.appendChild(iconSvg);
+
+        card.appendChild(infoDiv);
+        card.appendChild(iconWrap);
+        this.element.appendChild(card);
+
+        this.cardRefs.push({
+          cardEl: card,
+          valEl,
+          badgeEl,
+          subtextEl: subEl,
+          currentVal: kpi.targetVal,
+          format: kpi.format,
+        });
+      });
+      return;
+    }
+
+    // Animate existing cards
+    this.cardRefs.forEach((ref, idx) => {
+      const kpi = kpis[idx];
+
+      // Update styling & badges
+      ref.cardEl.style.setProperty('--card-accent', kpi.accentColor);
+      ref.cardEl.style.setProperty('--icon-bg', kpi.iconBg);
+      ref.cardEl.style.setProperty('--icon-color', kpi.iconColor);
+
+      ref.badgeEl.className = `hc-kpi-badge ${kpi.badgeColor}`;
+      ref.badgeEl.textContent = kpi.badgeText;
+      ref.subtextEl.textContent = kpi.subtext;
+
+      if (ref.animId) {
+        cancelAnimationFrame(ref.animId);
+        ref.animId = undefined;
       }
 
-      const valWrap = document.createElement('div');
-      valWrap.className = 'hc-kpi-value-wrap';
+      const startVal = ref.currentVal;
+      const endVal = kpi.targetVal;
+      const duration = 650;
+      const startTime = performance.now();
 
-      const valEl = document.createElement('span');
-      valEl.className = 'hc-kpi-value';
-      valEl.textContent = kpi.value;
-      valWrap.appendChild(valEl);
+      if (startVal === endVal) {
+        ref.valEl.textContent = ref.format(endVal);
+        return;
+      }
 
-      const badgeEl = document.createElement('span');
-      badgeEl.className = `hc-kpi-badge ${kpi.badgeColor}`;
-      badgeEl.textContent = kpi.badgeText;
-      valWrap.appendChild(badgeEl);
+      const step = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = startVal + (endVal - startVal) * ease;
+        ref.valEl.textContent = ref.format(current);
 
-      const subEl = document.createElement('span');
-      subEl.className = 'hc-kpi-subtext';
-      subEl.textContent = kpi.subtext;
+        if (progress < 1) {
+          ref.animId = requestAnimationFrame(step);
+        } else {
+          ref.valEl.textContent = ref.format(endVal);
+          ref.animId = undefined;
+        }
+      };
 
-      infoDiv.appendChild(titleEl);
-      infoDiv.appendChild(valWrap);
-      infoDiv.appendChild(subEl);
-
-      // Icon right
-      const iconWrap = document.createElement('div');
-      iconWrap.className = 'hc-kpi-icon-wrap';
-
-      const iconSvg = createElement(kpi.icon, {
-        width: 22,
-        height: 22,
-        'stroke-width': 2,
-      });
-      iconWrap.appendChild(iconSvg);
-
-      card.appendChild(infoDiv);
-      card.appendChild(iconWrap);
-      this.element.appendChild(card);
+      ref.animId = requestAnimationFrame(step);
+      ref.currentVal = endVal;
     });
   }
 }

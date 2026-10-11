@@ -558,6 +558,20 @@ export const STATE_ENVIRONMENT_DATA: Record<string, StateEnvironmentData> = {
 export const STATE_ENVIRONMENT_LIST: StateEnvironmentData[] = Object.values(STATE_ENVIRONMENT_DATA);
 
 export function getStateEnvironment(stateId: string): StateEnvironmentData | undefined {
-  const norm = stateId.toLowerCase().replace(/_/g, '-').replace('penang', 'pulau-pinang');
-  return STATE_ENVIRONMENT_DATA[norm] || STATE_ENVIRONMENT_DATA[stateId];
+  if (!stateId) return undefined;
+  const raw = stateId.trim();
+  const norm = raw.toLowerCase().replace(/_/g, '-').replace('penang', 'pulau-pinang');
+  return (
+    STATE_ENVIRONMENT_DATA[norm] ||
+    STATE_ENVIRONMENT_DATA[raw] ||
+    Object.values(STATE_ENVIRONMENT_DATA).find(
+      (s) =>
+        s.id === raw ||
+        s.id === norm ||
+        s.code.toLowerCase() === raw.toLowerCase() ||
+        s.name.toLowerCase() === raw.toLowerCase() ||
+        s.id.replace(/-/g, '_') === raw.toLowerCase() ||
+        s.id.replace(/_/g, '-') === norm
+    )
+  );
 }

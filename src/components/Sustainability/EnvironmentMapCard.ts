@@ -42,7 +42,15 @@ export class EnvironmentMapCard {
     const paths = this.element.querySelectorAll<SVGPathElement>('.state-map-path');
     paths.forEach((path) => {
       const pid = path.getAttribute('data-state-id');
-      if (pid === this.selectedStateId) {
+      const isMatch = !!(
+        pid &&
+        this.selectedStateId &&
+        (pid === this.selectedStateId ||
+          pid.replace(/_/g, '-') === this.selectedStateId.replace(/_/g, '-') ||
+          (pid === 'penang' && this.selectedStateId === 'pulau-pinang') ||
+          (pid === 'pulau-pinang' && this.selectedStateId === 'penang'))
+      );
+      if (isMatch) {
         path.classList.add('selected');
         path.style.stroke = '#0f172a';
         path.style.strokeWidth = '2.4';
@@ -437,7 +445,13 @@ export class EnvironmentMapCard {
 
       path.addEventListener('click', (e: MouseEvent) => {
         e.stopPropagation();
-        const nextSelected = this.selectedStateId === stateId ? null : stateId;
+        const isCurrentlySelected =
+          !!this.selectedStateId &&
+          (this.selectedStateId === stateId ||
+            this.selectedStateId.replace(/_/g, '-') === stateId.replace(/_/g, '-') ||
+            (this.selectedStateId === 'penang' && stateId === 'pulau-pinang') ||
+            (this.selectedStateId === 'pulau-pinang' && stateId === 'penang'));
+        const nextSelected = isCurrentlySelected ? null : stateId;
         this.setSelectedState(nextSelected);
         if (this.onSelectStateCallback) {
           this.onSelectStateCallback(nextSelected);

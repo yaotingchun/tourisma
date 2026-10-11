@@ -13,8 +13,10 @@ export class MalaysiaMap {
   private legendElement: HTMLElement;
   private currentMode: 'demand' | 'readiness' = 'readiness';
   private selectedStateId: string | null = null;
+  private onSelectState?: (stateId: string | null) => void;
 
-  constructor() {
+  constructor(onSelectState?: (stateId: string | null) => void) {
+    this.onSelectState = onSelectState;
     this.element = document.createElement('div');
     this.element.className = 'malaysia-map-card';
 
@@ -83,16 +85,16 @@ export class MalaysiaMap {
     svgWrapper.className = 'svg-map-wrapper';
     svgWrapper.innerHTML = this.renderMapSvg();
 
-    // Bottom 5-Step Legend Bar
+    // Bottom 5-Step Legend Bar (Positioned specifically for Overview card)
     this.legendElement = document.createElement('div');
-    this.legendElement.className = 'map-legend-step-bar';
+    this.legendElement.className = 'overview-map-legend';
     this.renderLegend();
 
     mapStage.appendChild(svgWrapper);
-    mapStage.appendChild(this.legendElement);
 
     this.element.appendChild(mapHeader);
     this.element.appendChild(mapStage);
+    this.element.appendChild(this.legendElement);
 
     this.attachSvgEventListeners();
   }
@@ -163,32 +165,32 @@ export class MalaysiaMap {
 
     if (this.currentMode === 'demand') {
       this.legendElement.innerHTML = `
-        <span class="legend-label-readiness">Tourism Demand Index</span>
-        <div class="legend-scale-row">
-          <span class="legend-scale-text">Low (&lt;10)</span>
-          <div class="legend-step-blocks">
-            <span class="step-block" style="background:#e0e7ff;" title="Low (&lt;10)"></span>
-            <span class="step-block" style="background:#a5b4fc;" title="Moderate-Low (10–24)"></span>
-            <span class="step-block" style="background:#818cf8;" title="Moderate (25–39)"></span>
-            <span class="step-block" style="background:#4f46e5;" title="High (40–69)"></span>
-            <span class="step-block" style="background:#3730a3;" title="Very High (70+)"></span>
+        <span class="overview-legend-title">Demand Index</span>
+        <div class="overview-legend-scale">
+          <span class="overview-legend-bound">&lt; 10</span>
+          <div class="overview-legend-blocks">
+            <span class="overview-step-block" style="background:#e0e7ff; border: 1px solid #c7d2fe;" title="Low (&lt; 10)"></span>
+            <span class="overview-step-block" style="background:#a5b4fc;" title="Moderate-Low (10–24)"></span>
+            <span class="overview-step-block" style="background:#818cf8;" title="Moderate (25–39)"></span>
+            <span class="overview-step-block" style="background:#4f46e5;" title="High (40–69)"></span>
+            <span class="overview-step-block" style="background:#3730a3;" title="Very High (70+)"></span>
           </div>
-          <span class="legend-scale-text">High (70+)</span>
+          <span class="overview-legend-bound">&gt; 70</span>
         </div>
       `;
     } else {
       this.legendElement.innerHTML = `
-        <span class="legend-label-readiness">Readiness Index</span>
-        <div class="legend-scale-row">
-          <span class="legend-scale-text">Low (&lt;12)</span>
-          <div class="legend-step-blocks">
-            <span class="step-block" style="background:#bfdbfe;" title="Low (&lt;12)"></span>
-            <span class="step-block" style="background:#93c5fd;" title="Moderate-Low (12–19)"></span>
-            <span class="step-block" style="background:#60a5fa;" title="Moderate (20–34)"></span>
-            <span class="step-block" style="background:#2563eb;" title="High (35–59)"></span>
-            <span class="step-block" style="background:#1d4ed8;" title="Very High (60+)"></span>
+        <span class="overview-legend-title">Readiness Index</span>
+        <div class="overview-legend-scale">
+          <span class="overview-legend-bound">&lt; 12</span>
+          <div class="overview-legend-blocks">
+            <span class="overview-step-block" style="background:#bfdbfe;" title="Low (&lt; 12)"></span>
+            <span class="overview-step-block" style="background:#93c5fd;" title="Moderate-Low (12–19)"></span>
+            <span class="overview-step-block" style="background:#60a5fa;" title="Moderate (20–34)"></span>
+            <span class="overview-step-block" style="background:#2563eb;" title="High (35–59)"></span>
+            <span class="overview-step-block" style="background:#1d4ed8;" title="Very High (60+)"></span>
           </div>
-          <span class="legend-scale-text">High (60+)</span>
+          <span class="overview-legend-bound">&gt; 60</span>
         </div>
       `;
     }
@@ -253,8 +255,8 @@ export class MalaysiaMap {
 
     return `
       <svg
-        viewBox="0 0 1000 440"
-        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 28 1000 440"
+        preserveAspectRatio="xMidYMin meet"
         class="main-malaysia-svg"
       >
         <g class="paths-group">${pathsSvg}</g>
@@ -288,7 +290,7 @@ export class MalaysiaMap {
     };
   }
 
-  public setSelectedState(stateId: string | null): void {
+  public setSelectedState(stateId: string | null, triggerCallback: boolean = true): void {
     this.selectedStateId = stateId;
 
     const paths = this.element.querySelectorAll<SVGPathElement>('.state-map-path');
@@ -306,6 +308,10 @@ export class MalaysiaMap {
         path.style.filter = 'none';
       }
     });
+
+    if (triggerCallback && this.onSelectState) {
+      this.onSelectState(this.selectedStateId);
+    }
   }
 
   private attachSvgEventListeners(): void {
@@ -399,7 +405,7 @@ export class MalaysiaMap {
         </div>
       </div>
       <div class="map-tooltip-footer">
-        ${isSelected ? '● Active state • Click to deselect' : (isDemand ? 'Ranked by total visitor demand & receipts' : 'Ranked by infrastructure capacity & lodging')}
+        ${isSelected ? '● Active state • Click to deselect' : (isDemand ? 'Ranked by total visitor demand & receipts score' : 'Ranked by infrastructure capacity & lodging')}
       </div>
     `;
 

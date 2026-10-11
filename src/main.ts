@@ -28,6 +28,14 @@ function initializeApp(): void {
   // Instantiate modular Sidebar component
   const sidebar = new Sidebar((navId) => {
     console.log(`Navigation changed to: ${navId}`);
+    if (navId !== 'accessibility' && activeAccessPage) {
+      activeAccessPage.destroy();
+      activeAccessPage = null;
+    }
+    if (navId !== 'tourism-demand' && activeDemandPage) {
+      activeDemandPage.destroy();
+      activeDemandPage = null;
+    }
     if (navId === 'overview') {
       header.setTitle('NATIONAL OVERVIEW', 'Tourism Performance & State Capacity Diagnostic');
       renderOverview();
@@ -106,11 +114,17 @@ function initializeApp(): void {
     mainContent.appendChild(overview.element);
   };
 
+  let activeDemandPage: TourismDemandPage | null = null;
+
   // Render tourism demand page
   const renderTourismDemand = () => {
+    if (activeDemandPage) {
+      activeDemandPage.destroy();
+      activeDemandPage = null;
+    }
     mainContent.innerHTML = '';
-    const demandPage = new TourismDemandPage();
-    mainContent.appendChild(demandPage.element);
+    activeDemandPage = new TourismDemandPage();
+    mainContent.appendChild(activeDemandPage.element);
   };
 
   // Render tourism assets page (empty)
@@ -127,11 +141,17 @@ function initializeApp(): void {
     mainContent.appendChild(accPage.element);
   };
 
+  let activeAccessPage: AccessibilityPage | null = null;
+
   // Render accessibility page (empty)
   const renderAccessibility = () => {
+    if (activeAccessPage) {
+      activeAccessPage.destroy();
+      activeAccessPage = null;
+    }
     mainContent.innerHTML = '';
-    const accessPage = new AccessibilityPage();
-    mainContent.appendChild(accessPage.element);
+    activeAccessPage = new AccessibilityPage();
+    mainContent.appendChild(activeAccessPage.element);
   };
 
   // Render healthcare page (empty)

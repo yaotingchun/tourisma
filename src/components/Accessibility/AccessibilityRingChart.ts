@@ -9,59 +9,84 @@ import { RotateCcw } from 'lucide';
 import { createElement } from 'lucide';
 import { createInfoIcon } from '../Common/InfoTooltip';
 
+interface TierCircleRefs {
+  circle: SVGCircleElement;
+  pctEl: HTMLElement;
+  countEl: HTMLElement;
+}
+
+interface RingBlockRefs {
+  centerValEl: HTMLElement;
+  tiersMap: Map<string, TierCircleRefs>;
+  displayedPct: number;
+}
+
 export class AccessibilityRingChart {
   public readonly element: HTMLElement;
   private selectedStateId: string | null = null;
   private onResetCallback?: () => void;
 
+  // Header element references
+  private badgeDotEl!: HTMLElement;
+  private badgeTextEl!: HTMLElement;
+  private titleEl!: HTMLElement;
+  private titleTextEl!: HTMLElement;
+  private subtitleEl!: HTMLElement;
+  private headerEl!: HTMLElement;
+  private resetBtnEl: HTMLButtonElement | null = null;
+
+  // SVG Geometry constants
+  private readonly r = 46;
+  private readonly circ = 2 * Math.PI * 46; // ~289.0265
+
+  // Ring references
+  private roadRingRefs!: RingBlockRefs;
+  private ptRingRefs!: RingBlockRefs;
+
   constructor(onReset?: () => void) {
     this.onResetCallback = onReset;
     this.element = document.createElement('div');
     this.element.className = 'access-card access-ring-card';
-    this.render();
+
+    this.buildDom();
+
+    // Smooth opening entrance transition
+    setTimeout(() => {
+      this.updateChart(true);
+    }, 40);
   }
 
   public setStateScope(stateId: string | null): void {
     if (this.selectedStateId === stateId) return;
     this.selectedStateId = stateId;
-    this.render();
+    this.updateChart(true);
   }
 
-  private render(): void {
+  private buildDom(): void {
     this.element.innerHTML = '';
 
-    const stateData: StateAccessibilityItem | null = this.selectedStateId
-      ? STATE_ACCESSIBILITY_DATA[this.selectedStateId] || null
-      : null;
-
     // 1. Header
-    const header = document.createElement('div');
-    header.className = 'access-card-header';
+    this.headerEl = document.createElement('div');
+    this.headerEl.className = 'access-card-header';
 
     const titleGroup = document.createElement('div');
     titleGroup.className = 'access-card-title-group';
 
-    if (stateData) {
-      titleGroup.innerHTML = `
-        <div class="access-card-badge">
-          <span class="access-badge-dot" style="background-color: #2563eb;"></span>
-          <span>STATE 4-TIER BREAKDOWN</span>
-        </div>
-        <h3 class="access-card-title">Accessibility Composition • ${stateData.name}</h3>
-        <p class="access-card-subtitle">Proximity breakdown across ${stateData.coreAssets.toLocaleString()} destination assets</p>
-      `;
-    } else {
-      titleGroup.innerHTML = `
-        <div class="access-card-badge">
-          <span class="access-badge-dot" style="background-color: #7c3aed;"></span>
-          <span>OVERALL NATIONAL COMPOSITION</span>
-        </div>
-        <h3 class="access-card-title">Overall Accessibility Breakdown</h3>
-        <p class="access-card-subtitle">National weighted 4-tier distribution across 5,491 tourism assets</p>
-      `;
-    }
+    titleGroup.innerHTML = `
+      <div class="access-card-badge">
+        <span class="access-badge-dot" style="background-color: #7c3aed; transition: background-color 0.3s ease;"></span>
+        <span class="access-badge-text">OVERALL NATIONAL COMPOSITION</span>
+      </div>
+      <h3 class="access-card-title" style="transition: color 0.25s ease;"><span class="access-title-text">Overall Accessibility Breakdown</span></h3>
+      <p class="access-card-subtitle" style="transition: opacity 0.25s ease;">National weighted 4-tier distribution across 5,491 tourism assets</p>
+    `;
 
-    const ringH3 = titleGroup.querySelector('h3')!;
+    this.badgeDotEl = titleGroup.querySelector('.access-badge-dot')!;
+    this.badgeTextEl = titleGroup.querySelector('.access-badge-text')!;
+    this.titleEl = titleGroup.querySelector('.access-card-title')!;
+    this.titleTextEl = titleGroup.querySelector('.access-title-text')!;
+    this.subtitleEl = titleGroup.querySelector('.access-card-subtitle')!;
+
     const ringInfoIcon = createInfoIcon({
       sourceOrg: 'DOSM GeoPadang & Tourism Malaysia POI Registry',
       datasetName: 'Tourism Asset Accessibility Tier Ring Chart',
@@ -72,33 +97,183 @@ export class AccessibilityRingChart {
     });
     ringInfoIcon.style.marginLeft = '6px';
     ringInfoIcon.style.verticalAlign = 'middle';
-    ringH3.appendChild(ringInfoIcon);
+    this.titleEl.appendChild(ringInfoIcon);
 
-    header.appendChild(titleGroup);
-
-    if (stateData) {
-      const resetBtn = document.createElement('button');
-      resetBtn.className = 'access-reset-btn';
-      const resetIcon = createElement(RotateCcw, { width: 12, height: 12, 'stroke-width': 2.2 });
-      resetBtn.appendChild(resetIcon);
-      const span = document.createElement('span');
-      span.textContent = 'National View';
-      resetBtn.appendChild(span);
-      resetBtn.addEventListener('click', () => {
-        if (this.onResetCallback) {
-          this.onResetCallback();
-        }
-      });
-      header.appendChild(resetBtn);
-    }
-
-    this.element.appendChild(header);
+    this.headerEl.appendChild(titleGroup);
+    this.element.appendChild(this.headerEl);
 
     // 2. Twin Rings Container
     const ringsContainer = document.createElement('div');
     ringsContainer.className = 'access-rings-container';
 
-    // Road Tier Data
+    // Build Road & PT Rings
+    const roadBlock = this.buildRingBlock('Tourism Assets: Road Access');
+    this.roadRingRefs = roadBlock.refs;
+
+    const ptBlock = this.buildRingBlock('Public Transport Access');
+    this.ptRingRefs = ptBlock.refs;
+
+    ringsContainer.appendChild(roadBlock.element);
+    ringsContainer.appendChild(ptBlock.element);
+
+    this.element.appendChild(ringsContainer);
+  }
+
+  private buildRingBlock(title: string): { element: HTMLElement; refs: RingBlockRefs } {
+    const block = document.createElement('div');
+    block.className = 'access-ring-item';
+
+    const titleEl = document.createElement('div');
+    titleEl.className = 'access-ring-title';
+    titleEl.textContent = title;
+    block.appendChild(titleEl);
+
+    // Donut SVG Wrapper
+    const svgWrap = document.createElement('div');
+    svgWrap.className = 'access-ring-svg-wrap';
+
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('width', '130');
+    svg.setAttribute('height', '130');
+    svg.setAttribute('viewBox', '0 0 120 120');
+    svg.style.transform = 'rotate(-90deg)';
+    svg.style.transformOrigin = '50% 50%';
+
+    // Guide Track circle
+    const bgCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    bgCircle.setAttribute('cx', '60');
+    bgCircle.setAttribute('cy', '60');
+    bgCircle.setAttribute('r', String(this.r));
+    bgCircle.setAttribute('fill', 'none');
+    bgCircle.setAttribute('stroke', '#f1f5f9');
+    bgCircle.setAttribute('stroke-width', '14');
+    svg.appendChild(bgCircle);
+
+    const tiersMap = new Map<string, TierCircleRefs>();
+
+    // 4 Slices (high, moderate, low, remote)
+    const tierSlices = [
+      { id: 'high', color: '#10b981' },
+      { id: 'moderate', color: '#eab308' },
+      { id: 'low', color: '#f97316' },
+      { id: 'remote', color: '#ef4444' },
+    ];
+
+    tierSlices.forEach((t) => {
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('class', 'access-ring-segment');
+      circle.setAttribute('cx', '60');
+      circle.setAttribute('cy', '60');
+      circle.setAttribute('r', String(this.r));
+      circle.setAttribute('fill', 'none');
+      circle.setAttribute('stroke', t.color);
+      circle.setAttribute('stroke-width', '14');
+      // Start at 0 for entrance animation
+      circle.setAttribute('stroke-dasharray', `0 ${this.circ.toFixed(2)}`);
+      circle.setAttribute('stroke-dashoffset', '0');
+      svg.appendChild(circle);
+
+      tiersMap.set(t.id, { circle, pctEl: null!, countEl: null! });
+    });
+
+    const centerStat = document.createElement('div');
+    centerStat.className = 'access-ring-center-stat';
+    centerStat.innerHTML = `
+      <span class="access-ring-center-val" style="color: #0f172a;">0%</span>
+      <span class="access-ring-center-sub">≤ 1 km</span>
+    `;
+    const centerValEl = centerStat.querySelector<HTMLElement>('.access-ring-center-val')!;
+
+    svgWrap.appendChild(svg);
+    svgWrap.appendChild(centerStat);
+    block.appendChild(svgWrap);
+
+    // 4-Tier Legend
+    const legend = document.createElement('div');
+    legend.className = 'access-ring-legend';
+
+    ACCESSIBILITY_TIERS.forEach((tier) => {
+      const row = document.createElement('div');
+      row.className = 'access-ring-legend-row';
+      row.title = `${tier.label} (${tier.threshold}): ${tier.description}`;
+      row.innerHTML = `
+        <div class="access-ring-legend-label">
+          <span class="access-legend-indicator" style="background-color: ${tier.color};"></span>
+          <span class="access-ring-tier-name">${tier.compactLabel}</span>
+        </div>
+        <span class="access-ring-legend-val">
+          <strong class="access-ring-pct">0%</strong>
+          <span class="access-ring-count">(0)</span>
+        </span>
+      `;
+
+      const pctEl = row.querySelector<HTMLElement>('.access-ring-pct')!;
+      const countEl = row.querySelector<HTMLElement>('.access-ring-count')!;
+
+      const ref = tiersMap.get(tier.id);
+      if (ref) {
+        ref.pctEl = pctEl;
+        ref.countEl = countEl;
+      }
+
+      legend.appendChild(row);
+    });
+
+    block.appendChild(legend);
+
+    return {
+      element: block,
+      refs: {
+        centerValEl,
+        tiersMap,
+        displayedPct: 0,
+      },
+    };
+  }
+
+  private updateChart(animate: boolean = true): void {
+    const stateData: StateAccessibilityItem | null = this.selectedStateId
+      ? STATE_ACCESSIBILITY_DATA[this.selectedStateId] || null
+      : null;
+
+    // 1. Header Updates
+    if (stateData) {
+      this.badgeDotEl.style.backgroundColor = '#2563eb';
+      this.badgeTextEl.textContent = 'STATE 4-TIER BREAKDOWN';
+      this.titleTextEl.textContent = `Accessibility Composition • ${stateData.name} `;
+      this.subtitleEl.textContent = `Proximity breakdown across ${stateData.coreAssets.toLocaleString()} destination assets`;
+
+      if (!this.resetBtnEl) {
+        this.resetBtnEl = document.createElement('button');
+        this.resetBtnEl.className = 'access-reset-btn';
+        const resetIcon = createElement(RotateCcw, { width: 12, height: 12, 'stroke-width': 2.2 });
+        this.resetBtnEl.appendChild(resetIcon);
+        const span = document.createElement('span');
+        span.textContent = 'National View';
+        this.resetBtnEl.appendChild(span);
+        this.resetBtnEl.addEventListener('click', (e: MouseEvent) => {
+          e.stopPropagation();
+          if (this.onResetCallback) {
+            this.onResetCallback();
+          } else {
+            this.setStateScope(null);
+          }
+        });
+        this.headerEl.appendChild(this.resetBtnEl);
+      }
+    } else {
+      this.badgeDotEl.style.backgroundColor = '#7c3aed';
+      this.badgeTextEl.textContent = 'OVERALL NATIONAL COMPOSITION';
+      this.titleTextEl.textContent = 'Overall Accessibility Breakdown ';
+      this.subtitleEl.textContent = 'National weighted 4-tier distribution across 5,491 tourism assets';
+
+      if (this.resetBtnEl) {
+        this.resetBtnEl.remove();
+        this.resetBtnEl = null;
+      }
+    }
+
+    // 2. Road Tier Data & PT Tier Data
     const roadDetail: TierDetail = stateData
       ? stateData.road
       : {
@@ -114,7 +289,6 @@ export class AccessibilityRingChart {
           limitedPct: 100 - NATIONAL_TIER_DATA.road.goodPct,
         };
 
-    // PT Tier Data
     const ptDetail: TierDetail = stateData
       ? stateData.pt
       : {
@@ -130,110 +304,74 @@ export class AccessibilityRingChart {
           limitedPct: 100 - NATIONAL_TIER_DATA.pt.goodPct,
         };
 
-    const roadRing = this.create4TierRingBlock('Tourism Assets: Road Access', roadDetail);
-    const ptRing = this.create4TierRingBlock('Public Transport Access', ptDetail);
+    // 3. Morph Road Ring Arcs & Animate Numbers
+    this.updateRingBlock(this.roadRingRefs, roadDetail, animate);
 
-    ringsContainer.appendChild(roadRing);
-    ringsContainer.appendChild(ptRing);
-
-    this.element.appendChild(ringsContainer);
+    // 4. Morph PT Ring Arcs & Animate Numbers
+    this.updateRingBlock(this.ptRingRefs, ptDetail, animate);
   }
 
-  private create4TierRingBlock(title: string, detail: TierDetail): HTMLElement {
-    const block = document.createElement('div');
-    block.className = 'access-ring-item';
-
-    const titleEl = document.createElement('div');
-    titleEl.className = 'access-ring-title';
-    titleEl.textContent = title;
-    block.appendChild(titleEl);
-
-    // Donut SVG
-    const svgWrap = document.createElement('div');
-    svgWrap.className = 'access-ring-svg-wrap';
-
-    const r = 46;
-    const circ = 2 * Math.PI * r; // ~289.026
-
-    // Slices for 4 tiers
+  private updateRingBlock(refs: RingBlockRefs, detail: TierDetail, animate: boolean): void {
     const slices = [
-      { id: 'high', pct: detail.highPct, count: detail.highCount, color: '#10b981' },
-      { id: 'moderate', pct: detail.moderatePct, count: detail.moderateCount, color: '#eab308' },
-      { id: 'low', pct: detail.lowPct, count: detail.lowCount, color: '#f97316' },
-      { id: 'remote', pct: detail.remotePct, count: detail.remoteCount, color: '#ef4444' },
+      { id: 'high', pct: detail.highPct, count: detail.highCount },
+      { id: 'moderate', pct: detail.moderatePct, count: detail.moderateCount },
+      { id: 'low', pct: detail.lowPct, count: detail.lowCount },
+      { id: 'remote', pct: detail.remotePct, count: detail.remoteCount },
     ];
 
-    let cumulativeLen = 0;
-    const circlesSvg = slices
-      .map((s) => {
-        const len = (s.pct / 100) * circ;
-        const offset = -cumulativeLen;
-        cumulativeLen += len;
-        return `
-          <circle
-            cx="60"
-            cy="60"
-            r="${r}"
-            fill="none"
-            stroke="${s.color}"
-            stroke-width="14"
-            stroke-dasharray="${len} ${circ - len}"
-            stroke-dashoffset="${offset}"
-            style="transition: stroke-dasharray 0.4s ease, stroke-dashoffset 0.4s ease;"
-          />
-        `;
-      })
-      .join('');
+    let accum = 0;
+    slices.forEach((s) => {
+      const tierRef = refs.tiersMap.get(s.id);
+      if (!tierRef) return;
 
-    svgWrap.innerHTML = `
-      <svg width="130" height="130" viewBox="0 0 120 120" style="transform: rotate(-90deg); transform-origin: 50% 50%;">
-        <circle cx="60" cy="60" r="${r}" fill="none" stroke="#f1f5f9" stroke-width="14" />
-        ${circlesSvg}
-      </svg>
-      <div class="access-ring-center-stat">
-        <span class="access-ring-center-val" style="color: #0f172a;">${detail.goodPct.toFixed(1)}%</span>
-        <span class="access-ring-center-sub">≤ 1 km</span>
-      </div>
-    `;
-    block.appendChild(svgWrap);
+      const len = (s.pct / 100) * this.circ;
+      const offset = -accum;
 
-    // 4-Tier Legend
-    const legend = document.createElement('div');
-    legend.className = 'access-ring-legend';
-    legend.innerHTML = ACCESSIBILITY_TIERS.map((tier) => {
-      const pct =
-        tier.id === 'high'
-          ? detail.highPct
-          : tier.id === 'moderate'
-            ? detail.moderatePct
-            : tier.id === 'low'
-              ? detail.lowPct
-              : detail.remotePct;
-      const count =
-        tier.id === 'high'
-          ? detail.highCount
-          : tier.id === 'moderate'
-            ? detail.moderateCount
-            : tier.id === 'low'
-              ? detail.lowCount
-              : detail.remoteCount;
+      tierRef.circle.setAttribute('stroke-dasharray', `${len.toFixed(2)} ${(this.circ - len).toFixed(2)}`);
+      tierRef.circle.setAttribute('stroke-dashoffset', offset.toFixed(2));
 
-      return `
-        <div class="access-ring-legend-row" title="${tier.label} (${tier.threshold}): ${tier.description}">
-          <div class="access-ring-legend-label">
-            <span class="access-legend-indicator" style="background-color: ${tier.color};"></span>
-            <span class="access-ring-tier-name">${tier.compactLabel}</span>
-          </div>
-          <span class="access-ring-legend-val">
-            <strong class="access-ring-pct">${pct.toFixed(1)}%</strong>
-            <span class="access-ring-count">(${count.toLocaleString()})</span>
-          </span>
-        </div>
-      `;
-    }).join('');
+      if (tierRef.pctEl) tierRef.pctEl.textContent = `${s.pct.toFixed(1)}%`;
+      if (tierRef.countEl) tierRef.countEl.textContent = `(${s.count.toLocaleString()})`;
 
-    block.appendChild(legend);
+      accum += len;
+    });
 
-    return block;
+    const startPct = refs.displayedPct;
+    const endPct = detail.goodPct;
+
+    if (animate) {
+      this.animatePct(startPct, endPct, 650, (val) => {
+        refs.centerValEl.textContent = `${val.toFixed(1)}%`;
+      });
+    } else {
+      refs.centerValEl.textContent = `${endPct.toFixed(1)}%`;
+    }
+
+    refs.displayedPct = endPct;
+  }
+
+  private animatePct(
+    start: number,
+    end: number,
+    duration: number,
+    onUpdate: (val: number) => void
+  ): void {
+    if (start === end) {
+      onUpdate(end);
+      return;
+    }
+    const startTime = performance.now();
+    const step = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // easeOutCubic
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const current = start + (end - start) * ease;
+      onUpdate(current);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+    requestAnimationFrame(step);
   }
 }

@@ -3,12 +3,22 @@ import { createInfoIcon } from '../../Common/InfoTooltip';
 
 export type StateMetricType = 'visitors' | 'receipts' | 'lengthOfStay';
 
+const STATE_NAME_TO_CODE: Record<string, string> = {
+  'Johor': 'JHR', 'Kedah': 'KDH', 'Kelantan': 'KTN', 'Melaka': 'MLK',
+  'Negeri Sembilan': 'NSN', 'Pahang': 'PHG', 'Perak': 'PRK', 'Perlis': 'PLS',
+  'Pulau Pinang': 'PNG', 'Sabah': 'SBH', 'Sarawak': 'SWK', 'Selangor': 'SGR',
+  'Terengganu': 'TRG', 'W.P. Kuala Lumpur': 'KUL', 'W.P. Labuan': 'LBN', 'W.P. Putrajaya': 'PJY'
+};
+
 export class StateMetricsChart {
   public readonly element: HTMLElement;
   private contentContainer: HTMLElement;
   private currentMetric: StateMetricType = 'visitors';
+  private selectedStateId: string | null = null;
+  private onSelectStateCallback?: (stateId: string | null) => void;
 
-  constructor() {
+  constructor(onSelectState?: (stateId: string | null) => void) {
+    this.onSelectStateCallback = onSelectState;
     this.element = document.createElement('div');
     this.element.className = 'demand-card';
     this.element.style.marginTop = '24px';
@@ -138,18 +148,51 @@ export class StateMetricsChart {
     data.forEach((d) => {
         const val = d[this.currentMetric];
         const widthPct = maxValue > 0 ? (val / maxValue) * 100 : 0;
+        const code = STATE_NAME_TO_CODE[d.state] || '';
+        const isSelected = this.isStateMatch(code, d.state);
 
         const row = document.createElement('div');
+        row.className = `state-metric-row ${isSelected ? 'selected' : ''}`;
+        row.setAttribute('data-state-code', code);
+        row.setAttribute('data-state-name', d.state);
         row.style.display = 'flex';
         row.style.alignItems = 'center';
         row.style.gap = '16px';
+        row.style.padding = '4px 8px';
+        row.style.borderRadius = '6px';
+        row.style.cursor = 'pointer';
+        row.style.transition = 'background 0.2s ease, outline 0.2s ease, transform 0.15s ease';
+        if (isSelected) {
+          row.style.background = '#eff6ff';
+          row.style.outline = '1.5px solid #2563eb';
+        }
+
+        row.addEventListener('click', () => {
+          const next = isSelected ? null : code;
+          this.setSelectedState(next);
+          if (this.onSelectStateCallback) {
+            this.onSelectStateCallback(next);
+          }
+        });
+
+        row.addEventListener('mouseenter', () => {
+          if (!this.isStateMatch(code, d.state)) {
+            row.style.background = '#f8fafc';
+          }
+        });
+        row.addEventListener('mouseleave', () => {
+          if (!this.isStateMatch(code, d.state)) {
+            row.style.background = 'transparent';
+          }
+        });
 
         // State Name Label
         const labelStr = document.createElement('div');
+        labelStr.className = 'state-metric-label';
         labelStr.style.width = '140px';
         labelStr.style.fontSize = '13px';
-        labelStr.style.fontWeight = '500';
-        labelStr.style.color = '#475569';
+        labelStr.style.fontWeight = isSelected ? '700' : '500';
+        labelStr.style.color = isSelected ? '#2563eb' : '#475569';
         labelStr.style.textAlign = 'right';
         labelStr.textContent = d.state;
 
@@ -169,8 +212,6 @@ export class StateMetricsChart {
         fill.style.top = '0';
         fill.style.height = '100%';
         fill.style.width = '0%'; // Start at 0 for animation
-        // 2D effect (removed borderRight)
-        // If we want a solid color, we can just use the primary color instead of the light bg color
         fill.style.background = color;
         fill.style.borderRadius = '4px';
         fill.style.transition = 'width 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
@@ -222,5 +263,58 @@ export class StateMetricsChart {
     
     medianLine.appendChild(medianLabel);
     this.contentContainer.appendChild(medianLine);
+  }
+
+  public setSelectedState(stateId: string | null): void {
+    this.selectedStateId = stateId;
+    const rows = this.contentContainer.querySelectorAll<HTMLElement>('.state-metric-row');
+    rows.forEach((r) => {
+      const code = r.getAttribute('data-state-code') || '';
+      const stateName = r.getAttribute('data-state-name') || '';
+      const isSelected = this.isStateMatch(code, stateName);
+      const labelStr = r.querySelector<HTMLElement>('.state-metric-label');
+      if (isSelected) {
+        r.classList.add('selected');
+        r.style.background = '#eff6ff';
+        r.style.outline = '1.5px solid #2563eb';
+        if (labelStr) {
+          labelStr.style.fontWeight = '700';
+          labelStr.style.color = '#2563eb';
+        }
+      } else {
+        r.classList.remove('selected');
+        r.style.background = 'transparent';
+        r.style.outline = 'none';
+        if (labelStr) {
+          labelStr.style.fontWeight = '500';
+          labelStr.style.color = '#475569';
+        }
+      }
+    });
+  }
+
+  private isStateMatch(code: string, stateName: string): boolean {
+    if (!this.selectedStateId) return false;
+    const s = this.selectedStateId.toLowerCase().trim();
+    return (
+      code.toLowerCase() === s ||
+      stateName.toLowerCase() === s ||
+      (s === 'johor' && code === 'JHR') ||
+      (s === 'selangor' && code === 'SGR') ||
+      (s === 'penang' && code === 'PNG') ||
+      (s === 'kuala_lumpur' && code === 'KUL') ||
+      (s === 'perak' && code === 'PRK') ||
+      (s === 'pahang' && code === 'PHG') ||
+      (s === 'sarawak' && code === 'SWK') ||
+      (s === 'sabah' && code === 'SBH') ||
+      (s === 'melaka' && code === 'MLK') ||
+      (s === 'negeri_sembilan' && code === 'NSN') ||
+      (s === 'kedah' && code === 'KDH') ||
+      (s === 'terengganu' && code === 'TRG') ||
+      (s === 'kelantan' && code === 'KTN') ||
+      (s === 'perlis' && code === 'PLS') ||
+      (s === 'putrajaya' && code === 'PJY') ||
+      (s === 'labuan' && code === 'LBN')
+    );
   }
 }

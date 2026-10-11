@@ -825,6 +825,14 @@
   color: #94a3b8;
 }
 
+.acc-bar-val-text {
+  fill: #0f172a;
+}
+
+[data-theme="dark"] .acc-bar-val-text {
+  fill: #f8fafc;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }

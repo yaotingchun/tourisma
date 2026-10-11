@@ -320,6 +320,13 @@
   height: 100%;
 }
 
+.asset-ring-segment {
+  transition: stroke-dasharray 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              stroke-dashoffset 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              stroke-width 0.2s ease,
+              filter 0.2s ease;
+}
+
 .donut-center-info {
   position: absolute;
   display: flex;

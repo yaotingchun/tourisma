@@ -14,9 +14,9 @@ export class EnvironmentExposureBarChart {
   private selectedStateId: string | null = null;
   private barsContainer!: HTMLElement;
   private tooltip!: HTMLElement;
-  private onSelectStateCallback?: (stateId: string) => void;
+  private onSelectStateCallback?: (stateId: string | null) => void;
 
-  constructor(onSelectState?: (stateId: string) => void) {
+  constructor(onSelectState?: (stateId: string | null) => void) {
     this.onSelectStateCallback = onSelectState;
     this.element = document.createElement('div');
     this.element.className = 'asset-card env-barchart-card';
@@ -209,7 +209,13 @@ export class EnvironmentExposureBarChart {
     this.barsContainer.innerHTML = '';
 
     data.forEach((state) => {
-      const isSelected = this.selectedStateId === state.id;
+      const isSelected = !!(
+        this.selectedStateId &&
+        (this.selectedStateId === state.id ||
+          this.selectedStateId.replace(/_/g, '-') === state.id.replace(/_/g, '-') ||
+          (this.selectedStateId === 'penang' && state.id === 'pulau-pinang') ||
+          (this.selectedStateId === 'pulau-pinang' && state.id === 'penang'))
+      );
       const severityClass = this.getSeverityClass(state.exposurePct);
 
       const row = document.createElement('div');
@@ -289,10 +295,17 @@ export class EnvironmentExposureBarChart {
 
       row.addEventListener('click', () => {
         this.hideTooltip();
-        this.selectedStateId = this.selectedStateId === state.id ? null : state.id;
+        const isCurrentlySelected =
+          !!this.selectedStateId &&
+          (this.selectedStateId === state.id ||
+            this.selectedStateId.replace(/_/g, '-') === state.id.replace(/_/g, '-') ||
+            (this.selectedStateId === 'penang' && state.id === 'pulau-pinang') ||
+            (this.selectedStateId === 'pulau-pinang' && state.id === 'penang'));
+        const nextId = isCurrentlySelected ? null : state.id;
+        this.selectedStateId = nextId;
         this.updateBars();
         if (this.onSelectStateCallback) {
-          this.onSelectStateCallback(state.id);
+          this.onSelectStateCallback(nextId);
         }
       });
 

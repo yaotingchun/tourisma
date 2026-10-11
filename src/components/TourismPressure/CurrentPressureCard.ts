@@ -3,6 +3,13 @@ import { createInfoIcon } from '../Common/InfoTooltip';
 
 export class CurrentPressureCard {
   public readonly element: HTMLElement;
+  private cardRefs: Array<{
+    valEl: HTMLElement;
+    subEl: HTMLElement;
+    currentVal: number;
+    format: (v: number) => string;
+    animId?: number;
+  }> = [];
 
   constructor(initialData: TourismPressureStateData) {
     this.element = document.createElement('div');
@@ -15,8 +22,6 @@ export class CurrentPressureCard {
   }
 
   private render(data: TourismPressureStateData): void {
-    this.element.innerHTML = '';
-
     const visStr = data.domesticVisitorsM >= 100
       ? `${data.domesticVisitorsM.toFixed(1)}M`
       : `${data.domesticVisitorsM.toFixed(2)}M`;
@@ -28,7 +33,8 @@ export class CurrentPressureCard {
     const kpis = [
       {
         title: 'VISITOR DEMAND',
-        value: visStr,
+        targetVal: data.domesticVisitorsM,
+        format: (v: number) => (v >= 100 ? `${v.toFixed(1)}M` : `${v.toFixed(2)}M`),
         subtext: `${visStr} Domestic · ${intlStr} Int'l Guests`,
         accentColor: '#2563eb', // Royal Blue
         iconBg: '#eff6ff',
@@ -52,7 +58,8 @@ export class CurrentPressureCard {
       },
       {
         title: 'ACCOMMODATION UTILISATION',
-        value: `AOR ${data.aorPct.toFixed(1)}%`,
+        targetVal: data.aorPct,
+        format: (v: number) => `AOR ${v.toFixed(1)}%`,
         subtext: `${data.visitorToRoomRatio.toFixed(1)} / room · ${data.accommodationRooms.toLocaleString()} rooms`,
         accentColor: '#d97706', // Amber
         iconBg: '#fffbeb',
@@ -76,7 +83,8 @@ export class CurrentPressureCard {
       },
       {
         title: 'SPATIAL ACCESSIBILITY',
-        value: `Road ${data.roadAccessRate.toFixed(1)}%`,
+        targetVal: data.roadAccessRate,
+        format: (v: number) => `Road ${v.toFixed(1)}%`,
         subtext: `PT Access ${data.ptAccessRate.toFixed(1)}% · ${data.roadAccessRate >= 40 ? 'High Arterial' : 'Developing Corridor'}`,
         accentColor: '#059669', // Emerald
         iconBg: '#ecfdf5',
@@ -100,7 +108,8 @@ export class CurrentPressureCard {
       },
       {
         title: 'ENVIRONMENTAL PROXIMITY',
-        value: `${data.environmentalExposureRate.toFixed(1)}%`,
+        targetVal: data.environmentalExposureRate,
+        format: (v: number) => `${v.toFixed(1)}%`,
         subtext: `${data.environmentalExposureRate >= 35 ? 'Elevated Buffer Proximity' : 'Moderate Ecological Buffer'}`,
         accentColor: '#7c3aed', // Violet
         iconBg: '#f5f3ff',
@@ -122,51 +131,107 @@ export class CurrentPressureCard {
       },
     ];
 
-    kpis.forEach((kpi) => {
-      const card = document.createElement('div');
-      card.className = 'pressure-kpi-card';
-      card.style.setProperty('--card-accent', kpi.accentColor);
-      card.style.setProperty('--icon-bg', kpi.iconBg);
-      card.style.setProperty('--icon-color', kpi.iconColor);
+    if (this.cardRefs.length === 0) {
+      this.element.innerHTML = '';
+      kpis.forEach((kpi) => {
+        const card = document.createElement('div');
+        card.className = 'pressure-kpi-card';
+        card.style.setProperty('--card-accent', kpi.accentColor);
+        card.style.setProperty('--icon-bg', kpi.iconBg);
+        card.style.setProperty('--icon-color', kpi.iconColor);
 
-      const infoDiv = document.createElement('div');
-      infoDiv.className = 'pressure-kpi-info';
+        const infoDiv = document.createElement('div');
+        infoDiv.className = 'pressure-kpi-info';
 
-      const titleRow = document.createElement('div');
-      titleRow.style.display = 'flex';
-      titleRow.style.alignItems = 'center';
-      titleRow.style.justifyContent = 'space-between';
-      titleRow.style.width = '100%';
+        const titleRow = document.createElement('div');
+        titleRow.style.display = 'flex';
+        titleRow.style.alignItems = 'center';
+        titleRow.style.justifyContent = 'space-between';
+        titleRow.style.width = '100%';
 
-      const titleEl = document.createElement('span');
-      titleEl.className = 'pressure-kpi-title';
-      titleEl.textContent = kpi.title;
+        const titleEl = document.createElement('span');
+        titleEl.className = 'pressure-kpi-title';
+        titleEl.textContent = kpi.title;
 
-      const infoIcon = createInfoIcon(kpi.tooltip);
+        const infoIcon = createInfoIcon(kpi.tooltip);
 
-      titleRow.appendChild(titleEl);
-      titleRow.appendChild(infoIcon);
+        titleRow.appendChild(titleEl);
+        titleRow.appendChild(infoIcon);
 
-      const valRow = document.createElement('div');
-      valRow.className = 'pressure-kpi-value-row';
-      valRow.innerHTML = `<span class="pressure-kpi-value">${kpi.value}</span>`;
+        const valRow = document.createElement('div');
+        valRow.className = 'pressure-kpi-value-row';
 
-      const subEl = document.createElement('span');
-      subEl.className = 'pressure-kpi-subtext';
-      subEl.title = kpi.subtext;
-      subEl.textContent = kpi.subtext;
+        const valEl = document.createElement('span');
+        valEl.className = 'pressure-kpi-value';
+        valEl.textContent = kpi.format(kpi.targetVal);
+        valRow.appendChild(valEl);
 
-      infoDiv.appendChild(titleRow);
-      infoDiv.appendChild(valRow);
-      infoDiv.appendChild(subEl);
+        const subEl = document.createElement('span');
+        subEl.className = 'pressure-kpi-subtext';
+        subEl.title = kpi.subtext;
+        subEl.textContent = kpi.subtext;
 
-      const iconWrap = document.createElement('div');
-      iconWrap.className = 'pressure-kpi-icon-wrap';
-      iconWrap.innerHTML = kpi.iconSvg;
+        infoDiv.appendChild(titleRow);
+        infoDiv.appendChild(valRow);
+        infoDiv.appendChild(subEl);
 
-      card.appendChild(infoDiv);
-      card.appendChild(iconWrap);
-      this.element.appendChild(card);
+        const iconWrap = document.createElement('div');
+        iconWrap.className = 'pressure-kpi-icon-wrap';
+        iconWrap.innerHTML = kpi.iconSvg;
+
+        card.appendChild(infoDiv);
+        card.appendChild(iconWrap);
+        this.element.appendChild(card);
+
+        this.cardRefs.push({
+          valEl,
+          subEl,
+          currentVal: kpi.targetVal,
+          format: kpi.format,
+        });
+      });
+      return;
+    }
+
+    // Animate numbers and update subtexts
+    this.cardRefs.forEach((ref, idx) => {
+      const kpi = kpis[idx];
+
+      ref.subEl.textContent = kpi.subtext;
+      ref.subEl.title = kpi.subtext;
+
+      if (ref.animId) {
+        cancelAnimationFrame(ref.animId);
+        ref.animId = undefined;
+      }
+
+      const startVal = ref.currentVal;
+      const endVal = kpi.targetVal;
+      const duration = 650;
+      const startTime = performance.now();
+
+      if (startVal === endVal) {
+        ref.valEl.textContent = ref.format(endVal);
+        return;
+      }
+
+      const step = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = startVal + (endVal - startVal) * ease;
+        ref.valEl.textContent = ref.format(current);
+
+        if (progress < 1) {
+          ref.animId = requestAnimationFrame(step);
+        } else {
+          ref.valEl.textContent = ref.format(endVal);
+          ref.animId = undefined;
+        }
+      };
+
+      ref.animId = requestAnimationFrame(step);
+      ref.currentVal = endVal;
     });
   }
 }

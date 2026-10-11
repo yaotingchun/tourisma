@@ -6,7 +6,7 @@ export class DemandMapSection {
   private map: DemandMap;
   private profile: DemandMapProfile;
 
-  constructor() {
+  constructor(onSelectState?: (stateId: string | null) => void) {
     this.element = document.createElement('div');
     this.element.className = 'demand-map-section';
     this.element.style.display = 'flex';
@@ -15,10 +15,12 @@ export class DemandMapSection {
 
     this.profile = new DemandMapProfile(() => {
       this.map.setSelectedState(null);
+      if (onSelectState) onSelectState(null);
     });
 
     this.map = new DemandMap((stateId) => {
       this.profile.setSelectedState(stateId);
+      if (onSelectState) onSelectState(stateId);
     });
 
     this.render();
@@ -35,6 +37,11 @@ export class DemandMapSection {
 
     this.element.appendChild(mapContainer);
     this.element.appendChild(this.profile.element);
+  }
+
+  public setSelectedState(stateId: string | null): void {
+    this.map.setSelectedState(stateId);
+    this.profile.setSelectedState(stateId);
   }
 
   public destroy(): void {

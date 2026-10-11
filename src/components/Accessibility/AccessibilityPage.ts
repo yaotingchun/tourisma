@@ -49,10 +49,15 @@ export class AccessibilityPage {
     this.accessMap.setSelectedState(stateId);
     this.ringChart.setStateScope(stateId);
     this.stackedBarChart.setSelectedState(stateId);
+    this.kpiRow.updateData(stateId);
   }
 
   private handleModeChange(mode: AccessibilityMode): void {
-    this.accessMap.setMode(mode);
-    this.stackedBarChart.setMode(mode);
+    this.accessMap.setMode(mode, false);
+    this.stackedBarChart.setMode(mode, false);
+  }
+
+  public destroy(): void {
+    this.accessMap.destroy();
   }
 }

@@ -25,7 +25,7 @@ export class AccessibilityStackedBarChart {
     this.render();
   }
 
-  public setMode(mode: AccessibilityMode): void {
+  public setMode(mode: AccessibilityMode, triggerCallback: boolean = true): void {
     if (this.currentMode === mode) return;
     this.currentMode = mode;
 
@@ -46,7 +46,7 @@ export class AccessibilityStackedBarChart {
 
     this.renderRows();
 
-    if (this.onModeChangeCallback) {
+    if (triggerCallback && this.onModeChangeCallback) {
       this.onModeChangeCallback(mode);
     }
   }

@@ -46,6 +46,7 @@ export class TourismAssetsPage {
     this.densityMap.setSelectedState(stateId);
     this.mixRingCharts.setStateScope(stateId);
     this.portfolioDiversityChart.setSelectedState(stateId);
+    this.kpiRow.updateData(stateId);
   }
 
   public destroy(): void {
