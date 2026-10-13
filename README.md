@@ -1,4 +1,4 @@
-# TOURISMA
+# Introducing Tourisma
 ### Malaysia Tourism Spatial & Strategic Intelligence Dashboard
 
 [![Vercel Deployment](https://img.shields.io/badge/Deployment-Vercel-black?style=flat&logo=vercel)](https://tourisma-eight.vercel.app/)
