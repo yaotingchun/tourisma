@@ -133,25 +133,6 @@ const trainedMetrics = trainedForecastResults.metrics as Record<
 >;
 
 export const FORECAST_MODEL_SPECS: Record<ForecastModelId, ForecastModelSpec> = {
-  xgboost: {
-    id: 'xgboost',
-    name: 'XGBoost',
-    dropdownLabel: 'XGBoost',
-    badgeLabel: 'Modelled (XGBoost)',
-    tagline: 'Trained gradient-boosted decision trees (XGBoost) capturing non-linear interactions & momentum to 2030',
-    pills: [
-      { label: 'Gradient Boosted Trees', iconType: 'complex' },
-      { label: 'Newton-Raphson Step', iconType: 'performance' },
-      { label: 'L1/L2 Regularization', iconType: 'generalisation' }
-    ],
-    formula: 'Second-Order Gradient Tree Boosting: obj = ∑ l(y_i, ŷ_i) + ∑ Ω(f_k) with Newton-Raphson Regularized Optimization',
-    featuresUsed: ['Quarterly Time Horizon Index', 'Seasonal Sin/Cos Harmonics', 'Quarterly Categorical Encodings', 'Momentum Residual Dynamics'],
-    validationMetrics: trainedMetrics.xgboost || { mape: 0.19, rmse: 0.14, rSquared: 1.0 },
-    limitations: [
-      'Requires hyperparameter regularisation to avoid over-weighting sharp single-quarter spikes',
-      'Assumes external macroeconomic variables do not diverge sharply from 2022-2025 growth trajectories'
-    ]
-  },
   prophet: {
     id: 'prophet',
     name: 'Prophet',
@@ -171,23 +152,23 @@ export const FORECAST_MODEL_SPECS: Record<ForecastModelId, ForecastModelSpec> = 
       'Uncertainty envelope widens monotonically into longer horizons'
     ]
   },
-  linear: {
-    id: 'linear',
-    name: 'Linear Regression',
-    dropdownLabel: 'Linear Regression',
-    badgeLabel: 'Modelled (Linear Regression)',
-    tagline: 'Trained Ordinary Least Squares (OLS) linear progression with quarterly seasonal dummy adjustments to 2030',
+  xgboost: {
+    id: 'xgboost',
+    name: 'XGBoost',
+    dropdownLabel: 'XGBoost',
+    badgeLabel: 'Modelled (XGBoost)',
+    tagline: 'Trained gradient-boosted decision trees (XGBoost) capturing non-linear interactions & momentum to 2030',
     pills: [
-      { label: 'Baseline Trend', iconType: 'baseline' },
-      { label: 'Ordinary Least Squares', iconType: 'trend' },
-      { label: '95% Confidence Band', iconType: 'uncertainty' }
+      { label: 'Gradient Boosted Trees', iconType: 'complex' },
+      { label: 'Newton-Raphson Step', iconType: 'performance' },
+      { label: 'L1/L2 Regularization', iconType: 'generalisation' }
     ],
-    formula: 'Ordinary Least Squares (OLS) Linear Trend with Quarterly Dummies & Analytical 95% Confidence Intervals',
-    featuresUsed: ['Time Step Index (t)', 'Q1/Q2/Q4 Indicator Dummies', 'Analytical Variance Propagation'],
-    validationMetrics: trainedMetrics.linear || { mape: 2.15, rmse: 1.49, rSquared: 0.984 },
+    formula: 'Second-Order Gradient Tree Boosting: obj = ∑ l(y_i, ŷ_i) + ∑ Ω(f_k) with Newton-Raphson Regularized Optimization',
+    featuresUsed: ['Quarterly Time Horizon Index', 'Seasonal Sin/Cos Harmonics', 'Quarterly Categorical Encodings', 'Momentum Residual Dynamics'],
+    validationMetrics: trainedMetrics.xgboost || { mape: 0.19, rmse: 0.14, rSquared: 1.0 },
     limitations: [
-      'Assumes constant linear rate of multi-year expansion without accommodation supply ceiling',
-      'Cannot anticipate sudden macroeconomic turning points or travel policy shifts'
+      'Requires hyperparameter regularisation to avoid over-weighting sharp single-quarter spikes',
+      'Assumes external macroeconomic variables do not diverge sharply from 2022-2025 growth trajectories'
     ]
   },
   random_forest: {
@@ -208,6 +189,25 @@ export const FORECAST_MODEL_SPECS: Record<ForecastModelId, ForecastModelSpec> = 
       'Tree boundaries form piecewise steps in out-of-distribution forecast horizons',
       'Requires trend baseline anchoring for multi-year forward extrapolation'
     ]
+  },
+  linear: {
+    id: 'linear',
+    name: 'Linear Regression',
+    dropdownLabel: 'Linear Regression',
+    badgeLabel: 'Modelled (Linear Regression)',
+    tagline: 'Trained Ordinary Least Squares (OLS) linear progression with quarterly seasonal dummy adjustments to 2030',
+    pills: [
+      { label: 'Baseline Trend', iconType: 'baseline' },
+      { label: 'Ordinary Least Squares', iconType: 'trend' },
+      { label: '95% Confidence Band', iconType: 'uncertainty' }
+    ],
+    formula: 'Ordinary Least Squares (OLS) Linear Trend with Quarterly Dummies & Analytical 95% Confidence Intervals',
+    featuresUsed: ['Time Step Index (t)', 'Q1/Q2/Q4 Indicator Dummies', 'Analytical Variance Propagation'],
+    validationMetrics: trainedMetrics.linear || { mape: 2.15, rmse: 1.49, rSquared: 0.984 },
+    limitations: [
+      'Assumes constant linear rate of multi-year expansion without accommodation supply ceiling',
+      'Cannot anticipate sudden macroeconomic turning points or travel policy shifts'
+    ]
   }
 };
 
@@ -216,7 +216,7 @@ export const FORECAST_MODELS_DATA = trainedForecastResults.modelsData as Record<
   TimeSeriesPoint[]
 >;
 
-export const COMPOSITION_TIME_SERIES: TimeSeriesPoint[] = FORECAST_MODELS_DATA.xgboost || FORECAST_MODELS_DATA.linear;
+export const COMPOSITION_TIME_SERIES: TimeSeriesPoint[] = FORECAST_MODELS_DATA.prophet || FORECAST_MODELS_DATA.xgboost || FORECAST_MODELS_DATA.linear;
 
 // 2. Top 15 International Source Markets
 export const TOP_15_SOURCE_MARKETS: SourceMarket[] = [];
