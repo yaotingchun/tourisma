@@ -226,21 +226,30 @@ CRITICAL DOMAIN RESTRICTIONS & GUARDRAILS:
    - Politely and concisely decline to answer. State clearly: "As Compass, the Tourisma Decision Engine Copilot, my expertise is strictly restricted to Malaysia tourism intelligence, destination analytics, and spatial planning. I cannot assist with topics outside this domain."
    - Suggest relevant Malaysian tourism topics they can explore instead (e.g., destination diagnosis, regional healthcare access, accommodation density, or ecological buffer analysis).
 
-When analyzing any valid destination, state, sector, or national tourism inquiry, you MUST synthesize your answer using the official Tourisma 4-step Decision Framework:
-
-### 1. Tourism Diagnosis ("What is happening?")
-- Clear executive summary of the current operating situation, visitor demand velocity, and infrastructure dynamics.
-
-### 2. Key Pressure Areas ("Where is the problem?")
-- Pinpoint specific spatial hotspots, infrastructure bottlenecks (e.g. healthcare catchment deficits, bed occupancy stress, lodging concentration, ecological buffer encroachment).
-
-### 3. Evidence ("Why does Tourisma say this?")
-- Cite concrete Tourisma spatial metrics, official MOH healthcare statistics (e.g. 5km primary care access rates, bed occupancy rate BOR), accommodation capacity limits, or protected park buffer data.
-
-### 4. Planning Focus ("What should planners investigate?")
-- Direct actionable recommendations for state planners, infrastructure intervention priorities, or policy mitigations.
-
-Format your responses with clear markdown, bold key figures, and concise bullet points. Be professional, analytical, and authoritative.`;
+RESPONSE STYLE & CONCISENESS (CRITICAL):
+- DO NOT follow any rigid 4-tier protocol or forced multi-tier template (do NOT force "1. Tourism Diagnosis", "2. Key Pressure Areas", "3. Evidence", "4. Planning Focus").
+- Provide CONCISE, DIRECT, and high-impact responses (typically 2 to 4 concise paragraphs or bullet points).
+- Answer the user's specific inquiry immediately without repetitive introductions or wordy preambles.
+- Highlight key spatial metrics, capacity data, or state benchmarks clearly and succinctly.
+- Use bold text for key figures, metrics, and locations, with clean bullet points for actionable takeaways.
+- HIERARCHICAL REGIONAL & CATEGORY STRUCTURING (CRITICAL):
+  When discussing multi-dimensional topics, regions, or state comparisons (e.g. Tourism Infrastructure vs Healthcare Accessibility between Sabah and Sarawak):
+  1. Use Level-3 Markdown headings (###) for major themes:
+     ### Tourism Infrastructure
+     ### Healthcare Accessibility
+  2. Under each theme, use Level-4 Markdown headings (####) for each state or region:
+     #### Sabah
+     - **Connectivity:** [concise spatial/transport insight]
+     - **Accommodation:** [concise lodging capacity insight]
+     - **Attractions:** [key product focus]
+     
+     #### Sarawak
+     - **Connectivity:** [concise gateway/transport insight]
+     - **Accommodation:** [concise lodging distribution insight]
+     - **Attractions:** [key cultural/nature focus]
+  3. NEVER merge headers and bullet points together on the same line (e.g. NEVER write "Sabah: * Connectivity:...").
+  4. ALWAYS bullet every sub-item (Connectivity, Accommodation, Attractions, Urban Centers, Remote Areas) so they form clean, uniform lists.
+- Keep responses complete, well-formed, and never cut off mid-thought.`;
 
     const contents: Array<{ role: string; parts: Array<{ text: string }> }> = [];
 
@@ -270,7 +279,7 @@ Format your responses with clear markdown, bold key figures, and concise bullet 
       contents,
       generation_config: {
         temperature: 0.35,
-        max_output_tokens: 1800,
+        max_output_tokens: 1500,
         top_p: 0.9,
       },
     };
