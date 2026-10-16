@@ -36,7 +36,7 @@ export class DemandCompositionChart {
   private chartStage: HTMLElement;
   private tooltip!: HTMLElement;
   private currentMetric: DemandMetric = 'visitors';
-  private currentModel: ForecastModelId = 'xgboost';
+  private currentModel: ForecastModelId = 'prophet';
   private subtitleEl: HTMLElement;
   private featuresRowEl: HTMLElement;
   private infoContainer: HTMLElement;
@@ -82,7 +82,7 @@ export class DemandCompositionChart {
     this.dropdownBtn.setAttribute('title', 'Change forecasting model');
     this.dropdownBtn.innerHTML = `
       <span class="model-btn-label-prefix">Model:</span>
-      <span class="model-btn-current-name">${FORECAST_MODEL_SPECS[this.currentModel]?.name || 'XGBoost'}</span>
+      <span class="model-btn-current-name">${FORECAST_MODEL_SPECS[this.currentModel]?.name || 'Prophet'}</span>
       <span class="model-btn-chevron">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 12 15 18 9"></polyline>
@@ -98,23 +98,15 @@ export class DemandCompositionChart {
     const menuHeader = document.createElement('div');
     menuHeader.className = 'forecast-model-menu-header';
     menuHeader.innerHTML = `
-      <span>Models Ranked by Performance</span>
-      <span style="font-size: 8.5px; opacity: 0.8; font-weight: 600;">Top = Highest</span>
+      <span>Forecasting Models</span>
     `;
     this.dropdownMenu.appendChild(menuHeader);
 
-    // Models sorted dynamically by validation performance descending (Highest R² & lowest MAPE first)
-    const sortedModelIds = (Object.keys(FORECAST_MODEL_SPECS) as ForecastModelId[]).sort((a, b) => {
-      const specA = FORECAST_MODEL_SPECS[a];
-      const specB = FORECAST_MODEL_SPECS[b];
-      return (specB?.validationMetrics.rSquared ?? 0) - (specA?.validationMetrics.rSquared ?? 0);
-    });
+    // List models with Prophet at the top (no accuracy ranking or metrics)
+    const modelIds: ForecastModelId[] = ['prophet', 'xgboost', 'random_forest', 'linear'];
 
-    sortedModelIds.forEach((id, index) => {
+    modelIds.forEach((id) => {
       const spec = FORECAST_MODEL_SPECS[id];
-      const rank = index + 1;
-      const isTop = rank === 1;
-      const accuracyPct = (100 - spec.validationMetrics.mape).toFixed(1);
 
       const itemBtn = document.createElement('button');
       itemBtn.type = 'button';
@@ -123,23 +115,7 @@ export class DemandCompositionChart {
       itemBtn.innerHTML = `
         <div class="model-item-info">
           <div class="model-item-title-row">
-            <span class="model-rank-badge ${isTop ? 'rank-top' : ''}">#${rank}</span>
             <span class="model-item-name">${spec?.name || id}</span>
-            ${isTop ? '<span class="model-top-tag">Top Performer</span>' : ''}
-          </div>
-          <div class="model-perf-metrics-row">
-            <span class="model-metric-tag" title="Coefficient of Determination (Goodness of Fit, max 1.0)">
-              <span class="metric-label">R²</span>
-              <span class="metric-value">${spec.validationMetrics.rSquared}</span>
-            </span>
-            <span class="model-metric-tag" title="Mean Absolute Percentage Error (Lower is better)">
-              <span class="metric-label">MAPE</span>
-              <span class="metric-value">${spec.validationMetrics.mape}%</span>
-            </span>
-            <span class="model-metric-tag highlight" title="Forecast Accuracy (100% - MAPE)">
-              <span class="metric-label">Accuracy</span>
-              <span class="metric-value">${accuracyPct}%</span>
-            </span>
           </div>
         </div>
         <span class="model-item-check">
@@ -344,7 +320,7 @@ export class DemandCompositionChart {
       sourceOrg: 'Tourism Malaysia Econometric Unit & DOSM DTS',
       datasetName: `Quarterly Tourism Demand Forecast (${spec.name})`,
       referenceYear: '2026 – 2030',
-      measure: `Predictive model projecting quarterly domestic visitor volume, daily expenditure yields, and hotel occupancy under ${spec.name}. Validation MAPE: ${spec.validationMetrics.mape}% (RMSE: ${spec.validationMetrics.rmse}M, R²: ${spec.validationMetrics.rSquared}).`,
+      measure: `Predictive model projecting quarterly domestic visitor volume, daily expenditure yields, and hotel occupancy under ${spec.name}.`,
       formula: spec.formula,
       limitations: spec.limitations.join('; '),
     });
