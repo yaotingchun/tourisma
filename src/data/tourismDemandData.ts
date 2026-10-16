@@ -101,45 +101,122 @@ export interface SpendPerTripItem {
   internationalSpendRM: number;
 }
 
-// 1. Composition: Historical Quarterly Arrivals
-export const COMPOSITION_TIME_SERIES: TimeSeriesPoint[] = [
-  { period: '2022 Q1', year: 2022, quarter: 1, domestic: 36.36, international: 0, total: 36.36, domesticShare: 100, internationalShare: 0, expenditure: 140.85, aor: 46.26, isForecast: false, isAorForecast: false },
-  { period: '2022 Q2', year: 2022, quarter: 2, domestic: 45.47, international: 0, total: 45.47, domesticShare: 100, internationalShare: 0, expenditure: 152.20, aor: 46.26, isForecast: false, isAorForecast: false },
-  { period: '2022 Q3', year: 2022, quarter: 3, domestic: 43.00, international: 0, total: 43.00, domesticShare: 100, internationalShare: 0, expenditure: 136.71, aor: 46.26, isForecast: false, isAorForecast: false },
-  { period: '2022 Q4', year: 2022, quarter: 4, domestic: 46.77, international: 0, total: 46.77, domesticShare: 100, internationalShare: 0, expenditure: 153.94, aor: 46.26, isForecast: false, isAorForecast: false },
-  { period: '2023 Q1', year: 2023, quarter: 1, domestic: 49.26, international: 0, total: 49.26, domesticShare: 100, internationalShare: 0, expenditure: 152.84, aor: 48.41, isForecast: false, isAorForecast: false },
-  { period: '2023 Q2', year: 2023, quarter: 2, domestic: 55.28, international: 0, total: 55.28, domesticShare: 100, internationalShare: 0, expenditure: 155.13, aor: 48.41, isForecast: false, isAorForecast: false },
-  { period: '2023 Q3', year: 2023, quarter: 3, domestic: 54.16, international: 0, total: 54.16, domesticShare: 100, internationalShare: 0, expenditure: 145.25, aor: 48.41, isForecast: false, isAorForecast: false },
-  { period: '2023 Q4', year: 2023, quarter: 4, domestic: 55.03, international: 0, total: 55.03, domesticShare: 100, internationalShare: 0, expenditure: 169.38, aor: 48.41, isForecast: false, isAorForecast: false },
-  { period: '2024 Q1', year: 2024, quarter: 1, domestic: 58.61, international: 0, total: 58.61, domesticShare: 100, internationalShare: 0, expenditure: 160.94, aor: 50.21, isForecast: false, isAorForecast: false },
-  { period: '2024 Q2', year: 2024, quarter: 2, domestic: 68.44, international: 0, total: 68.44, domesticShare: 100, internationalShare: 0, expenditure: 161.16, aor: 50.21, isForecast: false, isAorForecast: false },
-  { period: '2024 Q3', year: 2024, quarter: 3, domestic: 66.26, international: 0, total: 66.26, domesticShare: 100, internationalShare: 0, expenditure: 151.24, aor: 50.21, isForecast: false, isAorForecast: false },
-  { period: '2024 Q4', year: 2024, quarter: 4, domestic: 66.82, international: 0, total: 66.82, domesticShare: 100, internationalShare: 0, expenditure: 170.05, aor: 50.21, isForecast: false, isAorForecast: false },
-  { period: '2025 Q1', year: 2025, quarter: 1, domestic: 69.68, international: 0, total: 69.68, domesticShare: 100, internationalShare: 0, expenditure: 165.32, aor: 51.52, isForecast: false, isAorForecast: false },
-  { period: '2025 Q2', year: 2025, quarter: 2, domestic: 73.75, international: 0, total: 73.75, domesticShare: 100, internationalShare: 0, expenditure: 155.23, aor: 51.52, isForecast: false, isAorForecast: false },
-  { period: '2025 Q3', year: 2025, quarter: 3, domestic: 72.60, international: 0, total: 72.60, domesticShare: 100, internationalShare: 0, expenditure: 161.11, aor: 51.52, isForecast: false, isAorForecast: false },
-  { period: '2025 Q4', year: 2025, quarter: 4, domestic: 74.03, international: 0, total: 74.03, domesticShare: 100, internationalShare: 0, expenditure: 172.45, aor: 51.52, isForecast: false, isAorForecast: false },
-  { period: '2026 Q1', year: 2026, quarter: 1, domestic: 74.67, international: 0, total: 74.67, domesticShare: 100, internationalShare: 0, expenditure: 178.71, aor: 48.95, isForecast: false, isAorForecast: true, aorLower: 42.89, aorUpper: 55.02 },
-  { period: '2026 Q2', year: 2026, quarter: 2, domestic: 80.88, international: 0, total: 80.88, domesticShare: 100, internationalShare: 0, expenditure: 173.15, aor: 48.95, isForecast: true, lowerBound: 75.28, upperBound: 86.48, expenditureLower: 158.05, expenditureUpper: 188.24, isAorForecast: true, aorLower: 42.89, aorUpper: 55.02 },
-  { period: '2026 Q3', year: 2026, quarter: 3, domestic: 83.27, international: 0, total: 83.27, domesticShare: 100, internationalShare: 0, expenditure: 174.85, aor: 48.95, isForecast: true, lowerBound: 77.66, upperBound: 88.87, expenditureLower: 159.76, expenditureUpper: 189.95, isAorForecast: true, aorLower: 42.89, aorUpper: 55.02 },
-  { period: '2026 Q4', year: 2026, quarter: 4, domestic: 85.65, international: 0, total: 85.65, domesticShare: 100, internationalShare: 0, expenditure: 176.56, aor: 48.95, isForecast: true, lowerBound: 80.05, upperBound: 91.25, expenditureLower: 161.46, expenditureUpper: 191.66, isAorForecast: true, aorLower: 42.89, aorUpper: 55.02 },
-  { period: '2027 Q1', year: 2027, quarter: 1, domestic: 88.03, international: 0, total: 88.03, domesticShare: 100, internationalShare: 0, expenditure: 178.27, aor: 48.67, isForecast: true, lowerBound: 82.43, upperBound: 93.64, expenditureLower: 163.17, expenditureUpper: 193.36, isAorForecast: true, aorLower: 42.60, aorUpper: 54.73 },
-  { period: '2027 Q2', year: 2027, quarter: 2, domestic: 90.42, international: 0, total: 90.42, domesticShare: 100, internationalShare: 0, expenditure: 179.97, aor: 48.67, isForecast: true, lowerBound: 84.82, upperBound: 96.02, expenditureLower: 164.88, expenditureUpper: 195.07, isAorForecast: true, aorLower: 42.60, aorUpper: 54.73 },
-  { period: '2027 Q3', year: 2027, quarter: 3, domestic: 92.80, international: 0, total: 92.80, domesticShare: 100, internationalShare: 0, expenditure: 181.68, aor: 48.67, isForecast: true, lowerBound: 87.20, upperBound: 98.40, expenditureLower: 166.58, expenditureUpper: 196.77, isAorForecast: true, aorLower: 42.60, aorUpper: 54.73 },
-  { period: '2027 Q4', year: 2027, quarter: 4, domestic: 95.19, international: 0, total: 95.19, domesticShare: 100, internationalShare: 0, expenditure: 183.38, aor: 48.67, isForecast: true, lowerBound: 89.58, upperBound: 100.79, expenditureLower: 168.29, expenditureUpper: 198.48, isAorForecast: true, aorLower: 42.60, aorUpper: 54.73 },
-  { period: '2028 Q1', year: 2028, quarter: 1, domestic: 97.57, international: 0, total: 97.57, domesticShare: 100, internationalShare: 0, expenditure: 185.09, aor: 48.38, isForecast: true, lowerBound: 91.97, upperBound: 103.17, expenditureLower: 169.99, expenditureUpper: 200.19, isAorForecast: true, aorLower: 42.32, aorUpper: 54.44 },
-  { period: '2028 Q2', year: 2028, quarter: 2, domestic: 99.95, international: 0, total: 99.95, domesticShare: 100, internationalShare: 0, expenditure: 186.80, aor: 48.38, isForecast: true, lowerBound: 94.35, upperBound: 105.56, expenditureLower: 171.70, expenditureUpper: 201.89, isAorForecast: true, aorLower: 42.32, aorUpper: 54.44 },
-  { period: '2028 Q3', year: 2028, quarter: 3, domestic: 102.34, international: 0, total: 102.34, domesticShare: 100, internationalShare: 0, expenditure: 188.50, aor: 48.38, isForecast: true, lowerBound: 96.74, upperBound: 107.94, expenditureLower: 173.41, expenditureUpper: 203.60, isAorForecast: true, aorLower: 42.32, aorUpper: 54.44 },
-  { period: '2028 Q4', year: 2028, quarter: 4, domestic: 104.72, international: 0, total: 104.72, domesticShare: 100, internationalShare: 0, expenditure: 190.21, aor: 48.38, isForecast: true, lowerBound: 99.12, upperBound: 110.32, expenditureLower: 175.11, expenditureUpper: 205.30, isAorForecast: true, aorLower: 42.32, aorUpper: 54.44 },
-  { period: '2029 Q1', year: 2029, quarter: 1, domestic: 107.11, international: 0, total: 107.11, domesticShare: 100, internationalShare: 0, expenditure: 191.91, aor: 48.09, isForecast: true, lowerBound: 101.50, upperBound: 112.71, expenditureLower: 176.82, expenditureUpper: 207.01, isAorForecast: true, aorLower: 42.03, aorUpper: 54.16 },
-  { period: '2029 Q2', year: 2029, quarter: 2, domestic: 109.49, international: 0, total: 109.49, domesticShare: 100, internationalShare: 0, expenditure: 193.62, aor: 48.09, isForecast: true, lowerBound: 103.89, upperBound: 115.09, expenditureLower: 178.52, expenditureUpper: 208.72, isAorForecast: true, aorLower: 42.03, aorUpper: 54.16 },
-  { period: '2029 Q3', year: 2029, quarter: 3, domestic: 111.87, international: 0, total: 111.87, domesticShare: 100, internationalShare: 0, expenditure: 195.33, aor: 48.09, isForecast: true, lowerBound: 106.27, upperBound: 117.48, expenditureLower: 180.23, expenditureUpper: 210.42, isAorForecast: true, aorLower: 42.03, aorUpper: 54.16 },
-  { period: '2029 Q4', year: 2029, quarter: 4, domestic: 114.26, international: 0, total: 114.26, domesticShare: 100, internationalShare: 0, expenditure: 197.03, aor: 48.09, isForecast: true, lowerBound: 108.66, upperBound: 119.86, expenditureLower: 181.94, expenditureUpper: 212.13, isAorForecast: true, aorLower: 42.03, aorUpper: 54.16 },
-  { period: '2030 Q1', year: 2030, quarter: 1, domestic: 116.64, international: 0, total: 116.64, domesticShare: 100, internationalShare: 0, expenditure: 198.74, aor: 47.81, isForecast: true, lowerBound: 111.04, upperBound: 122.24, expenditureLower: 183.64, expenditureUpper: 213.83, isAorForecast: true, aorLower: 41.74, aorUpper: 53.87 },
-  { period: '2030 Q2', year: 2030, quarter: 2, domestic: 119.03, international: 0, total: 119.03, domesticShare: 100, internationalShare: 0, expenditure: 200.44, aor: 47.81, isForecast: true, lowerBound: 113.43, upperBound: 124.63, expenditureLower: 185.35, expenditureUpper: 215.54, isAorForecast: true, aorLower: 41.74, aorUpper: 53.87 },
-  { period: '2030 Q3', year: 2030, quarter: 3, domestic: 121.41, international: 0, total: 121.41, domesticShare: 100, internationalShare: 0, expenditure: 202.15, aor: 47.81, isForecast: true, lowerBound: 115.81, upperBound: 127.01, expenditureLower: 187.05, expenditureUpper: 217.25, isAorForecast: true, aorLower: 41.74, aorUpper: 53.87 },
-  { period: '2030 Q4', year: 2030, quarter: 4, domestic: 123.80, international: 0, total: 123.80, domesticShare: 100, internationalShare: 0, expenditure: 203.86, aor: 47.81, isForecast: true, lowerBound: 118.19, upperBound: 129.40, expenditureLower: 188.76, expenditureUpper: 218.95, isAorForecast: true, aorLower: 41.74, aorUpper: 53.87 },
-];
+export type ForecastModelId = 'linear' | 'prophet' | 'random_forest' | 'xgboost';
+
+export interface ModelPill {
+  label: string;
+  iconType: 'trend' | 'holiday' | 'uncertainty' | 'features' | 'accuracy' | 'performance' | 'complex' | 'generalisation' | 'baseline';
+}
+
+export interface ForecastModelSpec {
+  id: ForecastModelId;
+  name: string;
+  dropdownLabel: string;
+  badgeLabel: string;
+  tagline: string;
+  pills: ModelPill[];
+  formula: string;
+  featuresUsed: string[];
+  validationMetrics: {
+    mape: number;
+    rmse: number;
+    rSquared: number;
+  };
+  limitations: string[];
+}
+
+import trainedForecastResults from './trainedForecastResults.json';
+
+const trainedMetrics = trainedForecastResults.metrics as Record<
+  ForecastModelId,
+  { rSquared: number; mape: number; rmse: number }
+>;
+
+export const FORECAST_MODEL_SPECS: Record<ForecastModelId, ForecastModelSpec> = {
+  xgboost: {
+    id: 'xgboost',
+    name: 'XGBoost',
+    dropdownLabel: 'XGBoost',
+    badgeLabel: 'Modelled (XGBoost)',
+    tagline: 'Trained gradient-boosted decision trees (XGBoost) capturing non-linear interactions & momentum to 2030',
+    pills: [
+      { label: 'Gradient Boosted Trees', iconType: 'complex' },
+      { label: 'Newton-Raphson Step', iconType: 'performance' },
+      { label: 'L1/L2 Regularization', iconType: 'generalisation' }
+    ],
+    formula: 'Second-Order Gradient Tree Boosting: obj = ∑ l(y_i, ŷ_i) + ∑ Ω(f_k) with Newton-Raphson Regularized Optimization',
+    featuresUsed: ['Quarterly Time Horizon Index', 'Seasonal Sin/Cos Harmonics', 'Quarterly Categorical Encodings', 'Momentum Residual Dynamics'],
+    validationMetrics: trainedMetrics.xgboost || { mape: 0.19, rmse: 0.14, rSquared: 1.0 },
+    limitations: [
+      'Requires hyperparameter regularisation to avoid over-weighting sharp single-quarter spikes',
+      'Assumes external macroeconomic variables do not diverge sharply from 2022-2025 growth trajectories'
+    ]
+  },
+  prophet: {
+    id: 'prophet',
+    name: 'Prophet',
+    dropdownLabel: 'Prophet',
+    badgeLabel: 'Modelled (Prophet)',
+    tagline: 'Trained Meta Prophet Bayesian additive time-series with quarterly Fourier seasonality & uncertainty intervals',
+    pills: [
+      { label: 'Trend & Seasonality', iconType: 'trend' },
+      { label: 'Holiday & Spikes', iconType: 'holiday' },
+      { label: 'Bayesian 95% CI', iconType: 'uncertainty' }
+    ],
+    formula: 'Additive Decomposable Time Series: y(t) = g(t) + s(t) + h(t) + ε_t with Bayesian Monte Carlo Uncertainty Intervals',
+    featuresUsed: ['Quarterly Fourier Seasonality', 'Piecewise Linear Trend', 'Changepoint Regularization', 'Bayesian Uncertainty Intervals'],
+    validationMetrics: trainedMetrics.prophet || { mape: 0.90, rmse: 0.61, rSquared: 0.997 },
+    limitations: [
+      'Assumes historical seasonal cycles remain synchronized across forward years',
+      'Uncertainty envelope widens monotonically into longer horizons'
+    ]
+  },
+  linear: {
+    id: 'linear',
+    name: 'Linear Regression',
+    dropdownLabel: 'Linear Regression',
+    badgeLabel: 'Modelled (Linear Regression)',
+    tagline: 'Trained Ordinary Least Squares (OLS) linear progression with quarterly seasonal dummy adjustments to 2030',
+    pills: [
+      { label: 'Baseline Trend', iconType: 'baseline' },
+      { label: 'Ordinary Least Squares', iconType: 'trend' },
+      { label: '95% Confidence Band', iconType: 'uncertainty' }
+    ],
+    formula: 'Ordinary Least Squares (OLS) Linear Trend with Quarterly Dummies & Analytical 95% Confidence Intervals',
+    featuresUsed: ['Time Step Index (t)', 'Q1/Q2/Q4 Indicator Dummies', 'Analytical Variance Propagation'],
+    validationMetrics: trainedMetrics.linear || { mape: 2.15, rmse: 1.49, rSquared: 0.984 },
+    limitations: [
+      'Assumes constant linear rate of multi-year expansion without accommodation supply ceiling',
+      'Cannot anticipate sudden macroeconomic turning points or travel policy shifts'
+    ]
+  },
+  random_forest: {
+    id: 'random_forest',
+    name: 'Random Forest Regression',
+    dropdownLabel: 'Random Forest Regression',
+    badgeLabel: 'Modelled (Random Forest)',
+    tagline: 'Trained 200-tree Random Forest ensemble regressor with multi-factor feature splits to 2030',
+    pills: [
+      { label: '200 Decision Trees', iconType: 'features' },
+      { label: 'Multi-feature Bagging', iconType: 'accuracy' },
+      { label: 'Tree Variance Bounds', iconType: 'performance' }
+    ],
+    formula: 'Ensemble Bagging: f(x) = (1/B) * ∑ T_b(x) with Estimator Variance Confidence Intervals',
+    featuresUsed: ['Time Index & Progression', 'Quarter Indicators', 'Harmonic Seasonal Signals', 'Bootstrap Tree Aggregation'],
+    validationMetrics: trainedMetrics.random_forest || { mape: 2.14, rmse: 1.54, rSquared: 0.983 },
+    limitations: [
+      'Tree boundaries form piecewise steps in out-of-distribution forecast horizons',
+      'Requires trend baseline anchoring for multi-year forward extrapolation'
+    ]
+  }
+};
+
+export const FORECAST_MODELS_DATA = trainedForecastResults.modelsData as Record<
+  ForecastModelId,
+  TimeSeriesPoint[]
+>;
+
+export const COMPOSITION_TIME_SERIES: TimeSeriesPoint[] = FORECAST_MODELS_DATA.xgboost || FORECAST_MODELS_DATA.linear;
 
 // 2. Top 15 International Source Markets
 export const TOP_15_SOURCE_MARKETS: SourceMarket[] = [];

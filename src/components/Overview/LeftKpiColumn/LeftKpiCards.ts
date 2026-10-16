@@ -36,9 +36,42 @@ const OVERVIEW_KPI_TOOLTIPS: Record<string, any> = {
   },
 };
 
+interface LeftKpiCardRef {
+  valEl: HTMLElement;
+  currentVal: number;
+  targetVal: number;
+  prefix: string;
+  suffix: string;
+  decimals: number;
+  animId?: number;
+}
+
+function parseVal(str: string): { prefix: string; num: number; suffix: string; decimals: number } | null {
+  const match = str.match(/^([^\d.]*)([\d,.]+)(.*)$/);
+  if (!match) return null;
+  const prefix = match[1];
+  const rawNum = match[2].replace(/,/g, '');
+  const num = parseFloat(rawNum);
+  if (isNaN(num)) return null;
+  const suffix = match[3];
+  const decimals = match[2].includes('.') ? match[2].split('.')[1].length : 0;
+  return { prefix, num, suffix, decimals };
+}
+
+function formatParsed(val: number, prefix: string, suffix: string, decimals: number): string {
+  let numPart: string;
+  if (decimals === 0) {
+    numPart = Math.round(val).toLocaleString();
+  } else {
+    numPart = val.toFixed(decimals);
+  }
+  return `${prefix}${numPart}${suffix}`;
+}
+
 export class LeftKpiCards {
   public readonly element: HTMLElement;
   private kpis: KpiCardConfig[];
+  private cardRefs: LeftKpiCardRef[] = [];
 
   constructor(kpis: KpiCardConfig[] = NATIONAL_OVERVIEW_KPIS) {
     this.element = document.createElement('div');
@@ -53,9 +86,15 @@ export class LeftKpiCards {
   }
 
   private render(): void {
+    // Save previous values if available
+    const prevValues = this.cardRefs.map((r) => r.currentVal);
+    this.cardRefs.forEach((r) => {
+      if (r.animId) cancelAnimationFrame(r.animId);
+    });
+    this.cardRefs = [];
     this.element.innerHTML = '';
 
-    this.kpis.forEach((kpi) => {
+    this.kpis.forEach((kpi, idx) => {
       const card = document.createElement('div');
       card.className = 'vertical-kpi-card';
       if (kpi.tooltipNote) {
@@ -97,7 +136,62 @@ export class LeftKpiCards {
         slot.replaceWith(infoIcon);
       }
 
+      const valEl = card.querySelector('.kpi-main-val') as HTMLElement;
+      const parsed = parseVal(kpi.value);
+      if (parsed && valEl) {
+        const prev = prevValues[idx] ?? 0;
+        valEl.textContent = formatParsed(prev, parsed.prefix, parsed.suffix, parsed.decimals);
+        this.cardRefs.push({
+          valEl,
+          currentVal: prev,
+          targetVal: parsed.num,
+          prefix: parsed.prefix,
+          suffix: parsed.suffix,
+          decimals: parsed.decimals,
+        });
+      }
+
       this.element.appendChild(card);
+    });
+
+    requestAnimationFrame(() => this.animateCards());
+  }
+
+  private animateCards(): void {
+    this.cardRefs.forEach((ref) => {
+      if (ref.animId) {
+        cancelAnimationFrame(ref.animId);
+        ref.animId = undefined;
+      }
+
+      const startVal = ref.currentVal;
+      const endVal = ref.targetVal;
+      const duration = 650;
+      const startTime = performance.now();
+
+      if (startVal === endVal) {
+        ref.valEl.textContent = formatParsed(endVal, ref.prefix, ref.suffix, ref.decimals);
+        return;
+      }
+
+      const step = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = startVal + (endVal - startVal) * ease;
+        ref.currentVal = current;
+        ref.valEl.textContent = formatParsed(current, ref.prefix, ref.suffix, ref.decimals);
+
+        if (progress < 1) {
+          ref.animId = requestAnimationFrame(step);
+        } else {
+          ref.currentVal = endVal;
+          ref.valEl.textContent = formatParsed(endVal, ref.prefix, ref.suffix, ref.decimals);
+          ref.animId = undefined;
+        }
+      };
+
+      ref.animId = requestAnimationFrame(step);
     });
   }
 
