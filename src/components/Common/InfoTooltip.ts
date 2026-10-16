@@ -105,7 +105,7 @@ export function createInfoIcon(config: InfoTooltipConfig): HTMLElement {
     const vh = window.innerHeight;
 
     // Constrain width and height so tooltip can NEVER exceed viewport
-    const maxTooltipWidth = Math.min(300, vw - margin * 2);
+    const maxTooltipWidth = Math.min(380, vw - margin * 2);
     tooltip.style.width = `${maxTooltipWidth}px`;
     tooltip.style.maxWidth = `${maxTooltipWidth}px`;
     tooltip.style.maxHeight = `${vh - margin * 2}px`;

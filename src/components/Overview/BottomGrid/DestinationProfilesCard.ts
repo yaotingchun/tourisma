@@ -52,9 +52,9 @@ export class DestinationProfilesCard {
         sourceOrg: 'Tourisma National Spatial Diagnostics & State Master Index',
         datasetName: 'State Readiness & Demand Portfolio Quadrants',
         referenceYear: '2025 / 2026',
-        measure: 'Grouping of all 16 states into 4 strategic readiness quadrants based on demand volume vs. supply capacity.',
-        formula: 'Four-quadrant matrix based on national median visitor volume and readiness scores',
-        limitations: 'Macro state categorization intended for national prioritization; municipal variations exist.',
+        measure: 'Grouping of all 16 states into 4 strategic quadrants based on relative Demand and Readiness scores.',
+        formula: '4-Quadrant Matrix partitioned by Median Demand Score (39.50) and Median Readiness Score (18.12)',
+        limitations: 'Macro state categorization intended for national strategic planning; intra-state district variations exist.',
       });
       infoSlot.replaceWith(infoIcon);
     }
