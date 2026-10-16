@@ -2,9 +2,19 @@ import { STATES_OVERVIEW_DATA, type StateOverviewItem } from '../../data/overvie
 import type { AttractionItem } from '../../data/attractionsData';
 import { createInfoIcon } from '../Common/InfoTooltip';
 
+interface StateStatRef {
+  valEl: HTMLElement;
+  currentVal: number;
+  startVal: number;
+  targetVal: number;
+  format: (v: number) => string;
+}
+
 export class StateContextSection {
   public readonly element: HTMLElement;
   private currentAttraction: AttractionItem;
+  private statRefs: StateStatRef[] = [];
+  private animId?: number;
 
   constructor(initialAttraction: AttractionItem) {
     this.currentAttraction = initialAttraction;
@@ -20,6 +30,14 @@ export class StateContextSection {
   }
 
   private render(): void {
+    if (this.animId) {
+      cancelAnimationFrame(this.animId);
+      this.animId = undefined;
+    }
+
+    const prevValues = this.statRefs.map((r) => r.currentVal);
+    this.statRefs = [];
+
     const a = this.currentAttraction;
     const stateData: StateOverviewItem | undefined = STATES_OVERVIEW_DATA[a.stateId];
 
@@ -62,75 +80,113 @@ export class StateContextSection {
     const metricsGrid = document.createElement('div');
     metricsGrid.className = 'dest-state-metrics-grid';
 
-    // 1. Domestic Visitors
-    const domVal = stateData.domesticVisitorsM.toFixed(1);
-    metricsGrid.appendChild(
-      this.createStateStat(
-        'Domestic Visitors',
-        `${domVal}M`,
-        'Annual domestic trips to state',
-        '#0369a1',
-        '#e0f2fe'
-      )
-    );
+    const statConfigs = [
+      {
+        label: 'Domestic Visitors',
+        targetVal: stateData.domesticVisitorsM,
+        format: (v: number) => `${v.toFixed(1)}M`,
+        sub: 'Annual domestic trips to state',
+        color: '#0369a1',
+        bg: '#e0f2fe',
+      },
+      {
+        label: 'International Hotel Guests',
+        targetVal: stateData.internationalHotelGuestsM,
+        format: (v: number) => `${v.toFixed(1)}M`,
+        sub: 'Inbound foreign hotel guest volume',
+        color: '#0d9488',
+        bg: '#ccfbf1',
+      },
+      {
+        label: 'Average Occupancy Rate (AOR)',
+        targetVal: stateData.aorPct,
+        format: (v: number) => `${v.toFixed(1)}%`,
+        sub: 'State lodging utilization rate',
+        color: '#7c3aed',
+        bg: '#f3e8ff',
+      },
+      {
+        label: 'Visitor-to-Room Ratio',
+        targetVal: stateData.visitorToRoomRatio,
+        format: (v: number) => v.toFixed(1),
+        sub: 'Visitors per available room proxy',
+        color: '#ea580c',
+        bg: '#ffedd5',
+      },
+      {
+        label: 'Total Tourism Receipts',
+        targetVal: stateData.receiptsRmB,
+        format: (v: number) => `RM ${v.toFixed(2)}B`,
+        sub: `Average RM ${stateData.receiptsPerVisitor} per trip`,
+        color: '#059669',
+        bg: '#d1fae5',
+      },
+      {
+        label: 'Average Length of Stay',
+        targetVal: stateData.alos,
+        format: (v: number) => `${v.toFixed(2)} nights`,
+        sub: 'State-wide visitor stay duration',
+        color: '#475569',
+        bg: '#f1f5f9',
+      },
+    ];
 
-    // 2. International Hotel Guests
-    const intVal = stateData.internationalHotelGuestsM.toFixed(1);
-    metricsGrid.appendChild(
-      this.createStateStat(
-        'International Hotel Guests',
-        `${intVal}M`,
-        'Inbound foreign hotel guest volume',
-        '#0d9488',
-        '#ccfbf1'
-      )
-    );
-
-    // 3. Average Occupancy Rate (AOR)
-    metricsGrid.appendChild(
-      this.createStateStat(
-        'Average Occupancy Rate (AOR)',
-        `${stateData.aorPct.toFixed(1)}%`,
-        'State lodging utilization rate',
-        '#7c3aed',
-        '#f3e8ff'
-      )
-    );
-
-    // 4. Visitor-to-Room Ratio
-    metricsGrid.appendChild(
-      this.createStateStat(
-        'Visitor-to-Room Ratio',
-        `${stateData.visitorToRoomRatio.toFixed(1)}`,
-        'Visitors per available room proxy',
-        '#ea580c',
-        '#ffedd5'
-      )
-    );
-
-    // 5. Total Tourism Receipts
-    metricsGrid.appendChild(
-      this.createStateStat(
-        'Total Tourism Receipts',
-        `RM ${stateData.receiptsRmB.toFixed(2)}B`,
-        `Average RM ${stateData.receiptsPerVisitor} per trip`,
-        '#059669',
-        '#d1fae5'
-      )
-    );
-
-    // 6. Average Length of Stay
-    metricsGrid.appendChild(
-      this.createStateStat(
-        'Average Length of Stay',
-        `${stateData.alos.toFixed(2)} nights`,
-        'State-wide visitor stay duration',
-        '#475569',
-        '#f1f5f9'
-      )
-    );
+    statConfigs.forEach((cfg, idx) => {
+      const prev = prevValues[idx] ?? 0;
+      const statEl = this.createStateStat(
+        cfg.label,
+        cfg.format(prev),
+        cfg.sub,
+        cfg.color,
+        cfg.bg
+      );
+      const valEl = statEl.querySelector('.dest-state-stat-value') as HTMLElement;
+      this.statRefs.push({
+        valEl,
+        currentVal: prev,
+        startVal: prev,
+        targetVal: cfg.targetVal,
+        format: cfg.format,
+      });
+      metricsGrid.appendChild(statEl);
+    });
 
     this.element.appendChild(metricsGrid);
+
+    requestAnimationFrame(() => this.animateStats());
+  }
+
+  private animateStats(): void {
+    const duration = 650;
+    const startTime = performance.now();
+
+    const step = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+
+      this.statRefs.forEach((ref) => {
+        const current = ref.startVal + (ref.targetVal - ref.startVal) * ease;
+        ref.currentVal = current;
+        if (ref.valEl) {
+          ref.valEl.textContent = ref.format(current);
+        }
+      });
+
+      if (progress < 1) {
+        this.animId = requestAnimationFrame(step);
+      } else {
+        this.statRefs.forEach((ref) => {
+          ref.currentVal = ref.targetVal;
+          if (ref.valEl) {
+            ref.valEl.textContent = ref.format(ref.targetVal);
+          }
+        });
+        this.animId = undefined;
+      }
+    };
+
+    this.animId = requestAnimationFrame(step);
   }
 
   private createStateStat(

@@ -76,7 +76,7 @@ export class DemandKpiRow {
         },
       },
       {
-        title: 'TOURLISM EXPENDITURE',
+        title: 'TOURISM EXPENDITURE',
         icon: Banknote,
         accentColor: '#059669',
         iconBg: '#ecfdf5',
@@ -148,6 +148,7 @@ export class DemandKpiRow {
     ];
 
     this.buildDom();
+    requestAnimationFrame(() => this.animateToState());
   }
 
   public updateData(stateId: string | null): void {
@@ -218,7 +219,7 @@ export class DemandKpiRow {
 
       const valEl = document.createElement('span');
       valEl.className = 'demand-kpi-value';
-      valEl.textContent = cfg.format(cfg.initialVal);
+      valEl.textContent = cfg.format(0);
       valRow.appendChild(valEl);
 
       const trend = cfg.getTrend(null);
@@ -256,7 +257,7 @@ export class DemandKpiRow {
         valEl,
         trendEl,
         subtextEl: subEl,
-        currentVal: cfg.initialVal,
+        currentVal: 0,
         format: cfg.format,
       });
     });

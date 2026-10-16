@@ -162,6 +162,7 @@ export class AccessibilityKpiRow {
     ];
 
     this.buildDom();
+    requestAnimationFrame(() => this.animateToState());
   }
 
   public updateData(stateId: string | null): void {
@@ -221,7 +222,7 @@ export class AccessibilityKpiRow {
       const valEl = document.createElement('span');
       valEl.className = 'access-kpi-value';
       valEl.textContent = cfg.isNumeric && cfg.format
-        ? cfg.format(Number(cfg.initialVal))
+        ? cfg.format(0)
         : String(cfg.initialVal);
       valWrap.appendChild(valEl);
 
@@ -258,7 +259,7 @@ export class AccessibilityKpiRow {
         valEl,
         badgeEl,
         subtextEl: subEl,
-        currentVal: cfg.isNumeric ? Number(cfg.initialVal) : 0,
+        currentVal: 0,
         isNumeric: cfg.isNumeric,
         format: cfg.format,
       });
@@ -303,18 +304,19 @@ export class AccessibilityKpiRow {
         const progress = Math.min(elapsed / duration, 1);
         const ease = 1 - Math.pow(1 - progress, 3);
         const current = startVal + (endVal - startVal) * ease;
+        ref.currentVal = current;
         ref.valEl.textContent = ref.format!(current);
 
         if (progress < 1) {
           ref.animId = requestAnimationFrame(step);
         } else {
+          ref.currentVal = endVal;
           ref.valEl.textContent = ref.format!(endVal);
           ref.animId = undefined;
         }
       };
 
       ref.animId = requestAnimationFrame(step);
-      ref.currentVal = endVal;
     });
   }
 }

@@ -1,9 +1,19 @@
 import type { AttractionItem } from '../../data/attractionsData';
 import { createInfoIcon } from '../Common/InfoTooltip';
 
+interface QuickStatRef {
+  el: HTMLElement;
+  currentVal: number;
+  startVal: number;
+  targetVal: number;
+  format: (v: number) => string;
+}
+
 export class AttractionProfileCard {
   public readonly element: HTMLElement;
   private currentAttraction: AttractionItem;
+  private statRefs: QuickStatRef[] = [];
+  private animId?: number;
 
   constructor(initialAttraction: AttractionItem) {
     this.currentAttraction = initialAttraction;
@@ -19,6 +29,14 @@ export class AttractionProfileCard {
   }
 
   private render(): void {
+    if (this.animId) {
+      cancelAnimationFrame(this.animId);
+      this.animId = undefined;
+    }
+
+    const prevValues = this.statRefs.map((r) => r.currentVal);
+    this.statRefs = [];
+
     const a = this.currentAttraction;
 
     this.element.innerHTML = '';
@@ -81,7 +99,7 @@ export class AttractionProfileCard {
           <div class="dest-quick-stat-icon road">🚗</div>
           <div class="dest-quick-stat-info">
             <span class="dest-quick-stat-label">Road Access</span>
-            <span class="dest-quick-stat-value">${a.readiness.roadDistanceText}</span>
+            <span class="dest-quick-stat-value quick-stat-road">0.0 km</span>
             <span class="dest-quick-stat-tier high">${a.readiness.roadAccessTier}</span>
           </div>
         </div>
@@ -90,7 +108,7 @@ export class AttractionProfileCard {
           <div class="dest-quick-stat-icon hotel">🏨</div>
           <div class="dest-quick-stat-info">
             <span class="dest-quick-stat-label">Accommodation</span>
-            <span class="dest-quick-stat-value">${a.readiness.nearbyAccommodationCount}</span>
+            <span class="dest-quick-stat-value quick-stat-hotel">0</span>
             <span class="dest-quick-stat-tier mod">≤ 5 km cluster</span>
           </div>
         </div>
@@ -99,7 +117,7 @@ export class AttractionProfileCard {
           <div class="dest-quick-stat-icon health">🏥</div>
           <div class="dest-quick-stat-info">
             <span class="dest-quick-stat-label">Healthcare</span>
-            <span class="dest-quick-stat-value">${a.readiness.nearestHealthcareKm} km</span>
+            <span class="dest-quick-stat-value quick-stat-health">0.0 km</span>
             <span class="dest-quick-stat-tier ${a.readiness.healthcareStatus === 'Well-Served' ? 'high' : a.readiness.healthcareStatus === 'Moderate Distance' ? 'mod' : 'low'}">${a.readiness.healthcareStatus}</span>
           </div>
         </div>
@@ -108,7 +126,7 @@ export class AttractionProfileCard {
           <div class="dest-quick-stat-icon eco">🌿</div>
           <div class="dest-quick-stat-info">
             <span class="dest-quick-stat-label">Environment</span>
-            <span class="dest-quick-stat-value">${a.readiness.distanceToSensitiveKm} km</span>
+            <span class="dest-quick-stat-value quick-stat-eco">0.0 km</span>
             <span class="dest-quick-stat-tier ${a.readiness.environmentTier.includes('Near') || a.readiness.environmentTier.includes('High') ? 'low' : 'high'}">${a.readiness.environmentTier}</span>
           </div>
         </div>
@@ -116,5 +134,64 @@ export class AttractionProfileCard {
     `;
 
     this.element.appendChild(body);
+
+    // Setup animated refs
+    const roadNum = parseFloat(a.readiness.roadDistanceText) || 0;
+    const hotelNum = a.readiness.nearbyAccommodationCount || 0;
+    const healthNum = a.readiness.nearestHealthcareKm || 0;
+    const ecoNum = a.readiness.distanceToSensitiveKm || 0;
+
+    const targets = [
+      { sel: '.quick-stat-road', target: roadNum, format: (v: number) => `${v.toFixed(1)} km` },
+      { sel: '.quick-stat-hotel', target: hotelNum, format: (v: number) => Math.round(v).toLocaleString() },
+      { sel: '.quick-stat-health', target: healthNum, format: (v: number) => `${v.toFixed(1)} km` },
+      { sel: '.quick-stat-eco', target: ecoNum, format: (v: number) => `${v.toFixed(1)} km` },
+    ];
+
+    targets.forEach((t, i) => {
+      const el = body.querySelector(t.sel) as HTMLElement;
+      if (el) {
+        const prev = prevValues[i] ?? 0;
+        el.textContent = t.format(prev);
+        this.statRefs.push({
+          el,
+          currentVal: prev,
+          startVal: prev,
+          targetVal: t.target,
+          format: t.format,
+        });
+      }
+    });
+
+    requestAnimationFrame(() => this.animateStats());
+  }
+
+  private animateStats(): void {
+    const duration = 650;
+    const startTime = performance.now();
+
+    const step = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+
+      this.statRefs.forEach((ref) => {
+        const cur = ref.startVal + (ref.targetVal - ref.startVal) * ease;
+        ref.currentVal = cur;
+        ref.el.textContent = ref.format(cur);
+      });
+
+      if (progress < 1) {
+        this.animId = requestAnimationFrame(step);
+      } else {
+        this.statRefs.forEach((ref) => {
+          ref.currentVal = ref.targetVal;
+          ref.el.textContent = ref.format(ref.targetVal);
+        });
+        this.animId = undefined;
+      }
+    };
+
+    this.animId = requestAnimationFrame(step);
   }
 }

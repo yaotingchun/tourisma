@@ -163,7 +163,7 @@ export class CurrentPressureCard {
 
         const valEl = document.createElement('span');
         valEl.className = 'pressure-kpi-value';
-        valEl.textContent = kpi.format(kpi.targetVal);
+        valEl.textContent = kpi.format(0);
         valRow.appendChild(valEl);
 
         const subEl = document.createElement('span');
@@ -186,11 +186,10 @@ export class CurrentPressureCard {
         this.cardRefs.push({
           valEl,
           subEl,
-          currentVal: kpi.targetVal,
+          currentVal: 0,
           format: kpi.format,
         });
       });
-      return;
     }
 
     // Animate numbers and update subtexts
@@ -220,18 +219,19 @@ export class CurrentPressureCard {
         const progress = Math.min(elapsed / duration, 1);
         const ease = 1 - Math.pow(1 - progress, 3);
         const current = startVal + (endVal - startVal) * ease;
+        ref.currentVal = current;
         ref.valEl.textContent = ref.format(current);
 
         if (progress < 1) {
           ref.animId = requestAnimationFrame(step);
         } else {
+          ref.currentVal = endVal;
           ref.valEl.textContent = ref.format(endVal);
           ref.animId = undefined;
         }
       };
 
       ref.animId = requestAnimationFrame(step);
-      ref.currentVal = endVal;
     });
   }
 }

@@ -159,7 +159,7 @@ export class DecisionEngineChatbot {
     const welcomeWrap = document.createElement('div');
     welcomeWrap.className = 'hc-welcome-wrap';
 
-    // 4-Step Decision Framework Card
+    // Copilot Overview & Capabilities Card
     const frameworkBox = document.createElement('div');
     frameworkBox.className = 'hc-framework-banner';
     frameworkBox.innerHTML = `
@@ -169,37 +169,25 @@ export class DecisionEngineChatbot {
         </div>
         <div class="hc-framework-intro">
           <strong>Hi, I am Compass!</strong>
-          <p style="margin: 4px 0 0 0;">Ask about any Malaysian state, destination hotspot, or sector. Insights are synthesized using the 4-tier Strategic Protocol:</p>
+          <p style="margin: 4px 0 0 0;">Your strategic AI Copilot for Malaysia tourism analytics. Ask questions about state trends, healthcare accessibility, accommodation capacity, and ecological footprint.</p>
         </div>
       </div>
-      <div class="hc-framework-steps">
-        <div class="hc-step-chip blue">
-          <span class="hc-step-chip-num">1</span>
-          <div>
-            <span class="hc-step-chip-text">Tourism Diagnosis</span>
-            <span class="hc-step-chip-sub"> — "What is happening?"</span>
-          </div>
+      <div class="hc-framework-capabilities">
+        <div class="hc-cap-chip">
+          <span class="hc-cap-icon">⚡</span>
+          <span>Fast, concise spatial insights</span>
         </div>
-        <div class="hc-step-chip amber">
-          <span class="hc-step-chip-num">2</span>
-          <div>
-            <span class="hc-step-chip-text">Key Pressure Areas</span>
-            <span class="hc-step-chip-sub"> — "Where is the problem?"</span>
-          </div>
+        <div class="hc-cap-chip">
+          <span class="hc-cap-icon">🏥</span>
+          <span>Healthcare access & hospital buffers</span>
         </div>
-        <div class="hc-step-chip indigo">
-          <span class="hc-step-chip-num">3</span>
-          <div>
-            <span class="hc-step-chip-text">Evidence</span>
-            <span class="hc-step-chip-sub"> — "Why does Tourisma say this?"</span>
-          </div>
+        <div class="hc-cap-chip">
+          <span class="hc-cap-icon">🏨</span>
+          <span>Accommodation & demand capacity</span>
         </div>
-        <div class="hc-step-chip emerald">
-          <span class="hc-step-chip-num">4</span>
-          <div>
-            <span class="hc-step-chip-text">Planning Focus</span>
-            <span class="hc-step-chip-sub"> — "What should planners investigate?"</span>
-          </div>
+        <div class="hc-cap-chip">
+          <span class="hc-cap-icon">🌿</span>
+          <span>Ecological & protected reserve risks</span>
         </div>
       </div>
     `;
@@ -210,10 +198,10 @@ export class DecisionEngineChatbot {
     suggestions.innerHTML = `
       <span class="hc-prompt-title">Sample Inquiries:</span>
       <div class="hc-prompt-pills-wrap">
-        <button type="button" class="hc-prompt-pill" data-query="Provide a national tourism diagnosis for Malaysia with key pressure areas and planning focus.">🇲🇾 National Tourism Diagnosis</button>
-        <button type="button" class="hc-prompt-pill" data-query="What is the tourism healthcare access and capacity pressure diagnosis for Melaka and Penang?">🏥 Healthcare & Hospital Bottlenecks</button>
-        <button type="button" class="hc-prompt-pill" data-query="Which Malaysian tourism destinations face the highest ecological sensitivity and reserve proximity pressure?">🌿 Ecological Reserves at Risk</button>
-        <button type="button" class="hc-prompt-pill" data-query="Provide a diagnosis on Sabah and Sarawak tourism infrastructure and remote healthcare accessibility.">🏝️ Sabah & Sarawak Spatial Diagnosis</button>
+        <button type="button" class="hc-prompt-pill" data-query="What is Malaysia's overall tourism demand and accommodation capacity status?">🇲🇾 National Tourism Overview</button>
+        <button type="button" class="hc-prompt-pill" data-query="Which states have healthcare and hospital accessibility bottlenecks for tourists?">🏥 Healthcare & Hospital Bottlenecks</button>
+        <button type="button" class="hc-prompt-pill" data-query="Which tourism destinations face high ecological sensitivity and reserve proximity risks?">🌿 Ecological Reserves at Risk</button>
+        <button type="button" class="hc-prompt-pill" data-query="Compare tourism infrastructure and healthcare accessibility between Sabah and Sarawak.">🏝️ Sabah & Sarawak Comparison</button>
       </div>
     `;
 
@@ -319,7 +307,7 @@ export class DecisionEngineChatbot {
         <span class="hc-thinking-dot"></span>
         <span class="hc-thinking-dot"></span>
       </div>
-      <span>Compass is synthesizing decision framework...</span>
+      <span>Compass is analyzing insights...</span>
     `;
     this.messagesContainer.appendChild(thinkingEl);
     this.scrollToBottom();
@@ -382,22 +370,52 @@ export class DecisionEngineChatbot {
   private parseBlockMarkdown(content: string): string {
     let text = content.trim();
 
-    // Convert headings (e.g. ### Subheading -> <h4>Subheading</h4>)
-    text = text.replace(/^#{1,6}\s+(.*)$/gm, '<h4>$1</h4>');
+    // 1. If an inline bullet was placed directly after a colon (e.g. "Sabah: * Connectivity: ..."), break it onto a new line
+    text = text.replace(/:\s*[\*\-•]\s+/g, ':\n* ');
 
-    // Convert bullet points (* item, - item, • item)
+    // 2. Identify major topic headers ending with a colon on their own line (e.g. "Tourism Infrastructure:", "Healthcare Accessibility:")
+    // and promote them to <h3>
+    const majorThemes = [
+      'Tourism Infrastructure',
+      'Healthcare Accessibility',
+      'Tourism Demand',
+      'Accommodation Capacity',
+      'Environmental Sensitivity',
+      'Ecological Sensitivity',
+      'Key Pressure Areas',
+      'Economic Contribution',
+      'Spatial Accessibility'
+    ];
+    const themeRegex = new RegExp(`^(?:#{1,3}\\s+|\\*\\*)?(${majorThemes.join('|')})(?::)?(?:\\*\\*)?$`, 'gim');
+    text = text.replace(themeRegex, '<h3>$1</h3>');
+
+    // 3. Convert explicit markdown headings
+    text = text.replace(/^#{1,3}\s+(.*)$/gm, '<h3>$1</h3>');
+    text = text.replace(/^#{4,6}\s+(.*)$/gm, '<h4>$1</h4>');
+
+    // 4. Convert standalone regional / state subheadings (e.g. "Sabah:", "Sarawak:", "East Malaysia:") to <h4>
+    text = text.replace(/^(?:\*\*)?([A-Z][A-Za-z0-9\s&(),\/\-]{1,35}:)(?:\*\*)?$/gm, '<h4>$1</h4>');
+
+    // 5. Auto-bullet unbulleted attribute lines (e.g. "Accommodation: ...", "Attractions: ...", "Remote Areas: ...")
+    text = text.replace(/^(?!\s*<h[1-6]>|\s*[\*\-•#])\s*([A-Z][A-Za-z0-9\s\/&]{2,25}:)\s+/gm, '* **$1** ');
+
+    // 6. Merge multi-line bullets where continuation lines follow a bullet label
+    text = text.replace(/(^[\*\-•]\s+.*)\n(\s{2,}|\t)([^\*\-•#\n].*)/gm, '$1 $3');
+
+    // 7. Convert bullet points (* item, - item, • item)
     text = text.replace(/^\s*[\*\-•]\s+(.*)$/gm, '<li>$1</li>');
     // Wrap adjacent <li> in <ul>
     text = text.replace(/(<li>[\s\S]*?<\/li>[\r\n]*)+/g, (m) => `\n\n<ul>\n${m}</ul>\n\n`);
 
-    // Parse inline markdown (bold, italic, code)
+    // 8. Parse inline markdown (bold, italic, code)
     text = this.parseInlineMarkdown(text);
+    text = text.replace(/<strong><strong>(.*?)<\/strong><\/strong>/g, '<strong>$1</strong>');
 
-    // Convert into clean paragraphs or blocks
+    // 9. Convert into clean paragraphs or blocks
     const blocks = text.split(/\n\n+/).map((b) => {
       b = b.trim();
       if (!b) return '';
-      if (b.startsWith('<ul>') || b.startsWith('<ol>') || b.startsWith('<h4>')) {
+      if (b.startsWith('<ul>') || b.startsWith('<ol>') || b.startsWith('<h')) {
         return b.replace(/<br\s*\/?>/g, '');
       }
       return `<p>${b.replace(/\n/g, '<br/>')}</p>`;
@@ -407,53 +425,6 @@ export class DecisionEngineChatbot {
   }
 
   private formatDecisionEngineMarkdown(rawText: string): string {
-    // Parse specific Decision Engine sections with cards
-    const sections = [
-      {
-        regex: /(?:#{1,6}|\*{1,2})?\s*(?:1\.\s*)?Tourism Diagnosis[^\n]*\n?([\s\S]*?)(?=(?:#{1,6}|\*{1,2})?\s*(?:2\.\s*)?Key Pressure Areas|$)/i,
-        className: 'diagnosis',
-        badge: '🩺 Tourism Diagnosis ("What is happening?")',
-      },
-      {
-        regex: /(?:#{1,6}|\*{1,2})?\s*(?:2\.\s*)?Key Pressure Areas[^\n]*\n?([\s\S]*?)(?=(?:#{1,6}|\*{1,2})?\s*(?:3\.\s*)?Evidence|$)/i,
-        className: 'pressure',
-        badge: '⚠️ Key Pressure Areas ("Where is the problem?")',
-      },
-      {
-        regex: /(?:#{1,6}|\*{1,2})?\s*(?:3\.\s*)?Evidence[^\n]*\n?([\s\S]*?)(?=(?:#{1,6}|\*{1,2})?\s*(?:4\.\s*)?Planning Focus|$)/i,
-        className: 'evidence',
-        badge: '📊 Evidence ("Why does Tourisma say this?")',
-      },
-      {
-        regex: /(?:#{1,6}|\*{1,2})?\s*(?:4\.\s*)?Planning Focus[^\n]*\n?([\s\S]*?)$/i,
-        className: 'focus',
-        badge: '🎯 Planning Focus ("What should planners investigate?")',
-      },
-    ];
-
-    let hasMatchedFramework = false;
-    let cardsHtml = '';
-
-    for (const sec of sections) {
-      const match = rawText.match(sec.regex);
-      if (match && match[1]?.trim()) {
-        hasMatchedFramework = true;
-        const parsedContent = this.parseBlockMarkdown(match[1].trim());
-
-        cardsHtml += `
-          <div class="hc-decision-card ${sec.className}">
-            <div class="hc-decision-card-badge">${sec.badge}</div>
-            <div class="hc-decision-content">${parsedContent}</div>
-          </div>
-        `;
-      }
-    }
-
-    if (hasMatchedFramework && cardsHtml) {
-      return cardsHtml;
-    }
-
-    // Default fallback markdown formatting
     return this.parseBlockMarkdown(rawText);
   }
 
