@@ -11,6 +11,7 @@ export class MalaysiaMap {
   public readonly element: HTMLElement;
   private tooltipElement: HTMLElement;
   private legendElement: HTMLElement;
+  private infoSlotElement: HTMLElement | null = null;
   private currentMode: 'demand' | 'readiness' = 'readiness';
   private selectedStateId: string | null = null;
   private onSelectState?: (stateId: string | null) => void;
@@ -58,18 +59,8 @@ export class MalaysiaMap {
       </div>
     `;
 
-    const infoSlot = mapHeader.querySelector('.map-info-icon-slot');
-    if (infoSlot) {
-      const infoIcon = createInfoIcon({
-        sourceOrg: 'Tourisma National Spatial Framework & Multi-Agency Audits',
-        datasetName: 'State Tourism Readiness & Spatial Demand Model',
-        referenceYear: '2025 / 2026',
-        measure: 'Multi-dimensional state tourism readiness index comprising accommodation capacity, transport links, and medical facilities.',
-        formula: 'Composite Index = 0.35 × Accommodation + 0.30 × Transit Connectivity + 0.20 × Healthcare + 0.15 × Destination Assets',
-        limitations: 'Readiness measures physical supply capacity; does not represent consumer sentiment or natural disaster hazards.',
-      });
-      infoSlot.replaceWith(infoIcon);
-    }
+    this.infoSlotElement = mapHeader.querySelector<HTMLElement>('.map-info-icon-slot');
+    this.updateInfoTooltip(this.currentMode);
 
     // Hook up toggle button clicks
     const demandBtn = mapHeader.querySelector<HTMLButtonElement>('[data-mode="demand"]');
@@ -127,7 +118,10 @@ export class MalaysiaMap {
           : 'State infrastructure readiness index (lodging, transit & capacity)';
     }
 
-    // 3. Update Path Fills with smooth transition
+    // 3. Update Info Tooltip Formula & Metadata for Active Mode
+    this.updateInfoTooltip(mode);
+
+    // 4. Update Path Fills with smooth transition
     MALAYSIA_GEO_DATA.forEach((geo) => {
       const path = this.element.querySelector<SVGPathElement>(`#state-path-${geo.id}`);
       const data = STATES_OVERVIEW_DATA[geo.id];
@@ -136,8 +130,41 @@ export class MalaysiaMap {
       }
     });
 
-    // 4. Update Legend
+    // 5. Update Legend
     this.renderLegend();
+  }
+
+  private updateInfoTooltip(mode: 'demand' | 'readiness'): void {
+    if (!this.infoSlotElement) return;
+    this.infoSlotElement.innerHTML = '';
+
+    const config =
+      mode === 'demand'
+        ? {
+            sourceOrg: 'DOSM (DTS) & Tourism Malaysia',
+            datasetName: 'State Tourism Demand Model (0–100)',
+            referenceYear: '2025 / 2026',
+            measure:
+              'Visitor volume, international appeal, and economic spending power across 3 equally weighted pillars (33.33% each).',
+            formula:
+              'Demand Index = 0.33 * Domestic Visitors Score + 0.33 * International Hotel Guest Score + 0.33 * Receipts Score',
+            limitations:
+              'Demand reflects survey-based domestic visitor volumes and hotel guest registrations; informal homestay registrations and day excursions are estimated.',
+          }
+        : {
+            sourceOrg: 'DOSM, Tourism Malaysia & OpenStreetMap Spatial Audits',
+            datasetName: 'State Destination Readiness Model (0–100)',
+            referenceYear: '2025 / 2026',
+            measure:
+              'Destination carrying supply, asset density, and spatial physical accessibility across 5 equally weighted pillars (20% each).',
+            formula:
+              'Readiness Index = 0.20 * Accommodation Capacity Score + 0.20 * Core Asset Density Score + 0.20 * Supporting Asset Density Score + 0.20 * Road Access Score + 0.20 * PT Access Score',
+            limitations:
+              'Readiness measures physical supply capacity, asset density, and transit accessibility; does not represent consumer sentiment or natural hazard exposure.',
+          };
+
+    const infoIcon = createInfoIcon(config);
+    this.infoSlotElement.appendChild(infoIcon);
   }
 
   private getColorForScore(data: StateOverviewItem | undefined, mode: 'demand' | 'readiness'): string {
