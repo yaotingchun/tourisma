@@ -23,7 +23,8 @@ export class DestinationsPage {
     this.element.className = 'destinations-page';
 
     // Default to Cameron Highlands Tea Plantation as requested
-    this.currentAttraction = ATTRACTIONS_DATA[0];
+    this.currentAttraction =
+      ATTRACTIONS_DATA.find((a) => a.id === 'cameron_highlands_tea') || ATTRACTIONS_DATA[0];
 
     this.render();
   }
@@ -39,7 +40,7 @@ export class DestinationsPage {
   }
 
   private handleSelectState(stateId: string): void {
-    // Find matching attraction in this state if available
+    // Select matching attraction in this state if available
     const match = ATTRACTIONS_DATA.find((a) => a.stateId === stateId);
     if (match) {
       this.handleSelectAttraction(match);

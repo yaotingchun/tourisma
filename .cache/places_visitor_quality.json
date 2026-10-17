@@ -3801,7 +3801,7 @@
       "name": "Petronas Twin Towers",
       "address": "Lower Ground (Concourse) Level, Menara Berkembar Petronas, Kuala Lumpur City Centre, 50088 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia",
       "rating": 4.7,
-      "userRatingCount": 105165
+      "userRatingCount": 105466
     },
     "dimensions": {
       "accessibility": {
@@ -3855,13 +3855,13 @@
             "reviewId": "rev_1",
             "dimension": "facilities",
             "sentiment": "positive",
-            "exactQuote": "plenty of places to sit and enjoy the view."
+            "exactQuote": "plenty of places to sit"
           },
           {
             "reviewId": "rev_5",
             "dimension": "facilities",
             "sentiment": "negative",
-            "exactQuote": "just beware of toilets.....Two very different situation of toilet facilities for ladies!!!!"
+            "exactQuote": "beware of toilets.....Two very different situation of toilet facilities for ladies!!!!"
           }
         ]
       },
@@ -3897,29 +3897,35 @@
       "crowding": {
         "dimension": "crowding",
         "name": "Crowding",
-        "mentions": 4,
-        "positive": 4,
+        "mentions": 5,
+        "positive": 5,
         "mixed": 0,
         "negative": 0,
         "positivePct": 100,
         "mixedPct": 0,
         "negativePct": 0,
-        "evidenceTier": "limited",
-        "evidenceLabel": "Limited Evidence",
-        "headline": "Limited evidence — 4 reviews mention crowding",
-        "subtext": "Insufficient volume for percentage share",
+        "evidenceTier": "moderate",
+        "evidenceLabel": "Moderate Evidence",
+        "headline": "5 of 5 crowding mentions were positive",
+        "subtext": "100% positive",
         "evidence": [
           {
             "reviewId": "rev_2",
             "dimension": "crowding",
             "sentiment": "positive",
-            "exactQuote": "Entry was managed in small groups with dedicated time slots for the Skybridge and Observation Deck, making the experience comfortable without feeling overcrowded."
+            "exactQuote": "making the experience comfortable without feeling overcrowded"
           },
           {
             "reviewId": "rev_3",
             "dimension": "crowding",
             "sentiment": "positive",
-            "exactQuote": "which made the entry process smooth and hassle-free."
+            "exactQuote": "made the entry process smooth and hassle-free."
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "crowding",
+            "sentiment": "positive",
+            "exactQuote": "well-organized flow of the tour."
           },
           {
             "reviewId": "rev_4",
@@ -3960,7 +3966,7 @@
             "reviewId": "rev_2",
             "dimension": "services",
             "sentiment": "positive",
-            "exactQuote": "The café on Level 86 is a wonderful place to take a short break, enjoy a drink, and admire the stunning skyline before heading back down."
+            "exactQuote": "The café on Level 86 is a wonderful place to take a short break, enjoy a drink"
           },
           {
             "reviewId": "rev_3",
@@ -3989,8 +3995,8 @@
         ]
       }
     },
-    "totalMentions": 14,
-    "aiInsight": "Visitor reviews consistently highlight excellent management of visitor flow, resulting in smooth entry processes and minimal waiting times, contributing to a comfortable experience. The surrounding grounds, including KLCC Park, are praised for being beautifully maintained and offering ample seating. While diverse shopping and dining services are highly rated, there is a specific negative comment regarding the quality or suitability of the toilet facilities for international visitors.",
+    "totalMentions": 15,
+    "aiInsight": "Visitor feedback highlights strong infrastructure quality, particularly in grounds maintenance, effective crowd management, and diverse service offerings including shopping and dining. Seating is also noted as ample. However, a specific concern regarding the condition or type of toilet facilities for ladies suggests a potential area for improvement to meet international visitor expectations.",
     "reviews": [
       {
         "reviewId": "rev_1",
@@ -3998,7 +4004,7 @@
         "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVWPPGUZ4YcmFYRxJx_eFnnx97zKh3zi90JNc4S1sE4D4CzyNCN=s128-c0x00000000-cc-rp-mo-ba6",
         "authorUri": "https://www.google.com/maps/contrib/117273987700672721425/reviews",
         "rating": 5,
-        "date": "2 weeks ago",
+        "date": "a month ago",
         "originalText": "⭐ Petronas Twin Towers — An Icon of Kuala Lumpur\n\nOne of the most impressive landmarks in Kuala Lumpur and definitely a place worth visiting, especially for a first trip to Malaysia. The Petronas Twin Towers are instantly recognizable and give you that “I’m really in KL” feeling as soon as you see them.\n\nThe towers are especially beautiful from the outside. Their silver architectural design reflects the sunlight during the day and becomes even more impressive when illuminated at night. The area around KLCC is also well maintained, with open spaces, greenery, shopping, restaurants, and plenty of places to sit and enjoy the view.\n\n📸 Best part: Walk around the surrounding park and find different angles for photos. The towers look very different depending on where you stand.\n\n🌙 My recommendation: Visit both during the day and after sunset. The daytime view shows the architecture clearly, while the nighttime view gives the towers a completely different atmosphere.\n\nFor travelers, this is more than just a photo spot—it's one of those landmarks that represents the modern identity of Kuala Lumpur.\n\nA must-visit landmark in KL. If you're in Kuala Lumpur and haven't seen the Twin Towers yet, definitely put it on your list! 🇲🇾✨"
       },
       {
@@ -4007,7 +4013,7 @@
         "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUEDD-BDIrJOEyLWZPZkbA_N2LzZ7FzwuMftXSHXmOv2LneKwNP=s128-c0x00000000-cc-rp-mo-ba8",
         "authorUri": "https://www.google.com/maps/contrib/110864000022282571672/reviews",
         "rating": 5,
-        "date": "2 months ago",
+        "date": "3 months ago",
         "originalText": "Visiting the Petronas Twin Towers was undoubtedly one of the highlights of my trip to Kuala Lumpur. The towers are even more breathtaking in person than in photographs, and seeing them transform from gleaming silver in the afternoon sunlight to beautifully illuminated at night was truly unforgettable.\n\nThe entire visit was exceptionally well organized. Entry was managed in small groups with dedicated time slots for the Skybridge and Observation Deck, making the experience comfortable without feeling overcrowded. The panoramic views of Kuala Lumpur from the top are absolutely spectacular and well worth the visit. I also enjoyed learning about the history, engineering, and architecture of this iconic landmark.\n\nThe café on Level 86 is a wonderful place to take a short break, enjoy a drink, and admire the stunning skyline before heading back down.\n\nThe area surrounding the towers is just as impressive, with the beautifully maintained KLCC Park and fountains providing plenty of space to relax and capture amazing photos from different angles.\n\nWhether you admire architecture, enjoy city viewpoints, or simply want to experience one of Malaysia’s most iconic landmarks, the Petronas Twin Towers are an absolute must-visit. I highly recommend booking your tickets in advance to avoid disappointment."
       },
       {
@@ -4016,7 +4022,7 @@
         "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUtEfTSDbqwxfNDbNjZqr8Ghqnwrnv6Inl2PaEfTCLT9947RzqB=s128-c0x00000000-cc-rp-mo-ba5",
         "authorUri": "https://www.google.com/maps/contrib/107629618125210446260/reviews",
         "rating": 4,
-        "date": "a month ago",
+        "date": "2 months ago",
         "originalText": "Visited over the weekend and had a great experience at the Skybridge, Twin Towers. We had already purchased our tickets via Klook, which made the entry process smooth and hassle-free.\n\nThe visit started at Level 41, where the Skybridge is located. The viewing time here was limited to about 10 minutes, but it was enough to take in the stunning city views and snap some nice photos. After that, we were guided to Level 86 for another 10 minutes, offering an even more breathtaking panoramic view of Kuala Lumpur.\n\nWe also stopped by Level 83, which had displays filled with interesting information, souvenirs, and exhibits. It added a nice touch to the overall experience.\n\nBefore leaving, we picked up a fridge magnet for RM16.50 as a memory of the visit. Overall, we truly enjoyed the views, the photo opportunities, and the well-organized flow of the tour. Afterward, we spent time at Suria KLCC for a meal and some shopping, which made the day even more enjoyable.\n\nA great experience and definitely worth visiting at least once!"
       },
       {
@@ -4034,10 +4040,3657 @@
         "authorPhotoUri": "https://lh3.googleusercontent.com/a/ACg8ocJOCwzrldBO-HGMUqFKemK8gZQRyyOPKtn_YFu6e-SlY_3mNw=s128-c0x00000000-cc-rp-mo-ba4",
         "authorUri": "https://www.google.com/maps/contrib/108927838993503295470/reviews",
         "rating": 5,
-        "date": "4 months ago",
+        "date": "5 months ago",
         "originalText": "If in KL then a visit to these towers are a must. Reasonably priced. No wait. Views are amazing! So much to see and at night towers are lit and you have beautiful fountains dancing to music in front of them. Fabulous shopping centre at ground level to the towers too. If visiting from Europe,  just beware of toilets.....Two very different situation of toilet facilities for ladies!!!!"
       }
     ],
-    "cachedAt": "2026-09-22T08:41:39.094Z"
+    "cachedAt": "2026-10-17T13:50:54.458Z"
+  },
+  "pulau redang marine park (redang island)": {
+    "place": {
+      "id": "ChIJk-8RT_sPtzERzzmzf-u373s",
+      "name": "Marine Park Kuala Terengganu",
+      "address": "Centre, Marine Park, 21090 Kuala Terengganu, Terengganu, Malaysia",
+      "rating": 4.3,
+      "userRatingCount": 159
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention facilities",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_4",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "the park provides convenient amenities such as restrooms 🚻"
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "There's a surau too...."
+          }
+        ]
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 3,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 2,
+        "positivePct": 33,
+        "mixedPct": 0,
+        "negativePct": 67,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 3 reviews mention cleanliness",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "cleanliness",
+            "sentiment": "negative",
+            "exactQuote": "The tourists (and locals alike) leave so much trash behind"
+          },
+          {
+            "reviewId": "rev_1",
+            "dimension": "cleanliness",
+            "sentiment": "negative",
+            "exactQuote": "At least if the locals would take care of the island, but they leave the trash everywhere. It became very dirty."
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "Clean Sandy beach..."
+          }
+        ]
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 1,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention services",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_4",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "beverage vendors 🥤"
+          }
+        ]
+      }
+    },
+    "totalMentions": 6,
+    "aiInsight": "The destination benefits from positive feedback regarding its facilities, specifically the availability of clean restrooms and a surau, along with convenient beverage vendors. However, a significant bottleneck is the pervasive issue of cleanliness, with multiple complaints about trash and litter left by visitors and locals, leading to a perception of the area becoming very dirty.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "Dajana",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a/ACg8ocL7X-nWxY1miHe6en-o_ORHiNqN1ZiD9_IY9RWoBAo5vEJ8X2k=s128-c0x00000000-cc-rp-mo-ba2",
+        "authorUri": "https://www.google.com/maps/contrib/100541435127169911766/reviews",
+        "rating": 1,
+        "date": "4 months ago",
+        "originalText": "As of May 2026 there is nothing to see anymore. All the coral is dead. There is some fish, but you can see the same fish in the ocean anywhere around Redang.\nIt's very sad, because the Marine park charges MYR30/pax conservation FEE but they aren't taking care of the place. The tourists (and locals alike) leave so much trash behind, step on the corals and use sunscreen when going to the water. This has caused the corals to die out in the recent years.\n\nI visited Redang Island about 6years ago and there were still colorful corals to be seen, especially on Long Beach. This has changed so much , and it is sad. At least if the locals would take care of the island, but they leave the trash everywhere. It became very dirty.\n\n(Pictures are from Long Beach)"
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Ilaria Mariani",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUXm--CgzpR2AVVA58r7Jscw43h50uxOidlS0w4PP-j9113Qv1l=s128-c0x00000000-cc-rp-mo-ba3",
+        "authorUri": "https://www.google.com/maps/contrib/102963000011060165437/reviews",
+        "rating": 5,
+        "date": "a year ago",
+        "originalText": "We had such a beautiful experience at the Marine Park! Right under the dock we saw huge schools of fish swimming all together—such an incredible sight! And we could swim among them!! There were also various corals, a nursery of baby corals, and many other kinds of fish. The highlight was spotting a shark (not too close, not so big, so no worries!).\n\nWe found it super useful to have life jackets, which allowed us to swim for almost two hours without worrying about getting tired. A good mask is essential to enjoy all the details underwater, and we also recommend wearing a UV/UVB protection shirt to avoid sunburn.\n\nAbsolutely worth the visit—stunning marine life and an unforgettable snorkeling experience!"
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Prince of the Earth",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjX4qHY7T8JvQputhwhNJodkqG9CZ7Q4V7bgCMxnrJ--baWBCmk=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/112127970507223467532/reviews",
+        "rating": 5,
+        "date": "5 months ago",
+        "originalText": "A fantastic addition to our Malaysia trip! The Marine Park offers stunningly clear waters and an abundance of beautiful marine life. It’s incredibly well-preserved and provided a safe, unforgettable snorkeling experience for the whole family. Watching the kids get so excited about seeing the underwater world up close was a definite highlight. Highly recommended if you are in the Terengganu area!"
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "Doc Sam",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUm6Ukoo8XcCDn9v7x08UGPHmtL9hwDq1lH14q7PTQHsegx9qs=s128-c0x00000000-cc-rp-mo-ba4",
+        "authorUri": "https://www.google.com/maps/contrib/100118011251489271255/reviews",
+        "rating": 4,
+        "date": "3 months ago",
+        "originalText": "This marine park offers a substantial population of fish for viewing 🐠, particularly when food is provided. However, the presence of an undercurrent necessitates staying near the shore for safety ⚠️. While many fish congregate in the current-affected areas, the park provides convenient amenities such as restrooms 🚻 and beverage vendors 🥤, enhancing the overall visitor experience."
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Raghbir Mubarak Singh Shergill",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjU4a2pdpPF4ZxZbWQkQqwYJNPqa8KWmpkmRStJ1l40K52RNJsJ6=s128-c0x00000000-cc-rp-mo-ba7",
+        "authorUri": "https://www.google.com/maps/contrib/115535405504215171940/reviews",
+        "rating": 5,
+        "date": "a year ago",
+        "originalText": "Salam sejahtera... greetings..\nClean Sandy beach...\nSafe snorkelling...\nDepartmental staff friendly...\nThere's a surau too...."
+      }
+    ],
+    "cachedAt": "2026-10-17T13:41:16.693Z"
+  },
+  "chijk-8rt_sptzerzzmzf-u373s": {
+    "place": {
+      "id": "ChIJk-8RT_sPtzERzzmzf-u373s",
+      "name": "Marine Park Kuala Terengganu",
+      "address": "Centre, Marine Park, 21090 Kuala Terengganu, Terengganu, Malaysia",
+      "rating": 4.3,
+      "userRatingCount": 159
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention facilities",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_4",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "the park provides convenient amenities such as restrooms 🚻"
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "There's a surau too...."
+          }
+        ]
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 3,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 2,
+        "positivePct": 33,
+        "mixedPct": 0,
+        "negativePct": 67,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 3 reviews mention cleanliness",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "cleanliness",
+            "sentiment": "negative",
+            "exactQuote": "The tourists (and locals alike) leave so much trash behind"
+          },
+          {
+            "reviewId": "rev_1",
+            "dimension": "cleanliness",
+            "sentiment": "negative",
+            "exactQuote": "At least if the locals would take care of the island, but they leave the trash everywhere. It became very dirty."
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "Clean Sandy beach..."
+          }
+        ]
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 1,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention services",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_4",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "beverage vendors 🥤"
+          }
+        ]
+      }
+    },
+    "totalMentions": 6,
+    "aiInsight": "The destination benefits from positive feedback regarding its facilities, specifically the availability of clean restrooms and a surau, along with convenient beverage vendors. However, a significant bottleneck is the pervasive issue of cleanliness, with multiple complaints about trash and litter left by visitors and locals, leading to a perception of the area becoming very dirty.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "Dajana",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a/ACg8ocL7X-nWxY1miHe6en-o_ORHiNqN1ZiD9_IY9RWoBAo5vEJ8X2k=s128-c0x00000000-cc-rp-mo-ba2",
+        "authorUri": "https://www.google.com/maps/contrib/100541435127169911766/reviews",
+        "rating": 1,
+        "date": "4 months ago",
+        "originalText": "As of May 2026 there is nothing to see anymore. All the coral is dead. There is some fish, but you can see the same fish in the ocean anywhere around Redang.\nIt's very sad, because the Marine park charges MYR30/pax conservation FEE but they aren't taking care of the place. The tourists (and locals alike) leave so much trash behind, step on the corals and use sunscreen when going to the water. This has caused the corals to die out in the recent years.\n\nI visited Redang Island about 6years ago and there were still colorful corals to be seen, especially on Long Beach. This has changed so much , and it is sad. At least if the locals would take care of the island, but they leave the trash everywhere. It became very dirty.\n\n(Pictures are from Long Beach)"
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Ilaria Mariani",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUXm--CgzpR2AVVA58r7Jscw43h50uxOidlS0w4PP-j9113Qv1l=s128-c0x00000000-cc-rp-mo-ba3",
+        "authorUri": "https://www.google.com/maps/contrib/102963000011060165437/reviews",
+        "rating": 5,
+        "date": "a year ago",
+        "originalText": "We had such a beautiful experience at the Marine Park! Right under the dock we saw huge schools of fish swimming all together—such an incredible sight! And we could swim among them!! There were also various corals, a nursery of baby corals, and many other kinds of fish. The highlight was spotting a shark (not too close, not so big, so no worries!).\n\nWe found it super useful to have life jackets, which allowed us to swim for almost two hours without worrying about getting tired. A good mask is essential to enjoy all the details underwater, and we also recommend wearing a UV/UVB protection shirt to avoid sunburn.\n\nAbsolutely worth the visit—stunning marine life and an unforgettable snorkeling experience!"
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Prince of the Earth",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjX4qHY7T8JvQputhwhNJodkqG9CZ7Q4V7bgCMxnrJ--baWBCmk=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/112127970507223467532/reviews",
+        "rating": 5,
+        "date": "5 months ago",
+        "originalText": "A fantastic addition to our Malaysia trip! The Marine Park offers stunningly clear waters and an abundance of beautiful marine life. It’s incredibly well-preserved and provided a safe, unforgettable snorkeling experience for the whole family. Watching the kids get so excited about seeing the underwater world up close was a definite highlight. Highly recommended if you are in the Terengganu area!"
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "Doc Sam",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUm6Ukoo8XcCDn9v7x08UGPHmtL9hwDq1lH14q7PTQHsegx9qs=s128-c0x00000000-cc-rp-mo-ba4",
+        "authorUri": "https://www.google.com/maps/contrib/100118011251489271255/reviews",
+        "rating": 4,
+        "date": "3 months ago",
+        "originalText": "This marine park offers a substantial population of fish for viewing 🐠, particularly when food is provided. However, the presence of an undercurrent necessitates staying near the shore for safety ⚠️. While many fish congregate in the current-affected areas, the park provides convenient amenities such as restrooms 🚻 and beverage vendors 🥤, enhancing the overall visitor experience."
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Raghbir Mubarak Singh Shergill",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjU4a2pdpPF4ZxZbWQkQqwYJNPqa8KWmpkmRStJ1l40K52RNJsJ6=s128-c0x00000000-cc-rp-mo-ba7",
+        "authorUri": "https://www.google.com/maps/contrib/115535405504215171940/reviews",
+        "rating": 5,
+        "date": "a year ago",
+        "originalText": "Salam sejahtera... greetings..\nClean Sandy beach...\nSafe snorkelling...\nDepartmental staff friendly...\nThere's a surau too...."
+      }
+    ],
+    "cachedAt": "2026-10-17T13:41:16.693Z"
+  },
+  "coral hill": {
+    "place": {
+      "id": "ChIJoeZXMY9ZyjER1Gl101mi4Rw",
+      "name": "Coral Hill",
+      "address": "Kuartes Jkr Sungai Burung,Brinchang, Brinchang, 39000 Tanah Rata, Pahang, Malaysia",
+      "rating": 4.6,
+      "userRatingCount": 126
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 7,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 5,
+        "positivePct": 29,
+        "mixedPct": 0,
+        "negativePct": 71,
+        "evidenceTier": "moderate",
+        "evidenceLabel": "Moderate Evidence",
+        "headline": "5 of 7 accessibility mentions were negative",
+        "subtext": "71% negative",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "I say is much easier, less muddy and great for beginners and even advance climber like ourselves 🥳"
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "accessibility",
+            "sentiment": "negative",
+            "exactQuote": "The initial part of the hike was quite strenuous due to the steep ascent, but it gradually became more manageable."
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "accessibility",
+            "sentiment": "negative",
+            "exactQuote": "please wear proper hiking shoes, some area can get muddy"
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "Trail easy short and sweet!"
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "accessibility",
+            "sentiment": "negative",
+            "exactQuote": "Not easy to find the start as it’s behind a block of flats on the road out from Brinchang after the Centrum Mall."
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "accessibility",
+            "sentiment": "negative",
+            "exactQuote": "Can be steep and muddy so wear good shoes."
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "accessibility",
+            "sentiment": "negative",
+            "exactQuote": "On the way down take care not to slip."
+          }
+        ]
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 1,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention parking",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_2",
+            "dimension": "parking",
+            "sentiment": "positive",
+            "exactQuote": "There is free parking available at the nearby JKR housing area, just a short walk from the entrance but please be respectful of the local residents."
+          }
+        ]
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      }
+    },
+    "totalMentions": 8,
+    "aiInsight": "The primary infrastructure challenge at this destination is related to accessibility, with trails frequently described as steep and muddy, and the starting point being difficult to locate. Despite these physical demands, the trails are generally considered easy for beginners. A notable positive aspect is the availability of free parking, which enhances visitor convenience.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "Chong Ban Long",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjU-DyJrUXH7vcPahETROgFrOI3Ttyws5FbqFflTUMByv2SyY24=s128-c0x00000000-cc-rp-mo-ba4",
+        "authorUri": "https://www.google.com/maps/contrib/100002912595683735961/reviews",
+        "rating": 5,
+        "date": "3 months ago",
+        "originalText": "Some said the view is much better than Mossy forest at Mt Brinchang. I say is much easier, less muddy and great for beginners and even advance climber like ourselves 🥳\n\nIt’s took us about 25 mins (slow & steady climb in the dark at 6:30am) to reach the Summit."
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Nabihah Mustafa",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWQEmVcZ8r6nT4U0E8yLSLcyBaLxEDzpW34B6v07j-5YlgQQs44Jg=s128-c0x00000000-cc-rp-mo-ba2",
+        "authorUri": "https://www.google.com/maps/contrib/104694142764701489489/reviews",
+        "rating": 5,
+        "date": "7 months ago",
+        "originalText": "The initial part of the hike was quite strenuous due to the steep ascent, but it gradually became more manageable. It’s a relatively short hike to the stone hill, with the real highlight being the beautiful mossy forest view at the end.\n\nAlthough short, it’s definitely a hike worth doing.\n\nThere is free parking available at the nearby JKR housing area, just a short walk from the entrance but please be respectful of the local residents.\n\n**please wear proper hiking shoes, some area can get muddy **"
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Siti Norasmi",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXnJiywVXQ4PpgiLBxm4WOkaQQmMVHk_Ma_6Kps7EyYKGlzo-J_kg=s128-c0x00000000-cc-rp-mo",
+        "authorUri": "https://www.google.com/maps/contrib/117928012806575022700/reviews",
+        "rating": 5,
+        "date": "5 months ago",
+        "originalText": "📍Coral Hill, Brinchang Cameron Hinglands\n🚗 Map : Surau Sungai Burung Brinchang\n📝 No permit needed. Free entrance\n🏔️Trail easy short and sweet!\n⏳Less than 30 minutes round trip\n📸 Perfect for beginners and photo lover"
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "Mohd Zamri",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWoCbrv_O1xSgmp3RJLGTuRMoAnMZU6TZSug6UQITVWlZWQxJAR=s128-c0x00000000-cc-rp-mo-ba7",
+        "authorUri": "https://www.google.com/maps/contrib/106581939128910716211/reviews",
+        "rating": 5,
+        "date": "9 months ago",
+        "originalText": "If mossy forest too pricey or challenging or close due to landslide, this small hill can be sufficient alternative to view magical mossy area. Just 10-15 minutes hike passing by someone else farm."
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Antony Socrates",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXp0VOj0OQlO9SYgYC8bO9Q0IWn6maqHSyQSZ2W2P7QW_cX3QZX=s128-c0x00000000-cc-rp-mo-ba6",
+        "authorUri": "https://www.google.com/maps/contrib/115630386724757059695/reviews",
+        "rating": 4,
+        "date": "8 months ago",
+        "originalText": "Not easy to find the start as it’s behind a block of flats on the road out from Brinchang after the Centrum Mall.\nIt goes past local produce growers then uphill to the top. Can be steep and muddy so wear good shoes. On the way down take care not to slip. I went on my own but saw groups coming down with a guide. Unlikely to get lost so not needed."
+      }
+    ],
+    "cachedAt": "2026-10-17T13:44:15.494Z"
+  },
+  "chijoezxmy9zyjer1gl101mi4rw": {
+    "place": {
+      "id": "ChIJoeZXMY9ZyjER1Gl101mi4Rw",
+      "name": "Coral Hill",
+      "address": "Kuartes Jkr Sungai Burung,Brinchang, Brinchang, 39000 Tanah Rata, Pahang, Malaysia",
+      "rating": 4.6,
+      "userRatingCount": 126
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 7,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 5,
+        "positivePct": 29,
+        "mixedPct": 0,
+        "negativePct": 71,
+        "evidenceTier": "moderate",
+        "evidenceLabel": "Moderate Evidence",
+        "headline": "5 of 7 accessibility mentions were negative",
+        "subtext": "71% negative",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "I say is much easier, less muddy and great for beginners and even advance climber like ourselves 🥳"
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "accessibility",
+            "sentiment": "negative",
+            "exactQuote": "The initial part of the hike was quite strenuous due to the steep ascent, but it gradually became more manageable."
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "accessibility",
+            "sentiment": "negative",
+            "exactQuote": "please wear proper hiking shoes, some area can get muddy"
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "Trail easy short and sweet!"
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "accessibility",
+            "sentiment": "negative",
+            "exactQuote": "Not easy to find the start as it’s behind a block of flats on the road out from Brinchang after the Centrum Mall."
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "accessibility",
+            "sentiment": "negative",
+            "exactQuote": "Can be steep and muddy so wear good shoes."
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "accessibility",
+            "sentiment": "negative",
+            "exactQuote": "On the way down take care not to slip."
+          }
+        ]
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 1,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention parking",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_2",
+            "dimension": "parking",
+            "sentiment": "positive",
+            "exactQuote": "There is free parking available at the nearby JKR housing area, just a short walk from the entrance but please be respectful of the local residents."
+          }
+        ]
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      }
+    },
+    "totalMentions": 8,
+    "aiInsight": "The primary infrastructure challenge at this destination is related to accessibility, with trails frequently described as steep and muddy, and the starting point being difficult to locate. Despite these physical demands, the trails are generally considered easy for beginners. A notable positive aspect is the availability of free parking, which enhances visitor convenience.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "Chong Ban Long",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjU-DyJrUXH7vcPahETROgFrOI3Ttyws5FbqFflTUMByv2SyY24=s128-c0x00000000-cc-rp-mo-ba4",
+        "authorUri": "https://www.google.com/maps/contrib/100002912595683735961/reviews",
+        "rating": 5,
+        "date": "3 months ago",
+        "originalText": "Some said the view is much better than Mossy forest at Mt Brinchang. I say is much easier, less muddy and great for beginners and even advance climber like ourselves 🥳\n\nIt’s took us about 25 mins (slow & steady climb in the dark at 6:30am) to reach the Summit."
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Nabihah Mustafa",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWQEmVcZ8r6nT4U0E8yLSLcyBaLxEDzpW34B6v07j-5YlgQQs44Jg=s128-c0x00000000-cc-rp-mo-ba2",
+        "authorUri": "https://www.google.com/maps/contrib/104694142764701489489/reviews",
+        "rating": 5,
+        "date": "7 months ago",
+        "originalText": "The initial part of the hike was quite strenuous due to the steep ascent, but it gradually became more manageable. It’s a relatively short hike to the stone hill, with the real highlight being the beautiful mossy forest view at the end.\n\nAlthough short, it’s definitely a hike worth doing.\n\nThere is free parking available at the nearby JKR housing area, just a short walk from the entrance but please be respectful of the local residents.\n\n**please wear proper hiking shoes, some area can get muddy **"
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Siti Norasmi",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXnJiywVXQ4PpgiLBxm4WOkaQQmMVHk_Ma_6Kps7EyYKGlzo-J_kg=s128-c0x00000000-cc-rp-mo",
+        "authorUri": "https://www.google.com/maps/contrib/117928012806575022700/reviews",
+        "rating": 5,
+        "date": "5 months ago",
+        "originalText": "📍Coral Hill, Brinchang Cameron Hinglands\n🚗 Map : Surau Sungai Burung Brinchang\n📝 No permit needed. Free entrance\n🏔️Trail easy short and sweet!\n⏳Less than 30 minutes round trip\n📸 Perfect for beginners and photo lover"
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "Mohd Zamri",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWoCbrv_O1xSgmp3RJLGTuRMoAnMZU6TZSug6UQITVWlZWQxJAR=s128-c0x00000000-cc-rp-mo-ba7",
+        "authorUri": "https://www.google.com/maps/contrib/106581939128910716211/reviews",
+        "rating": 5,
+        "date": "9 months ago",
+        "originalText": "If mossy forest too pricey or challenging or close due to landslide, this small hill can be sufficient alternative to view magical mossy area. Just 10-15 minutes hike passing by someone else farm."
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Antony Socrates",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXp0VOj0OQlO9SYgYC8bO9Q0IWn6maqHSyQSZ2W2P7QW_cX3QZX=s128-c0x00000000-cc-rp-mo-ba6",
+        "authorUri": "https://www.google.com/maps/contrib/115630386724757059695/reviews",
+        "rating": 4,
+        "date": "8 months ago",
+        "originalText": "Not easy to find the start as it’s behind a block of flats on the road out from Brinchang after the Centrum Mall.\nIt goes past local produce growers then uphill to the top. Can be steep and muddy so wear good shoes. On the way down take care not to slip. I went on my own but saw groups coming down with a guide. Unlikely to get lost so not needed."
+      }
+    ],
+    "cachedAt": "2026-10-17T13:44:15.494Z"
+  },
+  "desaru coast adventure park & beach": {
+    "place": {
+      "id": "ChIJ_6p1GGhL2jERRGGRY1eS4mA",
+      "name": "Adventure Waterpark Desaru Coast",
+      "address": "81930 Bandar Penawar, Johor, Malaysia",
+      "rating": 4.2,
+      "userRatingCount": 4954
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 1,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention accessibility",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_5",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "it's super convenient if you're staying at Hard Rock Hotel as it’s just a short walk away via a dedicated entrance."
+          }
+        ]
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 2,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 1,
+        "positivePct": 50,
+        "mixedPct": 0,
+        "negativePct": 50,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention parking",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "parking",
+            "sentiment": "positive",
+            "exactQuote": "the parking area was spacious."
+          },
+          {
+            "reviewId": "rev_1",
+            "dimension": "parking",
+            "sentiment": "negative",
+            "exactQuote": "after a thunderstorm, the parking payment machines experienced technical issues, and visitors were allowed to exit without making payment."
+          }
+        ]
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 3,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 2,
+        "positivePct": 33,
+        "mixedPct": 0,
+        "negativePct": 67,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 3 reviews mention facilities",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "facilities",
+            "sentiment": "negative",
+            "exactQuote": "many visitors were looking for shelter, but there weren't many covered areas available apart from the surau."
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "There are also lockers, food outlets, and shaded areas available throughout the park."
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "facilities",
+            "sentiment": "negative",
+            "exactQuote": "the artificial wave pool was not operational, which was a bit disappointing."
+          }
+        ]
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention cleanliness",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_2",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "The park was generally well maintained"
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "the park was clean and well-managed."
+          }
+        ]
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 2,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 1,
+        "positivePct": 50,
+        "mixedPct": 0,
+        "negativePct": 50,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention crowding",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "crowding",
+            "sentiment": "negative",
+            "exactQuote": "the park was quite crowded, which was understandable. Unfortunately, we didn't get the chance to try most of the rides due to the long queues. Even buying food required a considerable wait."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "crowding",
+            "sentiment": "positive",
+            "exactQuote": "When we arrived, we just showed the digital tickets at the counter and entered in less than 10 minutes. There was no queue at all, making the process incredibly fast and smooth."
+          }
+        ]
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention services",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_2",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "There are also lockers, food outlets, and shaded areas available throughout the park."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "When we arrived, we just showed the digital tickets at the counter and entered in less than 10 minutes. There was no queue at all, making the process incredibly fast and smooth."
+          }
+        ]
+      }
+    },
+    "totalMentions": 12,
+    "aiInsight": "The destination generally receives positive feedback for its well-maintained grounds, spacious parking, and convenient access for hotel guests. However, significant bottlenecks were observed in crowding, leading to long queues for rides and food, and a lack of sufficient covered areas for shelter. Technical issues with parking payment machines and non-operational key attractions also detracted from the visitor experience.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "shaukhi hashim",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWiBEyB52b4xpVNfuIIZG_EpydiopjQmsbv4F0M7M5L-GFoWRK8hQ=s128-c0x00000000-cc-rp-mo-ba4",
+        "authorUri": "https://www.google.com/maps/contrib/104616550535704898453/reviews",
+        "rating": 5,
+        "date": "4 months ago",
+        "originalText": "Although it's not as large as Sunway Lagoon, it's definitely a great spot for a one-day getaway with the kids.\nSince it was a long weekend combined with a public holiday, the park was quite crowded, which was understandable. Unfortunately, we didn't get the chance to try most of the rides due to the long queues. Even buying food required a considerable wait.\nThe weather was a bit unpredictable, with intermittent rain throughout the day. As a result, many visitors were looking for shelter, but there weren't many covered areas available apart from the surau.\nOn a positive note, the parking area was spacious. However, after a thunderstorm, the parking payment machines experienced technical issues, and visitors were allowed to exit without making payment. I'm still unsure whether this will affect my Touch 'n Go card.\nOverall, it was an enjoyable experience and a nice place for a family day trip. Despite the crowds and weather, it's still worth visiting for a fun day out with the children."
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Melvin J.",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWAIzejQax09_Svhs2A1nv4paUigEMqKImnGsNaeqK2I5Y1YZg=s128-c0x00000000-cc-rp-mo-ba7",
+        "authorUri": "https://www.google.com/maps/contrib/100282543110276466965/reviews",
+        "rating": 5,
+        "date": "4 months ago",
+        "originalText": "We had complimentary access to the water park as part of our stay at Hard Rock Hotel Desaru Coast.\n\nThe park is fairly large with a good mix of attractions for both children and adults. There are plenty of water slides, a wave pool, lazy river, and dedicated play areas for younger kids. We especially liked that there was enough variety to keep everyone occupied for most of the day.\n\nOne convenient feature is that hotel guests with eligible access can enter and exit the park multiple times throughout the day. This made it easy to head back to the hotel room for a rest, meal, or shower before returning later.\n\nThe park was generally well maintained, and there were plenty of lifeguards around which added some reassurance, especially for families with young children. There are also lockers, food outlets, and shaded areas available throughout the park.\n\nOverall, we had an enjoyable time. It may not be the biggest water park around, but it's a fun family-friendly attraction with a good range of rides and facilities. If you're staying at Hard Rock and have complimentary access included, it's definitely worth making full use of it."
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Athira Azali",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWP2dU-1AOGuXHDXMyXR68h-VXRNZyLF2PYEMgnm6WD9JK6wbrK=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/106588711407523982685/reviews",
+        "rating": 4,
+        "date": "12 months ago",
+        "originalText": "Got the water park voucher because I bought the Hard Rock Hotel voucher. Nothing much to complain about — for me, it was okay. As long as the kids were having fun, I was fine with it. However, there weren’t that many attractions in the water park. By around 2 p.m., we had already gone on all the rides, and the kids didn’t really know what else to do. If you’re buying separate tickets, I’d say it’s quite overpriced."
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "Mohd Razlan Jaafar",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXiekXdsIjo4BvMJCrZ6oK65nVBUp91X6GIYxxVmDhuGDjpy6vJ=s128-c0x00000000-cc-rp-mo-ba4",
+        "authorUri": "https://www.google.com/maps/contrib/117975116530153853005/reviews",
+        "rating": 4,
+        "date": "5 months ago",
+        "originalText": "Fantastic and hassle-free family day out! ⭐⭐⭐⭐\n\nWe had an absolutely wonderful time visiting with my wife and two kids. Booking our tickets online beforehand was a great decision. When we arrived, we just showed the digital tickets at the counter and entered in less than 10 minutes. There was no queue at all, making the process incredibly fast and smooth.\n\nThe entire place is highly kids-friendly. Because of the excellent setup, we spent our whole time at the dedicated kids' area, which kept the children completely entertained. Even though the weather wasn't ideal—with a light rain falling from the morning until we finished around 3:00 PM—it didn't dampen our spirits or ruin our fun at all.\n\nOverall, it was a fantastic experience despite the rainy weather. We highly recommend this place to other families and will definitely be coming back for a second visit!"
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Peng Wan Choo",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUuw9Ky3q0G32lu7vSB16kxOI8PDjntx3StpgiUqaMpaD2InADQ=s128-c0x00000000-cc-rp-mo-ba6",
+        "authorUri": "https://www.google.com/maps/contrib/100134547157445087044/reviews",
+        "rating": 4,
+        "date": "11 months ago",
+        "originalText": "Fun destination for families, and it's super convenient if you're staying at Hard Rock Hotel as it’s just a short walk away via a dedicated entrance. The park has a good mix of slides and pools, making it enjoyable for both kids and adults. However, during our visit, the artificial wave pool was not operational, which was a bit disappointing. That said, the other rides and lazy river were still entertaining, and the park was clean and well-managed."
+      }
+    ],
+    "cachedAt": "2026-10-17T13:44:32.439Z"
+  },
+  "chij_6p1gghl2jerrggry1es4ma": {
+    "place": {
+      "id": "ChIJ_6p1GGhL2jERRGGRY1eS4mA",
+      "name": "Adventure Waterpark Desaru Coast",
+      "address": "81930 Bandar Penawar, Johor, Malaysia",
+      "rating": 4.2,
+      "userRatingCount": 4954
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 1,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention accessibility",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_5",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "it's super convenient if you're staying at Hard Rock Hotel as it’s just a short walk away via a dedicated entrance."
+          }
+        ]
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 2,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 1,
+        "positivePct": 50,
+        "mixedPct": 0,
+        "negativePct": 50,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention parking",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "parking",
+            "sentiment": "positive",
+            "exactQuote": "the parking area was spacious."
+          },
+          {
+            "reviewId": "rev_1",
+            "dimension": "parking",
+            "sentiment": "negative",
+            "exactQuote": "after a thunderstorm, the parking payment machines experienced technical issues, and visitors were allowed to exit without making payment."
+          }
+        ]
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 3,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 2,
+        "positivePct": 33,
+        "mixedPct": 0,
+        "negativePct": 67,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 3 reviews mention facilities",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "facilities",
+            "sentiment": "negative",
+            "exactQuote": "many visitors were looking for shelter, but there weren't many covered areas available apart from the surau."
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "There are also lockers, food outlets, and shaded areas available throughout the park."
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "facilities",
+            "sentiment": "negative",
+            "exactQuote": "the artificial wave pool was not operational, which was a bit disappointing."
+          }
+        ]
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention cleanliness",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_2",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "The park was generally well maintained"
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "the park was clean and well-managed."
+          }
+        ]
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 2,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 1,
+        "positivePct": 50,
+        "mixedPct": 0,
+        "negativePct": 50,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention crowding",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "crowding",
+            "sentiment": "negative",
+            "exactQuote": "the park was quite crowded, which was understandable. Unfortunately, we didn't get the chance to try most of the rides due to the long queues. Even buying food required a considerable wait."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "crowding",
+            "sentiment": "positive",
+            "exactQuote": "When we arrived, we just showed the digital tickets at the counter and entered in less than 10 minutes. There was no queue at all, making the process incredibly fast and smooth."
+          }
+        ]
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention services",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_2",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "There are also lockers, food outlets, and shaded areas available throughout the park."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "When we arrived, we just showed the digital tickets at the counter and entered in less than 10 minutes. There was no queue at all, making the process incredibly fast and smooth."
+          }
+        ]
+      }
+    },
+    "totalMentions": 12,
+    "aiInsight": "The destination generally receives positive feedback for its well-maintained grounds, spacious parking, and convenient access for hotel guests. However, significant bottlenecks were observed in crowding, leading to long queues for rides and food, and a lack of sufficient covered areas for shelter. Technical issues with parking payment machines and non-operational key attractions also detracted from the visitor experience.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "shaukhi hashim",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWiBEyB52b4xpVNfuIIZG_EpydiopjQmsbv4F0M7M5L-GFoWRK8hQ=s128-c0x00000000-cc-rp-mo-ba4",
+        "authorUri": "https://www.google.com/maps/contrib/104616550535704898453/reviews",
+        "rating": 5,
+        "date": "4 months ago",
+        "originalText": "Although it's not as large as Sunway Lagoon, it's definitely a great spot for a one-day getaway with the kids.\nSince it was a long weekend combined with a public holiday, the park was quite crowded, which was understandable. Unfortunately, we didn't get the chance to try most of the rides due to the long queues. Even buying food required a considerable wait.\nThe weather was a bit unpredictable, with intermittent rain throughout the day. As a result, many visitors were looking for shelter, but there weren't many covered areas available apart from the surau.\nOn a positive note, the parking area was spacious. However, after a thunderstorm, the parking payment machines experienced technical issues, and visitors were allowed to exit without making payment. I'm still unsure whether this will affect my Touch 'n Go card.\nOverall, it was an enjoyable experience and a nice place for a family day trip. Despite the crowds and weather, it's still worth visiting for a fun day out with the children."
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Melvin J.",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWAIzejQax09_Svhs2A1nv4paUigEMqKImnGsNaeqK2I5Y1YZg=s128-c0x00000000-cc-rp-mo-ba7",
+        "authorUri": "https://www.google.com/maps/contrib/100282543110276466965/reviews",
+        "rating": 5,
+        "date": "4 months ago",
+        "originalText": "We had complimentary access to the water park as part of our stay at Hard Rock Hotel Desaru Coast.\n\nThe park is fairly large with a good mix of attractions for both children and adults. There are plenty of water slides, a wave pool, lazy river, and dedicated play areas for younger kids. We especially liked that there was enough variety to keep everyone occupied for most of the day.\n\nOne convenient feature is that hotel guests with eligible access can enter and exit the park multiple times throughout the day. This made it easy to head back to the hotel room for a rest, meal, or shower before returning later.\n\nThe park was generally well maintained, and there were plenty of lifeguards around which added some reassurance, especially for families with young children. There are also lockers, food outlets, and shaded areas available throughout the park.\n\nOverall, we had an enjoyable time. It may not be the biggest water park around, but it's a fun family-friendly attraction with a good range of rides and facilities. If you're staying at Hard Rock and have complimentary access included, it's definitely worth making full use of it."
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Athira Azali",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWP2dU-1AOGuXHDXMyXR68h-VXRNZyLF2PYEMgnm6WD9JK6wbrK=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/106588711407523982685/reviews",
+        "rating": 4,
+        "date": "12 months ago",
+        "originalText": "Got the water park voucher because I bought the Hard Rock Hotel voucher. Nothing much to complain about — for me, it was okay. As long as the kids were having fun, I was fine with it. However, there weren’t that many attractions in the water park. By around 2 p.m., we had already gone on all the rides, and the kids didn’t really know what else to do. If you’re buying separate tickets, I’d say it’s quite overpriced."
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "Mohd Razlan Jaafar",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXiekXdsIjo4BvMJCrZ6oK65nVBUp91X6GIYxxVmDhuGDjpy6vJ=s128-c0x00000000-cc-rp-mo-ba4",
+        "authorUri": "https://www.google.com/maps/contrib/117975116530153853005/reviews",
+        "rating": 4,
+        "date": "5 months ago",
+        "originalText": "Fantastic and hassle-free family day out! ⭐⭐⭐⭐\n\nWe had an absolutely wonderful time visiting with my wife and two kids. Booking our tickets online beforehand was a great decision. When we arrived, we just showed the digital tickets at the counter and entered in less than 10 minutes. There was no queue at all, making the process incredibly fast and smooth.\n\nThe entire place is highly kids-friendly. Because of the excellent setup, we spent our whole time at the dedicated kids' area, which kept the children completely entertained. Even though the weather wasn't ideal—with a light rain falling from the morning until we finished around 3:00 PM—it didn't dampen our spirits or ruin our fun at all.\n\nOverall, it was a fantastic experience despite the rainy weather. We highly recommend this place to other families and will definitely be coming back for a second visit!"
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Peng Wan Choo",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUuw9Ky3q0G32lu7vSB16kxOI8PDjntx3StpgiUqaMpaD2InADQ=s128-c0x00000000-cc-rp-mo-ba6",
+        "authorUri": "https://www.google.com/maps/contrib/100134547157445087044/reviews",
+        "rating": 4,
+        "date": "11 months ago",
+        "originalText": "Fun destination for families, and it's super convenient if you're staying at Hard Rock Hotel as it’s just a short walk away via a dedicated entrance. The park has a good mix of slides and pools, making it enjoyable for both kids and adults. However, during our visit, the artificial wave pool was not operational, which was a bit disappointing. That said, the other rides and lazy river were still entertaining, and the park was clean and well-managed."
+      }
+    ],
+    "cachedAt": "2026-10-17T13:44:32.439Z"
+  },
+  "petronas twin towers (klcc)": {
+    "place": {
+      "id": "ChIJH5xmLdE3zDERVpCKfNH9Op4",
+      "name": "Petronas Twin Towers",
+      "address": "Lower Ground (Concourse) Level, Menara Berkembar Petronas, Kuala Lumpur City Centre, 50088 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia",
+      "rating": 4.7,
+      "userRatingCount": 105466
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 2,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 1,
+        "positivePct": 50,
+        "mixedPct": 0,
+        "negativePct": 50,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention facilities",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "plenty of places to sit"
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "facilities",
+            "sentiment": "negative",
+            "exactQuote": "beware of toilets.....Two very different situation of toilet facilities for ladies!!!!"
+          }
+        ]
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention cleanliness",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "The area around KLCC is also well maintained, with open spaces, greenery"
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "beautifully maintained KLCC Park"
+          }
+        ]
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 5,
+        "positive": 5,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "moderate",
+        "evidenceLabel": "Moderate Evidence",
+        "headline": "5 of 5 crowding mentions were positive",
+        "subtext": "100% positive",
+        "evidence": [
+          {
+            "reviewId": "rev_2",
+            "dimension": "crowding",
+            "sentiment": "positive",
+            "exactQuote": "making the experience comfortable without feeling overcrowded"
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "crowding",
+            "sentiment": "positive",
+            "exactQuote": "made the entry process smooth and hassle-free."
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "crowding",
+            "sentiment": "positive",
+            "exactQuote": "well-organized flow of the tour."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "crowding",
+            "sentiment": "positive",
+            "exactQuote": "when the area is generally less crowded."
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "crowding",
+            "sentiment": "positive",
+            "exactQuote": "No wait."
+          }
+        ]
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 6,
+        "positive": 6,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "moderate",
+        "evidenceLabel": "Moderate Evidence",
+        "headline": "6 of 6 services mentions were positive",
+        "subtext": "100% positive",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "shopping, restaurants"
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "The café on Level 86 is a wonderful place to take a short break, enjoy a drink"
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "souvenirs"
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "for a meal and some shopping"
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "shopping mall at the lower levels, which offers a wide variety of shops, including fashion, cosmetics, perfumes, lifestyle brands, restaurants, and cafés."
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "Fabulous shopping centre at ground level to the towers too."
+          }
+        ]
+      }
+    },
+    "totalMentions": 15,
+    "aiInsight": "Visitor feedback highlights strong infrastructure quality, particularly in grounds maintenance, effective crowd management, and diverse service offerings including shopping and dining. Seating is also noted as ample. However, a specific concern regarding the condition or type of toilet facilities for ladies suggests a potential area for improvement to meet international visitor expectations.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "John (John)",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVWPPGUZ4YcmFYRxJx_eFnnx97zKh3zi90JNc4S1sE4D4CzyNCN=s128-c0x00000000-cc-rp-mo-ba6",
+        "authorUri": "https://www.google.com/maps/contrib/117273987700672721425/reviews",
+        "rating": 5,
+        "date": "a month ago",
+        "originalText": "⭐ Petronas Twin Towers — An Icon of Kuala Lumpur\n\nOne of the most impressive landmarks in Kuala Lumpur and definitely a place worth visiting, especially for a first trip to Malaysia. The Petronas Twin Towers are instantly recognizable and give you that “I’m really in KL” feeling as soon as you see them.\n\nThe towers are especially beautiful from the outside. Their silver architectural design reflects the sunlight during the day and becomes even more impressive when illuminated at night. The area around KLCC is also well maintained, with open spaces, greenery, shopping, restaurants, and plenty of places to sit and enjoy the view.\n\n📸 Best part: Walk around the surrounding park and find different angles for photos. The towers look very different depending on where you stand.\n\n🌙 My recommendation: Visit both during the day and after sunset. The daytime view shows the architecture clearly, while the nighttime view gives the towers a completely different atmosphere.\n\nFor travelers, this is more than just a photo spot—it's one of those landmarks that represents the modern identity of Kuala Lumpur.\n\nA must-visit landmark in KL. If you're in Kuala Lumpur and haven't seen the Twin Towers yet, definitely put it on your list! 🇲🇾✨"
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Santhosh Raj",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUEDD-BDIrJOEyLWZPZkbA_N2LzZ7FzwuMftXSHXmOv2LneKwNP=s128-c0x00000000-cc-rp-mo-ba8",
+        "authorUri": "https://www.google.com/maps/contrib/110864000022282571672/reviews",
+        "rating": 5,
+        "date": "3 months ago",
+        "originalText": "Visiting the Petronas Twin Towers was undoubtedly one of the highlights of my trip to Kuala Lumpur. The towers are even more breathtaking in person than in photographs, and seeing them transform from gleaming silver in the afternoon sunlight to beautifully illuminated at night was truly unforgettable.\n\nThe entire visit was exceptionally well organized. Entry was managed in small groups with dedicated time slots for the Skybridge and Observation Deck, making the experience comfortable without feeling overcrowded. The panoramic views of Kuala Lumpur from the top are absolutely spectacular and well worth the visit. I also enjoyed learning about the history, engineering, and architecture of this iconic landmark.\n\nThe café on Level 86 is a wonderful place to take a short break, enjoy a drink, and admire the stunning skyline before heading back down.\n\nThe area surrounding the towers is just as impressive, with the beautifully maintained KLCC Park and fountains providing plenty of space to relax and capture amazing photos from different angles.\n\nWhether you admire architecture, enjoy city viewpoints, or simply want to experience one of Malaysia’s most iconic landmarks, the Petronas Twin Towers are an absolute must-visit. I highly recommend booking your tickets in advance to avoid disappointment."
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "vaasugi batumalai",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUtEfTSDbqwxfNDbNjZqr8Ghqnwrnv6Inl2PaEfTCLT9947RzqB=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/107629618125210446260/reviews",
+        "rating": 4,
+        "date": "2 months ago",
+        "originalText": "Visited over the weekend and had a great experience at the Skybridge, Twin Towers. We had already purchased our tickets via Klook, which made the entry process smooth and hassle-free.\n\nThe visit started at Level 41, where the Skybridge is located. The viewing time here was limited to about 10 minutes, but it was enough to take in the stunning city views and snap some nice photos. After that, we were guided to Level 86 for another 10 minutes, offering an even more breathtaking panoramic view of Kuala Lumpur.\n\nWe also stopped by Level 83, which had displays filled with interesting information, souvenirs, and exhibits. It added a nice touch to the overall experience.\n\nBefore leaving, we picked up a fridge magnet for RM16.50 as a memory of the visit. Overall, we truly enjoyed the views, the photo opportunities, and the well-organized flow of the tour. Afterward, we spent time at Suria KLCC for a meal and some shopping, which made the day even more enjoyable.\n\nA great experience and definitely worth visiting at least once!"
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "veeraphong jiraphanphong",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjX1pglkD-JH8FH0gGLWjANQxLFawbP1ZeMkXAueD0H5mkXUYI7e2g=s128-c0x00000000-cc-rp-mo-ba6",
+        "authorUri": "https://www.google.com/maps/contrib/110377176960061889756/reviews",
+        "rating": 5,
+        "date": "a month ago",
+        "originalText": "The Petronas Twin Towers is definitely a must visit landmark if you come to Malaysia. The iconic towers offer an unforgettable experience, especially when you visit the Skybridge on the 41st floor, where you can enjoy a beautiful view of Kuala Lumpur and appreciate the impressive architecture of the towers.\n\nIf you go higher up to the observation deck on the 86th floor, the experience becomes even more spectacular. The panoramic 360-degree view of Kuala Lumpur is truly breathtaking, offering an amazing perspective of the city and its surrounding skyline.\n\nAfter your visit to the towers, you can explore the shopping mall at the lower levels, which offers a wide variety of shops, including fashion, cosmetics, perfumes, lifestyle brands, restaurants, and cafés. It is also a great place to relax, have a coffee, or enjoy a meal after sightseeing.\n\nI highly recommend visiting in the morning, around 10:00 a.m., when the area is generally less crowded. You will have a more comfortable experience, better opportunities to enjoy the views, and more time to take beautiful photos without too many people around.\n\nOverall, the Petronas Twin Towers is not only an architectural masterpiece but also one of the most memorable places to experience when visiting Malaysia."
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Lynn Perry",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a/ACg8ocJOCwzrldBO-HGMUqFKemK8gZQRyyOPKtn_YFu6e-SlY_3mNw=s128-c0x00000000-cc-rp-mo-ba4",
+        "authorUri": "https://www.google.com/maps/contrib/108927838993503295470/reviews",
+        "rating": 5,
+        "date": "5 months ago",
+        "originalText": "If in KL then a visit to these towers are a must. Reasonably priced. No wait. Views are amazing! So much to see and at night towers are lit and you have beautiful fountains dancing to music in front of them. Fabulous shopping centre at ground level to the towers too. If visiting from Europe,  just beware of toilets.....Two very different situation of toilet facilities for ladies!!!!"
+      }
+    ],
+    "cachedAt": "2026-10-17T13:50:54.458Z"
+  },
+  "pusara negara": {
+    "place": {
+      "id": "ChIJD63yeoW3zTERqwrCTV0fiE4",
+      "name": "Pusara Negara",
+      "address": "Jalan P5, Presint 20, 62200 Putrajaya, Wilayah Persekutuan Putrajaya, Malaysia",
+      "rating": 5,
+      "userRatingCount": 9
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 1,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 1,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 100,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention accessibility",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "accessibility",
+            "sentiment": "negative",
+            "exactQuote": "The area is quite remote and scary if you pass by at night."
+          }
+        ]
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 1,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention facilities",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "Complete facilities with systematic management facilities."
+          }
+        ]
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention cleanliness",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "The cemetery is also organized and systematic."
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "Always well maintained"
+          }
+        ]
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      }
+    },
+    "totalMentions": 4,
+    "aiInsight": "The destination generally receives positive feedback regarding its facilities and cleanliness, with visitors noting 'complete facilities' and consistent 'well maintained' grounds. However, a significant bottleneck is its accessibility, as the area is perceived as 'quite remote and scary' at night, which could deter visitors.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "Khairul Nizam Bakar",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWHOrCWSjnT2SPt7kx-fReKWmn5PZXpJuistx21xaBtO_06J6WS=s128-c0x00000000-cc-rp-mo-ba7",
+        "authorUri": "https://www.google.com/maps/contrib/116846843956984992200/reviews",
+        "rating": 5,
+        "date": "6 years ago",
+        "originalText": "Cemetery of various religions. There are cemeteries for Muslims, Buddhists, Christians, Singhs and Hindus. The area is quite remote and scary if you pass by at night. Complete facilities with systematic management facilities. The cemetery is also organized and systematic."
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Ainim Suju",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWLGMc6JfRt_k7ahr_dasdam9ghtRRak7900EtHLjjg2wzc-YMM=s128-c0x00000000-cc-rp-mo-ba3",
+        "authorUri": "https://www.google.com/maps/contrib/107621776564860339956/reviews",
+        "rating": 5,
+        "date": "6 years ago",
+        "originalText": "Always well maintained"
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Nah if win",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWNT4exZU5ob5NvTgJFVEbVoqI7iBkRLlJr-k4aSUiReqJaoBg=s128-c0x00000000-cc-rp-mo",
+        "authorUri": "https://www.google.com/maps/contrib/101079486450550621906/reviews",
+        "rating": 5,
+        "date": "2 weeks ago",
+        "originalText": ""
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "semut",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUVlbNYHSEVuY815Ik7OPtxNsTXJfGaT29O_8wt8s9Z9oRuw9s=s128-c0x00000000-cc-rp-mo",
+        "authorUri": "https://www.google.com/maps/contrib/107361162069040764839/reviews",
+        "rating": 5,
+        "date": "2 weeks ago",
+        "originalText": "Condolences..Al fatihah"
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Muhammad Haikal",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUnYDHlCMlY8HUwrGOMcD-Xa7b4pCGUX9t2pklgPABiVfOVAaHC=s128-c0x00000000-cc-rp-mo",
+        "authorUri": "https://www.google.com/maps/contrib/108220020942031367796/reviews",
+        "rating": 5,
+        "date": "2 weeks ago",
+        "originalText": "Al-Fatihah for Tun Dr Siti Hasmah"
+      }
+    ],
+    "cachedAt": "2026-10-17T13:57:10.999Z"
+  },
+  "chijd63yeow3zterqwrctv0fie4": {
+    "place": {
+      "id": "ChIJD63yeoW3zTERqwrCTV0fiE4",
+      "name": "Pusara Negara",
+      "address": "Jalan P5, Presint 20, 62200 Putrajaya, Wilayah Persekutuan Putrajaya, Malaysia",
+      "rating": 5,
+      "userRatingCount": 9
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 1,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 1,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 100,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention accessibility",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "accessibility",
+            "sentiment": "negative",
+            "exactQuote": "The area is quite remote and scary if you pass by at night."
+          }
+        ]
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 1,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention facilities",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "Complete facilities with systematic management facilities."
+          }
+        ]
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention cleanliness",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "The cemetery is also organized and systematic."
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "Always well maintained"
+          }
+        ]
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      }
+    },
+    "totalMentions": 4,
+    "aiInsight": "The destination generally receives positive feedback regarding its facilities and cleanliness, with visitors noting 'complete facilities' and consistent 'well maintained' grounds. However, a significant bottleneck is its accessibility, as the area is perceived as 'quite remote and scary' at night, which could deter visitors.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "Khairul Nizam Bakar",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWHOrCWSjnT2SPt7kx-fReKWmn5PZXpJuistx21xaBtO_06J6WS=s128-c0x00000000-cc-rp-mo-ba7",
+        "authorUri": "https://www.google.com/maps/contrib/116846843956984992200/reviews",
+        "rating": 5,
+        "date": "6 years ago",
+        "originalText": "Cemetery of various religions. There are cemeteries for Muslims, Buddhists, Christians, Singhs and Hindus. The area is quite remote and scary if you pass by at night. Complete facilities with systematic management facilities. The cemetery is also organized and systematic."
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Ainim Suju",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWLGMc6JfRt_k7ahr_dasdam9ghtRRak7900EtHLjjg2wzc-YMM=s128-c0x00000000-cc-rp-mo-ba3",
+        "authorUri": "https://www.google.com/maps/contrib/107621776564860339956/reviews",
+        "rating": 5,
+        "date": "6 years ago",
+        "originalText": "Always well maintained"
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Nah if win",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWNT4exZU5ob5NvTgJFVEbVoqI7iBkRLlJr-k4aSUiReqJaoBg=s128-c0x00000000-cc-rp-mo",
+        "authorUri": "https://www.google.com/maps/contrib/101079486450550621906/reviews",
+        "rating": 5,
+        "date": "2 weeks ago",
+        "originalText": ""
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "semut",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUVlbNYHSEVuY815Ik7OPtxNsTXJfGaT29O_8wt8s9Z9oRuw9s=s128-c0x00000000-cc-rp-mo",
+        "authorUri": "https://www.google.com/maps/contrib/107361162069040764839/reviews",
+        "rating": 5,
+        "date": "2 weeks ago",
+        "originalText": "Condolences..Al fatihah"
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Muhammad Haikal",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUnYDHlCMlY8HUwrGOMcD-Xa7b4pCGUX9t2pklgPABiVfOVAaHC=s128-c0x00000000-cc-rp-mo",
+        "authorUri": "https://www.google.com/maps/contrib/108220020942031367796/reviews",
+        "rating": 5,
+        "date": "2 weeks ago",
+        "originalText": "Al-Fatihah for Tun Dr Siti Hasmah"
+      }
+    ],
+    "cachedAt": "2026-10-17T13:57:10.999Z"
+  },
+  "crystal mosque (masjid kristal)": {
+    "place": {
+      "id": "ChIJO_FN3Y6-tzERCEr3QjlnDY4",
+      "name": "Masjid Kristal",
+      "address": "Pulau Wan Man, Losong Panglima P'erang, 21000 Kuala Terengganu, Terengganu, Malaysia",
+      "rating": 4.3,
+      "userRatingCount": 7528
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention facilities",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_2",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "prayers inside were comfortable and cold—perfect during the sweltering heat radiating outside."
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "looks magical at night with its colourful LED lights."
+          }
+        ]
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention cleanliness",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_4",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "I truly enjoyed the quiet atmosphere and the impressive cleanliness."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "It is clear that the local h Such a beautiful, peaceful, and community takes great pride in the upkeep of the area."
+          }
+        ]
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention services",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_2",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "There was also a small tent for merchandises if anyone wanted some."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "Along the way, you’ll find several small businesses selling snacks and drinks, run by some of the kindest people I’ve ever met."
+          }
+        ]
+      }
+    },
+    "totalMentions": 6,
+    "aiInsight": "The destination demonstrates strong positive infrastructure quality, particularly in its facilities and cleanliness. Visitors appreciate the comfortable indoor environment, likely due to effective cooling systems, and the visually appealing lighting. Furthermore, the area is consistently praised for its impressive cleanliness and well-maintained grounds, complemented by the convenient availability of small businesses offering snacks, drinks, and merchandise.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "RenOverSea",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXUkSUubcJlaky76CPwmh4sHZgMm_O2UKqxwIfsrdVp_TYKBMs=s128-c0x00000000-cc-rp-mo-ba7",
+        "authorUri": "https://www.google.com/maps/contrib/101131119567724780201/reviews",
+        "rating": 5,
+        "date": "3 months ago",
+        "originalText": "The Masjid Kristal is one of Terengganu’s most beautiful landmarks, it is a shimmering glass‑and‑steel mosque that looks breathtaking under the daylight and even more magical when the sun reflects off its crystal domes.\n\nIt’s a must‑visit when you’re in Kuala Terengganu, both for its unique modern design and its peaceful riverside setting on Wan Man Island.\n\nJust observe proper dress code when entering the mosque grounds, as it is an active place of worship.\n\nThe staff are welcoming, and the atmosphere is serene, making it a memorable stop for anyone exploring the city."
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Markie Qwiff",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWnTdBUm8ZE4PuqDVM0ICEqInvFoK1q6CSZysQ8UR1Ow3UwnfBU=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/107481389065346323323/reviews",
+        "rating": 4,
+        "date": "5 months ago",
+        "originalText": "My second time coming here, this time after the renovation. Again, even before the took down the construction, the mosque was nonetheless a stunning place of worship. It has such a unique color scheme and prayers inside were comfortable and cold—perfect during the sweltering heat radiating outside. There was also a small tent for merchandises if anyone wanted some. Very photographic and visually stunning."
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Ross Daniels",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUnmUE-jrUUYi1Q-YMxIpgNDtgwYCuceKCZGkJ6nD_nu7aELajdBA=s128-c0x00000000-cc-rp-mo-ba8",
+        "authorUri": "https://www.google.com/maps/contrib/103965459341092755394/reviews",
+        "rating": 5,
+        "date": "2 months ago",
+        "originalText": "We really enjoyed the Crystal Mosque in Kuala Terengganu which is an absolute must-see! Built from steel, glass, and crystal, this place literally shimmers in the sun and looks magical at night with its colourful LED lights. It sits right on the river, giving it a cool floating vibe. It’s super unique because it blends stunning modern design with tech, representing Malaysia’s forward-thinking Islamic culture. Definitely add this breathtaking spot to your travel bucket list!"
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "Giac Ly",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a/ACg8ocJ_ye0Wm9LFs8QQxJwrE0H3EreHJMt4goROea4EWHYNMP-NTUsh=s128-c0x00000000-cc-rp-mo-ba4",
+        "authorUri": "https://www.google.com/maps/contrib/108402099255126659351/reviews",
+        "rating": 5,
+        "date": "6 months ago",
+        "originalText": "majestic site. I truly enjoyed the quiet atmosphere and the impressive cleanliness. It is clear that the local h Such a beautiful, peaceful, and community takes great pride in the upkeep of the area. Along the way, you’ll find several small businesses selling snacks and drinks, run by some of the kindest people I’ve ever met. If you are in the area, please consider supporting them and this wonderful community."
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Emcee Tommie劉玟辰",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXHq0Qu7gUPtVoTK5bIRhWN3Jz6vW017RocllC4kjcLt71pnm1HdA=s128-c0x00000000-cc-rp-mo-ba4",
+        "authorUri": "https://www.google.com/maps/contrib/106514413673299806406/reviews",
+        "rating": 5,
+        "date": "5 months ago",
+        "originalText": "Glad to received a warm welcome from Datin Norhana Ng to tour me around this magnificent architecture crystal mosque.\n\nIt's stunning to appreciate how beautiful and elegant the mosque was erected on the river.\n\nHighly recommended and must visit ✅"
+      }
+    ],
+    "cachedAt": "2026-10-17T13:58:24.699Z"
+  },
+  "chijo_fn3y6-tzercer3qjlndy4": {
+    "place": {
+      "id": "ChIJO_FN3Y6-tzERCEr3QjlnDY4",
+      "name": "Masjid Kristal",
+      "address": "Pulau Wan Man, Losong Panglima P'erang, 21000 Kuala Terengganu, Terengganu, Malaysia",
+      "rating": 4.3,
+      "userRatingCount": 7528
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention facilities",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_2",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "prayers inside were comfortable and cold—perfect during the sweltering heat radiating outside."
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "looks magical at night with its colourful LED lights."
+          }
+        ]
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention cleanliness",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_4",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "I truly enjoyed the quiet atmosphere and the impressive cleanliness."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "It is clear that the local h Such a beautiful, peaceful, and community takes great pride in the upkeep of the area."
+          }
+        ]
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention services",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_2",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "There was also a small tent for merchandises if anyone wanted some."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "Along the way, you’ll find several small businesses selling snacks and drinks, run by some of the kindest people I’ve ever met."
+          }
+        ]
+      }
+    },
+    "totalMentions": 6,
+    "aiInsight": "The destination demonstrates strong positive infrastructure quality, particularly in its facilities and cleanliness. Visitors appreciate the comfortable indoor environment, likely due to effective cooling systems, and the visually appealing lighting. Furthermore, the area is consistently praised for its impressive cleanliness and well-maintained grounds, complemented by the convenient availability of small businesses offering snacks, drinks, and merchandise.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "RenOverSea",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXUkSUubcJlaky76CPwmh4sHZgMm_O2UKqxwIfsrdVp_TYKBMs=s128-c0x00000000-cc-rp-mo-ba7",
+        "authorUri": "https://www.google.com/maps/contrib/101131119567724780201/reviews",
+        "rating": 5,
+        "date": "3 months ago",
+        "originalText": "The Masjid Kristal is one of Terengganu’s most beautiful landmarks, it is a shimmering glass‑and‑steel mosque that looks breathtaking under the daylight and even more magical when the sun reflects off its crystal domes.\n\nIt’s a must‑visit when you’re in Kuala Terengganu, both for its unique modern design and its peaceful riverside setting on Wan Man Island.\n\nJust observe proper dress code when entering the mosque grounds, as it is an active place of worship.\n\nThe staff are welcoming, and the atmosphere is serene, making it a memorable stop for anyone exploring the city."
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Markie Qwiff",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWnTdBUm8ZE4PuqDVM0ICEqInvFoK1q6CSZysQ8UR1Ow3UwnfBU=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/107481389065346323323/reviews",
+        "rating": 4,
+        "date": "5 months ago",
+        "originalText": "My second time coming here, this time after the renovation. Again, even before the took down the construction, the mosque was nonetheless a stunning place of worship. It has such a unique color scheme and prayers inside were comfortable and cold—perfect during the sweltering heat radiating outside. There was also a small tent for merchandises if anyone wanted some. Very photographic and visually stunning."
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Ross Daniels",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUnmUE-jrUUYi1Q-YMxIpgNDtgwYCuceKCZGkJ6nD_nu7aELajdBA=s128-c0x00000000-cc-rp-mo-ba8",
+        "authorUri": "https://www.google.com/maps/contrib/103965459341092755394/reviews",
+        "rating": 5,
+        "date": "2 months ago",
+        "originalText": "We really enjoyed the Crystal Mosque in Kuala Terengganu which is an absolute must-see! Built from steel, glass, and crystal, this place literally shimmers in the sun and looks magical at night with its colourful LED lights. It sits right on the river, giving it a cool floating vibe. It’s super unique because it blends stunning modern design with tech, representing Malaysia’s forward-thinking Islamic culture. Definitely add this breathtaking spot to your travel bucket list!"
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "Giac Ly",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a/ACg8ocJ_ye0Wm9LFs8QQxJwrE0H3EreHJMt4goROea4EWHYNMP-NTUsh=s128-c0x00000000-cc-rp-mo-ba4",
+        "authorUri": "https://www.google.com/maps/contrib/108402099255126659351/reviews",
+        "rating": 5,
+        "date": "6 months ago",
+        "originalText": "majestic site. I truly enjoyed the quiet atmosphere and the impressive cleanliness. It is clear that the local h Such a beautiful, peaceful, and community takes great pride in the upkeep of the area. Along the way, you’ll find several small businesses selling snacks and drinks, run by some of the kindest people I’ve ever met. If you are in the area, please consider supporting them and this wonderful community."
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Emcee Tommie劉玟辰",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXHq0Qu7gUPtVoTK5bIRhWN3Jz6vW017RocllC4kjcLt71pnm1HdA=s128-c0x00000000-cc-rp-mo-ba4",
+        "authorUri": "https://www.google.com/maps/contrib/106514413673299806406/reviews",
+        "rating": 5,
+        "date": "5 months ago",
+        "originalText": "Glad to received a warm welcome from Datin Norhana Ng to tour me around this magnificent architecture crystal mosque.\n\nIt's stunning to appreciate how beautiful and elegant the mosque was erected on the river.\n\nHighly recommended and must visit ✅"
+      }
+    ],
+    "cachedAt": "2026-10-17T13:58:24.699Z"
+  },
+  "putrajaya international convention centre (picc)": {
+    "place": {
+      "id": "ChIJ95fPbpa3zTERDZ4GBPVrNJo",
+      "name": "Putrajaya International Convention Centre",
+      "address": "Pusat Konvensyen Antarabangsa Putrajaya, Presint 5, 62000 Putrajaya, Wilayah Persekutuan Putrajaya, Malaysia",
+      "rating": 4.4,
+      "userRatingCount": 6638
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 1,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 1,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 100,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention accessibility",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_5",
+            "dimension": "accessibility",
+            "sentiment": "negative",
+            "exactQuote": "I give one less star just because of the location which is quite far for us."
+          }
+        ]
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 5,
+        "positive": 4,
+        "mixed": 0,
+        "negative": 1,
+        "positivePct": 80,
+        "mixedPct": 0,
+        "negativePct": 20,
+        "evidenceTier": "moderate",
+        "evidenceLabel": "Moderate Evidence",
+        "headline": "4 of 5 parking mentions were positive",
+        "subtext": "80% positive",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "parking",
+            "sentiment": "positive",
+            "exactQuote": "Spacious parking."
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "parking",
+            "sentiment": "positive",
+            "exactQuote": "Plenty of parking at the basement."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "parking",
+            "sentiment": "positive",
+            "exactQuote": "Free parking is always a welcome bonus"
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "parking",
+            "sentiment": "negative",
+            "exactQuote": "although I did find the exit a little confusing—the signage could be clearer to guide first-time visitors."
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "parking",
+            "sentiment": "positive",
+            "exactQuote": "Therefore, it is best and convenient to park your car somewhere in the middle of the building if possible."
+          }
+        ]
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 9,
+        "positive": 8,
+        "mixed": 0,
+        "negative": 1,
+        "positivePct": 89,
+        "mixedPct": 0,
+        "negativePct": 11,
+        "evidenceTier": "moderate",
+        "evidenceLabel": "Moderate Evidence",
+        "headline": "8 of 9 facilities mentions were positive",
+        "subtext": "89% positive",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "A big hall that can fit a large event."
+          },
+          {
+            "reviewId": "rev_1",
+            "dimension": "facilities",
+            "sentiment": "negative",
+            "exactQuote": "Still, the pillars were huge and blocked the view of the bridal dais."
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "Clean toilet."
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "Proceed to any lift, press C for concourse, to main Perdana Hall."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "The event space itself was bright and welcoming, with plenty of natural light streaming in through large windows, which gave the place an open, cheerful feel."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "The air-conditioning was just right—cool enough to stay comfortable without feeling like we were in a freezer."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "The sound system was excellent—clear and well-balanced—and the screen projection was sharp and easy to read from anywhere in the hall."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "I also appreciated the carpet choice; instead of the usual dark, heavy colours, it was lighter and more pleasant, adding to the fresh, modern feel of the venue."
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "The hall has a very elegant deco and bridal dais."
+          }
+        ]
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 1,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention cleanliness",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_2",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "Well maintained."
+          }
+        ]
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention services",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_3",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "there will also be a vendor selling foods and drinks.."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "Lunch was very good, with a nice variety of dishes served promptly and well-presented."
+          }
+        ]
+      }
+    },
+    "totalMentions": 18,
+    "aiInsight": "Visitors generally praise the destination's infrastructure, highlighting ample and often free parking, clean restrooms, and well-maintained facilities with good natural lighting and excellent AV systems. Key bottlenecks include confusing parking exit signage and structural pillars obstructing views within event halls. Additionally, some visitors find the overall location to be inconveniently far.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "Mo Sopi",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWdDtzBwyXxFBfrqsTtpPXyXKxGIOcJuLU2qSQOMI5BLFC-_m6joA=s128-c0x00000000-cc-rp-mo-ba6",
+        "authorUri": "https://www.google.com/maps/contrib/117644720568299893229/reviews",
+        "rating": 4,
+        "date": "4 months ago",
+        "originalText": "Went to a wedding at Winter Hall.\nSpacious parking. A big hall that can fit a large event. Still, the pillars were huge and blocked the view of the bridal dais."
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Sh Cheng",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a/ACg8ocLfAvHkJ0fcTsWrva7ZKkkE-eUSLzvWZxwuF_XpN1sc1SCKDA=s128-c0x00000000-cc-rp-mo-ba6",
+        "authorUri": "https://www.google.com/maps/contrib/117009447404928193205/reviews",
+        "rating": 4,
+        "date": "6 months ago",
+        "originalText": "Very nice convention center.\nWell maintained. Clean toilet.\nPlenty of parking at the basement.\nProceed to any lift, press C for concourse, to main Perdana Hall."
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Amir Amzar T.F.O.A Murata Shougo",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVr3I2oDl3wy0r_BnAedEJKoerySKM0XO8YYXkEax9octhfD_I=s128-c0x00000000-cc-rp-mo-ba4",
+        "authorUri": "https://www.google.com/maps/contrib/103597726641790576521/reviews",
+        "rating": 5,
+        "date": "5 months ago",
+        "originalText": "Later on 2nd week of June the Picc management will conduct a place to hang out called Chill means chill on the hill where you can enjoy putrajaya scenery on top of Hill..there will also be a vendor selling foods and drinks..come and chill out with friends and family"
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "Andrea Ban",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a/ACg8ocKQJojj_cEXC0HbSC1RThYJzk3w68RE-w1duJrIz7nfsHMpyA=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/102410514678527227333/reviews",
+        "rating": 5,
+        "date": "a year ago",
+        "originalText": "Attended a conference here for the 30th anniversary of MAHTAS and was impressed by the venue overall. Free parking is always a welcome bonus, although I did find the exit a little confusing—the signage could be clearer to guide first-time visitors.\n\nThe event space itself was bright and welcoming, with plenty of natural light streaming in through large windows, which gave the place an open, cheerful feel. The air-conditioning was just right—cool enough to stay comfortable without feeling like we were in a freezer.\n\nLunch was very good, with a nice variety of dishes served promptly and well-presented. The sound system was excellent—clear and well-balanced—and the screen projection was sharp and easy to read from anywhere in the hall. I also appreciated the carpet choice; instead of the usual dark, heavy colours, it was lighter and more pleasant, adding to the fresh, modern feel of the venue.\n\nI had the opportunity to give a talk here, and the audio-visual setup truly did my presentation justice. The layout of the room, seating arrangement, and technical support all worked smoothly, making it an enjoyable experience both as a speaker and as an attendee.\n\nOverall, a well-maintained venue with great natural light, good food, and excellent AV facilities—just needs a bit of improvement in parking exit signage. Would happily return for future events."
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Sha'azza A. Aziz",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVCqqRMgdlvSOoKb70tTe5ew0C8hJjMoF0zbl-cL9kjmk4Yv_uP=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/101096625157310964237/reviews",
+        "rating": 4,
+        "date": "a year ago",
+        "originalText": "We went to the venue for the first time. It is a convention centre but with no surprise in Malaysia, someone took the opportunity to have a space that caters for the Malay style wedding reception hall. Can easily accommodate 400-450 guests. The hall is located at the centre of the concourse. Therefore, it is best and convenient to park your car somewhere in the middle of the building if possible. The hall has a very elegant deco and bridal dais. I give one less star just because of the location which is quite far for us."
+      }
+    ],
+    "cachedAt": "2026-10-17T14:29:09.489Z"
+  },
+  "chij95fpbpa3zterdz4gbpvrnjo": {
+    "place": {
+      "id": "ChIJ95fPbpa3zTERDZ4GBPVrNJo",
+      "name": "Putrajaya International Convention Centre",
+      "address": "Pusat Konvensyen Antarabangsa Putrajaya, Presint 5, 62000 Putrajaya, Wilayah Persekutuan Putrajaya, Malaysia",
+      "rating": 4.4,
+      "userRatingCount": 6638
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 1,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 1,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 100,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention accessibility",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_5",
+            "dimension": "accessibility",
+            "sentiment": "negative",
+            "exactQuote": "I give one less star just because of the location which is quite far for us."
+          }
+        ]
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 5,
+        "positive": 4,
+        "mixed": 0,
+        "negative": 1,
+        "positivePct": 80,
+        "mixedPct": 0,
+        "negativePct": 20,
+        "evidenceTier": "moderate",
+        "evidenceLabel": "Moderate Evidence",
+        "headline": "4 of 5 parking mentions were positive",
+        "subtext": "80% positive",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "parking",
+            "sentiment": "positive",
+            "exactQuote": "Spacious parking."
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "parking",
+            "sentiment": "positive",
+            "exactQuote": "Plenty of parking at the basement."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "parking",
+            "sentiment": "positive",
+            "exactQuote": "Free parking is always a welcome bonus"
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "parking",
+            "sentiment": "negative",
+            "exactQuote": "although I did find the exit a little confusing—the signage could be clearer to guide first-time visitors."
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "parking",
+            "sentiment": "positive",
+            "exactQuote": "Therefore, it is best and convenient to park your car somewhere in the middle of the building if possible."
+          }
+        ]
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 9,
+        "positive": 8,
+        "mixed": 0,
+        "negative": 1,
+        "positivePct": 89,
+        "mixedPct": 0,
+        "negativePct": 11,
+        "evidenceTier": "moderate",
+        "evidenceLabel": "Moderate Evidence",
+        "headline": "8 of 9 facilities mentions were positive",
+        "subtext": "89% positive",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "A big hall that can fit a large event."
+          },
+          {
+            "reviewId": "rev_1",
+            "dimension": "facilities",
+            "sentiment": "negative",
+            "exactQuote": "Still, the pillars were huge and blocked the view of the bridal dais."
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "Clean toilet."
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "Proceed to any lift, press C for concourse, to main Perdana Hall."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "The event space itself was bright and welcoming, with plenty of natural light streaming in through large windows, which gave the place an open, cheerful feel."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "The air-conditioning was just right—cool enough to stay comfortable without feeling like we were in a freezer."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "The sound system was excellent—clear and well-balanced—and the screen projection was sharp and easy to read from anywhere in the hall."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "I also appreciated the carpet choice; instead of the usual dark, heavy colours, it was lighter and more pleasant, adding to the fresh, modern feel of the venue."
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "The hall has a very elegant deco and bridal dais."
+          }
+        ]
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 1,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention cleanliness",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_2",
+            "dimension": "cleanliness",
+            "sentiment": "positive",
+            "exactQuote": "Well maintained."
+          }
+        ]
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention services",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_3",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "there will also be a vendor selling foods and drinks.."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "Lunch was very good, with a nice variety of dishes served promptly and well-presented."
+          }
+        ]
+      }
+    },
+    "totalMentions": 18,
+    "aiInsight": "Visitors generally praise the destination's infrastructure, highlighting ample and often free parking, clean restrooms, and well-maintained facilities with good natural lighting and excellent AV systems. Key bottlenecks include confusing parking exit signage and structural pillars obstructing views within event halls. Additionally, some visitors find the overall location to be inconveniently far.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "Mo Sopi",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWdDtzBwyXxFBfrqsTtpPXyXKxGIOcJuLU2qSQOMI5BLFC-_m6joA=s128-c0x00000000-cc-rp-mo-ba6",
+        "authorUri": "https://www.google.com/maps/contrib/117644720568299893229/reviews",
+        "rating": 4,
+        "date": "4 months ago",
+        "originalText": "Went to a wedding at Winter Hall.\nSpacious parking. A big hall that can fit a large event. Still, the pillars were huge and blocked the view of the bridal dais."
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Sh Cheng",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a/ACg8ocLfAvHkJ0fcTsWrva7ZKkkE-eUSLzvWZxwuF_XpN1sc1SCKDA=s128-c0x00000000-cc-rp-mo-ba6",
+        "authorUri": "https://www.google.com/maps/contrib/117009447404928193205/reviews",
+        "rating": 4,
+        "date": "6 months ago",
+        "originalText": "Very nice convention center.\nWell maintained. Clean toilet.\nPlenty of parking at the basement.\nProceed to any lift, press C for concourse, to main Perdana Hall."
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Amir Amzar T.F.O.A Murata Shougo",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVr3I2oDl3wy0r_BnAedEJKoerySKM0XO8YYXkEax9octhfD_I=s128-c0x00000000-cc-rp-mo-ba4",
+        "authorUri": "https://www.google.com/maps/contrib/103597726641790576521/reviews",
+        "rating": 5,
+        "date": "5 months ago",
+        "originalText": "Later on 2nd week of June the Picc management will conduct a place to hang out called Chill means chill on the hill where you can enjoy putrajaya scenery on top of Hill..there will also be a vendor selling foods and drinks..come and chill out with friends and family"
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "Andrea Ban",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a/ACg8ocKQJojj_cEXC0HbSC1RThYJzk3w68RE-w1duJrIz7nfsHMpyA=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/102410514678527227333/reviews",
+        "rating": 5,
+        "date": "a year ago",
+        "originalText": "Attended a conference here for the 30th anniversary of MAHTAS and was impressed by the venue overall. Free parking is always a welcome bonus, although I did find the exit a little confusing—the signage could be clearer to guide first-time visitors.\n\nThe event space itself was bright and welcoming, with plenty of natural light streaming in through large windows, which gave the place an open, cheerful feel. The air-conditioning was just right—cool enough to stay comfortable without feeling like we were in a freezer.\n\nLunch was very good, with a nice variety of dishes served promptly and well-presented. The sound system was excellent—clear and well-balanced—and the screen projection was sharp and easy to read from anywhere in the hall. I also appreciated the carpet choice; instead of the usual dark, heavy colours, it was lighter and more pleasant, adding to the fresh, modern feel of the venue.\n\nI had the opportunity to give a talk here, and the audio-visual setup truly did my presentation justice. The layout of the room, seating arrangement, and technical support all worked smoothly, making it an enjoyable experience both as a speaker and as an attendee.\n\nOverall, a well-maintained venue with great natural light, good food, and excellent AV facilities—just needs a bit of improvement in parking exit signage. Would happily return for future events."
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Sha'azza A. Aziz",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVCqqRMgdlvSOoKb70tTe5ew0C8hJjMoF0zbl-cL9kjmk4Yv_uP=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/101096625157310964237/reviews",
+        "rating": 4,
+        "date": "a year ago",
+        "originalText": "We went to the venue for the first time. It is a convention centre but with no surprise in Malaysia, someone took the opportunity to have a space that caters for the Malay style wedding reception hall. Can easily accommodate 400-450 guests. The hall is located at the centre of the concourse. Therefore, it is best and convenient to park your car somewhere in the middle of the building if possible. The hall has a very elegant deco and bridal dais. I give one less star just because of the location which is quite far for us."
+      }
+    ],
+    "cachedAt": "2026-10-17T14:29:09.489Z"
+  },
+  "batu caves temple & murugan statue": {
+    "place": {
+      "id": "ChIJ9d_bR_NHzDER31TrGM2bNyQ",
+      "name": "Lord Murugan Statue",
+      "address": "No. 42Jalan 2, Batu Cavtre Point, Batu Caves, 68100 Batu Caves, Selangor, Malaysia",
+      "rating": 4.6,
+      "userRatingCount": 1718
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 4,
+        "positive": 3,
+        "mixed": 1,
+        "negative": 0,
+        "positivePct": 75,
+        "mixedPct": 25,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 4 reviews mention accessibility",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_2",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "Climbing the colorful steps was both an adventure and a meaningful journey."
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "climbing the colorful steps is a unique experience."
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "accessibility",
+            "sentiment": "mixed",
+            "exactQuote": "be prepared for the stairs"
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "the walk up to Lord Muruga was indeed both thrilling and exciting"
+          }
+        ]
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 2,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 2,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 100,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention cleanliness",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_4",
+            "dimension": "cleanliness",
+            "sentiment": "negative",
+            "exactQuote": "The only thing I did not like was the trash being strewn here and there eventhough it was after Thaipusam but still there should be no excuse for the rubbish to be cleaned immediately."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "cleanliness",
+            "sentiment": "negative",
+            "exactQuote": "seeing the rubbish will give them a very impression of such a holy place."
+          }
+        ]
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 1,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 1,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 100,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention crowding",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_5",
+            "dimension": "crowding",
+            "sentiment": "negative",
+            "exactQuote": "Although it was very crowded & it took me almost an hour to reach the top (some even longer hours)"
+          }
+        ]
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      }
+    },
+    "totalMentions": 7,
+    "aiInsight": "Visitors generally appreciate the experience of climbing the iconic colorful steps, viewing it as an adventure and a meaningful journey. However, the site suffers from significant cleanliness issues, with trash and rubbish noted, especially post-events. Overcrowding and long waiting times to reach the top are also a concern during peak periods.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "Harvey C",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVvAkhmWR1smrPQuYZrF-WXJ9-ZuVLYRpDC0_Crbzg2wrTvpmk8=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/117800717069356351432/reviews",
+        "rating": 5,
+        "date": "4 months ago",
+        "originalText": "An absolutely breathtaking sight. The statue commands an incredible presence the moment it comes into view — massive in scale yet stunning in detail. It’s the kind of landmark that stops you in your tracks and leaves a lasting impression. A true wonder and an absolute must-see. Don’t leave without seeing it for yourself!"
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Pavalan Ranggasamy",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVsUa4SHL6fYDCenYroKGRh-a2yRGhbMtmfomy7euh7jhLQYA23bg=s128-c0x00000000-cc-rp-mo",
+        "authorUri": "https://www.google.com/maps/contrib/112069714088833953663/reviews",
+        "rating": 5,
+        "date": "7 months ago",
+        "originalText": "Visited Batu Caves and Felt Truly Blessed 🤗 The Lord Murugan statue stands so majestic and powerful. The Spiritual Vibration there is very strong and calming. Climbing the colorful steps was both an adventure and a meaningful journey. It’s not only a sacred place for devotees, but also a wonderful and welcoming tourist destination for people of all religions. A must-visit spot in Malaysia for spiritual peace, culture, and adventure all in one place. As a Malaysian Tamil, I warmly welcome everyone to visit Batu Caves at least once every year. No matter your religion or background, this sacred place gives a special peaceful feeling and positive spiritual vibration. Come, climb the steps, experience the energy, and receive blessings. All are welcome with love and respect 🤗"
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Karthi Nadarajan",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWcGS6lbMYOjqNddzz6gmWOgqTTGfmGh7Q_l8ar5hqpgxQesbeY=s128-c0x00000000-cc-rp-mo",
+        "authorUri": "https://www.google.com/maps/contrib/101820506393215345858/reviews",
+        "rating": 5,
+        "date": "5 months ago",
+        "originalText": "Visited Batu Caves Murugan Temple a truly iconic and spiritual place. The golden Murugan statue is impressive, and climbing the colorful steps is a unique experience. The view from the top is beautiful, and the temple atmosphere feels peaceful and powerful. Worth visiting, but be prepared for the stairs and monkeys around."
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "Mahendran Sreekandhan",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUJyqMPaQ2z-bKdm3lSvCkpyRfXkkIkZND88yIwulIBp5-Ga7U=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/108404129321304072012/reviews",
+        "rating": 5,
+        "date": "7 months ago",
+        "originalText": "This was my visit to Batu Caves after such a very long time and the walk up to Lord Muruga was indeed both thrilling and exciting because I have not seen Him after such a long time. The Temple was indeed very impressive plus the ambience was there. The only thing I did not like was the trash being strewn here and there eventhough it was after Thaipusam but still there should be no excuse for the rubbish to be cleaned immediately. I am not in a position to comment further as this falls in the jurisdiction of the Batu Caves temple management and not me. But sad to say because the bus load of tourist coming here and seeing the rubbish will give them a very impression of such a holy place."
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Bani Bavani",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVfytfE-EdG2DkZzNjZOWrIxzta2lDXOLhGvqOU0-03ONZT81YX8g=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/106512825682940254593/reviews",
+        "rating": 5,
+        "date": "7 months ago",
+        "originalText": "I visited Batu Caves during Thaipusam & it was truly a divine experience.. I loved it so much..\n\nAlthough it was very crowded & it took me almost an hour to reach the top (some even longer hours), every step felt meaningful.. The spiritual vibration & energy there were very strong & powerful..\nBeing surrounded by devotion, prayers & faith made the whole experience unforgettable.. It is definitely something everyone should experience at least once in their lifetime..\nBlessed & grateful 🙏"
+      }
+    ],
+    "cachedAt": "2026-10-17T14:31:37.498Z"
+  },
+  "chij9d_br_nhzder31trgm2bnyq": {
+    "place": {
+      "id": "ChIJ9d_bR_NHzDER31TrGM2bNyQ",
+      "name": "Lord Murugan Statue",
+      "address": "No. 42Jalan 2, Batu Cavtre Point, Batu Caves, 68100 Batu Caves, Selangor, Malaysia",
+      "rating": 4.6,
+      "userRatingCount": 1718
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 4,
+        "positive": 3,
+        "mixed": 1,
+        "negative": 0,
+        "positivePct": 75,
+        "mixedPct": 25,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 4 reviews mention accessibility",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_2",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "Climbing the colorful steps was both an adventure and a meaningful journey."
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "climbing the colorful steps is a unique experience."
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "accessibility",
+            "sentiment": "mixed",
+            "exactQuote": "be prepared for the stairs"
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "the walk up to Lord Muruga was indeed both thrilling and exciting"
+          }
+        ]
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 2,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 2,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 100,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention cleanliness",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_4",
+            "dimension": "cleanliness",
+            "sentiment": "negative",
+            "exactQuote": "The only thing I did not like was the trash being strewn here and there eventhough it was after Thaipusam but still there should be no excuse for the rubbish to be cleaned immediately."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "cleanliness",
+            "sentiment": "negative",
+            "exactQuote": "seeing the rubbish will give them a very impression of such a holy place."
+          }
+        ]
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 1,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 1,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 100,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention crowding",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_5",
+            "dimension": "crowding",
+            "sentiment": "negative",
+            "exactQuote": "Although it was very crowded & it took me almost an hour to reach the top (some even longer hours)"
+          }
+        ]
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      }
+    },
+    "totalMentions": 7,
+    "aiInsight": "Visitors generally appreciate the experience of climbing the iconic colorful steps, viewing it as an adventure and a meaningful journey. However, the site suffers from significant cleanliness issues, with trash and rubbish noted, especially post-events. Overcrowding and long waiting times to reach the top are also a concern during peak periods.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "Harvey C",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVvAkhmWR1smrPQuYZrF-WXJ9-ZuVLYRpDC0_Crbzg2wrTvpmk8=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/117800717069356351432/reviews",
+        "rating": 5,
+        "date": "4 months ago",
+        "originalText": "An absolutely breathtaking sight. The statue commands an incredible presence the moment it comes into view — massive in scale yet stunning in detail. It’s the kind of landmark that stops you in your tracks and leaves a lasting impression. A true wonder and an absolute must-see. Don’t leave without seeing it for yourself!"
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Pavalan Ranggasamy",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVsUa4SHL6fYDCenYroKGRh-a2yRGhbMtmfomy7euh7jhLQYA23bg=s128-c0x00000000-cc-rp-mo",
+        "authorUri": "https://www.google.com/maps/contrib/112069714088833953663/reviews",
+        "rating": 5,
+        "date": "7 months ago",
+        "originalText": "Visited Batu Caves and Felt Truly Blessed 🤗 The Lord Murugan statue stands so majestic and powerful. The Spiritual Vibration there is very strong and calming. Climbing the colorful steps was both an adventure and a meaningful journey. It’s not only a sacred place for devotees, but also a wonderful and welcoming tourist destination for people of all religions. A must-visit spot in Malaysia for spiritual peace, culture, and adventure all in one place. As a Malaysian Tamil, I warmly welcome everyone to visit Batu Caves at least once every year. No matter your religion or background, this sacred place gives a special peaceful feeling and positive spiritual vibration. Come, climb the steps, experience the energy, and receive blessings. All are welcome with love and respect 🤗"
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Karthi Nadarajan",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWcGS6lbMYOjqNddzz6gmWOgqTTGfmGh7Q_l8ar5hqpgxQesbeY=s128-c0x00000000-cc-rp-mo",
+        "authorUri": "https://www.google.com/maps/contrib/101820506393215345858/reviews",
+        "rating": 5,
+        "date": "5 months ago",
+        "originalText": "Visited Batu Caves Murugan Temple a truly iconic and spiritual place. The golden Murugan statue is impressive, and climbing the colorful steps is a unique experience. The view from the top is beautiful, and the temple atmosphere feels peaceful and powerful. Worth visiting, but be prepared for the stairs and monkeys around."
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "Mahendran Sreekandhan",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUJyqMPaQ2z-bKdm3lSvCkpyRfXkkIkZND88yIwulIBp5-Ga7U=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/108404129321304072012/reviews",
+        "rating": 5,
+        "date": "7 months ago",
+        "originalText": "This was my visit to Batu Caves after such a very long time and the walk up to Lord Muruga was indeed both thrilling and exciting because I have not seen Him after such a long time. The Temple was indeed very impressive plus the ambience was there. The only thing I did not like was the trash being strewn here and there eventhough it was after Thaipusam but still there should be no excuse for the rubbish to be cleaned immediately. I am not in a position to comment further as this falls in the jurisdiction of the Batu Caves temple management and not me. But sad to say because the bus load of tourist coming here and seeing the rubbish will give them a very impression of such a holy place."
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Bani Bavani",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVfytfE-EdG2DkZzNjZOWrIxzta2lDXOLhGvqOU0-03ONZT81YX8g=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/106512825682940254593/reviews",
+        "rating": 5,
+        "date": "7 months ago",
+        "originalText": "I visited Batu Caves during Thaipusam & it was truly a divine experience.. I loved it so much..\n\nAlthough it was very crowded & it took me almost an hour to reach the top (some even longer hours), every step felt meaningful.. The spiritual vibration & energy there were very strong & powerful..\nBeing surrounded by devotion, prayers & faith made the whole experience unforgettable.. It is definitely something everyone should experience at least once in their lifetime..\nBlessed & grateful 🙏"
+      }
+    ],
+    "cachedAt": "2026-10-17T14:31:37.498Z"
+  },
+  "mount kinabalu & kinabalu park": {
+    "place": {
+      "id": "ChIJyySSXlaiOzIRXsCpwP7DgSI",
+      "name": "Mount Kinabalu",
+      "address": "Mount Kinabalu, Ranau, Sabah, Malaysia",
+      "rating": 4.6,
+      "userRatingCount": 1697
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 5,
+        "positive": 5,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "moderate",
+        "evidenceLabel": "Moderate Evidence",
+        "headline": "5 of 5 accessibility mentions were positive",
+        "subtext": "100% positive",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "The trail itself was challenging, but every step was worth it."
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "The steps are built and maintained by our people to make it accessible to as many people as possible."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "a van was prepared to take us and other hikers back!"
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "He helped us navigate the more difficult paths like the rope climbing near the top"
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "It's probably onevof the most friendly peaks above 4000M accessible to all levels of climbers."
+          }
+        ]
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention facilities",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_3",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "The steps are built and maintained by our people to make it accessible to as many people as possible."
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "There are toilets and rest houses along the way."
+          }
+        ]
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 1,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention services",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_4",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "we got a packaged lunch"
+          }
+        ]
+      }
+    },
+    "totalMentions": 8,
+    "aiInsight": "Visitor feedback indicates a strong positive perception of Mount Kinabalu's physical infrastructure. Key strengths include well-maintained trails and steps, the availability of essential facilities like toilets and rest houses, and efficient transport services. The overall accessibility of the mountain, despite its challenging nature, is consistently highlighted as a positive aspect, contributing to a rewarding visitor experience.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "Randy Jammy Gabriel",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUIomu3GTrqrMfI-RSXiswSrPkHxr_q9J8j6sOY05b3Taz0F7U=s128-c0x00000000-cc-rp-mo",
+        "authorUri": "https://www.google.com/maps/contrib/115920518173030977294/reviews",
+        "rating": 5,
+        "date": "a month ago",
+        "originalText": "Climbing Mount Kinabalu was truly one of the most unforgettable experiences of my life. From the very beginning of the journey, every moment felt meaningful and rewarding. The cool mountain air, the sound of nature, and the breathtaking scenery created an atmosphere that is both peaceful and inspiring.\n\nThe trail itself was challenging, but every step was worth it. Along the way, I was surrounded by lush greenery, unique plant species, and stunning views that made me appreciate the beauty of nature even more. The climb tested my physical strength and mental endurance, but it also taught me patience, determination, and resilience.\n\nReaching the summit during sunrise was the highlight of the entire journey. Watching the golden light slowly illuminate the vast landscape below was simply magical. It was a moment of pure satisfaction and gratitude, a reminder of how far I had come and what I was capable of achieving.\n\nBeyond the physical adventure, Mount Kinabalu gave me valuable time to reflect, disconnect from daily stress, and reconnect with myself. It was not just a hike, but a personal journey filled with growth, appreciation, and unforgettable memories.\n\nOverall, my experience at Mount Kinabalu was incredible. It is a place that challenges you, rewards you, and leaves a lasting impression on your heart. I would highly recommend it to anyone seeking adventure, self-discovery, and a truly meaningful escape into nature."
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Saikhnaa",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVEpHATnzGG_975d07aMpIMzWodDVAI7g5s0knDrKrMDQ0HNY4=s128-c0x00000000-cc-rp-mo-ba7",
+        "authorUri": "https://www.google.com/maps/contrib/109140017222769221912/reviews",
+        "rating": 5,
+        "date": "2 months ago",
+        "originalText": "Exceptionally beautiful mountain with incredible surroundings. Desa farm was underwhelming but the ATV ride was a ton of fun especially if you go to the earthquake site."
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Celeste Lo",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXVM4Ksuy5LeP9SWZqIW4bAtIj0XmjgmWNNbtSjF64YQ1iOQnio=s128-c0x00000000-cc-rp-mo-ba3",
+        "authorUri": "https://www.google.com/maps/contrib/106383760855881004838/reviews",
+        "rating": 5,
+        "date": "a month ago",
+        "originalText": "Mt. Kinabalu is more than just a mountain to us locals, she is a huge part of our culture and spiritual life✨. The hike has so many variation of challenges. The humidity, the heat, exhaustion, being wet, cold, climbing in the dark, the altitude, no matter how fit and experienced you are, it is surely an entertaining climb. Most able bodied individuals who are moderately fit will be able to make it to the top, if not, just to Laban Rata is a good achievement as well :)\n\nAt the top, the view and the aura is truly amazing. I wish anyone the best as you concur your way to the top, it is absolutely worth it. I will probably do it again, just need to space it out 😅\n\nMy guide was the reason I made it to the top, he was so intuitive with the type of support I needed, I couldn’t thank him enough. He was also a great photographer, same caliber as the Bali guides 😂😂\n\nForeigners are charged differently, locals should not have to pay to same rates. I don’t know where some of the reviewers are getting the confidence to show their entitlement. You do not deserve to pay the same rates, end of story.\n\nThe base price includes, the climb, 1 night stay, food, the guide and everything else that makes this climb possible.\n\nFirst of all, the price to climb our mountain IS expensive because the cost of living and resources in Sabah IS EXPENSIVE. The steps are built and maintained by our people to make it accessible to as many people as possible. There are toilets and rest houses along the way. When you climb the mountain you will see many porters carrying necessities on their backs, up and down so you can have a cup of coffee and sit in a warm room. Thinking you can climb our mountain without our guides is exactly the behavior that will get you lost in this mountain. You will also see many guards and rangers that are there to ensure your safety.\n\nAll of this, to make the journey as pleasant as possible and to make sure you get back home to your family safely. Again remember that this mountain is not just a world heritage site for your tourist checklist, many Sabahans including those of older age hike this mountain for spiritual reasons. So how we decide to open our mountain to you, is certainly our choice and you should definitely show some respect.\n\nIf not, move along, you do not deserve to climb our beautiful Mount Kinabalu."
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "Cherry Cheng",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVrAfcRi_iVuGcZQZH6Yvi218HC8pK0O2JOtJEDSRd4Lu6JAtdw=s128-c0x00000000-cc-rp-mo-ba3",
+        "authorUri": "https://www.google.com/maps/contrib/112675018568474092528/reviews",
+        "rating": 5,
+        "date": "3 months ago",
+        "originalText": "This is the biggest climb we’ve done and echoing other reviewers it was very tiring but definitely a memorable, rewarding experience!\n\nWe started the hike at Timpohon Gate just before 9am and made it to Panalaban base camp at 330pm. We then began the last leg of the hike at approx 215am and made it to see the sunrise at the summit ☀️ We were super lucky as the sky cleared up for us to see the the incredible view! Before sunrise, we could also see the moon and many stars!!\n\nComing back was a real struggle for us, as it really put pressure on the legs not to mention it began pouring in our last 3km 🫣 We did finally made it back to the gate just before 4pm - we got a packaged lunch and a van was prepared to take us and other hikers back!\n\nPrior to the hike, we made reservations on their website so the logistics to organise the hike was generally easy and smooth with consistent and efficient communication from staff - both via online leading up to the hike and a day before with reminders for mini van arrangement to and from the hotel. Also, on the van back to the hotel, we dropped a phone, and the driver very kindly pointed it out to us.\n\nWe followed their recommended packing list and had everything we needed on the hike. We weren’t too sure about drinking water so we brought extra water (and snacks too!)\n\nOur mountain guide was quite chill but nevertheless, friendly and helpful when we needed him. He helped us navigate the more difficult paths like the rope climbing near the top and he also lent us one of his hiking poles as he noticed one of ours was too short and didn’t help much with stabilising 🫣"
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Alfred Sun",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a/ACg8ocKff6VQb6Av6Wp7UvU4fcpPtwcau32YzKfw5GSs7anYWNLLHA=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/116392876256879075901/reviews",
+        "rating": 5,
+        "date": "6 months ago",
+        "originalText": "It's a tough but rewarding experience.\nIt's probably onevof the most friendly peaks above 4000M accessible to all levels of climbers.\nThe views from the summit is spectacle, especially if you can make it by the time of sunrise.\nThe journey from base camp/hut to summit is usually 2.5-3 hrs. The weather can be unpredictable.\nA little bit of perseverance, never give up, watch & plan steps ahead,, keep to the pace, stay close to your guide and seek for help whenever needed and that will largely improve success rate."
+      }
+    ],
+    "cachedAt": "2026-10-17T14:31:59.800Z"
+  },
+  "chijyyssxlaiozirxscpwp7dgsi": {
+    "place": {
+      "id": "ChIJyySSXlaiOzIRXsCpwP7DgSI",
+      "name": "Mount Kinabalu",
+      "address": "Mount Kinabalu, Ranau, Sabah, Malaysia",
+      "rating": 4.6,
+      "userRatingCount": 1697
+    },
+    "dimensions": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "name": "Accessibility",
+        "mentions": 5,
+        "positive": 5,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "moderate",
+        "evidenceLabel": "Moderate Evidence",
+        "headline": "5 of 5 accessibility mentions were positive",
+        "subtext": "100% positive",
+        "evidence": [
+          {
+            "reviewId": "rev_1",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "The trail itself was challenging, but every step was worth it."
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "The steps are built and maintained by our people to make it accessible to as many people as possible."
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "a van was prepared to take us and other hikers back!"
+          },
+          {
+            "reviewId": "rev_4",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "He helped us navigate the more difficult paths like the rope climbing near the top"
+          },
+          {
+            "reviewId": "rev_5",
+            "dimension": "accessibility",
+            "sentiment": "positive",
+            "exactQuote": "It's probably onevof the most friendly peaks above 4000M accessible to all levels of climbers."
+          }
+        ]
+      },
+      "parking": {
+        "dimension": "parking",
+        "name": "Parking",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "facilities": {
+        "dimension": "facilities",
+        "name": "Facilities",
+        "mentions": 2,
+        "positive": 2,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 2 reviews mention facilities",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_3",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "The steps are built and maintained by our people to make it accessible to as many people as possible."
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "There are toilets and rest houses along the way."
+          }
+        ]
+      },
+      "cleanliness": {
+        "dimension": "cleanliness",
+        "name": "Cleanliness",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "crowding": {
+        "dimension": "crowding",
+        "name": "Crowding",
+        "mentions": 0,
+        "positive": 0,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 0,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "unobserved",
+        "evidenceLabel": "Unobserved",
+        "headline": "Unobserved in available reviews",
+        "subtext": "No visitor mentions in sample",
+        "evidence": []
+      },
+      "services": {
+        "dimension": "services",
+        "name": "Services",
+        "mentions": 1,
+        "positive": 1,
+        "mixed": 0,
+        "negative": 0,
+        "positivePct": 100,
+        "mixedPct": 0,
+        "negativePct": 0,
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 1 review mention services",
+        "subtext": "Insufficient volume for percentage share",
+        "evidence": [
+          {
+            "reviewId": "rev_4",
+            "dimension": "services",
+            "sentiment": "positive",
+            "exactQuote": "we got a packaged lunch"
+          }
+        ]
+      }
+    },
+    "totalMentions": 8,
+    "aiInsight": "Visitor feedback indicates a strong positive perception of Mount Kinabalu's physical infrastructure. Key strengths include well-maintained trails and steps, the availability of essential facilities like toilets and rest houses, and efficient transport services. The overall accessibility of the mountain, despite its challenging nature, is consistently highlighted as a positive aspect, contributing to a rewarding visitor experience.",
+    "reviews": [
+      {
+        "reviewId": "rev_1",
+        "author": "Randy Jammy Gabriel",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUIomu3GTrqrMfI-RSXiswSrPkHxr_q9J8j6sOY05b3Taz0F7U=s128-c0x00000000-cc-rp-mo",
+        "authorUri": "https://www.google.com/maps/contrib/115920518173030977294/reviews",
+        "rating": 5,
+        "date": "a month ago",
+        "originalText": "Climbing Mount Kinabalu was truly one of the most unforgettable experiences of my life. From the very beginning of the journey, every moment felt meaningful and rewarding. The cool mountain air, the sound of nature, and the breathtaking scenery created an atmosphere that is both peaceful and inspiring.\n\nThe trail itself was challenging, but every step was worth it. Along the way, I was surrounded by lush greenery, unique plant species, and stunning views that made me appreciate the beauty of nature even more. The climb tested my physical strength and mental endurance, but it also taught me patience, determination, and resilience.\n\nReaching the summit during sunrise was the highlight of the entire journey. Watching the golden light slowly illuminate the vast landscape below was simply magical. It was a moment of pure satisfaction and gratitude, a reminder of how far I had come and what I was capable of achieving.\n\nBeyond the physical adventure, Mount Kinabalu gave me valuable time to reflect, disconnect from daily stress, and reconnect with myself. It was not just a hike, but a personal journey filled with growth, appreciation, and unforgettable memories.\n\nOverall, my experience at Mount Kinabalu was incredible. It is a place that challenges you, rewards you, and leaves a lasting impression on your heart. I would highly recommend it to anyone seeking adventure, self-discovery, and a truly meaningful escape into nature."
+      },
+      {
+        "reviewId": "rev_2",
+        "author": "Saikhnaa",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVEpHATnzGG_975d07aMpIMzWodDVAI7g5s0knDrKrMDQ0HNY4=s128-c0x00000000-cc-rp-mo-ba7",
+        "authorUri": "https://www.google.com/maps/contrib/109140017222769221912/reviews",
+        "rating": 5,
+        "date": "2 months ago",
+        "originalText": "Exceptionally beautiful mountain with incredible surroundings. Desa farm was underwhelming but the ATV ride was a ton of fun especially if you go to the earthquake site."
+      },
+      {
+        "reviewId": "rev_3",
+        "author": "Celeste Lo",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXVM4Ksuy5LeP9SWZqIW4bAtIj0XmjgmWNNbtSjF64YQ1iOQnio=s128-c0x00000000-cc-rp-mo-ba3",
+        "authorUri": "https://www.google.com/maps/contrib/106383760855881004838/reviews",
+        "rating": 5,
+        "date": "a month ago",
+        "originalText": "Mt. Kinabalu is more than just a mountain to us locals, she is a huge part of our culture and spiritual life✨. The hike has so many variation of challenges. The humidity, the heat, exhaustion, being wet, cold, climbing in the dark, the altitude, no matter how fit and experienced you are, it is surely an entertaining climb. Most able bodied individuals who are moderately fit will be able to make it to the top, if not, just to Laban Rata is a good achievement as well :)\n\nAt the top, the view and the aura is truly amazing. I wish anyone the best as you concur your way to the top, it is absolutely worth it. I will probably do it again, just need to space it out 😅\n\nMy guide was the reason I made it to the top, he was so intuitive with the type of support I needed, I couldn’t thank him enough. He was also a great photographer, same caliber as the Bali guides 😂😂\n\nForeigners are charged differently, locals should not have to pay to same rates. I don’t know where some of the reviewers are getting the confidence to show their entitlement. You do not deserve to pay the same rates, end of story.\n\nThe base price includes, the climb, 1 night stay, food, the guide and everything else that makes this climb possible.\n\nFirst of all, the price to climb our mountain IS expensive because the cost of living and resources in Sabah IS EXPENSIVE. The steps are built and maintained by our people to make it accessible to as many people as possible. There are toilets and rest houses along the way. When you climb the mountain you will see many porters carrying necessities on their backs, up and down so you can have a cup of coffee and sit in a warm room. Thinking you can climb our mountain without our guides is exactly the behavior that will get you lost in this mountain. You will also see many guards and rangers that are there to ensure your safety.\n\nAll of this, to make the journey as pleasant as possible and to make sure you get back home to your family safely. Again remember that this mountain is not just a world heritage site for your tourist checklist, many Sabahans including those of older age hike this mountain for spiritual reasons. So how we decide to open our mountain to you, is certainly our choice and you should definitely show some respect.\n\nIf not, move along, you do not deserve to climb our beautiful Mount Kinabalu."
+      },
+      {
+        "reviewId": "rev_4",
+        "author": "Cherry Cheng",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVrAfcRi_iVuGcZQZH6Yvi218HC8pK0O2JOtJEDSRd4Lu6JAtdw=s128-c0x00000000-cc-rp-mo-ba3",
+        "authorUri": "https://www.google.com/maps/contrib/112675018568474092528/reviews",
+        "rating": 5,
+        "date": "3 months ago",
+        "originalText": "This is the biggest climb we’ve done and echoing other reviewers it was very tiring but definitely a memorable, rewarding experience!\n\nWe started the hike at Timpohon Gate just before 9am and made it to Panalaban base camp at 330pm. We then began the last leg of the hike at approx 215am and made it to see the sunrise at the summit ☀️ We were super lucky as the sky cleared up for us to see the the incredible view! Before sunrise, we could also see the moon and many stars!!\n\nComing back was a real struggle for us, as it really put pressure on the legs not to mention it began pouring in our last 3km 🫣 We did finally made it back to the gate just before 4pm - we got a packaged lunch and a van was prepared to take us and other hikers back!\n\nPrior to the hike, we made reservations on their website so the logistics to organise the hike was generally easy and smooth with consistent and efficient communication from staff - both via online leading up to the hike and a day before with reminders for mini van arrangement to and from the hotel. Also, on the van back to the hotel, we dropped a phone, and the driver very kindly pointed it out to us.\n\nWe followed their recommended packing list and had everything we needed on the hike. We weren’t too sure about drinking water so we brought extra water (and snacks too!)\n\nOur mountain guide was quite chill but nevertheless, friendly and helpful when we needed him. He helped us navigate the more difficult paths like the rope climbing near the top and he also lent us one of his hiking poles as he noticed one of ours was too short and didn’t help much with stabilising 🫣"
+      },
+      {
+        "reviewId": "rev_5",
+        "author": "Alfred Sun",
+        "authorPhotoUri": "https://lh3.googleusercontent.com/a/ACg8ocKff6VQb6Av6Wp7UvU4fcpPtwcau32YzKfw5GSs7anYWNLLHA=s128-c0x00000000-cc-rp-mo-ba5",
+        "authorUri": "https://www.google.com/maps/contrib/116392876256879075901/reviews",
+        "rating": 5,
+        "date": "6 months ago",
+        "originalText": "It's a tough but rewarding experience.\nIt's probably onevof the most friendly peaks above 4000M accessible to all levels of climbers.\nThe views from the summit is spectacle, especially if you can make it by the time of sunrise.\nThe journey from base camp/hut to summit is usually 2.5-3 hrs. The weather can be unpredictable.\nA little bit of perseverance, never give up, watch & plan steps ahead,, keep to the pace, stay close to your guide and seek for help whenever needed and that will largely improve success rate."
+      }
+    ],
+    "cachedAt": "2026-10-17T14:31:59.800Z"
   }
 }

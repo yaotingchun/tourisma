@@ -1,4 +1,8 @@
-import { ATTRACTIONS_DATA, searchAttractions, type AttractionItem } from '../../data/attractionsData';
+import {
+  ATTRACTIONS_DATA,
+  searchAttractions,
+  type AttractionItem,
+} from '../../data/attractionsData';
 
 export class AttractionSearchBar {
   public readonly element: HTMLElement;
@@ -40,12 +44,12 @@ export class AttractionSearchBar {
         <input
           type="text"
           class="dest-search-input"
-          placeholder="Search individual attraction (e.g., Cameron Highlands Tea Plantation, Batu Caves, Mount Kinabalu...)"
+          placeholder="Search individual attraction (e.g., Pulau Redang, Cameron Highlands, Batu Caves, Mount Kinabalu, KLCC...)"
           aria-label="Search attraction"
           autocomplete="off"
           value="${initialAttraction.name}"
         />
-        <button type="button" class="dest-search-clear" aria-label="Clear search" style="display: none;">
+        <button type="button" class="dest-search-clear" aria-label="Clear search">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -55,18 +59,13 @@ export class AttractionSearchBar {
       </div>
 
       <div class="dest-search-chips-row">
-        <span class="dest-chips-label">Popular Locations:</span>
+        <span class="dest-chips-label">Popular:</span>
         <div class="dest-chips-list">
+          <button type="button" class="dest-chip" data-id="pulau_redang">🏝️ Pulau Redang</button>
+          <button type="button" class="dest-chip" data-id="petronas_twin_towers">🏢 Petronas Twin Towers</button>
           <button type="button" class="dest-chip active" data-id="cameron_highlands_tea">🍵 Cameron Highlands</button>
           <button type="button" class="dest-chip" data-id="batu_caves">🪨 Batu Caves</button>
           <button type="button" class="dest-chip" data-id="mount_kinabalu">⛰️ Mount Kinabalu</button>
-          <button type="button" class="dest-chip" data-id="taman_negara">🌿 Taman Negara</button>
-          <button type="button" class="dest-chip" data-id="langkawi_skybridge">🌉 Langkawi Sky Bridge</button>
-          <button type="button" class="dest-chip" data-id="georgetown_heritage">🏛️ George Town Heritage</button>
-          <button type="button" class="dest-chip" data-id="sunway_lagoon">🎢 Sunway Lagoon</button>
-          <button type="button" class="dest-chip" data-id="bako_national_park">🐾 Bako National Park</button>
-          <button type="button" class="dest-chip" data-id="melaka_stadthuys">🏰 The Stadthuys</button>
-          <button type="button" class="dest-chip" data-id="perhentian_islands">🏖️ Perhentian Islands</button>
         </div>
       </div>
     `;
@@ -74,6 +73,8 @@ export class AttractionSearchBar {
     this.inputElement = this.element.querySelector<HTMLInputElement>('.dest-search-input')!;
     this.dropdownElement = this.element.querySelector<HTMLElement>('.dest-search-dropdown')!;
     this.clearBtn = this.element.querySelector<HTMLButtonElement>('.dest-search-clear')!;
+
+    this.clearBtn.style.display = this.inputElement.value.trim().length > 0 ? 'flex' : 'none';
 
     // Event listeners
     this.inputElement.addEventListener('input', () => this.handleInput());
@@ -101,48 +102,96 @@ export class AttractionSearchBar {
         const id = chip.getAttribute('data-id');
         const match = ATTRACTIONS_DATA.find((a) => a.id === id);
         if (match) {
-          this.updateActiveChip(match.id);
-          this.inputElement.value = match.name;
-          this.clearBtn.style.display = 'block';
-          this.closeDropdown();
+          this.setAttraction(match);
           this.onSelectCallback(match);
         }
       });
     });
+
+    this.updateActiveChip(initialAttraction.id);
   }
 
   private handleInput(): void {
     const val = this.inputElement.value.trim();
-    this.clearBtn.style.display = val.length > 0 ? 'block' : 'none';
-    this.currentMatches = searchAttractions(val, 25);
+    this.clearBtn.style.display = val.length > 0 ? 'flex' : 'none';
+    this.currentMatches = searchAttractions(val, 10);
     this.renderDropdown();
   }
 
   private renderDropdown(): void {
+    const val = this.inputElement.value.trim();
+
     if (this.currentMatches.length === 0) {
       this.dropdownElement.innerHTML = `
         <div class="dest-dropdown-empty">
-          <span>No attractions found matching "${this.inputElement.value}".</span>
-          <span style="font-size: 0.72rem; color: #94a3b8; display: block; margin-top: 4px;">Try searching "Bako", "Cameron", "Batu Caves", "Kinabalu", "Langkawi", or any Malaysian location</span>
+          <div style="font-weight: 600; color: #1e293b; margin-bottom: 4px;">
+            No attractions found matching "${val}".
+          </div>
+          <span style="font-size: 0.76rem; color: #64748b; display: block; margin-top: 4px;">
+            Try searching <strong>"Pulau Redang"</strong>, <strong>"Tioman"</strong>, <strong>"Batu Caves"</strong>, <strong>"Kinabalu"</strong>, <strong>"Langkawi"</strong>, <strong>"KLCC"</strong>, or any Malaysian location
+          </span>
         </div>
       `;
       this.dropdownElement.style.display = 'block';
       return;
     }
 
-    this.dropdownElement.innerHTML = this.currentMatches
-      .map(
-        (item, idx) => `
-      <div class="dest-dropdown-item ${idx === this.highlightedIndex ? 'highlighted' : ''}" data-index="${idx}">
-        <div class="dest-dropdown-item-left">
-          <div class="dest-dropdown-name">${item.name}</div>
-          <div class="dest-dropdown-sub">${item.district}, ${item.stateName} • <span class="dest-dropdown-subcat">${item.subcategory}</span></div>
-        </div>
-        <span class="dest-dropdown-badge">${item.category}</span>
+    const countHeader = `
+      <div class="dest-dropdown-header">
+        <span class="dest-dropdown-header-title">
+          ${val ? `Matching "${val}"` : 'All Locations'}
+        </span>
+        <span class="dest-dropdown-header-count">
+          ${this.currentMatches.length} destination${this.currentMatches.length === 1 ? '' : 's'} found
+        </span>
       </div>
-    `
-      )
+    `;
+
+    const itemsHtml = this.currentMatches
+      .map((item, idx) => {
+        const isHighlighted = idx === this.highlightedIndex;
+        const categoryColor =
+          item.category === 'Natural Sanctuary'
+            ? '#059669'
+            : item.category === 'Core Attraction'
+            ? '#0284c7'
+            : item.category === 'Supporting Heritage'
+            ? '#d97706'
+            : '#7c3aed';
+
+        const categoryBg =
+          item.category === 'Natural Sanctuary'
+            ? '#ecfdf5'
+            : item.category === 'Core Attraction'
+            ? '#f0f9ff'
+            : item.category === 'Supporting Heritage'
+            ? '#fffbeb'
+            : '#f5f3ff';
+
+        return `
+        <div class="dest-dropdown-item ${isHighlighted ? 'highlighted' : ''}" data-index="${idx}">
+          <div class="dest-dropdown-item-left">
+            <div class="dest-dropdown-name">${item.name}</div>
+            <div class="dest-dropdown-sub">
+              📍 ${item.district}, ${item.stateName} • <span class="dest-dropdown-subcat">${item.subcategory}</span>
+            </div>
+          </div>
+          <div class="dest-dropdown-item-right">
+            <span class="dest-dropdown-badge" style="color: ${categoryColor}; background-color: ${categoryBg}; border: 1px solid ${categoryColor}25;">
+              ${item.category}
+            </span>
+          </div>
+        </div>
+      `;
+      })
       .join('');
+
+    this.dropdownElement.innerHTML = `
+      ${countHeader}
+      <div class="dest-dropdown-scrollable">
+        ${itemsHtml}
+      </div>
+    `;
 
     this.dropdownElement.style.display = 'block';
 
@@ -153,9 +202,7 @@ export class AttractionSearchBar {
         const idx = parseInt(it.getAttribute('data-index') || '0', 10);
         const selected = this.currentMatches[idx];
         if (selected) {
-          this.inputElement.value = selected.name;
-          this.updateActiveChip(selected.id);
-          this.closeDropdown();
+          this.setAttraction(selected);
           this.onSelectCallback(selected);
         }
       });
@@ -163,7 +210,13 @@ export class AttractionSearchBar {
   }
 
   private handleKeyDown(e: KeyboardEvent): void {
-    if (this.dropdownElement.style.display === 'none') return;
+    if (this.dropdownElement.style.display === 'none') {
+      if (e.key === 'ArrowDown' || e.key === 'Enter') {
+        e.preventDefault();
+        this.handleInput();
+      }
+      return;
+    }
 
     if (e.key === 'ArrowDown') {
       e.preventDefault();
@@ -177,9 +230,7 @@ export class AttractionSearchBar {
       e.preventDefault();
       if (this.highlightedIndex >= 0 && this.highlightedIndex < this.currentMatches.length) {
         const selected = this.currentMatches[this.highlightedIndex];
-        this.inputElement.value = selected.name;
-        this.updateActiveChip(selected.id);
-        this.closeDropdown();
+        this.setAttraction(selected);
         this.onSelectCallback(selected);
       }
     } else if (e.key === 'Escape') {
