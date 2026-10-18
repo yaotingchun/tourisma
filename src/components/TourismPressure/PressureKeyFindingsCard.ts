@@ -73,6 +73,12 @@ export class PressureKeyFindingsCard {
         demandCapacityGapPp: this.currentSimResult.demandCapacityGapPp,
         capacityChangePct: this.currentSimResult.capacityChangePct,
         scenarioSource: this.currentSimResult.scenarioSource,
+        tpi: this.currentSimResult.tpiBreakdown?.tpi,
+        baselineTpi: this.currentSimResult.tpiBreakdown?.baselineTpi,
+        tpiDelta: this.currentSimResult.tpiBreakdown?.tpiDelta,
+        accommodationScore: this.currentSimResult.tpiBreakdown?.accommodationScore,
+        accessibilityGapScore: this.currentSimResult.tpiBreakdown?.accessibilityGapScore,
+        pressureCategory: this.currentSimResult.tpiBreakdown?.pressureCategory,
       };
 
       const res = await fetch('/api/pressure/simulate-insight', {
@@ -103,14 +109,23 @@ export class PressureKeyFindingsCard {
     const scenVisM = (this.currentSimResult.scenarioVisitors / 1e6).toFixed(2);
     const signD = this.currentSimResult.demandChangePct >= 0 ? '+' : '';
     const signC = this.currentSimResult.capacityChangePct >= 0 ? '+' : '';
+    const tpi = this.currentSimResult.tpiBreakdown;
+    const tpiVal = tpi ? tpi.tpi.toFixed(1) : '40.1';
+    const baseTpiVal = tpi ? tpi.baselineTpi.toFixed(1) : '40.1';
+    const tpiDelta = tpi ? tpi.tpiDelta : 0;
+    const signT = tpiDelta >= 0 ? '+' : '';
+    const aScore = tpi ? tpi.accommodationScore.toFixed(1) : '35.0';
+    const gScore = tpi ? tpi.accessibilityGapScore.toFixed(1) : '50.0';
+    const cat = tpi ? tpi.pressureCategory : 'Moderate';
+    const envPct = this.currentStateData.environmentalExposureRate.toFixed(1);
 
     return {
-      whatChanges: `Demand changes from ${curVisM}M to ${scenVisM}M (${signD}${this.currentSimResult.demandChangePct.toFixed(1)}%) with room capacity changing by ${signC}${this.currentSimResult.capacityChangePct.toFixed(1)}%, adjusting the visitor-to-room ratio to ${this.currentSimResult.scenarioVtr.toFixed(1)} per room.`,
-      whatBecomesMorePressured: `With accommodation capacity ${this.currentSimResult.capacityChangePct === 0 ? 'unchanged' : 'adjusted'}, visitor-to-room ratio shifts from ${this.currentSimResult.currentVtr.toFixed(1)} to ${this.currentSimResult.scenarioVtr.toFixed(1)}. In ${this.currentStateData.name}, observed AOR is currently ${this.currentStateData.aorPct.toFixed(1)}% alongside ${this.currentStateData.roadAccessRate.toFixed(1)}% road connectivity (PT access: ${this.currentStateData.ptAccessRate.toFixed(1)}%), highlighting specific corridor throughput and proximity to the ${this.currentStateData.environmentalExposureRate.toFixed(1)}% of assets near ecological reserves.`,
+      whatChanges: `Demand shifts from ${curVisM}M to ${scenVisM}M (${signD}${this.currentSimResult.demandChangePct.toFixed(1)}%) with room capacity changing by ${signC}${this.currentSimResult.capacityChangePct.toFixed(1)}%, shifting the Tourism Pressure Index (TPI) from ${baseTpiVal} to ${tpiVal} (${signT}${tpiDelta.toFixed(1)} pts, ${cat} Pressure).`,
+      whatBecomesMorePressured: `Under this scenario, the Accommodation Pressure Score reaches A = ${aScore} (Visitor-to-Room: ${this.currentSimResult.scenarioVtr.toFixed(1)}, observed AOR: ${this.currentStateData.aorPct.toFixed(1)}%), while the Accessibility Gap Score stands at G = ${gScore} (Road: ${this.currentStateData.roadAccessRate.toFixed(1)}%, PT: ${this.currentStateData.ptAccessRate.toFixed(1)}%). TPI combines these (0.70A + 0.30G) to reflect relative infrastructure pressure. Environmental exposure (${envPct}% of assets near protected reserves) is tracked as an independent spatial indicator, as proximity alone does not establish actual environmental degradation.`,
       whatShouldPlannersInvestigate: [
-        `Evaluate accommodation pipeline and licensing given the scenario visitor-to-room ratio of ${this.currentSimResult.scenarioVtr.toFixed(1)} (current observed AOR: ${this.currentStateData.aorPct.toFixed(1)}%).`,
-        `Monitor road connectivity and public transit headways where current access rates stand at ${this.currentStateData.roadAccessRate.toFixed(1)}% and ${this.currentStateData.ptAccessRate.toFixed(1)}%.`,
-        `Examine visitor dispersal around the ${this.currentStateData.environmentalExposureRate.toFixed(1)}% of assets located in environmentally sensitive reserve buffers during seasonal peaks.`,
+        `Evaluate accommodation pipelines and licensing in zones with high accommodation pressure (A = ${aScore}) against local operational thresholds rather than assuming outright overcapacity.`,
+        `Target last-mile transit and road connectivity where the accessibility gap (G = ${gScore}) compounds visitor concentration during peak holiday windows.`,
+        `Monitor visitor dispersal around sensitive ecological buffer zones (${envPct}% near reserves) with seasonal carrying capacity guidelines.`,
       ],
       source: this.currentSimResult.scenarioSource,
     };

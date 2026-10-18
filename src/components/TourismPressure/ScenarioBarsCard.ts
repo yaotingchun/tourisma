@@ -75,6 +75,32 @@ export class ScenarioBarsCard {
 
     const barScenVtrText = this.element.querySelector<HTMLElement>('#bar-scen-vtr-text');
     if (barScenVtrText) barScenVtrText.textContent = `${sim.scenarioVtr.toFixed(1)} / room`;
+
+    // Cluster 4: Tourism Pressure Index (TPI)
+    const tpi = sim.tpiBreakdown;
+    const baseTpi = tpi ? tpi.baselineTpi : 40.1;
+    const scenTpi = tpi ? tpi.tpi : 40.1;
+    const deltaTpi = tpi ? tpi.tpiDelta : 0;
+    const deltaSign = deltaTpi >= 0 ? '+' : '';
+    const tpiColor = tpi?.color ?? '#0284c7';
+
+    const curTpiText = this.element.querySelector<HTMLElement>('#scen-cur-tpi-text');
+    if (curTpiText) curTpiText.textContent = `${baseTpi.toFixed(1)} / 100`;
+
+    const barCurTpi = this.element.querySelector<HTMLElement>('#bar-cur-tpi-fill');
+    if (barCurTpi) barCurTpi.style.width = `${Math.min(100, Math.max(0, baseTpi))}%`;
+
+    const barScenTpi = this.element.querySelector<HTMLElement>('#bar-scen-tpi-fill');
+    if (barScenTpi) {
+      barScenTpi.style.width = `${Math.min(100, Math.max(0, scenTpi))}%`;
+      barScenTpi.style.backgroundColor = tpiColor;
+    }
+
+    const barScenTpiText = this.element.querySelector<HTMLElement>('#bar-scen-tpi-text');
+    if (barScenTpiText) {
+      barScenTpiText.textContent = `${scenTpi.toFixed(1)} (${deltaSign}${deltaTpi.toFixed(1)})`;
+      barScenTpiText.style.color = scenTpi < 45 ? '#1d4ed8' : tpiColor;
+    }
   }
 
   private render(): void {
@@ -95,6 +121,13 @@ export class ScenarioBarsCard {
     const maxVtr = Math.max(sim.scenarioVtr, sim.currentVtr, 1);
     const vtrCurPct = Math.min(100, (sim.currentVtr / maxVtr) * 100);
     const vtrScenPct = Math.min(100, (sim.scenarioVtr / maxVtr) * 100);
+
+    const tpi = sim.tpiBreakdown;
+    const baseTpi = tpi ? tpi.baselineTpi : 40.1;
+    const scenTpi = tpi ? tpi.tpi : 40.1;
+    const deltaTpi = tpi ? tpi.tpiDelta : 0;
+    const deltaSign = deltaTpi >= 0 ? '+' : '';
+    const tpiColor = tpi?.color ?? '#0284c7';
 
     this.element.innerHTML = `
       <div style="display: flex; flex-direction: column; gap: 10px;">
@@ -174,6 +207,34 @@ export class ScenarioBarsCard {
                 </div>
                 <div class="bar-track">
                   <div id="bar-scen-vtr-fill" class="bar-fill vtr-bar" style="width: ${vtrScenPct}%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cluster 4: Tourism Pressure Index (TPI) -->
+          <div class="scenario-bar-cluster tpi-cluster">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="cluster-title">Pressure Index (TPI)</span>
+              <span style="font-size: 10px; font-weight: 700; color: var(--text-muted);">0.70A + 0.30G</span>
+            </div>
+            <div class="cluster-bars">
+              <div class="single-bar-row">
+                <div class="bar-meta">
+                  <span class="lbl">Baseline TPI</span>
+                  <span id="scen-cur-tpi-text" class="num">${baseTpi.toFixed(1)} / 100</span>
+                </div>
+                <div class="bar-track">
+                  <div id="bar-cur-tpi-fill" class="bar-fill current-bar" style="width: ${Math.min(100, Math.max(0, baseTpi))}%;"></div>
+                </div>
+              </div>
+              <div class="single-bar-row">
+                <div class="bar-meta">
+                  <span class="lbl">Scenario TPI</span>
+                  <span id="bar-scen-tpi-text" class="num" style="color: ${scenTpi < 45 ? '#1d4ed8' : tpiColor}; font-weight: 800;">${scenTpi.toFixed(1)} (${deltaSign}${deltaTpi.toFixed(1)})</span>
+                </div>
+                <div class="bar-track">
+                  <div id="bar-scen-tpi-fill" class="bar-fill tpi-bar" style="width: ${Math.min(100, Math.max(0, scenTpi))}%; background-color: ${tpiColor};"></div>
                 </div>
               </div>
             </div>

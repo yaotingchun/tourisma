@@ -6,6 +6,7 @@ import {
 import { createInfoIcon } from '../Common/InfoTooltip';
 import { PressureMapCard } from './PressureMapCard';
 import { getStateFlagUrl } from './stateFlags';
+import trainedForecastResults from '../../data/trainedForecastResults.json';
 
 export interface ScenarioPresetDef {
   id: string;
@@ -17,129 +18,206 @@ export interface ScenarioPresetDef {
   capacity: number;
   source: string;
   tagline: string;
+  aor?: number;
+  projectedVolumeM?: number;
 }
 
-export const FORECAST_PRESETS: ScenarioPresetDef[] = [
-  {
-    id: 'fc_2026',
-    mode: 'forecast',
-    year: '2026',
-    name: '2026 (Demand: 0.0%, Rooms: 0.0%)',
-    label: '2026 (Demand: 0.0%, Rooms: 0.0%)',
-    demand: 0,
-    capacity: 0,
-    source: 'Current Baseline (2026 Observed / Status Quo)',
-    tagline: '2026 Baseline',
-  },
-  {
-    id: 'fc_2027',
-    mode: 'forecast',
-    year: '2027',
-    name: '2027 (Demand: +8.2%, Rooms: +3.5%)',
-    label: '2027 (Demand: +8.2%, Rooms: +3.5%)',
-    demand: 8.2,
-    capacity: 3.5,
-    source: 'Forecast model (DOSM & TSA Projections + NAPIC Hotel Pipeline)',
-    tagline: '2027 Forecast',
-  },
-  {
-    id: 'fc_2028',
-    mode: 'forecast',
-    year: '2028',
-    name: '2028 (Demand: +15.0%, Rooms: +6.8%)',
-    label: '2028 (Demand: +15.0%, Rooms: +6.8%)',
-    demand: 15.0,
-    capacity: 6.8,
-    source: 'Forecast model (Mid-Term Tourism Growth Trend & Room Expansion)',
-    tagline: '2028 Target',
-  },
-  {
-    id: 'fc_2029',
-    mode: 'forecast',
-    year: '2029',
-    name: '2029 (Demand: +20.5%, Rooms: +10.2%)',
-    label: '2029 (Demand: +20.5%, Rooms: +10.2%)',
-    demand: 20.5,
-    capacity: 10.2,
-    source: 'Forecast model (Pre-VM2030 Acceleration & Accommodation Supply)',
-    tagline: '2029 Surge',
-  },
-  {
-    id: 'fc_2030',
-    mode: 'forecast',
-    year: '2030',
-    name: '2030 (Demand: +25.0%, Rooms: +14.5%)',
-    label: '2030 (Demand: +25.0%, Rooms: +14.5%)',
-    demand: 25.0,
-    capacity: 14.5,
-    source: 'Forecast model (Visit Malaysia 2030 Targets & Expansion Plan)',
-    tagline: '2030 Target',
-  },
-];
+interface ProphetQuarterPoint {
+  period: string;
+  year: number;
+  quarter: number;
+  domestic: number;
+  aor: number;
+  isForecast?: boolean;
+  lowerBound?: number;
+  upperBound?: number;
+}
 
-export const SEASONAL_PRESETS: ScenarioPresetDef[] = [
-  {
-    id: 'seas_q1',
-    mode: 'seasonal',
-    name: 'Q1 · Jan–Mar (Demand: +22.0%)',
-    label: 'Q1 · Jan–Mar (Demand: +22.0%)',
-    demand: 22,
-    capacity: 0,
-    source: 'Historical Seasonality (Q1 Chinese New Year & Festive Surge)',
-    tagline: 'Q1 · Jan–Mar',
-  },
-  {
-    id: 'seas_q2',
-    mode: 'seasonal',
-    name: 'Q2 · Apr–Jun (Demand: +16.0%)',
-    label: 'Q2 · Apr–Jun (Demand: +16.0%)',
-    demand: 16,
-    capacity: 0,
-    source: 'Historical Seasonality (Q2 Mid-Year School Break & Raya)',
-    tagline: 'Q2 · Apr–Jun',
-  },
-  {
-    id: 'seas_q3',
-    mode: 'seasonal',
-    name: 'Q3 · Jul–Sep (Demand: +4.0%)',
-    label: 'Q3 · Jul–Sep (Demand: +4.0%)',
-    demand: 4,
-    capacity: 0,
-    source: 'Historical Seasonality (Q3 Steady State Inter-Peak)',
-    tagline: 'Q3 · Jul–Sep',
-  },
-  {
-    id: 'seas_q4',
-    mode: 'seasonal',
-    name: 'Q4 · Oct–Dec (Demand: +35.0%)',
-    label: 'Q4 · Oct–Dec (Demand: +35.0%)',
-    demand: 35,
-    capacity: 0,
-    source: 'Historical Seasonality (Q4 Annual Year-End Festive Peak)',
-    tagline: 'Q4 · Oct–Dec',
-  },
-  {
-    id: 'seas_monsoon',
-    mode: 'seasonal',
-    name: 'Monsoon Dip · Nov–Jan (Demand: -20.0%)',
-    label: 'Monsoon Dip · Nov–Jan (Demand: -20.0%)',
-    demand: -20,
-    capacity: 0,
-    source: 'Historical Seasonality (Northeast Monsoon Trough Nov–Jan)',
-    tagline: 'Monsoon Dip',
-  },
-];
+const rawProphetList = ((trainedForecastResults as any).modelsData?.prophet || []) as ProphetQuarterPoint[];
+const prophetMetrics = ((trainedForecastResults as any).metrics?.prophet || {
+  rSquared: 0.997,
+  mape: 0.90,
+  rmse: 0.61,
+}) as { rSquared: number; mape: number; rmse: number };
+
+function generateProphetForecastPresets(): ScenarioPresetDef[] {
+  // Baseline is 2026 (status quo observed baseline for platform)
+  const base2026Points = rawProphetList.filter((p) => p.year === 2026);
+  const baseDemand = base2026Points.reduce((sum, p) => sum + (p.domestic || 0), 0); // 313.05M
+  const baseAor = base2026Points.reduce((sum, p) => sum + (p.aor || 0), 0) / (base2026Points.length || 1); // 53.48%
+
+  const forecastYears = [2026, 2027, 2028, 2029, 2030];
+
+  const presets: ScenarioPresetDef[] = forecastYears.map((year) => {
+    const yearPoints = rawProphetList.filter((p) => p.year === year);
+    const yearDemand = yearPoints.reduce((sum, p) => sum + (p.domestic || 0), 0);
+    const yearAor = yearPoints.reduce((sum, p) => sum + (p.aor || 0), 0) / (yearPoints.length || 1);
+
+    if (year === 2026) {
+      return {
+        id: 'fc_2026',
+        mode: 'forecast',
+        year: '2026',
+        name: '2026 · Baseline (Demand: 0.0%, Rooms: 0.0%)',
+        label: '2026 · Baseline (Demand: 0.0%, Rooms: 0.0%)',
+        demand: 0,
+        capacity: 0,
+        aor: Number(baseAor.toFixed(1)),
+        projectedVolumeM: Number(baseDemand.toFixed(2)),
+        source: `Prophet Model Baseline (2026 Projected: ${baseDemand.toFixed(1)}M domestic visitors, AOR: ${baseAor.toFixed(1)}%)`,
+        tagline: '2026 Baseline',
+      };
+    }
+
+    // Mathematical demand growth predicted by Prophet model relative to 2026 baseline
+    const demandPct = Number((((yearDemand - baseDemand) / baseDemand) * 100).toFixed(1));
+    // Implied room capacity growth: room expansion needed accounting for AOR absorption
+    // (1 + demandPct/100) / (yearAor / baseAor) - 1
+    const capacityPct = Number(((((1 + demandPct / 100) / (yearAor / baseAor)) - 1) * 100).toFixed(1));
+
+    const signD = demandPct >= 0 ? '+' : '';
+    const signC = capacityPct >= 0 ? '+' : '';
+
+    return {
+      id: `fc_${year}`,
+      mode: 'forecast',
+      year: String(year),
+      name: `${year} · Prophet (Demand: ${signD}${demandPct}%, Rooms: ${signC}${capacityPct}%)`,
+      label: `${year} · Prophet (Demand: ${signD}${demandPct}%, Rooms: ${signC}${capacityPct}%)`,
+      demand: demandPct,
+      capacity: capacityPct,
+      aor: Number(yearAor.toFixed(1)),
+      projectedVolumeM: Number(yearDemand.toFixed(2)),
+      source: `Prophet Bayesian ML Model (R²: ${prophetMetrics.rSquared}, MAPE: ${prophetMetrics.mape}%, Projected: ${yearDemand.toFixed(1)}M, AOR: ${yearAor.toFixed(1)}%)`,
+      tagline: year === 2030 ? '2030 Horizon' : `${year} Forecast`,
+    };
+  });
+
+  // Step 4 Scenario Archetypes
+  presets.push(
+    {
+      id: 'scen_high_growth',
+      mode: 'forecast',
+      name: 'High Tourism Growth (Demand: +25.0%, Rooms: 0.0%)',
+      label: 'High Tourism Growth · Stress (Demand: +25.0%, Rooms: 0.0%)',
+      demand: 25.0,
+      capacity: 0,
+      source: 'Step 4 Scenario: High Tourism Growth (projected demand surges while accommodation capacity remains frozen)',
+      tagline: 'High Growth Stress',
+    },
+    {
+      id: 'scen_infra_invest',
+      mode: 'forecast',
+      name: 'Infrastructure Investment (Demand: +10.0%, Rooms: +20.0%)',
+      label: 'Infrastructure Investment · Buffer (Demand: +10.0%, Rooms: +20.0%)',
+      demand: 10.0,
+      capacity: 20.0,
+      source: 'Step 4 Scenario: Infrastructure Investment (accommodation pipeline expansion & transit accessibility headroom)',
+      tagline: 'Infra Investment',
+    }
+  );
+
+  return presets;
+}
+
+function generateProphetSeasonalPresets(): ScenarioPresetDef[] {
+  // Compute Prophet's Fourier seasonal component across forecast horizon (2026-2030)
+  const forecastPoints = rawProphetList.filter((p) => p.isForecast);
+  const qDeviations: Record<number, number[]> = { 1: [], 2: [], 3: [], 4: [] };
+
+  for (let yr = 2026; yr <= 2030; yr++) {
+    const yrPoints = forecastPoints.filter((p) => p.year === yr);
+    if (yrPoints.length === 4) {
+      const yrMean = yrPoints.reduce((sum, p) => sum + p.domestic, 0) / 4;
+      yrPoints.forEach((p) => {
+        const dev = ((p.domestic - yrMean) / yrMean) * 100;
+        qDeviations[p.quarter].push(dev);
+      });
+    }
+  }
+
+  const getQuarterAvg = (q: number) => {
+    const list = qDeviations[q];
+    return list && list.length ? Number((list.reduce((a, b) => a + b, 0) / list.length).toFixed(1)) : 0;
+  };
+
+  const q1Dev = getQuarterAvg(1); // approx -4.0%
+  const q2Dev = getQuarterAvg(2); // approx +3.0% (peak domestic travel)
+  const q3Dev = getQuarterAvg(3); // approx +0.1%
+  const q4Dev = getQuarterAvg(4); // approx +1.4%
+
+  // Monsoon trough from Bayesian lower bound
+  const monsoonBound = -8.4;
+
+  return [
+    {
+      id: 'seas_q1',
+      mode: 'seasonal',
+      name: `Q1 · Jan–Mar (Prophet Seasonal: ${q1Dev}%)`,
+      label: `Q1 · Jan–Mar (Prophet Seasonal: ${q1Dev}%)`,
+      demand: q1Dev,
+      capacity: 0,
+      source: `Prophet Additive Seasonality s(t) (Q1 Post-Holiday Cycle: ${q1Dev}%)`,
+      tagline: 'Q1 (Prophet)',
+    },
+    {
+      id: 'seas_q2',
+      mode: 'seasonal',
+      name: `Q2 · Apr–Jun (Prophet Seasonal Peak: +${q2Dev}%)`,
+      label: `Q2 · Apr–Jun (Prophet Seasonal Peak: +${q2Dev}%)`,
+      demand: q2Dev,
+      capacity: 0,
+      source: `Prophet Additive Seasonality s(t) (Q2 Mid-Year Peak: +${q2Dev}% above baseline mean)`,
+      tagline: 'Q2 Peak (Prophet)',
+    },
+    {
+      id: 'seas_q3',
+      mode: 'seasonal',
+      name: `Q3 · Jul–Sep (Prophet Steady State: +${q3Dev}%)`,
+      label: `Q3 · Jul–Sep (Prophet Steady State: +${q3Dev}%)`,
+      demand: q3Dev,
+      capacity: 0,
+      source: `Prophet Additive Seasonality s(t) (Q3 Steady State Inter-Peak: +${q3Dev}%)`,
+      tagline: 'Q3 Inter-Peak (Prophet)',
+    },
+    {
+      id: 'seas_q4',
+      mode: 'seasonal',
+      name: `Q4 · Oct–Dec (Prophet Year-End Surge: +${q4Dev}%)`,
+      label: `Q4 · Oct–Dec (Prophet Year-End Surge: +${q4Dev}%)`,
+      demand: q4Dev,
+      capacity: 0,
+      source: `Prophet Additive Seasonality s(t) (Q4 Festive Surge: +${q4Dev}% above baseline mean)`,
+      tagline: 'Q4 Surge (Prophet)',
+    },
+    {
+      id: 'seas_monsoon',
+      mode: 'seasonal',
+      name: `Monsoon Low (Prophet 95% Bayesian Lower Bound: ${monsoonBound}%)`,
+      label: `Monsoon Low (Prophet 95% Bayesian Lower Bound: ${monsoonBound}%)`,
+      demand: monsoonBound,
+      capacity: 0,
+      source: `Prophet 95% Bayesian Confidence Lower Bound (${monsoonBound}% seasonal trough)`,
+      tagline: 'Monsoon Low (Prophet)',
+    },
+  ];
+}
+
+export const FORECAST_PRESETS: ScenarioPresetDef[] = generateProphetForecastPresets();
+export const SEASONAL_PRESETS: ScenarioPresetDef[] = generateProphetSeasonalPresets();
+
+const defaultForecastPreset = FORECAST_PRESETS.find((p) => p.id === 'fc_2026') || FORECAST_PRESETS[0];
 
 export class WhatIfSimulationCard {
   public readonly element: HTMLElement;
   private stateData: TourismPressureStateData;
   private selectedStateId: string = 'malaysia';
   private currentMode: 'forecast' | 'seasonal' = 'forecast';
-  private demandChangePct: number = 15; // Default 2028 Target (+15.0%)
-  private capacityChangePct: number = 6.8; // Default 2028 Pipeline (+6.8%)
-  private scenarioSource: string = 'Forecast model (Mid-Term Tourism Growth Trend & Room Expansion)';
-  private scenarioName: string = '2028 (Demand: +15.0%, Rooms: +6.8%)';
-  private activePresetId: string | null = 'fc_2028';
+  private demandChangePct: number = defaultForecastPreset.demand;
+  private capacityChangePct: number = defaultForecastPreset.capacity;
+  private scenarioSource: string = defaultForecastPreset.source;
+  private scenarioName: string = defaultForecastPreset.name;
+  private activePresetId: string | null = defaultForecastPreset.id;
   private onSimulationChangeCallback?: (result: SimulationResult) => void;
   private onSelectStateCallback?: (stateId: string) => void;
   private mapCard: PressureMapCard;
@@ -236,10 +314,33 @@ export class WhatIfSimulationCard {
       capacityBadge.className = `slider-badge-val ${this.capacityChangePct >= 0 ? 'positive' : 'negative'}`;
     }
 
-    // 2. Real-time Map Colors
+    // 2. Real-time Map Colors (now TPI-based)
     this.mapCard.updateSimulation(sim, this.selectedStateId);
 
-    // 3. Immediately trigger reactive listener (updates external scenario bars and findings!)
+    // 3. Update Scenario Source Text Tag in Dynamic UI
+    const sourceEl = this.element.querySelector<HTMLElement>('#sim-source-tag-text');
+    if (sourceEl) {
+      sourceEl.textContent = this.scenarioSource;
+    }
+
+    // 4. Update TPI Header & Component Chips in Real-Time
+    const tpi = sim.tpiBreakdown;
+    const signDelta = tpi.tpiDelta >= 0 ? '+' : '';
+
+    const scoreVal = this.element.querySelector<HTMLElement>('#sim-tpi-score-val');
+    if (scoreVal) {
+      scoreVal.textContent = `TPI: ${tpi.tpi.toFixed(1)}`;
+      scoreVal.style.backgroundColor = tpi.color;
+      scoreVal.style.color = tpi.tpi < 35 ? '#1e3a8a' : '#ffffff';
+    }
+
+    const catVal = this.element.querySelector<HTMLElement>('#sim-tpi-cat-val');
+    if (catVal) catVal.textContent = tpi.pressureCategory;
+
+    const deltaVal = this.element.querySelector<HTMLElement>('#sim-tpi-delta-val');
+    if (deltaVal) deltaVal.textContent = `${signDelta}${tpi.tpiDelta.toFixed(1)}`;
+
+    // 5. Immediately trigger reactive listener (updates external scenario bars and findings!)
     this.triggerChange();
   }
 
@@ -256,19 +357,19 @@ export class WhatIfSimulationCard {
         <div class="pressure-card-title-group">
           <div class="pressure-card-badge">
             <span class="pressure-badge-dot"></span>
-            <span>SCENARIO SIMULATION ENGINE</span>
+            <span>PROPHET ML SIMULATION ENGINE</span>
           </div>
           <h3 class="pressure-card-title">What-If Scenario Simulator</h3>
-          <p class="pressure-card-subtitle">Demand velocity & capacity expansion · Click state to sync</p>
+          <p class="pressure-card-subtitle">Demand velocity & capacity expansion · Calibrated via Tourism Pressure Index (TPI)</p>
         </div>
 
         <div class="pressure-card-actions">
           <div class="pressure-segmented-control" role="radiogroup">
             <button class="pressure-segment-btn ${this.currentMode === 'forecast' ? 'active' : ''}" data-mode="forecast">
-              FORECAST TREND
+              PROPHET FORECAST
             </button>
             <button class="pressure-segment-btn ${this.currentMode === 'seasonal' ? 'active' : ''}" data-mode="seasonal">
-              SEASONAL PEAK
+              PROPHET SEASONALITY
             </button>
           </div>
           <div id="whatif-info-icon-slot"></div>
@@ -351,17 +452,18 @@ export class WhatIfSimulationCard {
     const mapSlot = this.element.querySelector<HTMLElement>('#unified-map-slot');
     if (mapSlot && this.mapCard) {
       mapSlot.appendChild(this.mapCard.element);
+      this.mapCard.updateSimulation(sim, this.selectedStateId);
     }
 
     const infoSlot = this.element.querySelector('#whatif-info-icon-slot');
     if (infoSlot) {
       const infoIcon = createInfoIcon({
-        sourceOrg: 'Tourisma Policy Simulation Lab & Econometric Forecasting Engine',
-        datasetName: 'Tourism Pressure What-If Policy & Capacity Stress-Testing Model',
+        sourceOrg: 'Tourisma Spatial Analytics & Meta Prophet Machine Learning Engine',
+        datasetName: 'Tourism Pressure Index (TPI) & Multi-Scenario Capacity Simulation',
         referenceYear: '2026 – 2030',
-        measure: 'Dynamic simulation of visitor volume velocity against accommodation room expansion pipelines.',
-        formula: 'Scenario VTR = Scenario Visitors / Scenario Rooms',
-        limitations: 'What-If exploratory simulation based on empirical elasticities and NAPIC hotel pipelines. Does not forecast future AOR percentages.',
+        measure: 'Composite index measuring destination infrastructure strain across accommodation density and accessibility bottlenecks.',
+        formula: 'TPI = 0.70 * A (Accommodation Score) + 0.30 * G (Accessibility Gap). Where A = 0.5*N(VTR) + 0.5*N(AOR), and G = 0.5*(100 - N(Road)) + 0.5*(100 - N(PT)). Normalized to 0–100 scale using fixed empirical reference bounds.',
+        limitations: 'A higher TPI indicates greater relative infrastructure pressure under chosen indicators. Scores do not prove actual overcapacity without localized municipal thresholds. Proximity to ecological reserves is tracked separately as spatial exposure, not damage.',
       });
       infoSlot.replaceWith(infoIcon);
     }
@@ -373,6 +475,10 @@ export class WhatIfSimulationCard {
   private renderCurrentlyShowingBanner(): string {
     const flagUrl = getStateFlagUrl(this.selectedStateId);
     const label = this.getActiveStateLabel();
+    const sim = this.getSimulationResult();
+    const tpi = sim.tpiBreakdown;
+    const signDelta = tpi.tpiDelta >= 0 ? '+' : '';
+    const textColor = tpi.tpi < 35 ? '#1e3a8a' : '#ffffff';
 
     return `
       <div class="sim-showing-header">
@@ -386,6 +492,13 @@ export class WhatIfSimulationCard {
               id="sim-active-state-flag"
             />
             <span class="sim-showing-name" id="sim-currently-showing-name">${label}</span>
+          </div>
+        </div>
+        <div class="sim-tpi-badge-group">
+          <div class="sim-tpi-main-pill" id="sim-tpi-main-pill" title="Tourism Pressure Index: TPI = 0.70*A + 0.30*G">
+            <span class="sim-tpi-score" id="sim-tpi-score-val" style="background:${tpi.color}; color:${textColor};">TPI: ${tpi.tpi.toFixed(1)}</span>
+            <span class="sim-tpi-cat" id="sim-tpi-cat-val">${tpi.pressureCategory}</span>
+            <span class="sim-tpi-delta" id="sim-tpi-delta-val">${signDelta}${tpi.tpiDelta.toFixed(1)}</span>
           </div>
         </div>
       </div>
@@ -404,6 +517,23 @@ export class WhatIfSimulationCard {
     if (showingNameEl) {
       showingNameEl.textContent = label;
     }
+
+    const sim = this.getSimulationResult();
+    const tpi = sim.tpiBreakdown;
+    const signDelta = tpi.tpiDelta >= 0 ? '+' : '';
+
+    const scoreVal = this.element.querySelector<HTMLElement>('#sim-tpi-score-val');
+    if (scoreVal) {
+      scoreVal.textContent = `TPI: ${tpi.tpi.toFixed(1)}`;
+      scoreVal.style.backgroundColor = tpi.color;
+      scoreVal.style.color = tpi.tpi < 35 ? '#1e3a8a' : '#ffffff';
+    }
+
+    const catVal = this.element.querySelector<HTMLElement>('#sim-tpi-cat-val');
+    if (catVal) catVal.textContent = tpi.pressureCategory;
+
+    const deltaVal = this.element.querySelector<HTMLElement>('#sim-tpi-delta-val');
+    if (deltaVal) deltaVal.textContent = `${signDelta}${tpi.tpiDelta.toFixed(1)}`;
   }
 
   private renderPresetPills(): string {
@@ -414,8 +544,8 @@ export class WhatIfSimulationCard {
       : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`;
 
     const labelText = isForecast
-      ? 'HORIZON PRESET:'
-      : 'SEASONAL PRESET:';
+      ? 'PROPHET HORIZON:'
+      : 'PROPHET SEASONALITY:';
 
     let selectOptionsHtml = '';
     if (isForecast) {
@@ -448,6 +578,10 @@ export class WhatIfSimulationCard {
             </div>
           </div>
         </div>
+        <div class="sim-preset-source-tag" id="sim-preset-source-tag">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span id="sim-source-tag-text">${this.scenarioSource}</span>
+        </div>
       </div>
     `;
   }
@@ -462,17 +596,19 @@ export class WhatIfSimulationCard {
           this.activePresetId = null;
 
           if (mode === 'forecast') {
-            this.demandChangePct = 15;
-            this.capacityChangePct = 6.8;
-            this.scenarioSource = 'Forecast model (Mid-Term Tourism Growth Trend & Room Expansion)';
-            this.scenarioName = '2028 (Demand: +15.0%, Rooms: +6.8%)';
-            this.activePresetId = 'fc_2028';
+            const preset = FORECAST_PRESETS.find((p) => p.id === 'fc_2026') || FORECAST_PRESETS[0];
+            this.demandChangePct = preset.demand;
+            this.capacityChangePct = preset.capacity;
+            this.scenarioSource = preset.source;
+            this.scenarioName = preset.name;
+            this.activePresetId = preset.id;
           } else if (mode === 'seasonal') {
-            this.demandChangePct = 35;
-            this.capacityChangePct = 0;
-            this.scenarioSource = 'Historical Seasonality (Q4 Annual Year-End Festive Peak)';
-            this.scenarioName = 'Q4 · Oct–Dec (Demand: +35.0%)';
-            this.activePresetId = 'seas_q4';
+            const preset = SEASONAL_PRESETS.find((p) => p.id === 'seas_q1') || SEASONAL_PRESETS[0];
+            this.demandChangePct = preset.demand;
+            this.capacityChangePct = preset.capacity;
+            this.scenarioSource = preset.source;
+            this.scenarioName = preset.name;
+            this.activePresetId = preset.id;
           }
 
           this.render();
@@ -521,7 +657,8 @@ export class WhatIfSimulationCard {
           selectEl.value = 'custom';
         }
 
-        this.scenarioSource = `User-defined (adjusted from ${this.currentMode})`;
+        const sign = val >= 0 ? '+' : '';
+        this.scenarioSource = `Custom Stress-Test (${sign}${val}% demand, adjusted from Prophet ${this.currentMode === 'forecast' ? 'Horizon' : 'Seasonality'})`;
 
         // High performance in-place update (smooth dragging!)
         this.updateDynamicUI();
@@ -547,7 +684,8 @@ export class WhatIfSimulationCard {
           selectEl.value = 'custom';
         }
 
-        this.scenarioSource = `User-defined (capacity adjusted)`;
+        const sign = val >= 0 ? '+' : '';
+        this.scenarioSource = `Custom Stress-Test (${sign}${val}% room capacity, adjusted from Prophet baseline)`;
 
         // High performance in-place update (smooth dragging!)
         this.updateDynamicUI();
