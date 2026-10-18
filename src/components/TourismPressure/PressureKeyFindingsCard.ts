@@ -103,10 +103,9 @@ export class PressureKeyFindingsCard {
     const scenVisM = (this.currentSimResult.scenarioVisitors / 1e6).toFixed(2);
     const signD = this.currentSimResult.demandChangePct >= 0 ? '+' : '';
     const signC = this.currentSimResult.capacityChangePct >= 0 ? '+' : '';
-    const signG = this.currentSimResult.demandCapacityGapPp >= 0 ? '+' : '';
 
     return {
-      whatChanges: `Demand changes from ${curVisM}M to ${scenVisM}M (${signD}${this.currentSimResult.demandChangePct.toFixed(1)}%) with room capacity changing by ${signC}${this.currentSimResult.capacityChangePct.toFixed(1)}%, creating a Demand–Capacity Gap of ${signG}${this.currentSimResult.demandCapacityGapPp.toFixed(1)} pp.`,
+      whatChanges: `Demand changes from ${curVisM}M to ${scenVisM}M (${signD}${this.currentSimResult.demandChangePct.toFixed(1)}%) with room capacity changing by ${signC}${this.currentSimResult.capacityChangePct.toFixed(1)}%, adjusting the visitor-to-room ratio to ${this.currentSimResult.scenarioVtr.toFixed(1)} per room.`,
       whatBecomesMorePressured: `With accommodation capacity ${this.currentSimResult.capacityChangePct === 0 ? 'unchanged' : 'adjusted'}, visitor-to-room ratio shifts from ${this.currentSimResult.currentVtr.toFixed(1)} to ${this.currentSimResult.scenarioVtr.toFixed(1)}. In ${this.currentStateData.name}, observed AOR is currently ${this.currentStateData.aorPct.toFixed(1)}% alongside ${this.currentStateData.roadAccessRate.toFixed(1)}% road connectivity (PT access: ${this.currentStateData.ptAccessRate.toFixed(1)}%), highlighting specific corridor throughput and proximity to the ${this.currentStateData.environmentalExposureRate.toFixed(1)}% of assets near ecological reserves.`,
       whatShouldPlannersInvestigate: [
         `Evaluate accommodation pipeline and licensing given the scenario visitor-to-room ratio of ${this.currentSimResult.scenarioVtr.toFixed(1)} (current observed AOR: ${this.currentStateData.aorPct.toFixed(1)}%).`,

@@ -6,8 +6,8 @@
 .tourism-demand-page {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 16px 20px 32px 20px;
+  gap: 12px;
+  padding: 12px 20px 28px 20px;
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
@@ -21,7 +21,7 @@
 .demand-kpi-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  gap: 10px;
   width: 100%;
 }
 
@@ -41,7 +41,7 @@
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
-  padding: 13px 15px;
+  padding: 11px 14px;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
   display: flex !important;
   flex-direction: row !important;
@@ -176,7 +176,7 @@
 .demand-section-block {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .demand-section-header {

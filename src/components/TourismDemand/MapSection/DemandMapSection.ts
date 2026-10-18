@@ -10,8 +10,7 @@ export class DemandMapSection {
     this.element = document.createElement('div');
     this.element.className = 'demand-map-section';
     this.element.style.display = 'flex';
-    this.element.style.gap = '20px';
-    this.element.style.marginTop = '20px';
+    this.element.style.gap = '14px';
 
     this.profile = new DemandMapProfile(() => {
       this.map.setSelectedState(null);
