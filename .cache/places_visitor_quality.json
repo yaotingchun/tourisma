@@ -3801,7 +3801,7 @@
       "name": "Petronas Twin Towers",
       "address": "Lower Ground (Concourse) Level, Menara Berkembar Petronas, Kuala Lumpur City Centre, 50088 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia",
       "rating": 4.7,
-      "userRatingCount": 105466
+      "userRatingCount": 105464
     },
     "dimensions": {
       "accessibility": {
@@ -3839,29 +3839,35 @@
       "facilities": {
         "dimension": "facilities",
         "name": "Facilities",
-        "mentions": 2,
-        "positive": 1,
+        "mentions": 3,
+        "positive": 2,
         "mixed": 0,
         "negative": 1,
-        "positivePct": 50,
+        "positivePct": 67,
         "mixedPct": 0,
-        "negativePct": 50,
+        "negativePct": 33,
         "evidenceTier": "limited",
         "evidenceLabel": "Limited Evidence",
-        "headline": "Limited evidence — 2 reviews mention facilities",
+        "headline": "Limited evidence — 3 reviews mention facilities",
         "subtext": "Insufficient volume for percentage share",
         "evidence": [
           {
             "reviewId": "rev_1",
             "dimension": "facilities",
             "sentiment": "positive",
-            "exactQuote": "plenty of places to sit"
+            "exactQuote": "plenty of places to sit and enjoy the view"
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "fountains providing plenty of space to relax"
           },
           {
             "reviewId": "rev_5",
             "dimension": "facilities",
             "sentiment": "negative",
-            "exactQuote": "beware of toilets.....Two very different situation of toilet facilities for ladies!!!!"
+            "exactQuote": "just beware of toilets.....Two very different situation of toilet facilities for ladies!!!!"
           }
         ]
       },
@@ -3897,41 +3903,29 @@
       "crowding": {
         "dimension": "crowding",
         "name": "Crowding",
-        "mentions": 5,
-        "positive": 5,
+        "mentions": 3,
+        "positive": 3,
         "mixed": 0,
         "negative": 0,
         "positivePct": 100,
         "mixedPct": 0,
         "negativePct": 0,
-        "evidenceTier": "moderate",
-        "evidenceLabel": "Moderate Evidence",
-        "headline": "5 of 5 crowding mentions were positive",
-        "subtext": "100% positive",
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 3 reviews mention crowding",
+        "subtext": "Insufficient volume for percentage share",
         "evidence": [
           {
             "reviewId": "rev_2",
             "dimension": "crowding",
             "sentiment": "positive",
-            "exactQuote": "making the experience comfortable without feeling overcrowded"
-          },
-          {
-            "reviewId": "rev_3",
-            "dimension": "crowding",
-            "sentiment": "positive",
-            "exactQuote": "made the entry process smooth and hassle-free."
-          },
-          {
-            "reviewId": "rev_3",
-            "dimension": "crowding",
-            "sentiment": "positive",
-            "exactQuote": "well-organized flow of the tour."
+            "exactQuote": "Entry was managed in small groups with dedicated time slots for the Skybridge and Observation Deck, making the experience comfortable without feeling overcrowded."
           },
           {
             "reviewId": "rev_4",
             "dimension": "crowding",
             "sentiment": "positive",
-            "exactQuote": "when the area is generally less crowded."
+            "exactQuote": "when the area is generally less crowded. You will have a more comfortable experience, better opportunities to enjoy the views, and more time to take beautiful photos without too many people around."
           },
           {
             "reviewId": "rev_5",
@@ -3944,8 +3938,8 @@
       "services": {
         "dimension": "services",
         "name": "Services",
-        "mentions": 6,
-        "positive": 6,
+        "mentions": 7,
+        "positive": 7,
         "mixed": 0,
         "negative": 0,
         "positivePct": 100,
@@ -3953,7 +3947,7 @@
         "negativePct": 0,
         "evidenceTier": "moderate",
         "evidenceLabel": "Moderate Evidence",
-        "headline": "6 of 6 services mentions were positive",
+        "headline": "7 of 7 services mentions were positive",
         "subtext": "100% positive",
         "evidence": [
           {
@@ -3972,13 +3966,19 @@
             "reviewId": "rev_3",
             "dimension": "services",
             "sentiment": "positive",
+            "exactQuote": "We had already purchased our tickets via Klook, which made the entry process smooth and hassle-free."
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "services",
+            "sentiment": "positive",
             "exactQuote": "souvenirs"
           },
           {
             "reviewId": "rev_3",
             "dimension": "services",
             "sentiment": "positive",
-            "exactQuote": "for a meal and some shopping"
+            "exactQuote": "spent time at Suria KLCC for a meal and some shopping"
           },
           {
             "reviewId": "rev_4",
@@ -3996,7 +3996,7 @@
       }
     },
     "totalMentions": 15,
-    "aiInsight": "Visitor feedback highlights strong infrastructure quality, particularly in grounds maintenance, effective crowd management, and diverse service offerings including shopping and dining. Seating is also noted as ample. However, a specific concern regarding the condition or type of toilet facilities for ladies suggests a potential area for improvement to meet international visitor expectations.",
+    "aiInsight": "Visitor feedback highlights strong positive perceptions regarding the cleanliness and maintenance of the surrounding areas, as well as the availability and quality of services like shopping, restaurants, and ticketing processes. Crowding is generally well-managed, with specific mention of smooth entry and minimal waiting times. However, there is a notable negative comment concerning the toilet facilities, suggesting a potential area for improvement in meeting diverse visitor expectations.",
     "reviews": [
       {
         "reviewId": "rev_1",
@@ -4044,7 +4044,7 @@
         "originalText": "If in KL then a visit to these towers are a must. Reasonably priced. No wait. Views are amazing! So much to see and at night towers are lit and you have beautiful fountains dancing to music in front of them. Fabulous shopping centre at ground level to the towers too. If visiting from Europe,  just beware of toilets.....Two very different situation of toilet facilities for ladies!!!!"
       }
     ],
-    "cachedAt": "2026-10-17T13:50:54.458Z"
+    "cachedAt": "2026-10-18T14:11:58.918Z"
   },
   "pulau redang marine park (redang island)": {
     "place": {
@@ -4106,7 +4106,7 @@
             "reviewId": "rev_4",
             "dimension": "facilities",
             "sentiment": "positive",
-            "exactQuote": "the park provides convenient amenities such as restrooms 🚻"
+            "exactQuote": "This marine park offers a substantial population of fish for viewing 🐠, particularly when food is provided. However, the presence of an undercurrent necessitates staying near the shore for safety ⚠️. While many fish congregate in the current-affected areas, the park provides convenient amenities such as restrooms 🚻 and beverage vendors 🥤, enhancing the overall visitor experience."
           },
           {
             "reviewId": "rev_5",
@@ -4135,7 +4135,7 @@
             "reviewId": "rev_1",
             "dimension": "cleanliness",
             "sentiment": "negative",
-            "exactQuote": "The tourists (and locals alike) leave so much trash behind"
+            "exactQuote": "The tourists (and locals alike) leave so much trash behind, step on the corals and use sunscreen when going to the water."
           },
           {
             "reviewId": "rev_1",
@@ -4186,13 +4186,13 @@
             "reviewId": "rev_4",
             "dimension": "services",
             "sentiment": "positive",
-            "exactQuote": "beverage vendors 🥤"
+            "exactQuote": "This marine park offers a substantial population of fish for viewing 🐠, particularly when food is provided. However, the presence of an undercurrent necessitates staying near the shore for safety ⚠️. While many fish congregate in the current-affected areas, the park provides convenient amenities such as restrooms 🚻 and beverage vendors 🥤, enhancing the overall visitor experience."
           }
         ]
       }
     },
     "totalMentions": 6,
-    "aiInsight": "The destination benefits from positive feedback regarding its facilities, specifically the availability of clean restrooms and a surau, along with convenient beverage vendors. However, a significant bottleneck is the pervasive issue of cleanliness, with multiple complaints about trash and litter left by visitors and locals, leading to a perception of the area becoming very dirty.",
+    "aiInsight": "Visitor feedback on infrastructure is mixed regarding cleanliness, with one review highlighting significant issues with trash and dirtiness, while another praises a clean beach. Facilities like restrooms and a surau, along with services such as beverage vendors, are positively noted as convenient amenities. There is no specific feedback on accessibility, parking, or crowding in these reviews.",
     "reviews": [
       {
         "reviewId": "rev_1",
@@ -4200,7 +4200,7 @@
         "authorPhotoUri": "https://lh3.googleusercontent.com/a/ACg8ocL7X-nWxY1miHe6en-o_ORHiNqN1ZiD9_IY9RWoBAo5vEJ8X2k=s128-c0x00000000-cc-rp-mo-ba2",
         "authorUri": "https://www.google.com/maps/contrib/100541435127169911766/reviews",
         "rating": 1,
-        "date": "4 months ago",
+        "date": "5 months ago",
         "originalText": "As of May 2026 there is nothing to see anymore. All the coral is dead. There is some fish, but you can see the same fish in the ocean anywhere around Redang.\nIt's very sad, because the Marine park charges MYR30/pax conservation FEE but they aren't taking care of the place. The tourists (and locals alike) leave so much trash behind, step on the corals and use sunscreen when going to the water. This has caused the corals to die out in the recent years.\n\nI visited Redang Island about 6years ago and there were still colorful corals to be seen, especially on Long Beach. This has changed so much , and it is sad. At least if the locals would take care of the island, but they leave the trash everywhere. It became very dirty.\n\n(Pictures are from Long Beach)"
       },
       {
@@ -4240,7 +4240,7 @@
         "originalText": "Salam sejahtera... greetings..\nClean Sandy beach...\nSafe snorkelling...\nDepartmental staff friendly...\nThere's a surau too...."
       }
     ],
-    "cachedAt": "2026-10-17T13:41:16.693Z"
+    "cachedAt": "2026-10-18T14:10:41.894Z"
   },
   "chijk-8rt_sptzerzzmzf-u373s": {
     "place": {
@@ -4302,7 +4302,7 @@
             "reviewId": "rev_4",
             "dimension": "facilities",
             "sentiment": "positive",
-            "exactQuote": "the park provides convenient amenities such as restrooms 🚻"
+            "exactQuote": "This marine park offers a substantial population of fish for viewing 🐠, particularly when food is provided. However, the presence of an undercurrent necessitates staying near the shore for safety ⚠️. While many fish congregate in the current-affected areas, the park provides convenient amenities such as restrooms 🚻 and beverage vendors 🥤, enhancing the overall visitor experience."
           },
           {
             "reviewId": "rev_5",
@@ -4331,7 +4331,7 @@
             "reviewId": "rev_1",
             "dimension": "cleanliness",
             "sentiment": "negative",
-            "exactQuote": "The tourists (and locals alike) leave so much trash behind"
+            "exactQuote": "The tourists (and locals alike) leave so much trash behind, step on the corals and use sunscreen when going to the water."
           },
           {
             "reviewId": "rev_1",
@@ -4382,13 +4382,13 @@
             "reviewId": "rev_4",
             "dimension": "services",
             "sentiment": "positive",
-            "exactQuote": "beverage vendors 🥤"
+            "exactQuote": "This marine park offers a substantial population of fish for viewing 🐠, particularly when food is provided. However, the presence of an undercurrent necessitates staying near the shore for safety ⚠️. While many fish congregate in the current-affected areas, the park provides convenient amenities such as restrooms 🚻 and beverage vendors 🥤, enhancing the overall visitor experience."
           }
         ]
       }
     },
     "totalMentions": 6,
-    "aiInsight": "The destination benefits from positive feedback regarding its facilities, specifically the availability of clean restrooms and a surau, along with convenient beverage vendors. However, a significant bottleneck is the pervasive issue of cleanliness, with multiple complaints about trash and litter left by visitors and locals, leading to a perception of the area becoming very dirty.",
+    "aiInsight": "Visitor feedback on infrastructure is mixed regarding cleanliness, with one review highlighting significant issues with trash and dirtiness, while another praises a clean beach. Facilities like restrooms and a surau, along with services such as beverage vendors, are positively noted as convenient amenities. There is no specific feedback on accessibility, parking, or crowding in these reviews.",
     "reviews": [
       {
         "reviewId": "rev_1",
@@ -4396,7 +4396,7 @@
         "authorPhotoUri": "https://lh3.googleusercontent.com/a/ACg8ocL7X-nWxY1miHe6en-o_ORHiNqN1ZiD9_IY9RWoBAo5vEJ8X2k=s128-c0x00000000-cc-rp-mo-ba2",
         "authorUri": "https://www.google.com/maps/contrib/100541435127169911766/reviews",
         "rating": 1,
-        "date": "4 months ago",
+        "date": "5 months ago",
         "originalText": "As of May 2026 there is nothing to see anymore. All the coral is dead. There is some fish, but you can see the same fish in the ocean anywhere around Redang.\nIt's very sad, because the Marine park charges MYR30/pax conservation FEE but they aren't taking care of the place. The tourists (and locals alike) leave so much trash behind, step on the corals and use sunscreen when going to the water. This has caused the corals to die out in the recent years.\n\nI visited Redang Island about 6years ago and there were still colorful corals to be seen, especially on Long Beach. This has changed so much , and it is sad. At least if the locals would take care of the island, but they leave the trash everywhere. It became very dirty.\n\n(Pictures are from Long Beach)"
       },
       {
@@ -4436,7 +4436,7 @@
         "originalText": "Salam sejahtera... greetings..\nClean Sandy beach...\nSafe snorkelling...\nDepartmental staff friendly...\nThere's a surau too...."
       }
     ],
-    "cachedAt": "2026-10-17T13:41:16.693Z"
+    "cachedAt": "2026-10-18T14:10:41.894Z"
   },
   "coral hill": {
     "place": {
@@ -5328,7 +5328,7 @@
       "name": "Petronas Twin Towers",
       "address": "Lower Ground (Concourse) Level, Menara Berkembar Petronas, Kuala Lumpur City Centre, 50088 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia",
       "rating": 4.7,
-      "userRatingCount": 105466
+      "userRatingCount": 105464
     },
     "dimensions": {
       "accessibility": {
@@ -5366,29 +5366,35 @@
       "facilities": {
         "dimension": "facilities",
         "name": "Facilities",
-        "mentions": 2,
-        "positive": 1,
+        "mentions": 3,
+        "positive": 2,
         "mixed": 0,
         "negative": 1,
-        "positivePct": 50,
+        "positivePct": 67,
         "mixedPct": 0,
-        "negativePct": 50,
+        "negativePct": 33,
         "evidenceTier": "limited",
         "evidenceLabel": "Limited Evidence",
-        "headline": "Limited evidence — 2 reviews mention facilities",
+        "headline": "Limited evidence — 3 reviews mention facilities",
         "subtext": "Insufficient volume for percentage share",
         "evidence": [
           {
             "reviewId": "rev_1",
             "dimension": "facilities",
             "sentiment": "positive",
-            "exactQuote": "plenty of places to sit"
+            "exactQuote": "plenty of places to sit and enjoy the view"
+          },
+          {
+            "reviewId": "rev_2",
+            "dimension": "facilities",
+            "sentiment": "positive",
+            "exactQuote": "fountains providing plenty of space to relax"
           },
           {
             "reviewId": "rev_5",
             "dimension": "facilities",
             "sentiment": "negative",
-            "exactQuote": "beware of toilets.....Two very different situation of toilet facilities for ladies!!!!"
+            "exactQuote": "just beware of toilets.....Two very different situation of toilet facilities for ladies!!!!"
           }
         ]
       },
@@ -5424,41 +5430,29 @@
       "crowding": {
         "dimension": "crowding",
         "name": "Crowding",
-        "mentions": 5,
-        "positive": 5,
+        "mentions": 3,
+        "positive": 3,
         "mixed": 0,
         "negative": 0,
         "positivePct": 100,
         "mixedPct": 0,
         "negativePct": 0,
-        "evidenceTier": "moderate",
-        "evidenceLabel": "Moderate Evidence",
-        "headline": "5 of 5 crowding mentions were positive",
-        "subtext": "100% positive",
+        "evidenceTier": "limited",
+        "evidenceLabel": "Limited Evidence",
+        "headline": "Limited evidence — 3 reviews mention crowding",
+        "subtext": "Insufficient volume for percentage share",
         "evidence": [
           {
             "reviewId": "rev_2",
             "dimension": "crowding",
             "sentiment": "positive",
-            "exactQuote": "making the experience comfortable without feeling overcrowded"
-          },
-          {
-            "reviewId": "rev_3",
-            "dimension": "crowding",
-            "sentiment": "positive",
-            "exactQuote": "made the entry process smooth and hassle-free."
-          },
-          {
-            "reviewId": "rev_3",
-            "dimension": "crowding",
-            "sentiment": "positive",
-            "exactQuote": "well-organized flow of the tour."
+            "exactQuote": "Entry was managed in small groups with dedicated time slots for the Skybridge and Observation Deck, making the experience comfortable without feeling overcrowded."
           },
           {
             "reviewId": "rev_4",
             "dimension": "crowding",
             "sentiment": "positive",
-            "exactQuote": "when the area is generally less crowded."
+            "exactQuote": "when the area is generally less crowded. You will have a more comfortable experience, better opportunities to enjoy the views, and more time to take beautiful photos without too many people around."
           },
           {
             "reviewId": "rev_5",
@@ -5471,8 +5465,8 @@
       "services": {
         "dimension": "services",
         "name": "Services",
-        "mentions": 6,
-        "positive": 6,
+        "mentions": 7,
+        "positive": 7,
         "mixed": 0,
         "negative": 0,
         "positivePct": 100,
@@ -5480,7 +5474,7 @@
         "negativePct": 0,
         "evidenceTier": "moderate",
         "evidenceLabel": "Moderate Evidence",
-        "headline": "6 of 6 services mentions were positive",
+        "headline": "7 of 7 services mentions were positive",
         "subtext": "100% positive",
         "evidence": [
           {
@@ -5499,13 +5493,19 @@
             "reviewId": "rev_3",
             "dimension": "services",
             "sentiment": "positive",
+            "exactQuote": "We had already purchased our tickets via Klook, which made the entry process smooth and hassle-free."
+          },
+          {
+            "reviewId": "rev_3",
+            "dimension": "services",
+            "sentiment": "positive",
             "exactQuote": "souvenirs"
           },
           {
             "reviewId": "rev_3",
             "dimension": "services",
             "sentiment": "positive",
-            "exactQuote": "for a meal and some shopping"
+            "exactQuote": "spent time at Suria KLCC for a meal and some shopping"
           },
           {
             "reviewId": "rev_4",
@@ -5523,7 +5523,7 @@
       }
     },
     "totalMentions": 15,
-    "aiInsight": "Visitor feedback highlights strong infrastructure quality, particularly in grounds maintenance, effective crowd management, and diverse service offerings including shopping and dining. Seating is also noted as ample. However, a specific concern regarding the condition or type of toilet facilities for ladies suggests a potential area for improvement to meet international visitor expectations.",
+    "aiInsight": "Visitor feedback highlights strong positive perceptions regarding the cleanliness and maintenance of the surrounding areas, as well as the availability and quality of services like shopping, restaurants, and ticketing processes. Crowding is generally well-managed, with specific mention of smooth entry and minimal waiting times. However, there is a notable negative comment concerning the toilet facilities, suggesting a potential area for improvement in meeting diverse visitor expectations.",
     "reviews": [
       {
         "reviewId": "rev_1",
@@ -5571,7 +5571,7 @@
         "originalText": "If in KL then a visit to these towers are a must. Reasonably priced. No wait. Views are amazing! So much to see and at night towers are lit and you have beautiful fountains dancing to music in front of them. Fabulous shopping centre at ground level to the towers too. If visiting from Europe,  just beware of toilets.....Two very different situation of toilet facilities for ladies!!!!"
       }
     ],
-    "cachedAt": "2026-10-17T13:50:54.458Z"
+    "cachedAt": "2026-10-18T14:11:58.918Z"
   },
   "pusara negara": {
     "place": {

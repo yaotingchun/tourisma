@@ -327,11 +327,16 @@ export default async function handler(req: any, res: any) {
     return sendJson(res, 405, { error: 'Method Not Allowed' });
   }
 
+  let query = '';
+  let placeId = '';
+
   try {
     const body = await parseBody(req);
-    const query = (body.query || body.name || '').trim();
-    let placeId = (body.placeId || '').trim();
+    query = (body.query || body.name || '').trim();
+    placeId = (body.placeId || '').trim();
     const stateName = (body.stateName || '').trim();
+
+    const forceRefresh = Boolean(body.refresh || body.forceRefresh);
 
     if (!query && !placeId) {
       return sendJson(res, 400, { error: 'Either query or placeId is required' });
@@ -341,7 +346,7 @@ export default async function handler(req: any, res: any) {
     const cacheMap = readCacheFile(cacheRelPath);
     const cacheKey = (placeId || query).toLowerCase();
 
-    if (cacheMap[cacheKey]) {
+    if (!forceRefresh && cacheMap[cacheKey]) {
       return sendJson(res, 200, { ...cacheMap[cacheKey], fromCache: true });
     }
 
@@ -549,12 +554,24 @@ Respond strictly in valid JSON conforming to this schema:
     // Cache payload
     cacheMap[cacheKey] = payload;
     if (placeId) cacheMap[placeId.toLowerCase()] = payload;
+    if (query) cacheMap[query.toLowerCase()] = payload;
     writeCacheFile(cacheRelPath, cacheMap);
 
     return sendJson(res, 200, payload);
   } catch (err: unknown) {
     const errorMsg = err instanceof Error ? err.message : String(err);
     console.error('Visitor Quality API error:', errorMsg);
+
+    try {
+      const cacheRelPath = '.cache/places_visitor_quality.json';
+      const cacheMap = readCacheFile(cacheRelPath);
+      const cacheKey = (placeId || query).toLowerCase();
+      if (cacheMap[cacheKey]) {
+        console.warn(`[Places API] Refresh failed (${errorMsg}), serving cached fallback for ${cacheKey}`);
+        return sendJson(res, 200, { ...cacheMap[cacheKey], fromCache: true, fallbackNotice: errorMsg });
+      }
+    } catch {}
+
     return sendJson(res, 500, { error: errorMsg });
   }
 }

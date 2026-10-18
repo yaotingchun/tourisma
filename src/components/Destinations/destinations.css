@@ -1044,6 +1044,62 @@
   gap: 16px;
 }
 
+.dest-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.gemini-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 750;
+  color: #1e40af;
+  background: #dbeafe;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+
+[data-theme="dark"] .gemini-badge-pill {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+}
+
+.refresh-findings-btn {
+  background: var(--bg-app);
+  border: 1px solid var(--border-card);
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.refresh-findings-btn:hover:not(:disabled) {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-color: #cbd5e1;
+}
+
+.refresh-findings-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dest-icon-spin {
+  animation: destSpin 0.7s linear infinite;
+}
+
 .dest-visitor-loading {
   display: flex;
   align-items: center;
