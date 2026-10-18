@@ -1,12 +1,19 @@
 import { MALAYSIA_GEO_DATA } from '../../data/malaysiaGeo';
 import { STATES_OVERVIEW_DATA } from '../../data/overviewData';
-import { type SimulationResult } from './pressureData';
+import {
+  type SimulationResult,
+  type TpiBreakdown,
+  calculateStateTpi,
+  getPressureStateData,
+} from './pressureData';
+import { getStateFlagUrl } from './stateFlags';
 
 export class PressureMapCard {
   public readonly element: HTMLElement;
   private selectedStateId: string = 'malaysia';
   private currentSimResult: SimulationResult | null = null;
   private onSelectStateCallback?: (stateId: string) => void;
+  private tooltip!: HTMLElement;
 
   constructor(
     initialStateId = 'malaysia',
@@ -17,10 +24,97 @@ export class PressureMapCard {
     this.element = document.createElement('div');
     this.element.className = 'unified-map-pane';
 
+    this.createTooltip();
+    this.render();
+  }
+
+  private createTooltip(): void {
     // Remove any leftover floating tooltips
     document.querySelectorAll('.pressure-map-floating-tooltip').forEach((el) => el.remove());
 
-    this.render();
+    this.tooltip = document.createElement('div');
+    this.tooltip.className = 'acc-floating-tooltip pressure-map-floating-tooltip';
+    this.tooltip.style.display = 'none';
+    this.tooltip.style.zIndex = '9999';
+    document.body.appendChild(this.tooltip);
+
+    this.element.addEventListener('mouseleave', () => this.hideTooltip());
+  }
+
+  private hideTooltip(): void {
+    if (this.tooltip) {
+      this.tooltip.style.display = 'none';
+    }
+  }
+
+  private updateTooltipPos(e: MouseEvent): void {
+    if (!this.tooltip) return;
+    const tooltipW = 250;
+    const tooltipH = 175;
+    const pad = 12;
+
+    let x = e.clientX + pad;
+    let y = e.clientY + pad;
+
+    if (x + tooltipW > window.innerWidth - pad) {
+      x = e.clientX - tooltipW - pad;
+    }
+    if (y + tooltipH > window.innerHeight - pad) {
+      y = e.clientY - tooltipH - pad;
+    }
+
+    this.tooltip.style.left = `${Math.max(pad, x)}px`;
+    this.tooltip.style.top = `${Math.max(pad, y)}px`;
+  }
+
+  private showTooltip(stateId: string, e: MouseEvent): void {
+    const raw = STATES_OVERVIEW_DATA[stateId];
+    if (!raw) return;
+
+    const tpiData = this.getTpiDataForState(stateId);
+    if (!tpiData) return;
+
+    const flagUrl = getStateFlagUrl(stateId);
+    const signDelta = tpiData.tpiDelta >= 0 ? '+' : '';
+
+    const textBadgeColor = tpiData.tpi < 45 ? '#1d4ed8' : tpiData.color;
+    const badgeBg = tpiData.tpi < 45 ? 'rgba(37, 99, 235, 0.1)' : `${tpiData.color}22`;
+
+    this.tooltip.innerHTML = `
+      <div class="map-tooltip-header">
+        <div style="display:flex;align-items:center;gap:7px;">
+          <img src="${flagUrl}" alt="${tpiData.stateName}" style="width:18px;height:12px;object-fit:cover;border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,0.2);" />
+          <span class="map-tooltip-title">${tpiData.stateName}</span>
+        </div>
+        <span class="map-tooltip-quadrant" style="background:${badgeBg};color:${textBadgeColor};border:1px solid ${textBadgeColor}44;">
+          ${tpiData.pressureCategory}
+        </span>
+      </div>
+      <div class="map-tooltip-body">
+        <div class="map-tooltip-metric-row" style="background:rgba(15,23,42,0.04);padding:4px 6px;border-radius:4px;margin-bottom:4px;">
+          <span style="font-weight:800;color:var(--text-primary);">Tourism Pressure Index:</span>
+          <strong style="color:${textBadgeColor};font-size:13px;">${tpiData.tpi.toFixed(1)} / 100 (${signDelta}${tpiData.tpiDelta.toFixed(1)})</strong>
+        </div>
+        <div class="map-tooltip-metric-row">
+          <span>Accommodation Score (A):</span>
+          <strong>${tpiData.accommodationScore.toFixed(1)} <small style="color:var(--text-muted);font-weight:normal;">(AOR ${tpiData.scenarioAor.toFixed(1)}%)</small></strong>
+        </div>
+        <div class="map-tooltip-metric-row">
+          <span>Accessibility Gap (G):</span>
+          <strong>${tpiData.accessibilityGapScore.toFixed(1)} <small style="color:var(--text-muted);font-weight:normal;">(PT ${tpiData.scenarioPt.toFixed(1)}%)</small></strong>
+        </div>
+        <div class="map-tooltip-metric-row" style="border-top:1px dashed var(--border-subtle);padding-top:3px;margin-top:2px;">
+          <span style="color:var(--text-muted);">Reserve Exposure (Sep):</span>
+          <strong style="color:#059669;">${tpiData.environmentalExposureRate.toFixed(1)}% <small style="color:var(--text-muted);font-weight:normal;">proximity</small></strong>
+        </div>
+      </div>
+      <div class="map-tooltip-footer" style="font-size:9.5px;color:var(--text-muted);border-top:1px solid var(--border-subtle);padding-top:3px;margin-top:4px;">
+        Click to sync simulator · TPI = 0.70A + 0.30G
+      </div>
+    `;
+
+    this.tooltip.style.display = 'block';
+    this.updateTooltipPos(e);
   }
 
   public setSelectedState(stateId: string): void {
@@ -30,7 +124,7 @@ export class PressureMapCard {
 
   /**
    * Dynamically called on every slider movement or preset change.
-   * Updates map colors in real-time.
+   * Updates map colors in real-time according to scenario TPI.
    */
   public updateSimulation(simResult: SimulationResult, selectedStateId: string): void {
     this.currentSimResult = simResult;
@@ -39,30 +133,29 @@ export class PressureMapCard {
   }
 
   public destroy(): void {
-    // No-op cleanup
+    if (this.tooltip) {
+      this.tooltip.remove();
+    }
+  }
+
+  private getTpiDataForState(stateId: string): TpiBreakdown | null {
+    if (this.currentSimResult && this.currentSimResult.allStatesTpi) {
+      return this.currentSimResult.allStatesTpi[stateId] || null;
+    }
+    const raw = STATES_OVERVIEW_DATA[stateId];
+    if (!raw) return null;
+    return calculateStateTpi(getPressureStateData(stateId), {
+      mode: 'forecast',
+      demandChangePct: 0,
+      capacityChangePct: 0,
+      scenarioSource: 'Status Quo Baseline',
+    });
   }
 
   private getColorForState(stateId: string): string {
-    const raw = STATES_OVERVIEW_DATA[stateId];
-    if (!raw) return '#94a3b8';
-
-    let visitors = raw.domesticVisitors;
-
-    if (this.currentSimResult) {
-      if (this.selectedStateId === 'malaysia') {
-        // Whole Malaysia: all states scale by demand change percentage
-        visitors = Math.round(raw.domesticVisitors * (1 + this.currentSimResult.demandChangePct / 100));
-      } else if (stateId === this.selectedStateId) {
-        // Specific selected state under What-If test
-        visitors = this.currentSimResult.scenarioVisitors;
-      }
-    }
-
-    if (visitors >= 30000000) return '#1e40af'; // Very High (>30M)
-    if (visitors >= 20000000) return '#3b82f6'; // High (20M-30M)
-    if (visitors >= 10000000) return '#60a5fa'; // Moderate (10M-20M)
-    if (visitors >= 5000000) return '#93c5fd';  // Developing (5M-10M)
-    return '#bfdbfe';                          // Low (<5M)
+    const tpiData = this.getTpiDataForState(stateId);
+    if (!tpiData) return '#bfdbfe';
+    return tpiData.color;
   }
 
   private render(): void {
@@ -93,7 +186,7 @@ export class PressureMapCard {
           stroke="${isSelected ? '#0f172a' : '#ffffff'}"
           stroke-width="${isSelected ? '2.4' : '1.1'}"
           stroke-linejoin="round"
-          style="cursor: pointer; transition: fill 0.25s ease, filter 0.2s ease, stroke 0.2s ease, stroke-width 0.2s ease; ${
+          style="fill: ${fill}; cursor: pointer; transition: fill 0.25s ease, filter 0.2s ease, stroke 0.2s ease, stroke-width 0.2s ease; ${
             isSelected ? 'filter: drop-shadow(0 4px 10px rgba(15, 23, 42, 0.45));' : ''
           }"
         />
@@ -150,17 +243,20 @@ export class PressureMapCard {
 
   private renderLegend(): string {
     return `
-      <span class="pressure-legend-title">Visitor Demand:</span>
+      <div class="pressure-legend-title-group">
+        <span class="pressure-legend-title">Tourism Pressure Index (TPI):</span>
+        <span class="pressure-legend-formula-tag">TPI = 0.70A + 0.30G</span>
+      </div>
       <div class="pressure-legend-scale">
-        <span class="pressure-legend-bound">&lt; 5M</span>
+        <span class="pressure-legend-bound">&lt; 35 Low</span>
         <div class="pressure-legend-blocks">
-          <span class="pressure-step-block" style="background:#bfdbfe;" title="Low (&lt; 5M)"></span>
-          <span class="pressure-step-block" style="background:#93c5fd;" title="Developing (5M–10M)"></span>
-          <span class="pressure-step-block" style="background:#60a5fa;" title="Moderate (10M–20M)"></span>
-          <span class="pressure-step-block" style="background:#3b82f6;" title="High (20M–30M)"></span>
-          <span class="pressure-step-block" style="background:#1e40af;" title="Very High (&gt; 30M)"></span>
+          <span class="pressure-step-block" style="background:#bfdbfe;" title="Low Pressure (&lt; 35)"></span>
+          <span class="pressure-step-block" style="background:#60a5fa;" title="Moderate Pressure (35–45)"></span>
+          <span class="pressure-step-block" style="background:#2563eb;" title="Elevated Pressure (45–55)"></span>
+          <span class="pressure-step-block" style="background:#1d4ed8;" title="High Pressure (55–65)"></span>
+          <span class="pressure-step-block" style="background:#1e3a8a;" title="Critical Pressure (≥ 65)"></span>
         </div>
-        <span class="pressure-legend-bound">&gt; 30M</span>
+        <span class="pressure-legend-bound">&ge; 65 Critical</span>
       </div>
     `;
   }
@@ -170,7 +266,9 @@ export class PressureMapCard {
     paths.forEach((path) => {
       const stateId = path.getAttribute('data-state-id');
       if (stateId) {
-        path.setAttribute('fill', this.getColorForState(stateId));
+        const color = this.getColorForState(stateId);
+        path.setAttribute('fill', color);
+        path.style.fill = color;
       }
     });
     this.updateMapHighlights();
@@ -214,11 +312,23 @@ export class PressureMapCard {
       });
     }
 
-    // 2. State path click handlers (select state or toggle)
+    // 2. State path click & hover handlers
     const paths = this.element.querySelectorAll<SVGPathElement>('.pressure-state-path');
     paths.forEach((path) => {
       const stateId = path.getAttribute('data-state-id');
       if (!stateId) return;
+
+      path.addEventListener('mouseenter', (e) => {
+        this.showTooltip(stateId, e);
+      });
+
+      path.addEventListener('mousemove', (e) => {
+        this.updateTooltipPos(e);
+      });
+
+      path.addEventListener('mouseleave', () => {
+        this.hideTooltip();
+      });
 
       path.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -231,6 +341,7 @@ export class PressureMapCard {
         if (this.onSelectStateCallback) {
           this.onSelectStateCallback(this.selectedStateId);
         }
+        this.showTooltip(this.selectedStateId === 'malaysia' ? stateId : this.selectedStateId, e);
       });
     });
   }

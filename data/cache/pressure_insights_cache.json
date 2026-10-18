@@ -911,5 +911,346 @@
     ],
     "source": "User-defined (capacity adjusted)",
     "generatedAt": "2026-10-17T18:14:58.674Z"
+  },
+  "whole_malaysia_d82_5_c6_8_user_defined__adjusted_from_forecast_": {
+    "whatChanges": "Demand changes from 290.06M to 529.37M (+82.5%) with room capacity changing by +6.8%, resulting in a Demand–Capacity Gap of +75.7 pp.",
+    "whatBecomesMorePressured": "Under the combined adjustments, the visitor-to-room ratio shifts from 843.5 to 1441.4. With observed AOR at 54.6%, the +75.7 pp gap indicates relative demand surplus over capacity expansion. Existing connectivity constraints (48.1% road, 46.0% PT access) and 10.0% environmental proximity require coordinated monitoring.",
+    "whatShouldPlannersInvestigate": [
+      "Assess accommodation pipeline and seasonal distribution against the scenario visitor-to-room ratio of 1441.4 (observed AOR: 54.6%).",
+      "Monitor primary transit corridors and last-mile accessibility where road connectivity is currently 48.1% and PT access is 46.0%.",
+      "Safeguard environmental buffers around the 10.0% of tourism assets situated near protected reserves during high-demand windows."
+    ],
+    "source": "User-defined (adjusted from forecast)",
+    "generatedAt": "2026-10-18T09:24:45.710Z"
+  },
+  "whole_malaysia_d51_c43_5_user_defined__adjusted_from_forecast_": {
+    "whatChanges": "Demand changes from 290.06M to 438.00M (+51.0%) with room capacity changing by +43.5%, resulting in a Demand–Capacity Gap of +7.5 pp.",
+    "whatBecomesMorePressured": "Under the combined adjustments, the visitor-to-room ratio shifts from 843.5 to 887.6. With observed AOR at 54.6%, the +7.5 pp gap indicates relative demand surplus over capacity expansion. Existing connectivity constraints (48.1% road, 46.0% PT access) and 10.0% environmental proximity require coordinated monitoring.",
+    "whatShouldPlannersInvestigate": [
+      "Assess accommodation pipeline and seasonal distribution against the scenario visitor-to-room ratio of 887.6 (observed AOR: 54.6%).",
+      "Monitor primary transit corridors and last-mile accessibility where road connectivity is currently 48.1% and PT access is 46.0%.",
+      "Safeguard environmental buffers around the 10.0% of tourism assets situated near protected reserves during high-demand windows."
+    ],
+    "source": "User-defined (adjusted from forecast)",
+    "generatedAt": "2026-10-18T09:25:02.393Z"
+  },
+  "whole_malaysia_d4_c43_5_user_defined__adjusted_from_forecast_": {
+    "whatChanges": "Demand changes from 290.06M to 301.67M (+4.0%) with room capacity changing by +43.5%, resulting in a Demand–Capacity Gap of -39.5 pp.",
+    "whatBecomesMorePressured": "Under the combined adjustments, the visitor-to-room ratio shifts from 843.5 to 611.3. With observed AOR at 54.6%, the -39.5 pp gap indicates relative capacity buffer headroom. Existing connectivity constraints (48.1% road, 46.0% PT access) and 10.0% environmental proximity require coordinated monitoring.",
+    "whatShouldPlannersInvestigate": [
+      "Assess accommodation pipeline and seasonal distribution against the scenario visitor-to-room ratio of 611.3 (observed AOR: 54.6%).",
+      "Monitor primary transit corridors and last-mile accessibility where road connectivity is currently 48.1% and PT access is 46.0%.",
+      "Safeguard environmental buffers around the 10.0% of tourism assets situated near protected reserves during high-demand windows."
+    ],
+    "source": "User-defined (adjusted from forecast)",
+    "generatedAt": "2026-10-18T09:25:09.962Z"
+  },
+  "melaka_d15_c6_8_forecast_model__mid_term_tourism_growth_trend___room_expansion_": {
+    "whatChanges": "Under the forecast model, visitor demand in Melaka is projected to increase by 15%, while room capacity expands by 6.8%. This results in a demand-capacity gap of 8.2 percentage points, indicating demand outstripping capacity growth.",
+    "whatBecomesMorePressured": "The Visitor-to-Room ratio is projected to increase from 1033.4 to 1112.7, indicating amplified strain on existing accommodation capacity. The 15% increase in visitors will also place greater pressure on the existing road access (97.5%) and public transport access (95.4%) infrastructure, as well as the observed Area of Responsibility (45.4%).",
+    "whatShouldPlannersInvestigate": [
+      "The feasibility of accelerating accommodation supply growth and diversifying lodging options to mitigate the projected demand-capacity gap and rising VTR.",
+      "The current capacity and potential bottlenecks within the road and public transport networks to accommodate a 15% increase in visitor volume, particularly during peak periods.",
+      "The potential for increased visitor numbers to impact environmentally sensitive areas, especially within the 9.2% environmental exposure rate, and the need for enhanced spatial monitoring and visitor management strategies."
+    ],
+    "source": "Forecast model (Mid-Term Tourism Growth Trend & Room Expansion)",
+    "generatedAt": "2026-10-18T09:30:36.418Z"
+  },
+  "selangor_d15_c100_user_defined__capacity_adjusted_": {
+    "whatChanges": "This scenario projects a 15% increase in visitors alongside a 100% increase in accommodation capacity, resulting in a significant negative demand-capacity gap of -85 percentage points, indicating substantial oversupply relative to demand.",
+    "whatBecomesMorePressured": "While accommodation capacity pressure significantly decreases due to the substantial increase in rooms, the 15% rise in total visitor numbers suggests amplified strain on existing road access infrastructure (current rate 43.6%) and public transport networks (current rate 46%). Additionally, the increased visitor volume may lead to greater pressure on areas with environmental proximity (current rate 6%).",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the market implications of the projected accommodation oversupply, including potential impacts on occupancy rates, pricing strategies, and the financial viability of new developments.",
+      "Assess the capacity and potential bottlenecks within existing road and public transport networks to accommodate the 15% increase in visitor volume, particularly in key tourism corridors and attractions.",
+      "Monitor the spatial distribution of increased visitor activity and its potential impact on environmentally sensitive areas, even with a low current exposure rate, to ensure sustainable tourism development."
+    ],
+    "source": "User-defined (capacity adjusted)",
+    "generatedAt": "2026-10-18T09:30:59.110Z"
+  },
+  "whole_malaysia_d18_3_c8_5_prophet_bayesian_ml_model__r___0_997__mape__0_9___projected__370_3m__aor__58_3__": {
+    "whatChanges": "The scenario projects an 18.3% increase in visitors to 343.1 million, while accommodation capacity (rooms) is projected to increase by 8.5% to 373,095. This results in a demand-capacity gap of 9.8 percentage points, and the visitor-to-room ratio rises from 843.5 to 919.7.",
+    "whatBecomesMorePressured": "The increased visitor numbers and the rising visitor-to-room ratio (from 843.5 to 919.7) indicate amplified strain on existing accommodation capacity. The projected increase in the Area of Responsibility (AOR) from 54.6% to 58.3% suggests greater utilization of existing tourism infrastructure and services. With only 48.1% road access and 46% public transport access, these existing transport constraints are likely to experience heightened pressure from the increased demand.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the specific locations and types of accommodation experiencing the highest increases in visitor-to-room ratios to identify potential capacity bottlenecks and inform future development strategies.",
+      "Examine the current utilization and potential for expansion or improvement of road and public transport networks, particularly in areas with high visitor concentrations, to ensure adequate accessibility under increased demand.",
+      "Monitor the environmental exposure rate in relation to the projected visitor increase, focusing on sensitive areas to assess potential impacts and inform sustainable tourism management practices."
+    ],
+    "source": "Prophet Bayesian ML Model (R²: 0.997, MAPE: 0.9%, Projected: 370.3M, AOR: 58.3%)",
+    "generatedAt": "2026-10-18T10:37:07.130Z"
+  },
+  "whole_malaysia_d0_c0_prophet_model_baseline__2026_projected__313_1m_domestic_visitors__aor__53_5__": {
+    "whatChanges": "This scenario represents a baseline projection with no change in visitor demand or accommodation capacity compared to the current state. Consequently, the demand-capacity gap remains at 0 percentage points.",
+    "whatBecomesMorePressured": "As this scenario models a baseline with no projected changes in visitor numbers or accommodation supply, no existing physical constraints (Visitor-to-Room Ratio, Area of Reach, road access, public transport access, or environmental proximity) are projected to experience amplified strain under this specific scenario. The current conditions persist without additional pressure from this baseline projection.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the implications of the current high Visitor-to-Room Ratio (843.5) on accommodation quality, pricing, and visitor experience, even in a no-growth scenario.",
+      "Assess the current road access rate (48.1%) and public transport access rate (46%) to identify potential bottlenecks or areas for infrastructure enhancement to support current visitor flows efficiently.",
+      "Monitor the existing environmental exposure rate (10%) to ensure that current tourism activities are managed sustainably and do not lead to degradation of natural assets."
+    ],
+    "source": "Prophet Model Baseline (2026 Projected: 313.1M domestic visitors, AOR: 53.5%)",
+    "generatedAt": "2026-10-18T10:37:59.872Z"
+  },
+  "whole_malaysia_d2_9_c0_prophet_additive_seasonality_s_t___q2_mid_year_peak___2_9__above_baseline_mean_": {
+    "whatChanges": "The scenario projects a 2.9% increase in visitor demand for Whole Malaysia, from 290,064,704 to 298,476,580, with no corresponding change in accommodation capacity. This results in a 2.9 percentage point demand-capacity gap.",
+    "whatBecomesMorePressured": "Under this scenario, the Visitor-to-Room ratio (VTR) becomes more pressured, increasing from 843.5 to 868, indicating amplified strain on existing accommodation. The 2.9% increase in visitor numbers without capacity expansion will also place amplified strain on existing road and public transport access infrastructure, and potentially increase pressure on areas with environmental proximity.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the current and projected utilization rates of existing accommodation facilities to understand potential bottlenecks and inform future development strategies.",
+      "Assess the capacity and resilience of key transportation corridors (road and public transport) to handle the increased visitor volume, particularly during peak periods.",
+      "Monitor visitor distribution and impact within environmentally sensitive areas, especially those with high environmental exposure, to prevent degradation and ensure sustainable tourism practices."
+    ],
+    "source": "Prophet Additive Seasonality s(t) (Q2 Mid-Year Peak: +2.9% above baseline mean)",
+    "generatedAt": "2026-10-18T10:38:11.846Z"
+  },
+  "whole_malaysia_d7_6_c3_6_prophet_bayesian_ml_model__r___0_997__mape__0_9___projected__336_8m__aor__55_6__": {
+    "whatChanges": "Under this scenario, visitor demand for Malaysia is projected to increase by 7.6% to 312.1 million, while accommodation capacity is expected to grow by 3.6%. This results in a demand-capacity gap of 4 percentage points.",
+    "whatBecomesMorePressured": "The Visitor-to-Room Ratio (VTR) is projected to increase from 843.5 to 876.1, indicating amplified strain on existing accommodation capacity. The Average Occupancy Rate (AOR) is also projected to rise from 54.6% to 55.6%, suggesting increased utilization of available space. With a 7.6% increase in visitors, existing road and public transport access rates, as well as environmental proximity, will experience heightened pressure.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the feasibility of increasing accommodation capacity beyond the projected 3.6% to mitigate the growing demand-capacity gap and rising Visitor-to-Room Ratio.",
+      "Assess the current road and public transport infrastructure's ability to absorb the projected 7.6% increase in visitors, identifying potential bottlenecks and areas for enhancement.",
+      "Monitor the impact of increased visitor numbers on environmentally sensitive areas, particularly given the existing 10% environmental exposure rate, to ensure sustainable tourism development."
+    ],
+    "source": "Prophet Bayesian ML Model (R²: 0.997, MAPE: 0.9%, Projected: 336.8M, AOR: 55.6%)",
+    "generatedAt": "2026-10-18T10:42:37.983Z"
+  },
+  "whole_malaysia_d33_6_c15_1_prophet_bayesian_ml_model__r___0_997__mape__0_9___projected__418_4m__aor__62_1__": {
+    "whatChanges": "Under this scenario, visitor demand for Whole Malaysia is projected to increase by 33.6%, while accommodation capacity is projected to grow by 15.1%. This results in a demand-capacity gap of 18.5 percentage points, with the visitor-to-room ratio rising from 843.5 to 979.1.",
+    "whatBecomesMorePressured": "The significant increase in visitor numbers, coupled with a slower growth in accommodation capacity, will amplify pressure on the existing Visitor-to-Room Ratio (VTR). Furthermore, the current road access rate of 48.1% and public transport access rate of 46% will likely experience amplified strain due to the 33.6% surge in visitors. The existing 10% environmental exposure rate also suggests increased pressure on sensitive areas as visitor numbers grow.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the feasibility and impact of accelerating accommodation capacity expansion plans to mitigate the growing demand-capacity gap and rising visitor-to-room ratio.",
+      "Assess the current road and public transport infrastructure's ability to absorb a 33.6% increase in visitor traffic, identifying potential bottlenecks and opportunities for enhancement.",
+      "Monitor the spatial distribution of increased visitor activity, particularly in areas with existing environmental exposure, to prevent potential ecological impacts and ensure sustainable tourism development."
+    ],
+    "source": "Prophet Bayesian ML Model (R²: 0.997, MAPE: 0.9%, Projected: 418.4M, AOR: 62.1%)",
+    "generatedAt": "2026-10-18T11:39:36.208Z"
+  },
+  "whole_malaysia_d0_1_c0_prophet_additive_seasonality_s_t___q3_steady_state_inter_peak___0_1__": {
+    "whatChanges": "The scenario projects a 0.1% increase in visitors with no change in accommodation capacity, leading to a 0.1 percentage point increase in the demand-capacity gap. The Visitor-to-Room ratio slightly increases from 843.5 to 844.4.",
+    "whatBecomesMorePressured": "The existing Visitor-to-Room ratio (VTR) becomes more pressured, increasing from 843.5 to 844.4, indicating a higher number of visitors per available room. This slight increase in demand without a corresponding increase in accommodation capacity suggests potential amplified strain on existing accommodation infrastructure.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the current utilization rates and potential for expansion or optimization of existing accommodation facilities to absorb the projected increase in visitors.",
+      "Assess the capacity and resilience of key transportation corridors and public transport networks to handle the marginal increase in visitor traffic, particularly during peak times.",
+      "Monitor the spatial distribution of the additional visitors to identify any localized pressures on sensitive environmental areas or popular sites, especially given the existing environmental exposure rate."
+    ],
+    "source": "Prophet Additive Seasonality s(t) (Q3 Steady State Inter-Peak: +0.1%)",
+    "generatedAt": "2026-10-18T11:57:55.045Z"
+  },
+  "sabah_d18_3_c8_5_prophet_bayesian_ml_model__r___0_997__mape__0_9___projected__370_3m__aor__58_3__": {
+    "whatChanges": "The scenario projects an 18.3% increase in visitors to 26.45 million, while room capacity is projected to increase by 8.5% to 29,521 rooms. This results in a demand-capacity gap of 9.8 percentage points, indicating that demand growth outpaces capacity expansion.",
+    "whatBecomesMorePressured": "The Visitor-to-Room ratio (VTR) is projected to increase from 821.9 to 896.1, indicating amplified strain on accommodation resources. With an 18.3% increase in visitors, existing road access (40.3% rate) and public transport access (34.3% rate) will likely experience increased usage and potential congestion. Furthermore, the current environmental exposure rate of 27.8% suggests that increased visitor numbers will intensify pressure on sensitive natural areas.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate strategies to expand accommodation capacity, including new developments and optimizing existing room utilization, to mitigate the growing Visitor-to-Room ratio and demand-capacity gap.",
+      "Assess the current state and future needs of road and public transport infrastructure to ensure adequate accessibility and manage potential congestion arising from increased visitor numbers.",
+      "Monitor environmental impacts in areas with high exposure rates (27.8%) and develop sustainable tourism management plans to protect natural resources under increased visitor pressure."
+    ],
+    "source": "Prophet Bayesian ML Model (R²: 0.997, MAPE: 0.9%, Projected: 370.3M, AOR: 58.3%)",
+    "generatedAt": "2026-10-18T13:06:16.746Z"
+  },
+  "pahang_d18_3_c8_5_prophet_bayesian_ml_model__r___0_997__mape__0_9___projected__370_3m__aor__58_3__": {
+    "whatChanges": "The scenario projects an 18.3% increase in visitors to Pahang, reaching 27.4 million, while accommodation capacity is projected to grow by only 8.5%. This disparity results in a demand-capacity gap of 9.8 percentage points, with the visitor-to-room ratio rising from 674.8 to 735.8.",
+    "whatBecomesMorePressured": "Under this scenario, the visitor-to-room ratio (VTR) significantly increases, indicating amplified strain on existing accommodation capacity, which already operates at a high average occupancy rate (AOR) of 75.6%. Furthermore, the relatively low road access rate (27%) and public transport access rate (29.2%) will experience amplified pressure due to the substantial increase in visitor numbers, potentially leading to congestion and reduced accessibility.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the feasibility of expanding accommodation supply, particularly in high-demand areas, to alleviate pressure on the rising visitor-to-room ratio and high average occupancy rate.",
+      "Assess the current transport infrastructure's capacity to handle an 18.3% increase in visitors, focusing on improving road networks and expanding public transport options to enhance accessibility.",
+      "Monitor the environmental impact of increased visitor numbers, especially in areas with high environmental exposure (39.6%), to ensure sustainable tourism development and protect natural resources."
+    ],
+    "source": "Prophet Bayesian ML Model (R²: 0.997, MAPE: 0.9%, Projected: 370.3M, AOR: 58.3%)",
+    "generatedAt": "2026-10-18T13:06:34.052Z"
+  },
+  "sarawak_d18_3_c8_5_prophet_bayesian_ml_model__r___0_997__mape__0_9___projected__370_3m__aor__58_3__": {
+    "whatChanges": "Demand for visitors in Sarawak is projected to increase by 18.3% to 26,879,566, while accommodation capacity is projected to increase by 8.5% to 30,286 rooms. This creates a demand-capacity gap of 9.8 percentage points.",
+    "whatBecomesMorePressured": "The Visitor-to-Room Ratio (VTR) is projected to increase from 814 to 887.5, indicating amplified strain on accommodation resources. With an 18.3% increase in visitors, the existing road access rate of 38.8% and public transport access rate of 26.4% will experience heightened pressure. The current Area of Responsibility (AOR) at 47.7% and environmental exposure rate of 8.1% will also face increased strain due to the higher visitor volume.",
+    "whatShouldPlannersInvestigate": [
+      "Evaluate the feasibility of the projected 8.5% increase in room capacity and identify specific locations or types of accommodation required to mitigate the rising VTR and demand-capacity gap.",
+      "Analyze the current road (38.8%) and public transport (26.4%) access networks to identify potential bottlenecks and assess the need for infrastructure upgrades or new transport solutions to support the 18.3% visitor increase.",
+      "Monitor the impact of increased visitor numbers on the 47.7% AOR and areas with 8.1% environmental exposure, considering carrying capacities and potential mitigation strategies for sensitive sites."
+    ],
+    "source": "Prophet Bayesian ML Model (R²: 0.997, MAPE: 0.9%, Projected: 370.3M, AOR: 58.3%)",
+    "generatedAt": "2026-10-18T13:06:42.799Z"
+  },
+  "melaka_d18_3_c8_5_prophet_bayesian_ml_model__r___0_997__mape__0_9___projected__370_3m__aor__58_3__": {
+    "whatChanges": "Under this scenario, visitor demand is projected to increase by 18.3%, while accommodation capacity grows by 8.5%, resulting in a demand-capacity gap of 9.8 percentage points.",
+    "whatBecomesMorePressured": "The visitor-to-room ratio (VTR) is projected to increase from 1033.4 to 1126.7, indicating amplified strain on existing accommodation capacity. This heightened pressure on accommodation is further evidenced by the 9.8 percentage point demand-capacity gap, suggesting that current infrastructure may struggle to comfortably absorb the increased visitor numbers.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate strategies to expand or optimize accommodation capacity, considering the projected increase in the visitor-to-room ratio and the identified demand-capacity gap.",
+      "Assess the capacity and resilience of existing road and public transport networks to accommodate an 18.3% increase in visitor volume, despite high current access rates.",
+      "Monitor the potential impact of increased visitor numbers on environmentally sensitive areas, particularly given the 9.2% environmental exposure rate, and evaluate current spatial management strategies."
+    ],
+    "source": "Prophet Bayesian ML Model (R²: 0.997, MAPE: 0.9%, Projected: 370.3M, AOR: 58.3%)",
+    "generatedAt": "2026-10-18T13:07:14.991Z"
+  },
+  "whole_malaysia_d_50_c8_5_custom_stress_test___50__demand__adjusted_from_prophet_horizon_": {
+    "whatChanges": "The scenario projects a 50% decrease in visitor demand coupled with an 8.5% increase in room capacity, resulting in a substantial negative demand-capacity gap of -58.5 percentage points.",
+    "whatBecomesMorePressured": "Under this scenario of significantly reduced demand and increased capacity, physical constraints such as the Visitor-to-Room ratio (VTR), observed Area of Responsibility (AOR), road access, public transport access, and environmental proximity experience reduced strain. No listed physical constraint experiences amplified strain; instead, the system faces significant overcapacity.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the economic viability and sustainability of the expanded accommodation sector given the substantial reduction in visitor demand and the resulting overcapacity.",
+      "Assess the operational efficiency and financial sustainability of existing road and public transport infrastructure and services under significantly reduced visitor numbers.",
+      "Monitor the long-term environmental impacts of reduced visitor numbers, particularly concerning conservation efforts and potential shifts in land use or resource management due to decreased tourism activity."
+    ],
+    "source": "Custom Stress-Test (-50% demand, adjusted from Prophet Horizon)",
+    "generatedAt": "2026-10-18T13:13:15.425Z"
+  },
+  "whole_malaysia_d10_c20_step_4_scenario__infrastructure_investment__accommodation_pipeline_expansion___transit_accessibility_headroom_": {
+    "whatChanges": "Under this scenario, visitor demand increases by 10% while accommodation capacity expands by 20%, resulting in a 10 percentage point improvement in the demand-capacity gap and a reduced visitor-to-room ratio from 843.5 to 773.2.",
+    "whatBecomesMorePressured": "Despite significant capacity expansion in accommodation and transit, the 10% increase in total visitor numbers means that existing physical constraints related to the Area of Responsibility (AOR) at 54.6% and environmental proximity at 10%, which are not explicitly addressed by the scenario's capacity improvements, may experience amplified strain.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the spatial distribution and quality of the planned 20% accommodation pipeline expansion to ensure it effectively meets the 10% demand growth across key visitor areas and maintains visitor experience standards.",
+      "Assess the effectiveness of the 'transit accessibility headroom' investments in managing the increased visitor volume, focusing on potential bottlenecks in road access (48.1%) and public transport access (46%) corridors.",
+      "Monitor the impact of the 10% increase in visitors on areas with high AOR (54.6%) and environmental exposure (10%) to identify potential degradation or overcrowding and develop mitigation strategies."
+    ],
+    "source": "Step 4 Scenario: Infrastructure Investment (accommodation pipeline expansion & transit accessibility headroom)",
+    "generatedAt": "2026-10-18T13:13:30.001Z"
+  },
+  "whole_malaysia_d19_5_c3_5_custom_stress_test___19_5__demand__adjusted_from_prophet_seasonality_": {
+    "whatChanges": "The scenario projects a 19.5% increase in visitors against a 3.5% increase in room capacity, leading to a 16 percentage point demand-capacity gap and a significant rise in the Visitor-to-Room ratio from 843.5 to 973.9.",
+    "whatBecomesMorePressured": "The Visitor-to-Room ratio (VTR) experiences amplified strain, increasing from 843.5 to 973.9, indicating heightened pressure on accommodation capacity. Concurrently, the existing road access rate of 48.1% and public transport access rate of 46% will face increased demand from the higher visitor volume, potentially leading to congestion. The environmental exposure rate of 10% will also be under greater pressure due to the increased number of visitors interacting with sensitive areas.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the feasibility of accelerating accommodation development and diversifying lodging options to mitigate the rising Visitor-to-Room ratio and close the demand-capacity gap.",
+      "Assess the current capacity and potential bottlenecks of road and public transport networks, particularly in high-demand areas, to ensure adequate visitor mobility and accessibility.",
+      "Monitor the impact of increased visitor numbers on environmentally sensitive areas, considering the existing 10% environmental exposure rate, and evaluate strategies for sustainable visitor management and spatial distribution."
+    ],
+    "source": "Custom Stress-Test (+19.5% demand, adjusted from Prophet Seasonality)",
+    "generatedAt": "2026-10-18T13:14:37.968Z"
+  },
+  "whole_malaysia_d0_5_c3_5_custom_stress_test___0_5__demand__adjusted_from_prophet_seasonality_": {
+    "whatChanges": "Under this custom stress-test scenario, visitor demand increases by 0.5% while accommodation capacity grows by 3.5%, resulting in a negative demand-capacity gap of -3 percentage points.",
+    "whatBecomesMorePressured": "The scenario indicates a reduction in pressure on accommodation capacity, as the Visitor-to-Room Ratio (VTR) decreases from 843.5 to 819.1. No other existing physical constraints (observed AOR, road access, PT access, or reserve proximity) show amplified strain under this scenario.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the spatial distribution of the 3.5% increase in accommodation capacity to ensure it aligns with demand patterns and avoids potential oversupply in specific areas.",
+      "Assess if the existing road access rate (48.1%) and public transport access rate (46%) are sufficient to support the slightly increased visitor numbers and the new accommodation capacity, particularly considering potential shifts in visitor flow.",
+      "Monitor the environmental impact of any new accommodation developments, especially in areas with an existing environmental exposure rate of 10%, to ensure sustainable growth."
+    ],
+    "source": "Custom Stress-Test (+0.5% demand, adjusted from Prophet Seasonality)",
+    "generatedAt": "2026-10-18T13:14:50.420Z"
+  },
+  "whole_malaysia_d3_5_c8_5_custom_stress_test___3_5__demand__adjusted_from_prophet_horizon_": {
+    "whatChanges": "Under this custom stress-test scenario, visitor demand increases by 3.5% while accommodation capacity expands by 8.5%, resulting in a -5 percentage point demand-capacity gap, indicating capacity growth outpaces demand.",
+    "whatBecomesMorePressured": "Given the scenario's -5 percentage point demand-capacity gap and a decrease in the Visitor-to-Room Ratio from 843.5 to 804.7, existing physical constraints, particularly accommodation capacity, do not experience amplified strain. Instead, the relative pressure on accommodation is reduced, suggesting an increase in available capacity per visitor.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the utilization rates of the newly added accommodation capacity to ensure efficient resource allocation and explore opportunities for diversifying accommodation types to match evolving visitor preferences.",
+      "Assess how the existing road (48.1% access rate) and public transport (46% access rate) infrastructure can effectively manage the increased absolute number of visitors, focusing on potential bottlenecks in high-demand corridors.",
+      "Monitor the cumulative impact of the increased total visitor volume on environmentally sensitive areas (10% exposure rate), despite the reduced per-visitor pressure on accommodation, to prevent localized degradation."
+    ],
+    "source": "Custom Stress-Test (+3.5% demand, adjusted from Prophet Horizon)",
+    "generatedAt": "2026-10-18T13:21:45.386Z"
+  },
+  "pahang_d2_9_c0_prophet_additive_seasonality_s_t___q2_mid_year_peak___2_9__above_baseline_mean_": {
+    "whatChanges": "Under the Prophet Additive Seasonality scenario, visitor demand is projected to increase by 2.9% while accommodation capacity remains unchanged. This results in a demand-capacity gap of 2.9 percentage points and an increased visitor-to-room ratio.",
+    "whatBecomesMorePressured": "The existing visitor-to-room ratio (VTR) of 674.8 is projected to increase to 694.4, indicating amplified strain on accommodation resources. With a current average occupancy rate (AOR) of 75.6%, the increased visitor numbers will further pressure existing lodging. Additionally, the relatively low road access rate of 27% and public transport access rate of 29.2% will experience heightened strain as more visitors attempt to reach destinations.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the feasibility of expanding accommodation capacity or implementing demand management strategies to mitigate the increased visitor-to-room ratio and high average occupancy rate.",
+      "Assess the current state of road and public transport infrastructure to identify bottlenecks and potential improvements needed to support the increased visitor numbers and improve accessibility.",
+      "Monitor the impact of increased visitor numbers on areas with high environmental exposure (39.6%) to ensure sustainability and prevent degradation of natural assets."
+    ],
+    "source": "Prophet Additive Seasonality s(t) (Q2 Mid-Year Peak: +2.9% above baseline mean)",
+    "generatedAt": "2026-10-18T13:21:57.701Z"
+  },
+  "pahang_d1_c0_prophet_additive_seasonality_s_t___q4_festive_surge___1__above_baseline_mean_": {
+    "whatChanges": "Under the 'Q4 Festive Surge' scenario, visitor demand for Pahang increases by 1% while accommodation capacity remains unchanged, resulting in a 1 percentage point demand-capacity gap.",
+    "whatBecomesMorePressured": "The existing high AOR of 75.6% and the increase in the Visitor-to-Room Ratio (VTR) from 674.8 to 681.5 indicate amplified strain on current accommodation resources. Furthermore, the relatively low road access rate (27%) and public transport access rate (29.2%) will experience increased pressure from the higher visitor numbers, potentially leading to congestion in accessible areas.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the current utilization and potential expansion of accommodation facilities, particularly considering the high AOR and increased VTR, to ensure adequate capacity for future demand.",
+      "Assess the capacity and efficiency of existing road and public transport networks, especially in high-demand areas, to mitigate potential congestion and improve visitor accessibility.",
+      "Monitor the environmental impact of increased visitor numbers, particularly in areas with a 39.6% environmental exposure rate, to ensure sustainable tourism development and resource protection."
+    ],
+    "source": "Prophet Additive Seasonality s(t) (Q4 Festive Surge: +1% above baseline mean)",
+    "generatedAt": "2026-10-18T13:22:48.071Z"
+  },
+  "pahang_d_4_c0_prophet_additive_seasonality_s_t___q1_post_holiday_trough___4__": {
+    "whatChanges": "The scenario projects a 4% decrease in visitor demand with no change in accommodation capacity, resulting in a -4 percentage point demand-capacity gap. Consequently, the Visitor-to-Room Ratio (VTR) is expected to decrease from 674.8 to 647.8.",
+    "whatBecomesMorePressured": "Under this scenario, with a projected decrease in visitor numbers, existing physical constraints such as the Visitor-to-Room Ratio (VTR), road access, public transport access, and environmental proximity are expected to experience reduced strain rather than amplified strain. The negative demand-capacity gap indicates an excess of capacity relative to demand, lessening pressure on resources.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the implications of reduced occupancy rates on accommodation businesses and explore strategies for maintaining viability or attracting new market segments to utilize existing capacity.",
+      "Examine the current road (27%) and public transport (29.2%) access rates to identify opportunities for infrastructure improvements or service enhancements, preparing for future demand recovery or optimizing the experience for current visitor levels.",
+      "Monitor the impact of reduced visitor pressure on environmental indicators, particularly in areas with a 39.6% environmental exposure rate, to inform long-term conservation strategies and sustainable tourism development."
+    ],
+    "source": "Prophet Additive Seasonality s(t) (Q1 Post-Holiday Trough: -4%)",
+    "generatedAt": "2026-10-18T13:22:58.166Z"
+  },
+  "pahang_d0_c0_prophet_model_baseline__2026_projected__313_1m_domestic_visitors__aor__53_5__": {
+    "whatChanges": "This baseline scenario projects no change in visitor demand or accommodation capacity, resulting in a stable demand-capacity gap of 0 percentage points.",
+    "whatBecomesMorePressured": "As this is a baseline scenario with no change in demand or capacity, no new pressures are amplified. However, the existing high observed AOR of 75.6% and low road (27%) and public transport (29.2%) access rates continue to represent significant constraints that remain pronounced. The environmental exposure rate of 39.6% also indicates a notable existing sensitivity.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the current utilization and distribution of accommodation to understand the implications of the high observed AOR (75.6%) and visitor-to-room ratio (674.8), even without demand growth.",
+      "Assess the current state of road (27%) and public transport (29.2%) infrastructure to identify bottlenecks and opportunities for improving accessibility for existing visitor numbers.",
+      "Monitor the environmental impact within the 39.6% environmental exposure areas, especially considering the high AOR, to ensure sustainability under current visitor levels."
+    ],
+    "source": "Prophet Model Baseline (2026 Projected: 313.1M domestic visitors, AOR: 53.5%)",
+    "generatedAt": "2026-10-18T13:23:22.285Z"
+  },
+  "whole_malaysia_d52_c0_custom_stress_test___52__demand__adjusted_from_prophet_seasonality_": {
+    "whatChanges": "Under this scenario, visitor demand for Whole Malaysia increases by 52% while accommodation capacity remains unchanged, resulting in a 52 percentage point demand-capacity gap. This leads to a significant increase in the visitor-to-room ratio from 843.5 to 1282.2.",
+    "whatBecomesMorePressured": "The visitor-to-room ratio (VTR) becomes significantly more pressured, increasing from 843.5 to 1282.2 due to the 52% surge in visitors without any corresponding increase in room capacity. Consequently, existing physical constraints such as the observed area of influence (AOR) at 54.6%, road access at 48.1%, and public transport access at 46% will experience amplified strain from the increased visitor numbers. The environmental exposure rate of 10% will also face heightened pressure as more visitors interact with sensitive areas.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the feasibility of expanding accommodation capacity or implementing demand management strategies to mitigate the increased visitor-to-room ratio and the 52 percentage point demand-capacity gap.",
+      "Assess the current road and public transport infrastructure's ability to absorb a 52% increase in visitor traffic, focusing on potential congestion points and accessibility corridors.",
+      "Monitor the impact of increased visitor numbers on the 54.6% observed area of influence and the 10% environmental exposure rate, considering spatial planning for visitor flow and resource protection."
+    ],
+    "source": "Custom Stress-Test (+52% demand, adjusted from Prophet Seasonality)",
+    "generatedAt": "2026-10-18T13:35:43.695Z"
+  },
+  "whole_malaysia_d12_5_c0_custom_stress_test___12_5__demand__adjusted_from_prophet_seasonality_": {
+    "whatChanges": "Under this scenario, visitor demand for Whole Malaysia increases by 12.5% while accommodation capacity remains unchanged, resulting in a demand-capacity gap of 12.5 percentage points.",
+    "whatBecomesMorePressured": "The increased visitor numbers, coupled with static accommodation capacity, will amplify pressure on the existing Visitor-to-Room Ratio (VTR), which rises from 843.5 to 949. This surge in demand will also intensify strain on the current Area of Responsibility (AOR) of 54.6%, existing road and public transport access infrastructure, and areas with environmental proximity.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the feasibility and impact of expanding accommodation capacity to meet the projected 12.5% increase in visitor demand and mitigate the rising Visitor-to-Room Ratio.",
+      "Assess the current road and public transport infrastructure's ability to absorb a 12.5% increase in visitor traffic, focusing on potential bottlenecks and congestion points.",
+      "Monitor the environmental impact of increased visitor numbers, particularly in areas with existing environmental exposure, to ensure sustainable tourism practices."
+    ],
+    "source": "Custom Stress-Test (+12.5% demand, adjusted from Prophet Seasonality)",
+    "generatedAt": "2026-10-18T13:35:51.603Z"
+  },
+  "pahang_d1_c8_5_custom_stress_test___1__demand__adjusted_from_prophet_horizon_": {
+    "whatChanges": "Under this scenario, visitor demand increases by 1% while accommodation capacity expands by 8.5%. This results in a negative demand-capacity gap of -7.5 percentage points, indicating capacity growth significantly outpaces demand growth.",
+    "whatBecomesMorePressured": "Despite a substantial increase in accommodation capacity and a reduced visitor-to-room ratio, the 1% rise in overall visitor numbers means that existing physical constraints related to transport infrastructure and environmental proximity will experience a slight increase in usage. Specifically, the observed road access rate of 27%, public transport access rate of 29.2%, and environmental exposure rate of 39.6% will accommodate a higher absolute volume of visitors.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the actual utilization rates of the expanded accommodation capacity to ensure sustainable occupancy levels and financial viability for new developments, given the negative demand-capacity gap.",
+      "Assess the current capacity and potential bottlenecks within the road and public transport networks, particularly in high Area of Interest (AOR) zones, to ensure efficient visitor movement with increased visitor numbers.",
+      "Monitor the ecological footprint and visitor impact on environmentally sensitive areas, especially given the 39.6% environmental exposure rate, to prevent degradation and ensure sustainable tourism practices."
+    ],
+    "source": "Custom Stress-Test (+1% demand, adjusted from Prophet Horizon)",
+    "generatedAt": "2026-10-18T13:38:33.932Z"
+  },
+  "kelantan_d26_c12_1_prophet_bayesian_ml_model__r___0_997__mape__0_9___projected__394_4m__aor__60_1__": {
+    "whatChanges": "The scenario projects a 26% increase in visitors to Kelantan, from 12.06 million to 15.20 million, while room capacity is projected to increase by 12.1%. This results in a demand-capacity gap of 13.9 percentage points.",
+    "whatBecomesMorePressured": "The significant increase in visitors, coupled with a lower proportional increase in accommodation, will amplify pressure on the existing Visitor-to-Room Ratio (VTR), which rises from 1895.9 to 2131. The current road access rate of 26.8% and public transport access rate of 20.2% will experience amplified strain due to the 26% increase in visitor numbers. The existing environmental exposure rate of 1.1% may also face increased pressure from higher visitor volumes.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate strategies to expand accommodation capacity beyond the projected 12.1% increase, focusing on diverse lodging options and their spatial distribution to mitigate the rising VTR and demand-capacity gap.",
+      "Investigate enhancements to road and public transport infrastructure, particularly in high-demand areas, to improve the current access rates of 26.8% and 20.2% and manage increased visitor flow.",
+      "Investigate the potential impacts of increased visitor numbers on environmentally sensitive areas, especially given the current 1.1% environmental exposure rate, and monitor spatial distribution of visitors to prevent localized over-tourism."
+    ],
+    "source": "Prophet Bayesian ML Model (R²: 0.997, MAPE: 0.9%, Projected: 394.4M, AOR: 60.1%)",
+    "generatedAt": "2026-10-18T13:47:33.201Z"
+  },
+  "kelantan_d1_c0_prophet_additive_seasonality_s_t___q4_festive_surge___1__above_baseline_mean_": {
+    "whatChanges": "Visitor demand is projected to increase by 1% due to a Q4 festive surge, while accommodation capacity remains unchanged. This results in a 1 percentage point demand-capacity gap.",
+    "whatBecomesMorePressured": "The Visitor-to-Room ratio (VTR) will experience amplified strain, increasing from 1895.9 to 1914.9 due to the rise in visitor numbers without a corresponding increase in available rooms. This heightened pressure on accommodation may also indirectly impact the existing Area of Responsibility (AOR) if visitor concentration increases.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the current utilization rates and spatial distribution of existing accommodation to identify potential bottlenecks and inform future capacity planning.",
+      "Assess the capacity and efficiency of existing road and public transport networks, especially in key tourist corridors, to ensure they can adequately support the increased visitor flow.",
+      "Monitor visitor distribution within the Area of Responsibility (AOR) and sensitive environmental zones to prevent overcrowding and mitigate potential ecological impacts from the increased visitor volume."
+    ],
+    "source": "Prophet Additive Seasonality s(t) (Q4 Festive Surge: +1% above baseline mean)",
+    "generatedAt": "2026-10-18T13:47:39.593Z"
+  },
+  "kelantan_d44_c1_5_custom_stress_test___44__demand__adjusted_from_prophet_seasonality_": {
+    "whatChanges": "Under this scenario, visitor demand in Kelantan increases by 44% to 17.37 million, while accommodation capacity only grows by 1.5%. This results in a significant demand-capacity gap of 42.5 percentage points.",
+    "whatBecomesMorePressured": "The Visitor-to-Room Ratio (VTR) significantly increases from 1895.9 to 2690, indicating amplified strain on existing accommodation capacity. With 43.2% of the area already under active observation (AOR) and relatively low road (26.8%) and public transport (20.2%) access rates, the increased visitor numbers will place further pressure on spatial resources and transportation infrastructure.",
+    "whatShouldPlannersInvestigate": [
+      "Evaluate the feasibility of expanding accommodation capacity beyond the projected 1.5% increase to mitigate the substantial demand-capacity gap and rising VTR.",
+      "Assess the current state and potential bottlenecks of road and public transport networks, particularly in high-demand areas, to ensure adequate accessibility for the increased visitor volume.",
+      "Monitor the impact of increased visitor numbers on areas with high AOR, and consider spatial planning strategies to manage visitor flow and prevent over-tourism in sensitive zones."
+    ],
+    "source": "Custom Stress-Test (+44% demand, adjusted from Prophet Seasonality)",
+    "generatedAt": "2026-10-18T13:47:48.593Z"
+  },
+  "kelantan_d18_3_c8_5_prophet_bayesian_ml_model__r___0_997__mape__0_9___projected__370_3m__aor__58_3__": {
+    "whatChanges": "The scenario projects an 18.3% increase in visitors, while accommodation capacity grows by only 8.5%, leading to a 9.8 percentage point demand-capacity gap and an increased visitor-to-room ratio from 1895.9 to 2067.1.",
+    "whatBecomesMorePressured": "The already high visitor-to-room ratio (VTR) becomes more pronounced, indicating increased strain on existing accommodation. Furthermore, the low road access rate (26.8%) and public transport access rate (20.2%) will experience amplified pressure as visitor numbers rise, potentially leading to congestion and accessibility challenges. The current area of interest (AOR) of 43.2% will also face increased visitor density.",
+    "whatShouldPlannersInvestigate": [
+      "Investigate the feasibility of expanding accommodation supply, including diverse lodging options, to address the growing demand-capacity gap and mitigate the rising visitor-to-room ratio.",
+      "Examine current road and public transport infrastructure to identify bottlenecks and explore opportunities for enhancing accessibility and connectivity to key tourism sites, especially given the low existing access rates.",
+      "Monitor the spatial distribution of visitors within the current area of interest (AOR) and assess potential environmental impacts or carrying capacity limits in popular sites due to increased visitor numbers."
+    ],
+    "source": "Prophet Bayesian ML Model (R²: 0.997, MAPE: 0.9%, Projected: 370.3M, AOR: 58.3%)",
+    "generatedAt": "2026-10-18T13:47:58.987Z"
   }
 }

@@ -42,6 +42,7 @@ export class VisitorPerceptionCard {
   private isLoading: boolean = false;
   private error: string | null = null;
   private proofModal: ReviewsProofModal;
+  private abortController: AbortController | null = null;
 
   constructor(initialAttraction: AttractionItem) {
     this.currentAttraction = initialAttraction;
@@ -60,14 +61,18 @@ export class VisitorPerceptionCard {
     this.currentAttraction = attraction;
     this.payload = null;
     this.error = null;
-    this.render();
-    this.fetchData();
+    this.fetchData(false);
   }
 
-  private async fetchData(): Promise<void> {
+  private async fetchData(forceRefresh: boolean = false): Promise<void> {
+    if (this.abortController) {
+      this.abortController.abort();
+    }
+    this.abortController = new AbortController();
+
     this.isLoading = true;
     this.error = null;
-    this.renderLoading();
+    this.render();
 
     try {
       const res = await fetch('/api/places/visitor-quality', {
@@ -76,7 +81,11 @@ export class VisitorPerceptionCard {
         body: JSON.stringify({
           query: this.currentAttraction.name,
           stateName: this.currentAttraction.stateName,
+          placeId: this.payload?.place?.id,
+          refresh: forceRefresh,
+          forceRefresh: forceRefresh,
         }),
+        signal: this.abortController.signal,
       });
 
       if (!res.ok) {
@@ -84,40 +93,19 @@ export class VisitorPerceptionCard {
       }
 
       this.payload = await res.json();
-      this.isLoading = false;
-      this.render();
     } catch (err: unknown) {
-      this.isLoading = false;
+      if ((err as any)?.name === 'AbortError') return;
       this.error = err instanceof Error ? err.message : String(err);
+    } finally {
+      this.isLoading = false;
       this.render();
     }
   }
 
-  private renderLoading(): void {
-    this.element.innerHTML = `
-      <div class="dest-card-header">
-        <div class="dest-card-title-group">
-          <div class="dest-card-badge">
-            <span class="dest-badge-dot" style="background-color: #0284c7;"></span>
-            <span>EMPIRICAL VISITOR SENTIMENT</span>
-          </div>
-          <h3 class="dest-card-title">VISITOR-PERCEIVED INFRASTRUCTURE QUALITY</h3>
-          <p class="dest-card-desc">Based on available Google reviews returned by Places API</p>
-        </div>
-      </div>
-      <div class="dest-visitor-loading">
-        <div class="dest-loading-spinner"></div>
-        <span>Retrieving real-time Google Places reviews & classifying infrastructure evidence with Gemini 2.5 Flash...</span>
-      </div>
-    `;
-  }
-
   private render(): void {
-    if (this.isLoading) return;
-
     this.element.innerHTML = '';
 
-    // Header
+    // Header with Title Group and Actions Bar (Gemini Badge + Refresh + Info Tooltip)
     const header = document.createElement('div');
     header.className = 'dest-card-header';
 
@@ -132,6 +120,20 @@ export class VisitorPerceptionCard {
       <p class="dest-card-desc">Based on available Google reviews returned by Places API — Evaluated across 6 physical supply vectors</p>
     `;
 
+    const actions = document.createElement('div');
+    actions.className = 'dest-card-actions';
+    actions.innerHTML = `
+      <div class="gemini-badge-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+        Gemini 2.5 Flash
+      </div>
+      <button class="refresh-findings-btn" id="btn-refresh-reviews" ${this.isLoading ? 'disabled' : ''} title="Refresh Google reviews & AI classification for ${this.currentAttraction.name}">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="${this.isLoading ? 'dest-icon-spin' : ''}"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M16 16h5v5"></path></svg>
+        <span>${this.isLoading ? 'Refreshing...' : 'Refresh'}</span>
+      </button>
+      <div id="visitor-info-icon-slot"></div>
+    `;
+
     const infoIcon = createInfoIcon({
       sourceOrg: 'Google Maps Platform (Places API New) & Google Vertex AI',
       datasetName: 'Place Details Reviews & Gemini 2.5 Flash Infrastructure Classifier',
@@ -141,9 +143,32 @@ export class VisitorPerceptionCard {
       limitations: 'Google Places API strictly limits data retrieval to a maximum of 5 reviews per destination. Evaluates qualitative visitor perception from the available Google review sample rather than a full census.',
     });
 
+    const infoSlot = actions.querySelector('#visitor-info-icon-slot');
+    if (infoSlot) {
+      infoSlot.replaceWith(infoIcon);
+    }
+
+    const refreshBtn = actions.querySelector<HTMLButtonElement>('#btn-refresh-reviews');
+    if (refreshBtn) {
+      refreshBtn.addEventListener('click', () => {
+        this.fetchData(true);
+      });
+    }
+
     header.appendChild(titleGroup);
-    header.appendChild(infoIcon);
+    header.appendChild(actions);
     this.element.appendChild(header);
+
+    if (this.isLoading) {
+      const loadingEl = document.createElement('div');
+      loadingEl.className = 'dest-visitor-loading';
+      loadingEl.innerHTML = `
+        <div class="dest-loading-spinner"></div>
+        <span>Retrieving real-time Google Places reviews & classifying infrastructure evidence with Gemini 2.5 Flash for <strong>${this.currentAttraction.name}</strong>...</span>
+      `;
+      this.element.appendChild(loadingEl);
+      return;
+    }
 
     if (this.error) {
       const errBox = document.createElement('div');
@@ -152,7 +177,7 @@ export class VisitorPerceptionCard {
         <p><strong>Note:</strong> ${this.error}</p>
         <button class="dest-retry-btn">Retry Analysis</button>
       `;
-      errBox.querySelector('.dest-retry-btn')?.addEventListener('click', () => this.fetchData());
+      errBox.querySelector('.dest-retry-btn')?.addEventListener('click', () => this.fetchData(true));
       this.element.appendChild(errBox);
       return;
     }
